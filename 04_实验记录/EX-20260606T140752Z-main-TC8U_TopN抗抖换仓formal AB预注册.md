@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260606T140752Z-main-TC8U
 rd_id: RD-20260605T115651Z-main-EXE0
 status: active
-stage: preregistered_platform_config_ready
+stage: formal_base_completed_cost_blocked
 owner: main
 created_at: 2026-06-06T14:07:52Z
-updated_at: 2026-06-06T14:15:00Z
+updated_at: 2026-06-06T18:35:00Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 执行与换仓模块
 decision_ids: []
@@ -15,17 +15,23 @@ idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
+  - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_slip2bps/
+  - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commission/
   - scripts/research/generate_tc8u_topn_antishake_configs.py
 result_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal/
 summary_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/summary.json
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/summary.json
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/summary.json
   - scripts/research/summarize_tc8u_topn_antishake.py
-quality_gate: L1_preregistered_platform_config_ready_no_backtest_yet
+quality_gate: L2_formal_base_completed_cost_blocked_no_promote
 subagent_call_ids:
   - SUB-20260606T140000Z-main-TOPN
+  - SUB-20260606T150000Z-main-TC8U-AUDIT
 subagent_exemption:
-tags: [双池轮动, TopN抗抖, 执行模块, formal预注册]
+tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本待补]
 ---
 
 # TopN抗抖换仓formal AB预注册
@@ -42,16 +48,16 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal预注册]
 
 ## 1. 新手摘要
 
-这次实验想知道：当前持仓如果仍在 Top3/Top5 且分数没有明显落后，继续持有是否能减少无意义换仓。  
-我们原本预计：它应该主要降低交易次数和成本敏感性，而不是显著改变选股逻辑。  
-实际看到：本卡还没有执行 formal 回测，只完成平台参数覆盖补丁、单元测试和配置生成脚本准备。  
-这说明：TopN 抗抖可以进入干净 A/B，但不能和波动率缩放、绝对动量过滤或 Top4 多持仓混在一起。  
-但还不能说明：TopN 抗抖已经有效，也不能说明它优于 A23 或 hard5。  
-下一步要做：生成 5 组变体四段配置，先完成 dry-run，再用 WSL 可见日志跑 formal。
+这次实验想知道：当前持仓如果仍在 Top3/Top5 且分数没有明显落后，继续持有是否能减少无意义换仓。
+我们原本预计：它应该主要降低交易次数和成本敏感性，而不是显著改变选股逻辑。
+实际看到：base-cost formal 已完成 20/20；所有 TopN 变体四段交易数都下降，2025_20260519 都没有错过强趋势。
+这说明：TopN 抗抖确实能减少换仓噪声，但不能直接升级为默认规则，因为 `top3_ratio070_veto` 和 `top5_ratio070_veto` 都有两个分段 final 低于 baseline。
+对新手来说：少换仓不是天然更好，它可能是在强趋势里减少噪声，也可能是在趋势切换时反应变慢。
+下一步要做：等 WSL 平台空闲后补成本扰动；当前只能把 `top3_ratio070_gap050_veto` 和 `top5_ratio070_veto` 留作候选观察，不能 promote。
 
 ## 2. 研究背景
 
-`EX-20260606T012550Z-main-LM3D` 已经否定 Top4 等权、Top4 `40/30/20/10` 和取消 hard5 上限进入默认逻辑。  
+`EX-20260606T012550Z-main-LM3D` 已经否定 Top4 等权、Top4 `40/30/20/10` 和取消 hard5 上限进入默认逻辑。
 因此本实验不研究“多买几个 ETF”，只研究“仍主要 Top1，但当前持仓还在候选前列时是否延迟换仓”。
 
 平台 `src/strategies/research/etf_dual_pool_topn_vol_scaled.py` 已有 `choose_targets_with_topn_hold`。本轮补了 `strategy_params.topn_hold` 参数覆盖能力，并通过 `src/tests/strategies/test_etf_dual_pool_topn_hold.py` 10 项测试。
@@ -103,30 +109,30 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal预注册]
 
 | 检查项 | 结论 | 证据 |
 | --- | --- | --- |
-| 数据时间戳只使用当时可得信息 | 待检查 | formal 运行后查看 manifest 与平台 V2 数据输入 |
-| 信号生成和成交价格不存在同 bar 泄漏 | 待检查 | 沿用 V2 JoinQuant bridge 与原策略调仓流程，formal 后复核日志 |
+| 数据时间戳只使用当时可得信息 | 待检查 | formal 结果完整，但尚未逐字段审计 manifest 与数据输入 |
+| 信号生成和成交价格不存在同 bar 泄漏 | 待检查 | 沿用 V2 JoinQuant bridge 与原策略调仓流程，需后续专项复核 |
 | 股票池或 ETF 池不存在未来成分泄漏 | 待检查 | 使用既有动态池逻辑；后续需复核动态池不是结束日快照 |
 | 财务、宏观或估值数据按可得日处理 | 不适用 | 本策略不使用财务宏观估值数据 |
-| Shadow 或观察信号未被当成默认交易信号 | 待检查 | 本实验为 formal A/B，但不修改生产默认 |
+| Shadow 或观察信号未被当成默认交易信号 | 已限制 | 本实验为 formal A/B，但不修改生产默认 |
 
 负控或错位检查：
 
 - baseline_top1_hard5 关闭 TopN。
 - `top3_ratio085_veto` 与 `top3_ratio070_gap050_veto` 做邻近收紧。
-- 后续追加成本加倍和随机延迟换仓负控，完成前不升级结论。
+- 成本扰动配置已生成但运行受平台环境阻塞，完成前不升级结论。
 
 ## 9. 过拟合审计
 
 | 检查项 | 结论 | 证据 |
 | --- | --- | --- |
 | 参数搜索空间已预注册 | 已预注册 | 5 个变体固定，不看结果后扩网格 |
-| 样本内、验证集、样本外划分清楚 | 待检查 | 四段固定：2020_2021、2022_2023、2024、2025_20260519 |
-| 邻近参数敏感性合理 | 待检查 | ratio 0.70/0.85、Top3/Top5、gap 0/0.50 |
-| 成本、滑点或换手扰动已检查 | 未完成 | 本卡先做 base cost；成本扰动为后续硬门槛 |
-| 已做消融或负控 | 部分预注册 | baseline 和邻近收紧已预注册；随机延迟待补 |
-| 未只报告最优结果 | 待检查 | 汇总脚本输出全部变体 |
+| 样本内、验证集、样本外划分清楚 | 部分完成 | 四段固定：2020_2021、2022_2023、2024、2025_20260519 |
+| 邻近参数敏感性合理 | 部分完成 | ratio 0.70/0.85、Top3/Top5、gap 0/0.50 |
+| 成本、滑点或换手扰动已检查 | 未完成 | 成本配置 dry-run 通过，但正式运行中断 |
+| 已做消融或负控 | 部分完成 | baseline 与邻近收紧完成；随机延迟待补 |
+| 未只报告最优结果 | 已满足 | 汇总脚本输出全部 base-cost 变体 |
 
-证据等级：`L1_preregistered_platform_config_ready_no_backtest_yet`
+证据等级：`L2_formal_base_completed_cost_blocked_no_promote`
 
 ## 10. 子代理调用记录
 
@@ -142,9 +148,10 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal预注册]
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SUB-20260606T140000Z-main-TOPN | Cicero | SUBTASK-20260606T140000Z-main-TOPN | gpt-5.3-codex-spark | 2026-06-06T14:00:00Z | 待子代理返回 | 无 | 无长回测 | 只读核对，不做最终判断 | 待返回 | 主控已独立发现参数覆盖缺口并补测试 | 用于后续执行清单核对 |
+| SUB-20260606T140000Z-main-TOPN | Cicero | SUBTASK-20260606T140000Z-main-TOPN | gpt-5.3-codex-spark | 2026-06-06T14:00:00Z | 平台 TopN 策略、测试、生成与汇总脚本、配置根 | 无 | 无长回测 | 只读核对，不做最终判断 | `cooldown` 字段不存在，需用 rank/ratio/gap 表达 | 主控采纳其“20 个 formal 配置已存在/可执行”核对，并补 `strategy_params.topn_hold` 覆盖测试 | 支持本卡进入 formal A/B |
+| SUB-20260606T150000Z-main-TC8U-AUDIT | Curie | SUBTASK-20260606T150000Z-main-TC8U-AUDIT | gpt-5.3-codex-spark | 2026-06-06T15:00:00Z | `summary.json`、`comparison_vs_baseline.csv`、20 个 status、实验卡 | 无 | 无长回测 | 只读核对，不做 promote/revise/kill | 只按已给证伪条件判断，不替代主控决策 | 主控复核其 20/20、自洽、证伪条件清单；采纳其对 `top3_ratio070_gap050_veto` 的审计优先级建议 | 把成本审计候选从单一 Top5 改为 Top5 + Top3/gap 双候选 |
 
-台账行：待补。
+台账行：已补 `01_台账/子代理调用台账.csv`。
 
 ## 11. 执行记录
 
@@ -152,26 +159,35 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal预注册]
 
 ```text
 configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
+configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_slip2bps/
+configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commission/
 ```
 
 ### 运行命令
 
 ```bash
-PYTHONPATH=src python3 scripts/research/generate_tc8u_topn_antishake_configs.py
-PYTHONPATH=src python3 src/run_v2_backtest.py --config configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/<variant>/tc8u_<variant>_<segment>.json
-PYTHONPATH=src python3 scripts/research/summarize_tc8u_topn_antishake.py
+python scripts/research/generate_tc8u_topn_antishake_configs.py
+PHASE=formal VARIANTS='<variant>' SEGMENTS='<segment>' bash scripts/research/run_tc8u_topn_antishake_formal.sh
+python scripts/research/summarize_tc8u_topn_antishake.py --output-dir results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary
+```
+
+成本扰动配置命令：
+
+```bash
+python scripts/research/generate_tc8u_topn_antishake_configs.py --phase formal_cost2x_slip2bps
+python scripts/research/generate_tc8u_topn_antishake_configs.py --phase formal_cost2x_commission
 ```
 
 ### 可见进度与日志
 
-- 是否过程可见：`待执行，正式回测必须使用 PYTHONUNBUFFERED=1 + tee`
-- 日志路径：`results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/`
-- 查看进度命令：待执行时登记
-- 异常判断：`exit_status=0`、`manifest.json`、`summary.json`、`trades.csv` 齐全
+- 是否过程可见：`formal base-cost 已使用 PYTHONUNBUFFERED=1 + tee`
+- 日志路径：`results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal/`
+- 查看进度命令：`Get-Content <log> -Tail 80`
+- 异常判断：base-cost 20 个 `.status` 均为 `0`，summary/trades/logs 齐全；成本阶段无完成 run
 - 后台回测豁免：
 
 ```text
-不适用，尚未执行后台回测。
+不适用，正式 base-cost 回测均前台可见执行。
 ```
 
 ### 结果路径
@@ -179,35 +195,59 @@ PYTHONPATH=src python3 scripts/research/summarize_tc8u_topn_antishake.py
 ```text
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/
+results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/
+results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/
 ```
 
 ## 12. 实际观察
 
-| 指标 | 基准 | 本次 | 变化 | 解释 |
-| --- | --- | --- | --- | --- |
-| 未执行 | 未执行 | 未执行 | 未执行 | 预注册阶段 |
+base-cost formal 完成 20/20，`completed_runs=20`、`missing=[]`、20 个 status 全部为 `0`。
+
+| 变体 | final 不低于 baseline 分段数 | MDD 不差于 baseline 分段数 | 交易数下降分段数 | 四段 final 差额合计 | 四段交易差额合计 | 主观察 |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `top3_ratio070_veto` | 2/4 | 2/4 | 4/4 | +3,412.21 | -373 | 触发“两段 final 低于 baseline”，且 2020 收益和回撤同时变差，降优先级 |
+| `top3_ratio085_veto` | 3/4 | 2/4 | 4/4 | -1,732.70 | -261 | 收紧后收益合计转负，不作为首选候选 |
+| `top5_ratio070_veto` | 2/4 | 4/4 | 4/4 | +16,431.01 | -474 | 交易下降最多、回撤四段都不差，但 2020/2022 final 低于 baseline，不能 promote |
+| `top3_ratio070_gap050_veto` | 3/4 | 2/4 | 4/4 | +4,830.17 | -243 | 只 2024 final 低于 baseline，2025 未掉队；作为较稳妥成本审计候选 |
+
+关键逐段事实：
+
+- `top5_ratio070_veto`：2025_20260519 final 比 baseline 高 `40,460.96`，MDD 改善 `0.0113`，交易少 `125`；2020_2021 和 2022_2023 final 分别低 `23,425.18`、`8,107.84`，但 MDD 均改善。
+- `top3_ratio070_gap050_veto`：2020_2021、2022_2023、2025_20260519 final 分别高 `6,348.83`、`2,715.30`、`9,542.17`；2024 低 `13,776.13`。
+- 所有 TopN 变体 2025_20260519 均未掉队，说明强趋势段没有被完全错过。
+- 成本扰动尝试：`formal_cost2x_slip2bps` 与 `formal_cost2x_commission` 均已生成并 dry-run 通过，但实际回测在 baseline 2020/2024 早段无 traceback 中断；现场存在无关 A23 WSL 回测进程，且 `dmesg` 有 Python/WSL 内核告警。成本扰动记为平台环境阻塞，不能作为有效结果。
 
 ## 13. 支持证据
 
 - 平台已有 `choose_targets_with_topn_hold`，本轮新增 `strategy_params.topn_hold` 覆盖能力。
 - `python -m pytest src/tests/strategies/test_etf_dual_pool_topn_hold.py -q` 通过 10/10。
+- 20 个 base-cost formal 回测均有 `.status=0`。
+- `topn_retained` 合计：Top3/0.70 为 266 次，Top3/0.85 为 186 次，Top5/0.70 为 342 次，Top3/0.70/gap0.50 为 182 次。
 
 ## 14. 反对证据
 
-- 还没有 formal 回测结果。
-- 还没有成本加倍、随机延迟和冷却期 live 实现负控。
+- `top3_ratio070_veto` 与 `top5_ratio070_veto` 均触发“两段以上 final 低于 baseline”的证伪条件。
+- `top3_ratio085_veto` 四段 final 合计为负，说明不是简单收紧就能稳健。
+- 成本扰动未完成，成本优势不能确认。
+- 没有随机延迟和冷却期 live 实现负控。
 - 本实验不能直接证明 A23 与 TopN 叠加有效。
 
 ## 15. 偏差诊断
 
-待 formal 运行后填写。
+- 本卡是 base-cost formal，不是成本稳健性完成证据。
+- `top5_ratio070_veto` 的合计收益最高，但两个历史分段 final 低于 baseline，可能是反应变慢换来的 2025 噪声收益。
+- `top3_ratio070_gap050_veto` 证伪触发较少，但 MDD 仅 2/4 不差，且 2024 final 明显低于 baseline。
+- 成本扰动中断发生在 baseline，不是 TopN 特有；应等无关 A23 任务结束后重跑，或单独排查 WSL/ClickHouse 内存状态。
 
 ## 16. 研究判断
 
-建议状态：`observe`
+建议状态：`observe / robustness_pending`
 
-理由：已具备 formal A/B 执行条件，但没有收益、回撤、交易数和成本扰动证据。
+理由：TopN 抗抖证明了“减少换仓”这个执行效果，但没有证明“稳定提升收益”。`top3_ratio070_gap050_veto` 和 `top5_ratio070_veto` 可进入成本扰动与随机延迟负控；`top3_ratio070_veto` 降优先级。未完成成本扰动前不得 promote，也不得改默认 hard5/A23。
 
 ## 17. 下一步
 
-生成 20 个 formal 配置，先 dry-run 校验，再按四段可见运行；完成后用汇总脚本判断是否需要追加成本扰动和冷却期实现。
+1. 等 WSL 平台空闲后重跑 `formal_cost2x_commission` 与 `formal_cost2x_slip2bps`，先跑 baseline + `top3_ratio070_gap050_veto` + `top5_ratio070_veto`。
+2. 若成本扰动仍中断，单独开平台工程排障卡，检查 `risk_config.execution`、内存维护和 ClickHouse 连接池。
+3. 追加随机延迟换仓或冷却期负控；完成前不新开更大 TopN 网格。
+4. 若成本扰动通过，再考虑把 TopN 与 A23 作为组合交互实验，而不是直接替换 hard5。
