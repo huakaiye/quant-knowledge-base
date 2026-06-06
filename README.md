@@ -2,10 +2,25 @@
 
 本库是团队量化研究的中文事实源，负责保存研究方向、研究方法、文献灵感、实验记录、决策卡片、台账、术语和交接信息。
 
-回测平台位于：
+回测平台和实盘系统的本机路径使用本地配置解析，不在共享文档中写死个人路径：
 
 ```text
-E:\量化平台_V1.4.0
+${QUANT_PLATFORM_ROOT}
+${LIVE_TRADING_ROOT}
+```
+
+本机回测平台默认示例是 `E:\量化平台_V1.4.0`。如果同事平台路径或实盘路径不同，复制 `.research.local.example.json` 为 `.research.local.json` 后修改，或设置环境变量。`.research.local.json` 不入库。
+
+查看本机回测平台路径：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target Platform -Format All
+```
+
+查看本机实盘系统路径：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target Live -Format All
 ```
 
 平台负责策略代码、回测配置、数据、结果和质量门禁；本研究库负责解释“为什么做、怎么验证、结果说明了什么、下一步为什么这样走”。

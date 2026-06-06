@@ -10,8 +10,11 @@
 tmp/
 cache/
 .firecrawl/
+.research.local.json
+.env.local
+research.local.json
 
-# 平台回测输出和运行日志应保存在 E:\量化平台_V1.4.0。
+# 平台回测输出和运行日志应保存在本机 QUANT_PLATFORM_ROOT 指向的平台目录。
 results/
 reports/
 *.run.log

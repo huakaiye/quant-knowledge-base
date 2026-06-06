@@ -30,7 +30,7 @@
 8. `08_方法论/子代理调度规范.md`
 9. `08_方法论/Obsidian使用规范.md`
 10. `08_方法论/Obsidian双向链接规范.md`
-11. 如涉及回测平台，再读 `E:\量化平台_V1.4.0\AGENTS.md`
+11. 如涉及回测平台，用 `tools/Get-QuantPlatformRoot.ps1` 解析本机平台根路径后，再读 `<QUANT_PLATFORM_ROOT>\AGENTS.md`
 
 ## 系统边界
 
@@ -41,6 +41,37 @@
 | 旧研究库 | 只作为待迁移资料源，不作为新架构依据 |
 
 禁止把大型净值、交易明细、参数扫描结果、原始数据和论文 PDF 直接提交到研究库。
+
+## 本地路径配置
+
+共享文档不得因为个人电脑路径不同而反复修改回测平台或实盘系统根路径。研究库统一使用逻辑根：
+
+```text
+${QUANT_PLATFORM_ROOT}
+${LIVE_TRADING_ROOT}
+```
+
+每台电脑通过以下方式之一配置真实路径：
+
+- 设置环境变量 `QUANT_PLATFORM_ROOT`，例如 `D:\quant\量化平台_V1.4.0`。
+- 设置环境变量 `QUANT_PLATFORM_WSL_ROOT`，例如 `/mnt/d/quant/量化平台_V1.4.0`。
+- 设置环境变量 `LIVE_TRADING_ROOT`，例如 `D:\live\MiniQMT`。
+- 设置环境变量 `LIVE_TRADING_WSL_ROOT`，例如 `/mnt/d/live/MiniQMT`。
+- 复制 `.research.local.example.json` 为 `.research.local.json` 后修改本机路径。
+
+`.research.local.json` 不入库。Agent 需要执行平台命令前，必须先运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target Platform -Format All
+```
+
+Agent 需要核对实盘路径前，必须先运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target Live -Format All
+```
+
+新增实验和策略档案中的回测平台字段默认写 `${QUANT_PLATFORM_ROOT}` 或平台相对路径，例如 `configs/research/...`、`results/v2/research/...`。涉及实盘系统的位置默认写 `${LIVE_TRADING_ROOT}` 或实盘系统内的相对路径。不要把个人绝对路径写进新共享文档；历史迁移记录中已经存在的绝对路径可以作为证据原样保留。
 
 ## 每轮实验硬规则
 
@@ -104,8 +135,9 @@ ID 格式见 `08_方法论/命名与编号规范.md`。
 
 Agent/CLI 回测必须在 WSL 内运行。常用形式：
 
-```bash
-wsl -- bash -c "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src python3 src/run_v2_backtest.py --config configs/research/<rd_id>/<ex_id>/<config>.json"
+```powershell
+$platformWsl = powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Format WSL
+wsl -- bash -lc "cd '$platformWsl' && PYTHONPATH=src python3 src/run_v2_backtest.py --config configs/research/<rd_id>/<ex_id>/<config>.json"
 ```
 
 回测命令默认必须过程可见。主控或子代理运行回测时，应使用 `PYTHONUNBUFFERED=1`、`tee`、平台进度日志或等效方式，让用户能看到运行进度、当前阶段、错误输出和日志路径。

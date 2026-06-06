@@ -11,6 +11,7 @@ $warnings = New-Object System.Collections.Generic.List[string]
 $requiredFiles = @(
     'README.md',
     'AGENTS.md',
+    '.research.local.example.json',
     '00_入口/研究驾驶舱.md',
     '00_入口/当前状态.md',
     '01_台账/研究方向台账.csv',
@@ -26,6 +27,34 @@ foreach ($file in $requiredFiles) {
     $path = Join-Path $Root $file
     if (-not (Test-Path -LiteralPath $path)) {
         $errors.Add("缺少必需文件：$file")
+    }
+}
+
+$localExamplePath = Join-Path $Root '.research.local.example.json'
+if (Test-Path -LiteralPath $localExamplePath) {
+    try {
+        $localExample = Get-Content -LiteralPath $localExamplePath -Raw -Encoding UTF8 | ConvertFrom-Json
+        foreach ($propertyName in @('platform_root_windows', 'platform_root_wsl', 'live_root_windows', 'live_root_wsl')) {
+            if ($localExample.PSObject.Properties.Name -notcontains $propertyName) {
+                $errors.Add(".research.local.example.json 缺少字段：$propertyName")
+            }
+        }
+    } catch {
+        $errors.Add(".research.local.example.json 无法解析：$($_.Exception.Message)")
+    }
+}
+
+$portableTemplateChecks = @{
+    '10_模板/实验记录模板.md' = 'platform_project: ${QUANT_PLATFORM_ROOT}'
+    '10_模板/策略档案模板.md' = 'platform_project: ${QUANT_PLATFORM_ROOT}'
+}
+foreach ($templateRelative in $portableTemplateChecks.Keys) {
+    $templatePath = Join-Path $Root $templateRelative
+    if (Test-Path -LiteralPath $templatePath) {
+        $templateContent = Get-Content -LiteralPath $templatePath -Raw -Encoding UTF8
+        if (-not $templateContent.Contains($portableTemplateChecks[$templateRelative])) {
+            $errors.Add("模板未使用可移植平台根路径：$templateRelative")
+        }
     }
 }
 
