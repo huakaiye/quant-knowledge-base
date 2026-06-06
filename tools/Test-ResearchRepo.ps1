@@ -77,7 +77,7 @@ foreach ($file in $markdownFiles) {
             $relative.StartsWith('05_研究决策\', [System.StringComparison]::OrdinalIgnoreCase)
         $isCompleted = [regex]::IsMatch($frontmatter, '(?m)^status:\s*completed\s*$')
         if ($isResearchExecutionDoc -and $isCompleted) {
-            $hasSubagentLog = [regex]::IsMatch($content, '(?m)^##\s+子代理调用记录\s*$')
+            $hasSubagentLog = [regex]::IsMatch($content, '(?m)^##\s+(?:\d+\.\s*)?子代理调用记录\s*$')
             $hasSubagentExemption = $content.Contains('子代理豁免：')
             if (-not $hasSubagentLog -and -not $hasSubagentExemption) {
                 $errors.Add("completed 实验/决策缺少子代理调用记录或豁免原因：$relative")
