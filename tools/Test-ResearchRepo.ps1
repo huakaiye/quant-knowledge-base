@@ -34,6 +34,15 @@ $filenameIdRegex = [regex]'([A-Z]+-\d{8}T\d{6}Z-[A-Za-z0-9_-]+-[A-Za-z0-9]+)'
 $primaryIdToFiles = @{}
 $filenameIdToFiles = @{}
 $markdownFiles = Get-ChildItem -LiteralPath $Root -Recurse -File -Filter '*.md'
+$subagentLedgerPath = Join-Path $Root '01_台账/子代理调用台账.csv'
+$subagentCallIds = New-Object System.Collections.Generic.HashSet[string]
+if (Test-Path -LiteralPath $subagentLedgerPath) {
+    foreach ($row in @(Import-Csv -LiteralPath $subagentLedgerPath -Encoding UTF8)) {
+        if ($row.call_id) {
+            [void]$subagentCallIds.Add($row.call_id)
+        }
+    }
+}
 $strictUtf8 = [System.Text.UTF8Encoding]::new($false, $true)
 $textExtensions = @('.md', '.csv', '.json', '.canvas', '.ps1', '.yml', '.yaml')
 $textFileNames = @('.gitignore', '.gitattributes')
@@ -72,15 +81,35 @@ foreach ($file in $markdownFiles) {
         if ([regex]::IsMatch($frontmatter, '(?m)^source_old_(relative_)?path:\s*".*\\.*"\s*$')) {
             $errors.Add("YAML 路径字段不能使用带反斜杠的双引号：$relative")
         }
+        if ($file.Extension.ToLowerInvariant() -eq '.md' -and [regex]::IsMatch($content, '\bnot_required\b')) {
+            $errors.Add("子代理调用状态不得使用 not_required，应使用 called 或标准豁免：$relative")
+        }
 
         $isResearchExecutionDoc = $relative.StartsWith('04_实验记录\', [System.StringComparison]::OrdinalIgnoreCase) -or
             $relative.StartsWith('05_研究决策\', [System.StringComparison]::OrdinalIgnoreCase)
-        $isCompleted = [regex]::IsMatch($frontmatter, '(?m)^status:\s*completed\s*$')
+        $isCompleted = [regex]::IsMatch($frontmatter, '(?m)^status:\s*completed\s*$') -or
+            [regex]::IsMatch($frontmatter, '(?m)^decision:\s*(?!draft\b).+\S\s*$')
         if ($isResearchExecutionDoc -and $isCompleted) {
-            $hasSubagentLog = [regex]::IsMatch($content, '(?m)^##\s+(?:\d+\.\s*)?子代理调用记录\s*$')
-            $hasSubagentExemption = $content.Contains('子代理豁免：')
-            if (-not $hasSubagentLog -and -not $hasSubagentExemption) {
-                $errors.Add("completed 实验/决策缺少子代理调用记录或豁免原因：$relative")
+            $hasValidSubagentCall = $false
+            $callIdsMatch = [regex]::Match($frontmatter, '(?ms)^subagent_call_ids:\s*\[(.*?)\]\s*$')
+            if ($callIdsMatch.Success) {
+                $callIdsText = $callIdsMatch.Groups[1].Value
+                foreach ($callIdMatch in [regex]::Matches($callIdsText, 'SUB-\d{8}T\d{6}Z-[A-Za-z0-9_-]+-[A-Za-z0-9]+')) {
+                    if ($subagentCallIds.Contains($callIdMatch.Value)) {
+                        $hasValidSubagentCall = $true
+                    } else {
+                        $errors.Add("subagent_call_ids 未登记到子代理调用台账：$relative -> $($callIdMatch.Value)")
+                    }
+                }
+            }
+            foreach ($callIdMatch in [regex]::Matches($content, 'SUB-\d{8}T\d{6}Z-[A-Za-z0-9_-]+-[A-Za-z0-9]+')) {
+                if ($subagentCallIds.Contains($callIdMatch.Value)) {
+                    $hasValidSubagentCall = $true
+                }
+            }
+            $hasSubagentExemption = [regex]::IsMatch($content, '子代理豁免：.+；主控：.+；时间：\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z')
+            if (-not $hasValidSubagentCall -and -not $hasSubagentExemption) {
+                $errors.Add("completed 实验/生效决策缺少已登记的子代理调用或标准豁免：$relative")
             }
         }
     }
