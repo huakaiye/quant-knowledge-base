@@ -37,10 +37,26 @@ $markdownFiles = Get-ChildItem -LiteralPath $Root -Recurse -File -Filter '*.md'
 $subagentLedgerPath = Join-Path $Root '01_台账/子代理调用台账.csv'
 $subagentCallIds = New-Object System.Collections.Generic.HashSet[string]
 if (Test-Path -LiteralPath $subagentLedgerPath) {
-    foreach ($row in @(Import-Csv -LiteralPath $subagentLedgerPath -Encoding UTF8)) {
+    $subagentRows = @(Import-Csv -LiteralPath $subagentLedgerPath -Encoding UTF8)
+    if ($subagentRows.Count -gt 0) {
+        $subagentColumns = @($subagentRows[0].PSObject.Properties.Name)
+        foreach ($requiredColumn in @('call_id', 'task_code', 'platform_nickname')) {
+            if ($subagentColumns -notcontains $requiredColumn) {
+                $errors.Add("子代理调用台账缺少字段：$requiredColumn")
+            }
+        }
+    }
+    foreach ($row in $subagentRows) {
         if ($row.call_id) {
             [void]$subagentCallIds.Add($row.call_id)
         }
+    }
+    $duplicateSubtasks = $subagentRows |
+        Where-Object { $_.task_code -match '^SUBTASK-\d{8}T\d{6}Z-' } |
+        Group-Object -Property task_code |
+        Where-Object { $_.Count -gt 1 }
+    foreach ($dup in $duplicateSubtasks) {
+        $errors.Add("子代理台账存在重复 SUBTASK 任务代号：$($dup.Name)")
     }
 }
 $strictUtf8 = [System.Text.UTF8Encoding]::new($false, $true)
@@ -215,7 +231,7 @@ foreach ($ledger in $ledgerFiles) {
         $errors.Add("台账为空：$($ledger.Name)")
         continue
     }
-    $header = $lines[0].Split(',')[0]
+    $header = $lines[0].Split(',')[0].Trim('"')
     if ([string]::IsNullOrWhiteSpace($header)) {
         $errors.Add("台账首列为空：$($ledger.Name)")
         continue
