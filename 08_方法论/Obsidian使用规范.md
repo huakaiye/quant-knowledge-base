@@ -49,3 +49,5 @@ E:\【笔记库】\量化研究库\.obsidian
 Obsidian 负责人类阅读体验，GitHub 负责版本协作和审查。不要为了 Obsidian 便利牺牲 GitHub 安全边界。
 
 如果某个插件配置对团队协作确实重要，应把可公开配置写进研究库文档，而不是提交含私密字段的 `data.json`。
+
+Obsidian Git 自动同步配置见 `08_方法论/Obsidian Git自动同步配置.md`。本地可以启用自动拉取、自动备份和自动推送，但 `.obsidian/plugins/obsidian-git/data.json` 仍不入库。
