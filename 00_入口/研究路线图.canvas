@@ -17,6 +17,8 @@
 		{"id":"score-cap-a20-decision","type":"file","file":"05_研究决策/DEC-20260605T184943Z-main-CKNC_A20进入候选但不替代默认hard5且A21不晋级.md","x":320,"y":1685,"width":470,"height":200},
 		{"id":"score-cap-a22-decision","type":"file","file":"05_研究决策/DEC-20260605T220430Z-main-9QNJ_A22cap70晋级为hard5替代首选候选但暂不默认上线.md","x":320,"y":1955,"width":500,"height":200},
 		{"id":"score-cap-a23-decision","type":"file","file":"05_研究决策/DEC-20260606T073601Z-main-VK2A_A23不替代A22cap70但保留为风险平衡挑战者.md","x":340,"y":2225,"width":520,"height":200},
+		{"id":"score-cap-a23-d09","type":"file","file":"04_实验记录/EX-20260606T083100Z-main-D9QK_A23状态分层预算92_4_d09四段回测.md","x":-650,"y":2710,"width":570,"height":260},
+		{"id":"score-cap-a23-d09-decision","type":"file","file":"05_研究决策/DEC-20260606T083101Z-main-S7NP_A23_92_4_d09晋级为hard5替代首选候选.md","x":340,"y":2710,"width":540,"height":200},
 		{"id":"score-cap-a22","type":"file","file":"04_实验记录/EX-20260605T220429Z-main-EQFU_A22高分状态风险预算formal V2四段回测.md","x":-650,"y":1955,"width":500,"height":220},
 		{"id":"theme-forward-decision","type":"file","file":"05_研究决策/DEC-20260605T235338Z-main-WVZZ_主题簇强主线不作为正向放行条件.md","x":1190,"y":1410,"width":640,"height":530},
 		{"id":"theme-forward-attribution","type":"file","file":"04_实验记录/EX-20260605T234635Z-main-CTRD_主题簇主线确认收益归因与负控预注册.md","x":2130,"y":1565,"width":500,"height":220},
@@ -43,6 +45,8 @@
 		{"id":"edge-score-cap-a22-decision","fromNode":"score-cap-a22","fromSide":"right","toNode":"score-cap-a22-decision","toSide":"left","label":"current candidate"},
 		{"id":"edge-score-cap-a22-a23","fromNode":"score-cap-a22","fromSide":"bottom","toNode":"score-cap-a23","toSide":"top","label":"状态分层挑战者"},
 		{"id":"edge-score-cap-a23-decision","fromNode":"score-cap-a23","fromSide":"right","toNode":"score-cap-a23-decision","toSide":"left","label":"revise challenger"},
+		{"id":"edge-score-cap-a23-d09","fromNode":"score-cap-a23","fromSide":"bottom","toNode":"score-cap-a23-d09","toSide":"top","label":"dispersion 修正"},
+		{"id":"edge-score-cap-a23-d09-decision","fromNode":"score-cap-a23-d09","fromSide":"right","toNode":"score-cap-a23-d09-decision","toSide":"left","label":"promote current"},
 		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"}
 	]
 }
