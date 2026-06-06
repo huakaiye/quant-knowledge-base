@@ -6,7 +6,7 @@ status: active
 stage: partial_smoke_completed_full_formal_pending
 owner: main
 created_at: 2026-06-06T00:07:58Z
-updated_at: 2026-06-06T01:24:18Z
+updated_at: 2026-06-06T02:00:40Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 核心轮动风险预算模块
 decision_ids: [DEC-20260605T235338Z-main-WVZZ]
@@ -21,7 +21,7 @@ summary_paths:
   - E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/summary.json
 quality_gate: preregistered_before_execution
 subagent_call_ids: []
-subagent_exemption: "子代理豁免：当前子代理工具约束要求只有用户明确要求调用子代理时才可 spawn；本实验仍为 active，未进入 completed；主控：main；时间：2026-06-06T01:24:18Z"
+subagent_exemption: "子代理豁免：当前子代理工具约束要求只有用户明确要求调用子代理时才可 spawn；本实验仍为 active，未进入 completed；主控：main；时间：2026-06-06T02:00:40Z"
 tags: [双池轮动, 主题簇, 金融坏桶, 风险预算, formal-v2, AB, 非hard5]
 ---
 
@@ -219,6 +219,8 @@ wsl -- bash -c "tail -n 50 /mnt/e/量化平台_V1.4.0/results/v2/research/R010-T
 预计耗时：2025 单段约 10-15 分钟；四段全量预计显著更长。
 
 本轮追加后台豁免：`financial_or_share_ge050_cap70` 2025 smoke 因 PowerShell/WSL inline 引号两次失败，改为平台脚本 `E:/量化平台_V1.4.0/scripts/research/run_r010theme_vvvn_financial_or_share_2025.sh` 后后台运行；后台仅用于持续轮询进度。Windows wrapper 进程见当轮终端记录，WSL Python PID 为 28536，已完成；日志为 `run_financial_or_share_ge050_2025.run.log`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
+
+2024 formal 预执行后台豁免：计划运行 `E:/量化平台_V1.4.0/scripts/research/run_r010theme_vvvn_2024_formal.sh`，顺序执行 baseline、`financial_top1_cap70`、`financial_or_share_ge050_cap70` 三份 2024 已预注册配置；后台原因是预计耗时 30 分钟以上，后台仅用于主控轮询。日志路径为 `run_baseline_2024.run.log`、`run_financial_top1_cap70_2024.run.log`、`run_financial_or_share_ge050_cap70_2024.run.log`，查看进度命令为 `wsl -- bash -lc "pgrep -af 'run_r010theme_vvvn_2024_formal|theme_.*_2024|run_v2_backtest.py' || true"`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
 ```
 
 ### 结果路径
