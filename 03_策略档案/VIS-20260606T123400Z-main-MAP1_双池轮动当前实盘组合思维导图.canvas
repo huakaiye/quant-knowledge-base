@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "id": "root",
+      "type": "text",
+      "text": "# 当前实盘默认组合\n\nA2-slope004 + B3 gate + tiered-v2 + hard5\n\n只解释当前实盘；A23 是另线研究，不纳入本图。",
+      "x": 0,
+      "y": 0,
+      "width": 520,
+      "height": 210,
+      "color": "6"
+    },
+    {
+      "id": "hard5",
+      "type": "text",
+      "text": "## 1. hard5 动量筛选\n\n数学计算：\nannual_ret = exp(slope × 250) - 1\nscore = annual_ret × R²\n\n判断：\nscore <= 0 剔除\n0 < score < 5 有效\nscore >= 5 视为极端过热并剔除\n\n评价：简单、硬、可审计；当前仍必要。",
+      "x": -760,
+      "y": 330,
+      "width": 430,
+      "height": 360,
+      "color": "2"
+    },
+    {
+      "id": "a2",
+      "type": "text",
+      "text": "## 2. A2-slope004 换仓\n\n通俗解释：旧仓还不错时，不急着换；新标的必须明显更强才替换。\n\n关键门槛：\nbreadth >= 72%\nmedian_ret >= 6%\ndispersion >= 9%\navg_R² >= 46%\n新旧 slope10 优势 <= 0.004\n\n评价：能降低噪声换仓，但旧仓衰竭时可能慢半拍。",
+      "x": -250,
+      "y": 330,
+      "width": 450,
+      "height": 380,
+      "color": "4"
+    },
+    {
+      "id": "b3",
+      "type": "text",
+      "text": "## 3. B3 gate 风险闸门\n\n通俗解释：ETF 池整体转弱时，不满仓硬冲。\n\n触发判断：\nall_weak 持续\ncum_days >= 10\nmedian_ret <= 0 或 MA20 广度 <= 40%\n\n动作：普通弱市 risk_cap = 80%。\n\n评价：是当前实盘防守骨架。",
+      "x": 270,
+      "y": 330,
+      "width": 430,
+      "height": 360,
+      "color": "3"
+    },
+    {
+      "id": "tiered",
+      "type": "text",
+      "text": "## 4. tiered-v2 分层仓位\n\nstrong risk：\ncum_days >= 10\nmedian_ret <= 0\ntop5_exhausted >= 4\n=> risk_cap = 70%\n\nextreme risk：\nmedian_ret <= -1.5% 或 MA20 广度 <= 25%\n且 top5_exhausted >= 4\n=> risk_cap = 60%\n\n评价：当前最认可的实盘风控层。",
+      "x": 780,
+      "y": 330,
+      "width": 470,
+      "height": 390,
+      "color": "5"
+    },
+    {
+      "id": "switches",
+      "type": "text",
+      "text": "## 当前默认开关\n\nENABLE_A2_SLOPE004 = 1\nENABLE_B3_GATE_MOB_CAP80 = 1\nENABLE_B3_GATE_TIERED_V2 = 1\nENABLE_B3_GATE_TIERED_V2_SHADOW = 0\nMAX_SCORE = 5\nscore_hot_filter_mode = hard_cap",
+      "x": -760,
+      "y": 830,
+      "width": 520,
+      "height": 260,
+      "color": "1"
+    },
+    {
+      "id": "sak6",
+      "type": "text",
+      "text": "## 本轮只优化持仓方式：SAK6\n\nA2 旧仓衰减退出预注册。\n\n固定判断：\nret3 >= -3%\nret5 >= -2%\ndrawdown10 <= 8%\nslope5 >= -0.002\nslope5 - slope10 >= -0.012\n\n预期：MDD 改善 0.5-1.0pp，收益保留率 >= 97%。\n\n注意：formal 未跑完前，不改实盘。",
+      "x": -120,
+      "y": 830,
+      "width": 560,
+      "height": 360,
+      "color": "4"
+    },
+    {
+      "id": "why_not",
+      "type": "text",
+      "text": "## 为什么目前不是别的组合\n\nA2 单独运行：降低换手，但不是完整风控。\n\nhard6 / quality_gate6：边界更松，近端证据不够稳。\n\nA19 / A20 / A21：有局部亮点，但跨段不足以改默认。\n\nA22 / A23：属于 score-cap 替代研究，未完成生产证据。\n\n所以当前实盘仍保留 hard5 + tiered-v2 这条清晰链路。",
+      "x": 560,
+      "y": 830,
+      "width": 600,
+      "height": 360,
+      "color": "6"
+    },
+    {
+      "id": "judgement",
+      "type": "text",
+      "text": "## 主控评价\n\n当前组合优势：稳、边界清楚、审计成本低。\n\n当前短板：hard5 对极端高分处理偏粗；A2 旧仓保留可能在衰竭时慢半拍。\n\n下一步：只在当前实盘链路上做 A2 衰减退出 formal A/B，结果出来前不改变默认实盘。",
+      "x": -170,
+      "y": 1320,
+      "width": 760,
+      "height": 260,
+      "color": "6"
+    }
+  ],
+  "edges": [
+    { "id": "e-root-hard5", "fromNode": "root", "fromSide": "left", "toNode": "hard5", "toSide": "top" },
+    { "id": "e-root-a2", "fromNode": "root", "fromSide": "bottom", "toNode": "a2", "toSide": "top" },
+    { "id": "e-root-b3", "fromNode": "root", "fromSide": "right", "toNode": "b3", "toSide": "top" },
+    { "id": "e-root-tiered", "fromNode": "root", "fromSide": "right", "toNode": "tiered", "toSide": "top" },
+    { "id": "e-hard5-switches", "fromNode": "hard5", "fromSide": "bottom", "toNode": "switches", "toSide": "top" },
+    { "id": "e-a2-sak6", "fromNode": "a2", "fromSide": "bottom", "toNode": "sak6", "toSide": "top", "label": "旧仓衰减边界" },
+    { "id": "e-b3-why", "fromNode": "b3", "fromSide": "bottom", "toNode": "why_not", "toSide": "top" },
+    { "id": "e-tiered-why", "fromNode": "tiered", "fromSide": "bottom", "toNode": "why_not", "toSide": "top" },
+    { "id": "e-sak6-judgement", "fromNode": "sak6", "fromSide": "bottom", "toNode": "judgement", "toSide": "top" },
+    { "id": "e-why-judgement", "fromNode": "why_not", "fromSide": "bottom", "toNode": "judgement", "toSide": "top" }
+  ]
+}
