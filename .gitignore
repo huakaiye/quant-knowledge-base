@@ -1,0 +1,41 @@
+# 本研究库只保存研究文档、台账、模板和小型索引。
+# 大型回测结果、日志、缓存、原始数据和论文原文默认不入库。
+
+.obsidian/workspace*
+.obsidian/cache/
+.obsidian/todoist-token
+.obsidian/plugins/*/data.json
+.obsidian/plugins/obsidian-git/obsidian_askpass.sh
+.tmp/
+tmp/
+cache/
+.firecrawl/
+
+# 平台回测输出和运行日志应保存在 E:\量化平台_V1.4.0。
+results/
+reports/
+*.run.log
+*.log
+
+# 大型数据文件默认不纳入研究库。
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.sqlite
+*.db
+*.zip
+*.7z
+*.rar
+
+# 论文原文、截图和附件如需保留，优先放本地附件目录并在文献卡片中登记。
+**/原文_本地不入库/
+**/附件_本地不入库/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# 保留台账 CSV，不要全局忽略 CSV。
+!01_台账/*.csv

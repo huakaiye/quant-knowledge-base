@@ -1,0 +1,47 @@
+name: 研究实验
+description: 提出一轮新的量化研究实验
+title: "[实验] "
+labels: ["research", "experiment"]
+body:
+  - type: input
+    id: rd_id
+    attributes:
+      label: 研究方向 ID
+      description: 例如 RD-20260605T115651Z-main-DP00
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: 实验假设
+      description: 这次只验证哪一个具体想法？
+    validations:
+      required: true
+  - type: textarea
+    id: prediction
+    attributes:
+      label: 实验前预测
+      description: 如果假设为真，应该看到什么？
+    validations:
+      required: true
+  - type: textarea
+    id: baseline
+    attributes:
+      label: 基准和对照
+      description: 和谁比较才有意义？
+    validations:
+      required: true
+  - type: textarea
+    id: falsification
+    attributes:
+      label: 证伪条件
+      description: 出现什么结果说明这个假设不成立或不值得继续？
+    validations:
+      required: true
+  - type: textarea
+    id: platform_paths
+    attributes:
+      label: 平台路径
+      description: 填写计划使用的配置、结果或策略代码路径。
+    validations:
+      required: false

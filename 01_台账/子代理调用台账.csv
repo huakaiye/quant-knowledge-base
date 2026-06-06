@@ -1,0 +1,2 @@
+call_id,task_code,model,caller,target_docs,inputs,outputs,parent_ex_id,parent_dec_id,status,reviewed_by,risk_flag,timestamp_utc,novice_summary
+"SUB-20260606T002350Z-main-HOOKE","子查-001-子代理规范审计","gpt-5.3-codex-spark","main","AGENTS.md;08_方法论/子代理调度规范.md;08_方法论/研究方法论.md;10_模板/实验记录模板.md;10_模板/研究决策模板.md;tools/Test-ResearchRepo.ps1","检查为什么研究库使用中未稳定调用子代理","确认根因是规则未落地为可执行门禁，并建议新增调用记录、台账和校验","不适用","不适用","completed","main","low","2026-06-06T00:23:50Z","本次子代理负责查规范缺口，主控据此把调用要求落到模板、台账和健康检查脚本。"
