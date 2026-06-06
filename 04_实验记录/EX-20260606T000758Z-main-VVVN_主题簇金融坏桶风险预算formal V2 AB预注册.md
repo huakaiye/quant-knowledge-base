@@ -6,7 +6,7 @@ status: active
 stage: partial_smoke_completed_full_formal_pending
 owner: main
 created_at: 2026-06-06T00:07:58Z
-updated_at: 2026-06-06T01:08:00Z
+updated_at: 2026-06-06T01:24:18Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 核心轮动风险预算模块
 decision_ids: [DEC-20260605T235338Z-main-WVZZ]
@@ -21,7 +21,7 @@ summary_paths:
   - E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/summary.json
 quality_gate: preregistered_before_execution
 subagent_call_ids: []
-subagent_exemption: "子代理豁免：当前子代理工具约束要求只有用户明确要求调用子代理时才可 spawn；本实验仍为 active，未进入 completed；主控：main；时间：2026-06-06T01:08:00Z"
+subagent_exemption: "子代理豁免：当前子代理工具约束要求只有用户明确要求调用子代理时才可 spawn；本实验仍为 active，未进入 completed；主控：main；时间：2026-06-06T01:24:18Z"
 tags: [双池轮动, 主题簇, 金融坏桶, 风险预算, formal-v2, AB, 非hard5]
 ---
 
@@ -42,10 +42,10 @@ tags: [双池轮动, 主题簇, 金融坏桶, 风险预算, formal-v2, AB, 非ha
 
 这次实验想知道：把主题簇里的金融 top1 和过度主题集中当成风险标签后，做固定 70% 风险仓预算，是否能改善双池轮动的真实组合路径。  
 我们原本预计：金融 top1 或高集中度不是加仓信号，而是更像追高、拥挤或风格切换风险；降低风险仓可能减少回撤，收益不能明显低于基准。  
-实际看到：已完成 2025_20260519 单段 smoke：baseline 正常产出 330 条主题 shadow；`financial_top1_cap70` 触发 16 次，能把风险仓从 100% 降到 70%，防御 ETF 补足 30%。但该单段相对 baseline 总收益低约 1.93 个百分点，最大回撤略差。  
-这说明：实现链路可运行，预算字段可审计；但 2025 单段先给出反对信号，不能据此推进。  
+实际看到：已完成 2025_20260519 单段三组 smoke。baseline 正常产出 330 条主题 shadow；`financial_top1_cap70` 触发 16 次，相对 baseline 总收益低约 1.93 个百分点，最大回撤略差；`financial_or_share_ge050_cap70` 触发 161 次，相对 baseline 总收益低约 39.82 个百分点，最大回撤改善约 2.95 个百分点。  
+这说明：实现链路可运行，预算字段可审计；但金融 top1 触发太少且未改善回撤，高集中度扩展触发太宽、机会成本过大。2025 单段先给出反对信号，不能据此推进。  
 但还不能说明：即使本轮 A/B 变好，也不能直接说明主题风险预算已可 promote，因为还缺成本扰动、邻近参数和更严格的负控。  
-下一步要做：继续补齐剩余四段 formal V2 和高集中度扩展变体，完成后再做正式判断。
+下一步要做：继续补齐剩余三段 formal V2，完成后再做正式判断。
 
 ## 2. 研究背景
 
@@ -150,12 +150,13 @@ tags: [双池轮动, 主题簇, 金融坏桶, 风险预算, formal-v2, AB, 非ha
 子代理豁免：
 
 ```text
-子代理豁免：当前子代理工具约束要求只有用户明确要求调用子代理时才可 spawn；本轮先补齐 active 实验的规范字段和执行记录，不进入 completed，也不做路线决策；主控：main；时间：2026-06-06T01:08:00Z
+子代理豁免：当前子代理工具约束要求只有用户明确要求调用子代理时才可 spawn；本轮先补齐 active 实验的规范字段和执行记录，不进入 completed，也不做路线决策；主控：main；时间：2026-06-06T01:24:18Z
 ```
 
 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 主控-002-VVVN规范补齐 | 无 | 2026-06-06T01:08:00Z | `AGENTS.md`; `08_方法论/子代理调度规范.md`; `08_方法论/平台协作规范.md`; 本实验记录 | 本实验记录 | `pgrep`; `git status`; 文件读取 | 只做规范补齐和状态校正，不替代子查/子研审计 | 未调用子代理，正式 completed 前仍需子查路径/字段审计或重新写明豁免 | 主控确认本实验仍为 active，不能作为正式结论 | 不改变路线，不新增决策 |
+| 主控-003-2025扩展变体 | 无 | 2026-06-06T01:24:18Z | 本实验记录；平台 `metrics.csv`; `metrics_vs_baseline.csv`; `summary.json`; 运行日志 | 本实验记录；实验台账；方向卡；入口状态和驾驶舱 | `Start-Process`; `pgrep`; `tail`; `summarize_r010theme_risk_budget.py` | 只追加 2025 smoke 观察，不做 completed 结论 | 未调用子代理；本轮补跑过程使用后台但已事前写豁免和日志路径 | 主控确认 `financial_or_share_ge050_cap70` 触发过宽、收益损失显著 | 不改变路线，不新增决策 |
 
 台账行：不新增 `01_台账/子代理调用台账.csv`，因为本轮没有实际子代理调用；豁免已写入 frontmatter 和正文。若后续进入 completed，必须调用子查/子研或重新写明豁免，并满足健康检查。
 
@@ -184,17 +185,21 @@ wsl -- bash -c "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src python3 scripts/
 已执行 smoke：
 wsl -- bash -c "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src PYTHONIOENCODING=utf-8 python3 src/run_v2_backtest.py --config configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/theme_baseline_tiered_v2_2025_20260519.json"
 wsl -- bash -c "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src PYTHONIOENCODING=utf-8 python3 src/run_v2_backtest.py --config configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/theme_financial_top1_cap70_tiered_v2_2025_20260519.json"
+wsl -- bash -lc "bash /mnt/e/量化平台_V1.4.0/scripts/research/run_r010theme_vvvn_financial_or_share_2025.sh"
 wsl -- bash -c "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_r010theme_risk_budget.py --ex-id EX-20260606T000758Z-main-VVVN --segments 2025_20260519"
 ```
 
 ### 可见进度与日志
 
-- 是否过程可见：部分可见。baseline smoke 起初用前台命令运行，但 shell 超时后平台进程继续运行，主控通过 `pgrep`、`ps` 和平台 `logs.jsonl` 轮询进度；`financial_top1_cap70` smoke 曾用 `Start-Process -WindowStyle Hidden` 后台运行，并写入 stdout/stderr 日志。
+- 是否过程可见：部分可见。baseline smoke 起初用前台命令运行，但 shell 超时后平台进程继续运行，主控通过 `pgrep`、`ps` 和平台 `logs.jsonl` 轮询进度；`financial_top1_cap70` smoke 曾用 `Start-Process -WindowStyle Hidden` 后台运行，并写入 stdout/stderr 日志。`financial_or_share_ge050_cap70` smoke 在事前写明后台豁免后运行，使用 `PYTHONUNBUFFERED=1 + tee` 写逐日进度日志。
 - 日志路径：
   - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2025_20260519/9c503d35bed2426d8bef809dcacac59a/logs.jsonl`
   - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2025_20260519/f4a48fa9e9014c84a9d1d2515c544656/logs.jsonl`
   - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stderr.log`
   - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stdout.log`
+  - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.run.log`
+  - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.wrapper.out.log`
+  - `E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.wrapper.err.log`
 - 查看进度命令：
 
 ```bash
@@ -212,6 +217,8 @@ wsl -- bash -c "tail -n 50 /mnt/e/量化平台_V1.4.0/results/v2/research/R010-T
 查看进度：wsl -- bash -c "pgrep -af 'EX-20260606T000758Z-main-VVVN|run_v2_backtest.py' || true"
 停止方式：无残留进程；若未来后台运行，使用 wsl -- bash -c "kill <pid>"。
 预计耗时：2025 单段约 10-15 分钟；四段全量预计显著更长。
+
+本轮追加后台豁免：`financial_or_share_ge050_cap70` 2025 smoke 因 PowerShell/WSL inline 引号两次失败，改为平台脚本 `E:/量化平台_V1.4.0/scripts/research/run_r010theme_vvvn_financial_or_share_2025.sh` 后后台运行；后台仅用于持续轮询进度。Windows wrapper 进程见当轮终端记录，WSL Python PID 为 28536，已完成；日志为 `run_financial_or_share_ge050_2025.run.log`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
 ```
 
 ### 结果路径
@@ -224,43 +231,48 @@ E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-V
 已产出：
 E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2025_20260519/9c503d35bed2426d8bef809dcacac59a/
 E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2025_20260519/f4a48fa9e9014c84a9d1d2515c544656/
+E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2025_20260519/8d1bc1cebd6f41efbbfb59b613941d6d/
 E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/summary.json
+E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/metrics.csv
+E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/metrics_vs_baseline.csv
+E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/theme_budget_records.csv
 ```
 
 ## 12. 实际观察
 
-| 指标 | 基准 | 本次 | 变化 | 解释 |
-| --- | --- | --- | --- | --- |
-| 2025 final value | `317973.61` | `316042.77` | `-1930.84` | `financial_top1_cap70` 单段低于 baseline |
-| 2025 total return | `2.1797361` | `2.1604277` | `-0.0193084` | 约低 1.93 个百分点 |
-| 2025 max drawdown | `-0.1656700` | `-0.1656887` | `-0.0000186` | 回撤极小幅变差，不支持风控改善 |
-| 2025 trades | `464` | `470` | `+6` | 降仓触发带来轻微换手增加 |
-| 主题 shadow 记录 | `330` | `330` | 一致 | baseline 和预算变体均有完整主题记录 |
-| 风险预算触发 | `0` | `16` | `+16` | 触发原因均为 `bad_theme_top1=金融` |
+| 变体 | final value | total return | max drawdown | trades | 风险预算触发 | 相对 baseline 解释 |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| baseline | `317973.61` | `2.1797361` | `-0.1656700` | `464` | `0` | 2025_20260519 主基准，330 条主题 shadow |
+| `financial_top1_cap70` | `316042.77` | `2.1604277` | `-0.1656887` | `470` | `16` | 收益低 `0.0193084`，最大回撤略差 `0.0000186`，不支持金融 top1 降仓 |
+| `financial_or_share_ge050_cap70` | `278150.17` | `1.7815017` | `-0.1361449` | `509` | `161` | 收益低 `0.3982344`，最大回撤改善 `0.0295251`，说明高集中度触发过宽、机会成本过大 |
+
+`financial_or_share_ge050_cap70` 的触发原因分布显示，除金融 top1 外，大量触发来自 `top_theme_share=50%/60%/70%>=50%` 等高集中度规则。它确实降低了 2025 单段最大回撤，但用 39.82 个百分点的总收益损失换取 2.95 个百分点回撤改善，不满足本轮“不能明显牺牲总收益”的预测。
 
 ## 13. 支持证据
 
 - 平台策略已新增默认关闭的 `r010theme_risk_budget_enabled`，默认参数不影响生产。
 - 生成脚本已产出 baseline 和两个固定变体的四段配置，共 12 个 JSON。
-- 2025 smoke 中，`financial_top1_cap70` 有 330 条预算检查、16 次触发、0 个日志错误。
-- 触发记录显示 `applied_action=A0+THEME_BUDGET`，`weights` 从金融 top1 100% 变为金融 top1 70% + 防御 ETF 30%，实现符合预注册。
+- 2025 smoke 中，两个预算变体均有 330 条预算检查、0 个日志错误，`summary.json` 显示 `missing_runs=[]`、`all_completed=true`。
+- `financial_top1_cap70` 触发记录显示 `applied_action=A0+THEME_BUDGET`，`weights` 从金融 top1 100% 变为金融 top1 70% + 防御 ETF 30%，实现符合预注册。
+- `financial_or_share_ge050_cap70` 能改善 2025 单段最大回撤约 2.95 个百分点，说明交易化 cap 链路确实能改变组合风险暴露。
 
 ## 14. 反对证据
 
 - 2025 smoke 中 `financial_top1_cap70` 总收益低于 baseline 约 1.93 个百分点。
 - 2025 smoke 中最大回撤略差，未体现风险预算预期的回撤改善。
-- 交易次数从 464 增至 470，说明降仓预算可能引入额外换手。
-- 当前只完成 2025 单段和一个变体，不能支持正式结论。
+- `financial_or_share_ge050_cap70` 虽改善回撤，但总收益低于 baseline 约 39.82 个百分点，交易次数从 464 增至 509。
+- 高集中度扩展触发 161 次，远高于金融 top1 的 16 次，说明 `top_theme_share>=0.50` 对双池 ETF 过于宽，容易把正常主线行情也打成风险。
+- 当前只完成 2025 单段，不能支持正式结论。
 
 ## 15. 偏差诊断
 
-当前只完成 2025 单段 smoke，不能替代四段 formal。偏差在于前置 CTRD 显示金融 top1 的 H10 事件后路径较弱，但交易化 cap70 在 2025 单段反而降低最终收益且回撤略差，说明事件后均值弱不等于组合路径中降仓一定有效。可能原因是金融 top1 触发时后续仍有趋势延续，或防御 ETF 替代收益不足，或降仓带来额外换手。
+当前只完成 2025 单段 smoke，不能替代四段 formal。偏差在于前置 CTRD 显示金融 top1 的 H10 事件后路径较弱，但交易化 cap70 在 2025 单段反而降低最终收益且回撤略差，说明事件后均值弱不等于组合路径中降仓一定有效。扩展规则的偏差更明显：`top_theme_share>=0.50` 在 ETF 双池中触发太频繁，虽然降低了暴露和最大回撤，但把 2026 年 3 月后的强趋势段收益明显削弱，属于典型的过宽风险标签。
 
 ## 16. 研究判断
 
 建议状态：`active / full_formal_pending`
 
-理由：实现和 2025 单段 smoke 通过，但完整实验要求的 baseline、两个变体、四段 formal V2 尚未完成。当前 2025 单段对 `financial_top1_cap70` 不利，只能作为反对信号，不能写成正式结论。
+理由：实现和 2025 单段三组 smoke 通过，但完整实验要求的 baseline、两个变体、四段 formal V2 尚未完成。当前 2025 单段对 `financial_top1_cap70` 不利，对 `financial_or_share_ge050_cap70` 也显示触发过宽和机会成本过大，只能作为反对信号，不能写成正式结论。
 
 ## 17. 下一步
 
@@ -268,6 +280,6 @@ E:/量化平台_V1.4.0/results/v2/research/R010-THEME/EX-20260606T000758Z-main-V
 
 - `baseline` 的 2020_2021、2022_2023、2024。
 - `financial_top1_cap70` 的 2020_2021、2022_2023、2024。
-- `financial_or_share_ge050_cap70` 的四段。
+- `financial_or_share_ge050_cap70` 的 2020_2021、2022_2023、2024。
 
 全量完成后再用 `summarize_r010theme_risk_budget.py --strict` 汇总，并决定是否新建决策卡。
