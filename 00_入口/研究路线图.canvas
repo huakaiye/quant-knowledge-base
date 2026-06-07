@@ -25,7 +25,10 @@
 		{"id":"core-lm3d","type":"file","file":"04_实验记录/EX-20260606T012550Z-main-LM3D_动量评分尺度与Top4排名权重预注册.md","x":-565,"y":1020,"width":500,"height":220},
 		{"id":"core-lm3d-decision","type":"file","file":"05_研究决策/DEC-20260606T122535Z-main-GAAL_LM3D年化尺度与Top4权重不进入默认逻辑.md","x":200,"y":1040,"width":530,"height":200},
 		{"id":"score-cap-a23","type":"file","file":"04_实验记录/EX-20260606T073600Z-main-R8M6_A23状态分层预算88_6探索四段回测.md","x":-650,"y":2228,"width":570,"height":395},
-		{"id":"score-cap-a23-d09-decision","type":"file","file":"05_研究决策/DEC-20260606T083101Z-main-S7NP_A23_92_4_d09晋级为hard5替代首选候选.md","x":330,"y":2803,"width":540,"height":623}
+		{"id":"score-cap-a23-d09-decision","type":"file","file":"05_研究决策/DEC-20260606T083101Z-main-S7NP_A23_92_4_d09晋级为hard5替代首选候选.md","x":330,"y":2803,"width":540,"height":623},
+		{"id":"score-cap-a23-lvv7","type":"file","file":"04_实验记录/EX-20260606T075615Z-main-LVV7_A23完整邻域与cap成本稳健性补证.md","x":-650,"y":3605,"width":570,"height":250},
+		{"id":"score-cap-a23-vx4j","type":"file","file":"04_实验记录/EX-20260607T101347Z-main-VX4J_A23事件归因与成本换手约束只读预注册.md","x":-650,"y":3925,"width":570,"height":280},
+		{"id":"score-cap-a23-xbws","type":"file","file":"05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策.md","x":330,"y":3925,"width":540,"height":260}
 	],
 	"edges":[
 		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
@@ -51,6 +54,9 @@
 		{"id":"edge-score-cap-a23-decision","fromNode":"score-cap-a23","fromSide":"right","toNode":"score-cap-a23-decision","toSide":"left","label":"revise challenger"},
 		{"id":"edge-score-cap-a23-d09","fromNode":"score-cap-a23","fromSide":"bottom","toNode":"score-cap-a23-d09","toSide":"top","label":"dispersion 修正"},
 		{"id":"edge-score-cap-a23-d09-decision","fromNode":"score-cap-a23-d09","fromSide":"right","toNode":"score-cap-a23-d09-decision","toSide":"left","label":"promote current"},
+		{"id":"edge-score-cap-a23-d09-lvv7","fromNode":"score-cap-a23-d09","fromSide":"bottom","toNode":"score-cap-a23-lvv7","toSide":"top","label":"完整邻域与成本"},
+		{"id":"edge-score-cap-a23-lvv7-vx4j","fromNode":"score-cap-a23-lvv7","fromSide":"bottom","toNode":"score-cap-a23-vx4j","toSide":"top","label":"事件归因"},
+		{"id":"edge-score-cap-a23-vx4j-xbws","fromNode":"score-cap-a23-vx4j","fromSide":"right","toNode":"score-cap-a23-xbws","toSide":"left","label":"revise 同成本配对"},
 		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"}
 	]
 }

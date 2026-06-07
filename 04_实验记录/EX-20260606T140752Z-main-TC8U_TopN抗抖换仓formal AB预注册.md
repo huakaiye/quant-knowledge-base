@@ -3,13 +3,14 @@ type: 实验记录
 ex_id: EX-20260606T140752Z-main-TC8U
 rd_id: RD-20260605T115651Z-main-EXE0
 status: active
-stage: formal_cost_completed_observe_no_promote
+stage: formal_cost_completed_c35j_negative_control_observe_no_promote
 owner: main
 created_at: 2026-06-06T14:07:52Z
-updated_at: 2026-06-07T16:17:30+08:00
+updated_at: 2026-06-07T18:06:48+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 执行与换仓模块
-decision_ids: []
+decision_ids:
+  - DEC-20260607T095915Z-main-BP3L
 lit_ids: []
 idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
@@ -17,6 +18,7 @@ config_paths:
   - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
   - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_slip2bps/
   - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commission/
+  - configs/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_delay_negative_control/
   - scripts/research/generate_tc8u_topn_antishake_configs.py
 result_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
@@ -25,18 +27,20 @@ result_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal_cost2x_slip2bps/
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commission/
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal_cost2x_commission/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_delay_negative_control/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal_delay_negative_control/
 summary_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/summary.json
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/summary.json
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/summary.json
   - scripts/research/summarize_tc8u_topn_antishake.py
-quality_gate: L2_formal_cost_completed_observe_no_promote
+quality_gate: L2_formal_cost_completed_c35j_negative_control_observe_no_promote
 subagent_call_ids:
   - SUB-20260606T140000Z-main-TOPN
   - SUB-20260606T150000Z-main-TC8U-AUDIT
   - SUB-20260607T040000Z-main-TC8U-COSTCHECK
 subagent_exemption:
-tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成, observe]
+tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成, 负控完成, observe]
 ---
 
 # TopN抗抖换仓formal AB预注册
@@ -47,6 +51,8 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成,
 - 父方向：[[02_研究方向/RD-20260605T115651Z-main-DP00_双池轮动策略|双池轮动策略]]
 - 策略档案：[[03_策略档案/STRAT-20260605T115651Z-main-DP00_双池轮动策略档案|双池轮动策略档案]]
 - 上游路线预注册：[[04_实验记录/EX-20260606T134047Z-main-HPHZ_五方向接手证据映射与首轮路线预注册|五方向接手证据映射与首轮路线预注册]]
+- 下游负控：[[04_实验记录/EX-20260607T083033Z-main-C35J_TopN抗抖切换延迟负控与2024归因|C35J TopN 抗抖切换延迟负控与 2024 归因]]
+- 研究决策：[[05_研究决策/DEC-20260607T095915Z-main-BP3L_TopN抗抖随机延迟负控后观察决策|BP3L TopN 抗抖随机延迟负控后观察决策]]
 - Top4 反证：[[04_实验记录/EX-20260606T012550Z-main-LM3D_动量评分尺度与Top4排名权重预注册|动量评分尺度与 Top4 排名权重预注册]]
 - 研究质量审计：[[08_方法论/研究质量审计规范|研究质量审计规范]]
 - 子代理调用台账：[[01_台账/子代理调用台账.csv|子代理调用台账]]
@@ -58,7 +64,8 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成,
 实际看到：base-cost formal 已完成 20/20；成本扰动子集 `baseline_top1_hard5`、`top3_ratio070_gap050_veto`、`top5_ratio070_veto` 在 `formal_cost2x_slip2bps` 和 `formal_cost2x_commission` 均完成 12/12 strict 汇总。
 这说明：TopN 抗抖确实能减少换仓噪声；`top3_ratio070_gap050_veto` 在两组成本扰动中都只有 2024 一个分段 final 低于 baseline，更适合作为后续负控候选。`top5_ratio070_veto` 合计收益更高且 MDD 四段都不差，但 2020_2021 与 2022_2023 仍低于 baseline，不能 promote。
 对新手来说：少换仓不是天然更好，它可能是在强趋势里减少噪声，也可能是在趋势切换时反应变慢。
-下一步要做：不再扩大 TopN 网格，先做随机延迟/冷却期负控和未来函数审计；若要叠加 A23，必须新开组合交互实验。
+下游 C35J 已完成切换延迟负控：固定 seed 的 `random50` 能在 3/4 分段复制并超过 Top3/gap，说明 TopN/gap 的机制解释被普通延迟混淆，不能 promote。TC8U 自身的 `formal_delay_negative_control` 还在后台补完整 20/20，用来确认脚本和口径层面的稳健性。
+下一步要做：不再扩大 TopN 网格；等待 TC8U 自身负控 20/20 后只做严格汇总，不把随机延迟、confirm1 或 Top3/gap 写入默认交易逻辑。若要叠加 A23，必须新开组合交互实验。
 
 ## 2. 研究背景
 
@@ -134,10 +141,10 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成,
 | 样本内、验证集、样本外划分清楚 | 部分完成 | 四段固定：2020_2021、2022_2023、2024、2025_20260519 |
 | 邻近参数敏感性合理 | 部分完成 | ratio 0.70/0.85、Top3/Top5、gap 0/0.50 |
 | 成本、滑点或换手扰动已检查 | 已完成子集 | `formal_cost2x_slip2bps` 与 `formal_cost2x_commission` 均完成 baseline + Top3/gap + Top5 的 12/12 strict 汇总；不是全 5 个 TopN 变体成本矩阵 |
-| 已做消融或负控 | 部分完成 | baseline 与邻近收紧完成；随机延迟待补 |
+| 已做消融或负控 | 已完成下游负控，TC8U 自身补跑中 | baseline 与邻近收紧完成；C35J `confirm1/random50` 16/16 strict 完成并触发 observe；TC8U `formal_delay_negative_control` 背景补跑中 |
 | 未只报告最优结果 | 已满足 | 汇总脚本输出全部 base-cost 变体 |
 
-证据等级：`L2_formal_cost_completed_observe_no_promote`
+证据等级：`L2_formal_cost_completed_c35j_negative_control_observe_no_promote`
 
 ## 10. 子代理调用记录
 
@@ -258,7 +265,8 @@ commission-only 逐段事实：
 - `top3_ratio085_veto` 四段 final 合计为负，说明不是简单收紧就能稳健。
 - Top5 在 base-cost、slip2bps 和 commission-only 三种成本口径下均只有 2/4 分段 final 不低于 baseline，不能通过预注册收益门槛。
 - Top3/gap 虽在三种成本口径下保持 3/4 分段 final 不低于 baseline，但 2024 final 明显低于 baseline，且 MDD 只有 2/4 不差。
-- 没有随机延迟和冷却期 live 实现负控。
+- C35J 随机延迟负控已触发机制混淆：`random50` 相对 Top3/gap 为 3/4 分段 final 不低、3/4 分段 MDD 不差，四段合计 final 多 `93692.92`；因此 Top3/gap 不能 promote。
+- TC8U 自身 `formal_delay_negative_control` 尚未完成 20/20；截至 2026-06-07T18:06:48+08:00 为 7/20 完成，当前 `top3_ratio070_gap050_veto/2025_20260519` 约 23%，完成前只作为运行中交叉核对，不新增结论。
 - 本实验不能直接证明 A23 与 TopN 叠加有效。
 
 ## 15. 偏差诊断
@@ -270,13 +278,13 @@ commission-only 逐段事实：
 
 ## 16. 研究判断
 
-建议状态：`observe / cost_completed_no_promote`
+建议状态：`observe / cost_completed_negative_control_triggered_no_promote`
 
-理由：TopN 抗抖证明了“减少换仓”这个执行效果，也证明 Top3/gap 和 Top5 在两类成本扰动下没有因成本加倍而整体崩掉。但它仍没有证明“稳定提升收益”：Top5 在 2020/2022 两段持续低于 baseline；Top3/gap 在 2024 明显低于 baseline且 MDD 稳定性不足。因此不改默认 hard5/A23，不新建 promote 决策卡。
+理由：TopN 抗抖证明了“减少换仓”这个执行效果，也证明 Top3/gap 和 Top5 在两类成本扰动下没有因成本加倍而整体崩掉。但它仍没有证明“稳定提升收益”：Top5 在 2020/2022 两段持续低于 baseline；Top3/gap 在 2024 明显低于 baseline 且 MDD 稳定性不足。下游 C35J 又显示普通随机延迟能在 3/4 分段复制并超过 Top3/gap，机制解释被负控混淆。因此不改默认 hard5/A23，已同步 [[05_研究决策/DEC-20260607T095915Z-main-BP3L_TopN抗抖随机延迟负控后观察决策|BP3L observe 决策]]。
 
 ## 17. 下一步
 
-1. 追加随机延迟换仓或冷却期负控；完成前不新开更大 TopN 网格。
-2. 对 `top3_ratio070_gap050_veto` 做 2024 换仓事件归因，拆出收益损失、成本节省和 MDD 恶化来源。
-3. 若继续工程化，优先使用 `top3_ratio070_gap050_veto` 作为 A23 组合交互的候选，而不是 Top5 直接替换。
-4. 补未来函数审计和随机/错位保留负控；通过前不 promote、不改默认 hard5/A23。
+1. 等待 TC8U `formal_delay_negative_control` 补完 20/20；完成后必须显式传入 5 个负控变体做 strict summary，避免 summary 脚本默认变体污染。
+2. 不继续扩大 TopN 排名、比例、分差、seed 或冷却期网格；TopN/gap、confirm1、random50 均不进入默认交易逻辑。
+3. 若继续方向 4，只能新开“换仓确认机制”预注册，并先做 seed 敏感性、2022 失败归因、成本扰动和错位负控。
+4. A23 或 hard5 默认逻辑不因 TC8U/C35J 改动；A23 组合交互必须另开实验。
