@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260606T140752Z-main-TC8U
 rd_id: RD-20260605T115651Z-main-EXE0
 status: active
-stage: formal_delay_negative_control_partial_18of20_confirm2022_failed_no_promote
+stage: formal_delay_negative_control_partial_19of20_confirm_failed_no_promote
 owner: main
 created_at: 2026-06-06T14:07:52Z
-updated_at: 2026-06-07T20:23:18+08:00
+updated_at: 2026-06-07T20:38:02+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 执行与换仓模块
 decision_ids:
@@ -255,12 +255,13 @@ commission-only 逐段事实：
 
 TC8U 自身 `formal_delay_negative_control` partial 进展：
 
-- 当前完成 `18/20`：baseline、Top3/gap、confirm1、random50 四组已完整，`top3_gap_confirm1_veto` 已完成 2020_2021 与 2022_2023，仍缺 2024、2025_20260519 两段。
+- 当前完成 `19/20`：baseline、Top3/gap、confirm1、random50 四组已完整，`top3_gap_confirm1_veto` 已完成 2020_2021、2022_2023 与 2024，仍缺 2025_20260519。
 - `delay_random050_no_topn` 四段完整后，相对 baseline 为 3/4 分段 final 不低、3/4 分段 MDD 不差、4/4 分段交易数更低，四段 final 合计多 `88976.39`，交易少 `309`。
 - 随机延迟逐段：2020_2021 final 多 `29134.29`、2022_2023 少 `20452.35`、2024 多 `5833.77`、2025_20260519 多 `74460.68`。
 - 对比 Top3/gap：`top3_ratio070_gap050_veto` 四段 final 合计只多 `4830.17`，且 2024 少 `13776.13`；随机延迟的收益改善更强但没有 TopN 机制含义，因此 TopN/gap 机制解释继续被负控压制。
 - `top3_gap_confirm1_veto` 2020_2021 final `240661.17`，相对 baseline 多 `12523.86`，MDD 改善 `0.00593`，交易少 `200`，`topn_retained=48`。
 - `top3_gap_confirm1_veto` 2022_2023 final `90845.12`，相对 baseline 少 `39432.19`，MDD 改善 `0.01677`，交易少 `154`，`topn_retained=53`；两段合计 final 差转为 `-26908.33`，说明确认延迟在困难年份明显牺牲收益。
+- `top3_gap_confirm1_veto` 2024 final `93460.45`，相对 baseline 少 `26886.46`，MDD 改善 `0.05214`，交易少 `128`，`topn_retained=26`；前三段合计 final 差为 `-53794.79`，说明确认延迟不是稳健修复。
 
 ## 13. 支持证据
 
@@ -277,7 +278,7 @@ TC8U 自身 `formal_delay_negative_control` partial 进展：
 - Top5 在 base-cost、slip2bps 和 commission-only 三种成本口径下均只有 2/4 分段 final 不低于 baseline，不能通过预注册收益门槛。
 - Top3/gap 虽在三种成本口径下保持 3/4 分段 final 不低于 baseline，但 2024 final 明显低于 baseline，且 MDD 只有 2/4 不差。
 - C35J 随机延迟负控已触发机制混淆：`random50` 相对 Top3/gap 为 3/4 分段 final 不低、3/4 分段 MDD 不差，四段合计 final 多 `93692.92`；因此 Top3/gap 不能 promote。
-- TC8U 自身 `formal_delay_negative_control` 尚未完成 20/20；截至 2026-06-07T20:23:18+08:00 为 18/20 完成，仍缺 `top3_gap_confirm1_veto` 2024 与 2025_20260519，因此不能运行 strict 完成结论。但随机延迟四段已完整，且确认延迟在 2022_2023 已出现明显收益失败，负控强度较 7/20 阶段明显增强。
+- TC8U 自身 `formal_delay_negative_control` 尚未完成 20/20；截至 2026-06-07T20:38:02+08:00 为 19/20 完成，仍缺 `top3_gap_confirm1_veto` 2025_20260519，因此不能运行 strict 完成结论。但随机延迟四段已完整，且确认延迟在 2022_2023 与 2024 已连续出现明显收益失败，负控强度较 7/20 阶段明显增强。
 - 本实验不能直接证明 A23 与 TopN 叠加有效。
 
 ## 15. 偏差诊断
