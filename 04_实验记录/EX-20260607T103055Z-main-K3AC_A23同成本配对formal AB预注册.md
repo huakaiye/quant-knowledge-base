@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260607T103055Z-main-K3AC
 rd_id: RD-20260605T133318Z-main-H6V3
 status: active
-stage: configs_generated_waiting_backtest_slot
+stage: formal_running_partial_concurrent_deviation
 owner: main
 created_at: 2026-06-07T10:30:55Z
-updated_at: 2026-06-07T18:52:00+08:00
+updated_at: 2026-06-07T19:43:36+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: score_hot_soft_budget_cost_pair
 decision_ids:
@@ -27,7 +27,7 @@ result_paths:
   - results/v2/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60_cost2x_slip2bps/
 summary_paths:
   - results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/formal/summary.json
-quality_gate: L0_configs_validated
+quality_gate: L1_partial_running
 subagent_call_ids:
   - SUB-20260607T104500Z-main-CST9
 subagent_exemption:
@@ -49,10 +49,10 @@ tags: [双池轮动, score过热, A23, 同成本配对, cost2x, formal]
 
 这次实验想知道：A23 高成本失败是不是只是因为它被拿去和普通成本 A22 比，还是在同样高成本下也比 hard5 或 A22 差。  
 我们原本预计：如果 A22/A23 的高分软预算真有结构价值，那么在同一个 `cost2x_slip2bps` 成本口径下，它们仍应比 hard5 更好；如果连同成本 hard5 都打不过，说明高分软预算对成本太脆弱。  
-实际看到：平台已生成 hard5/A22 两组 8 个 `cost2x_slip2bps` 配置，A23 4 段高成本证据可复用 LVV7；汇总脚本当前显示 `completed_evidence_runs=4/12`、`completed_new_k3ac_runs=0/8`。  
-这说明：同成本配对实验入口已经准备好，但还没有产生 hard5/A22 同成本正式回测结果，所以不能判断 A22/A23 是否通过。  
+实际看到：平台已生成 hard5/A22 两组 8 个 `cost2x_slip2bps` 配置，A23 4 段高成本证据可复用 LVV7；外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动 K3AC，当前 hard5 同成本已完成 2020_2021、2022_2023 与 2024 三段，正在运行 2025_20260519 段。非 strict 汇总显示 `completed_evidence_runs=7/12`、`completed_new_k3ac_runs=3/8`。  
+这说明：同成本配对已经产生部分 hard5 正式回测结果，但仍缺 hard5 2025 和全部 A22 同成本补跑，所以不能判断 A22/A23 是否通过。  
 但还不能说明：即使同成本通过，也还不能直接上线；仍需未来函数审计、样本外、负控和可能的换手约束验证。  
-下一步要做：等待 TC8U 后台回测释放资源后，运行 hard5/A22 八段补跑，再做 strict 汇总。
+下一步要做：等待当前 K3AC runner 补齐 hard5/A22 八段后，运行 strict 汇总；由于本次实际执行与预注册的“等待 TC8U 释放资源”不同，最终必须把并发启动作为执行偏差审计。
 
 ## 2. 研究背景
 
@@ -163,6 +163,7 @@ PYTHONIOENCODING=utf-8 python3 scripts/research/generate_k3ac_a23_paired_cost_co
 DRY_RUN=1 bash scripts/research/run_k3ac_a23_paired_cost.sh
 PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py
 PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8 scripts/research/run_k3ac_a23_paired_cost.sh 2>&1 | tee results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/runner.log
+ALLOW_CONCURRENT_BACKTEST=1 PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8 bash scripts/research/run_k3ac_a23_paired_cost.sh > results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/runner.log 2>&1; echo $? > results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/runner.exit
 PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py --strict
 ```
 
@@ -172,7 +173,7 @@ PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.p
 - 日志路径：`results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/`
 - 查看进度命令：`Get-Content -Encoding UTF8 E:\量化平台_V1.4.0\results\v2\research\R010-A23\paired_cost\EX-20260607T103055Z-main-K3AC\logs\formal\runner.log -Tail 80`
 - 异常判断：每段必须有 `.run.log`、manifest、`exit_status=0` 和 fresh summary。
-- 后台回测豁免：不适用；默认前台可见执行。
+- 后台回测豁免：实际执行出现偏差；外部进程使用 `ALLOW_CONCURRENT_BACKTEST=1` 与 TC8U 并发运行。该偏差不自动否决结果，但 strict 汇总前必须复核每段日志、manifest、`exit_status=0`、runner.exit 和错误标记。
 
 ### 结果路径
 
@@ -187,8 +188,11 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 - 字段复核显示 hard5 仍为 `max_score=5`、`score_hot_filter_mode=hard_cap`；A22 仍为 `max_score=9999`、`score_hot_filter_mode=conditional_hot_state`、`r010a13_score56_risk_budget_enabled=true`、`risk_cap=0.7`。
 - 两组新配置均已统一成本字段：`fee_params.commission_rate=0.0002`、`min_commission=5`、`r010b5_research_cost_override_enabled=true`、`r010b5_research_fund_slippage_bps=2.0`、`risk_config.execution.slippage_bps=2.0`。
 - `DRY_RUN=1 bash scripts/research/run_k3ac_a23_paired_cost.sh` 显示待运行范围为 hard5/A22 两组共 8 段；A23 cost2x/slip2bps 由汇总脚本从 R010-A23/state_tier_hot_budget 复用。
-- 非 strict 汇总已生成 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=4`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=0`。
-- 正式回测暂缓，因为 TC8U `formal_delay_negative_control` 仍有后台 `src/run_v2_backtest.py` 进程；K3AC runner 默认有并发保护，资源释放前不启动。
+- 外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动正式补跑；runner 日志根为 `results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/20260607T110543Z/`。
+- hard5 同成本已完成 `2020_2021`、`2022_2023` 与 `2024` 三段：`2020_2021` final `213091.47`、MDD `-21.6947%`、交易 `559`；`2022_2023` final `124873.55`、交易 `450`；`2024` final `163161.20`、MDD `-27.4756%`、交易 `279`。
+- 非 strict 汇总已刷新 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=7`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=3`。
+- 已完成三段中，A23 cost2x 相对 hard5 cost2x 为 3/3 final 不低、3/3 MDD 不差；2024 负控段 final 和 MDD 完全一致，`negative_control_2024_final_identical=true`。但 hard5 2025 和全部 A22 cost2x 仍缺失，不能提前通过。
+- 当前 runner 仍在运行 hard5 同成本 2025_20260519 段；最近观察进度为 2025-01-17、`3%`、权益 `105942.27`。
 
 ## 13. 支持证据
 
@@ -198,23 +202,23 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 
 ## 14. 反对证据
 
-- 当前 hard5/A22 的 8 段同成本正式回测尚未运行，不能判断 A22/A23 是否通过。
+- 当前 hard5/A22 的 8 段同成本正式回测只完成 3 段，不能判断 A22/A23 是否通过。
 - K3AC 仍依赖既有 A23 cost2x 结果的日志和 manifest；strict 汇总前必须确认 A23 4 段也具备 `exit_status=0`、manifest 和 summary。
 
 ## 15. 偏差诊断
 
-- 暂无策略结果偏差可诊断；当前偏差风险主要是把“配置已准备好”误读成“实验已完成”。本记录明确保持 active，不做 promote/kill。
-- 当前不设置 `ALLOW_CONCURRENT_BACKTEST=1`，避免 K3AC 与 TC8U 后台实验抢占 ClickHouse 和内存资源。
+- 执行偏差：本实验预注册时要求等待 TC8U 释放资源，但实际外部启动命令包含 `ALLOW_CONCURRENT_BACKTEST=1`，与 TC8U 同时运行。该偏差需要在最终 strict 后单独审计；若出现日志缺失、runner 非 0、错误标记或资源争用迹象，不得把本轮结果直接作为 clean formal。
+- 结果偏差风险：当前只完成 hard5 两段，A23 相对 hard5 的 partial 优势不能代表四段稳定性，也不能替代 A22 同成本对照。
 
 ## 16. 研究判断
 
-建议状态：`active / configs_generated_waiting_backtest_slot`
+建议状态：`active / formal_running_partial_concurrent_deviation`
 
-理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。配置层已就绪，但 formal 证据仍缺 hard5/A22 同成本 8 段补跑。
+理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。当前已有 partial formal 证据，但 formal 证据仍缺 hard5 2025 和 A22 四段；并发执行偏差需要最终审计。
 
 ## 17. 下一步
 
-1. 等 TC8U 后台回测结束。
-2. 运行 `bash scripts/research/run_k3ac_a23_paired_cost.sh` 补齐 hard5/A22 8 段。
-3. 运行 `PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py --strict`。
+1. 继续监控当前 K3AC runner，直到 hard5/A22 8 段全部完成。
+2. 运行 `PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py --strict`。
+3. 复核每段 `.run.log`、manifest、summary、`exit_status=0` 和 runner.exit；记录并发执行偏差是否影响 formal 可信度。
 4. 根据 strict 结果决定 A22/A23 是否还能进入下一轮换手约束研究。
