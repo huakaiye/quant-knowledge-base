@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260607T154134Z-main-QTFV
 rd_id: RD-20260605T133318Z-main-H6V3
 status: active
-stage: preregistered_ready_for_engineering_and_formal
+stage: preregistered_engineering_dryrun_pass_formal_pending
 owner: main
 created_at: 2026-06-07T15:41:34Z
-updated_at: 2026-06-07T15:41:34Z
+updated_at: 2026-06-07T15:52:30Z
 strategy_id:
 module_type: 核心轮动风控诊断模块
 decision_ids: [DEC-20260607T151252Z-main-A22N]
@@ -15,6 +15,7 @@ idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/
+  - configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/guard/
   - scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py
   - scripts/research/run_qtfv_a22_native_forward_shadow.sh
   - scripts/research/summarize_qtfv_a22_native_forward_shadow.py
@@ -24,8 +25,8 @@ result_paths:
   - results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/
 summary_paths:
   - results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json
-quality_gate: L1_engineering_shadow_boundary_preregistered
-subagent_call_ids: [SUB-20260607T154000Z-main-A22FS-ENTRY]
+quality_gate: L1_engineering_shadow_boundary_preregistered_dryrun_pass
+subagent_call_ids: [SUB-20260607T154000Z-main-A22FS-ENTRY, SUB-20260607T154800Z-main-A22FS-MIN]
 subagent_exemption:
 tags: [双池轮动, score过热, A22, 原生字段, forward边界, shadow边界, 默认关闭观察]
 ---
@@ -49,9 +50,9 @@ tags: [双池轮动, score过热, A22, 原生字段, forward边界, shadow边界
 
 我们原本预计：native A22 live 组应复现 A22N 的 native 结果；shadow_on/off 组应只多写 A22 shadow 日志，不改变交易产物；所有配置必须显式互斥 A13/A22。
 
-实际看到：待执行。
+实际看到：工程准备检查通过，正式回测待执行。策略源码已新增默认关闭 A22 shadow 日志开关；配置生成器已写出 12 个 formal 配置和 4 个双开 guard；run 脚本 dry-run 正常。
 
-这说明：待补。
+这说明：QTFV 已具备正式运行条件，但还没有形成 formal 结果。
 
 但还不能说明：即使通过，也只说明工程边界和日志隔离通过，不等于 A22 可以实盘或替代 hard5。
 
@@ -143,13 +144,14 @@ tags: [双池轮动, score过热, A22, 原生字段, forward边界, shadow边界
 
 适配判断：`适合调用`
 
-调用状态：`called_running`
+调用状态：`called_partial_completed`
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SUB-20260607T154000Z-main-A22FS-ENTRY | Archimedes | SUBTASK-20260607T154000Z-main-A22FS_子查_A22_native_forward_shadow脚本边界 | gpt-5.3-codex-spark | 2026-06-07T15:40:00Z | 平台 forward/shadow/observe 脚本、A22/A22N 脚本和策略源码 | 无 | 只读检索 | 运行中，未形成最终脚本边界清单 | 子代理不得判断无未来函数、promote 或默认切换 | 待主控复核 | 用于补充脚本复用和风险清单 |
+| SUB-20260607T154000Z-main-A22FS-ENTRY | Archimedes | SUBTASK-20260607T154000Z-main-A22FS_子查_A22_native_forward_shadow脚本边界 | gpt-5.3-codex-spark | 2026-06-07T15:40:00Z | 平台 forward/shadow/observe 脚本、A22/A22N 脚本和策略源码 | 无 | 只读检索 | context length exceeded，未形成可用交付物 | 无结论可采纳 | 主控关闭调用并改用更小任务重试 | 不影响研究判断，只作为失败调用记录 |
+| SUB-20260607T154800Z-main-A22FS-MIN | Pascal | SUBTASK-20260607T154800Z-main-A22FS_子查_最小脚本清单 | gpt-5.3-codex-spark | 2026-06-07T15:48:00Z | `scripts/research` 中 A22/A22N 与 shadow/forward 相关脚本 | 无 | 只读检索 | 确认 A22N 链路可复用为模板；B5/THEME shadow 运行脚本不是 drop-in；forward/shadow 后处理脚本可借鉴；最小 gate 应同时覆盖 A22N 等价和 EKZ8 日志/日期审计 | 旧 shadow 脚本硬编码旧实验路径；后处理脚本只读既有产物 | 主控采纳脚本边界建议，并按最小专用脚本实现 QTFV | 支持新建 QTFV 专用生成/运行/汇总脚本，不支持直接复用旧 shadow 脚本跑 formal |
 
-台账行：待完成后同步 `01_台账/子代理调用台账.csv`。
+台账行：已同步 `01_台账/子代理调用台账.csv`。
 
 ## 11. 执行记录
 
@@ -160,6 +162,7 @@ ${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-202606
 ${QUANT_PLATFORM_ROOT}/scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py
 ${QUANT_PLATFORM_ROOT}/scripts/research/run_qtfv_a22_native_forward_shadow.sh
 ${QUANT_PLATFORM_ROOT}/scripts/research/summarize_qtfv_a22_native_forward_shadow.py
+${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py
 ```
 
 ### 运行命令
@@ -168,6 +171,7 @@ ${QUANT_PLATFORM_ROOT}/scripts/research/summarize_qtfv_a22_native_forward_shadow
 cd /mnt/e/qp_v1_4_0
 PYTHONIOENCODING=utf-8 python3 -m py_compile scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py scripts/research/summarize_qtfv_a22_native_forward_shadow.py
 PYTHONIOENCODING=utf-8 python3 scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py
+DRY_RUN=1 bash scripts/research/run_qtfv_a22_native_forward_shadow.sh
 PYTHONUNBUFFERED=1 bash scripts/research/run_qtfv_a22_native_forward_shadow.sh
 PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_qtfv_a22_native_forward_shadow.py --strict
 ```
@@ -200,23 +204,38 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-202
 
 ## 12. 实际观察
 
-待执行后补齐。
+预执行检查：
+
+- 已读平台 `AGENTS.md` 和 `docs/AGENT_RULES.md`。
+- 已新增默认关闭参数 `r010a22_hot_score_budget_shadow_enabled=False`。
+- 已新增 `【R010-A22 SHADOW】` 日志函数；该函数只写日志，不修改 `final_targets`、`weights` 或订单。
+- 已完成 WSL `py_compile`：策略源码、配置生成器和汇总脚本均通过。
+- 已生成 12 个 formal 配置和 4 个 double-on guard 配置。
+- run 脚本 `DRY_RUN=1` 正常列出 3 variants × 4 segments。
+- 字段抽检通过：`native_a22_live` 为 A13=false/A22Live=true/A22Shadow=false；`a20_unbudgeted_shadow_on` 为 A13=false/A22Live=false/A22Shadow=true；`double_on_guard` 为 A13=true/A22Live=true/A22Shadow=false 且不在 run 脚本 formal variants 中。
+
+正式 formal 回测待执行。
 
 ## 13. 支持证据
 
-待执行后补齐。
+- `scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py` 已生成配置。
+- `scripts/research/run_qtfv_a22_native_forward_shadow.sh` dry-run 通过。
+- `scripts/research/summarize_qtfv_a22_native_forward_shadow.py` 已建立 strict gate。
+- Pascal 子代理确认 A22N 链路可作为模板、旧 shadow 运行脚本不能直接 drop-in。
 
 ## 14. 反对证据
 
-待执行后补齐。
+- 还没有 formal 回测结果。
+- 新增 A22 shadow 日志是代码改动，虽然默认关闭，但仍需用 `native_a22_live` 对 A22N native 做四段 strict 复现，防止无意改变 live 行为。
+- shadow_on/off 使用 A20 unbudgeted 路径观察 A22 预算建议，不等同于 hard5 生产路径。
 
 ## 15. 偏差诊断
 
-待执行后补齐。
+当前偏差：原计划“复用现成 forward/shadow 脚本”不可行。Pascal 和主控源码检查都确认，B5/THEME shadow run 脚本硬编码旧实验路径，不能 drop-in 到 A22；A22 源码也没有 shadow-only 开关。因此主控新增了 A22 专用默认关闭 shadow 日志和 QTFV 专用脚本。
 
 ## 16. 研究判断
 
-建议状态：待执行后判断。预注册上限为 `observe` 或 `engineering_pass`，不得直接写 `promote`。
+建议状态：`active / formal_pending`。预注册上限为 `observe` 或 `engineering_pass`，不得直接写 `promote`。
 
 理由：待执行后补齐。
 
