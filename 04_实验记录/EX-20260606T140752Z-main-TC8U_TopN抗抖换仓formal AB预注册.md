@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260606T140752Z-main-TC8U
 rd_id: RD-20260605T115651Z-main-EXE0
 status: active
-stage: formal_base_completed_cost_blocked
+stage: formal_cost_completed_observe_no_promote
 owner: main
 created_at: 2026-06-06T14:07:52Z
-updated_at: 2026-06-06T18:35:00Z
+updated_at: 2026-06-07T16:17:30+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 执行与换仓模块
 decision_ids: []
@@ -21,17 +21,22 @@ config_paths:
 result_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_slip2bps/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal_cost2x_slip2bps/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commission/
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal_cost2x_commission/
 summary_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/summary.json
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/summary.json
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/summary.json
   - scripts/research/summarize_tc8u_topn_antishake.py
-quality_gate: L2_formal_base_completed_cost_blocked_no_promote
+quality_gate: L2_formal_cost_completed_observe_no_promote
 subagent_call_ids:
   - SUB-20260606T140000Z-main-TOPN
   - SUB-20260606T150000Z-main-TC8U-AUDIT
+  - SUB-20260607T040000Z-main-TC8U-COSTCHECK
 subagent_exemption:
-tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本待补]
+tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成, observe]
 ---
 
 # TopN抗抖换仓formal AB预注册
@@ -50,10 +55,10 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本待补]
 
 这次实验想知道：当前持仓如果仍在 Top3/Top5 且分数没有明显落后，继续持有是否能减少无意义换仓。
 我们原本预计：它应该主要降低交易次数和成本敏感性，而不是显著改变选股逻辑。
-实际看到：base-cost formal 已完成 20/20；所有 TopN 变体四段交易数都下降，2025_20260519 都没有错过强趋势。
-这说明：TopN 抗抖确实能减少换仓噪声，但不能直接升级为默认规则，因为 `top3_ratio070_veto` 和 `top5_ratio070_veto` 都有两个分段 final 低于 baseline。
+实际看到：base-cost formal 已完成 20/20；成本扰动子集 `baseline_top1_hard5`、`top3_ratio070_gap050_veto`、`top5_ratio070_veto` 在 `formal_cost2x_slip2bps` 和 `formal_cost2x_commission` 均完成 12/12 strict 汇总。
+这说明：TopN 抗抖确实能减少换仓噪声；`top3_ratio070_gap050_veto` 在两组成本扰动中都只有 2024 一个分段 final 低于 baseline，更适合作为后续负控候选。`top5_ratio070_veto` 合计收益更高且 MDD 四段都不差，但 2020_2021 与 2022_2023 仍低于 baseline，不能 promote。
 对新手来说：少换仓不是天然更好，它可能是在强趋势里减少噪声，也可能是在趋势切换时反应变慢。
-下一步要做：等 WSL 平台空闲后补成本扰动；当前只能把 `top3_ratio070_gap050_veto` 和 `top5_ratio070_veto` 留作候选观察，不能 promote。
+下一步要做：不再扩大 TopN 网格，先做随机延迟/冷却期负控和未来函数审计；若要叠加 A23，必须新开组合交互实验。
 
 ## 2. 研究背景
 
@@ -119,7 +124,7 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本待补]
 
 - baseline_top1_hard5 关闭 TopN。
 - `top3_ratio085_veto` 与 `top3_ratio070_gap050_veto` 做邻近收紧。
-- 成本扰动配置已生成但运行受平台环境阻塞，完成前不升级结论。
+- 成本扰动已完成 `formal_cost2x_slip2bps` 与 `formal_cost2x_commission` 子集；旧 commission summary 曾被上午 stale run 污染，已用 2026-06-07 下午干净重跑覆盖并抽样确认 `fee` 翻倍。
 
 ## 9. 过拟合审计
 
@@ -128,11 +133,11 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本待补]
 | 参数搜索空间已预注册 | 已预注册 | 5 个变体固定，不看结果后扩网格 |
 | 样本内、验证集、样本外划分清楚 | 部分完成 | 四段固定：2020_2021、2022_2023、2024、2025_20260519 |
 | 邻近参数敏感性合理 | 部分完成 | ratio 0.70/0.85、Top3/Top5、gap 0/0.50 |
-| 成本、滑点或换手扰动已检查 | 未完成 | 成本配置 dry-run 通过，但正式运行中断 |
+| 成本、滑点或换手扰动已检查 | 已完成子集 | `formal_cost2x_slip2bps` 与 `formal_cost2x_commission` 均完成 baseline + Top3/gap + Top5 的 12/12 strict 汇总；不是全 5 个 TopN 变体成本矩阵 |
 | 已做消融或负控 | 部分完成 | baseline 与邻近收紧完成；随机延迟待补 |
 | 未只报告最优结果 | 已满足 | 汇总脚本输出全部 base-cost 变体 |
 
-证据等级：`L2_formal_base_completed_cost_blocked_no_promote`
+证据等级：`L2_formal_cost_completed_observe_no_promote`
 
 ## 10. 子代理调用记录
 
@@ -150,6 +155,7 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本待补]
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | SUB-20260606T140000Z-main-TOPN | Cicero | SUBTASK-20260606T140000Z-main-TOPN | gpt-5.3-codex-spark | 2026-06-06T14:00:00Z | 平台 TopN 策略、测试、生成与汇总脚本、配置根 | 无 | 无长回测 | 只读核对，不做最终判断 | `cooldown` 字段不存在，需用 rank/ratio/gap 表达 | 主控采纳其“20 个 formal 配置已存在/可执行”核对，并补 `strategy_params.topn_hold` 覆盖测试 | 支持本卡进入 formal A/B |
 | SUB-20260606T150000Z-main-TC8U-AUDIT | Curie | SUBTASK-20260606T150000Z-main-TC8U-AUDIT | gpt-5.3-codex-spark | 2026-06-06T15:00:00Z | `summary.json`、`comparison_vs_baseline.csv`、20 个 status、实验卡 | 无 | 无长回测 | 只读核对，不做 promote/revise/kill | 只按已给证伪条件判断，不替代主控决策 | 主控复核其 20/20、自洽、证伪条件清单；采纳其对 `top3_ratio070_gap050_veto` 的审计优先级建议 | 把成本审计候选从单一 Top5 改为 Top5 + Top3/gap 双候选 |
+| SUB-20260607T040000Z-main-TC8U-COSTCHECK | Ramanujan | SUBTASK-20260607T040000Z-main-TC8U-COSTCHECK | gpt-5.3-codex-spark | 2026-06-07T04:00:00Z | TC8U 实验卡、成本配置、runner/summary 脚本、既有 status/summary | 无 | 无长回测 | 只读核对成本扰动待跑集合与旧 summary 污染风险 | 不判断 promote；提醒 stale partial dirs 会污染判断 | 主控采纳其“12 个子集、strict 后仍需 fee 抽样、旧 commission summary 无效”的建议 | 先完成 slip2bps，再补跑干净 commission-only；成本结论改用下午 clean run |
 
 台账行：已补 `01_台账/子代理调用台账.csv`。
 
@@ -176,24 +182,34 @@ python scripts/research/summarize_tc8u_topn_antishake.py --output-dir results/v2
 ```bash
 python scripts/research/generate_tc8u_topn_antishake_configs.py --phase formal_cost2x_slip2bps
 python scripts/research/generate_tc8u_topn_antishake_configs.py --phase formal_cost2x_commission
+PHASE=formal_cost2x_slip2bps VARIANTS='baseline_top1_hard5 top3_ratio070_gap050_veto top5_ratio070_veto' PYTHONUNBUFFERED=1 bash scripts/research/run_tc8u_topn_antishake_formal.sh
+PHASE=formal_cost2x_commission VARIANTS='baseline_top1_hard5 top3_ratio070_gap050_veto top5_ratio070_veto' PYTHONUNBUFFERED=1 bash scripts/research/run_tc8u_topn_antishake_formal.sh
+python scripts/research/summarize_tc8u_topn_antishake.py --phase formal_cost2x_slip2bps --variants baseline_top1_hard5 top3_ratio070_gap050_veto top5_ratio070_veto --output-dir results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps --strict
+python scripts/research/summarize_tc8u_topn_antishake.py --phase formal_cost2x_commission --variants baseline_top1_hard5 top3_ratio070_gap050_veto top5_ratio070_veto --output-dir results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission --strict
 ```
 
 ### 可见进度与日志
 
-- 是否过程可见：`formal base-cost 已使用 PYTHONUNBUFFERED=1 + tee`
-- 日志路径：`results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal/`
+- 是否过程可见：`formal base-cost`、`formal_cost2x_slip2bps`、`formal_cost2x_commission` 均使用 `PYTHONUNBUFFERED=1` 与 runner/log/status 记录；commission 干净重跑期间通过 `Get-Content <runner_log> -Tail 80` 监控。
+- 日志路径：`results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal/`、`logs/formal_cost2x_slip2bps/`、`logs/formal_cost2x_commission/`
 - 查看进度命令：`Get-Content <log> -Tail 80`
-- 异常判断：base-cost 20 个 `.status` 均为 `0`，summary/trades/logs 齐全；成本阶段无完成 run
+- 异常判断：base-cost 20 个 `.status` 均为 `0`；两组成本扰动子集 12/12 `.status=0`，strict summary `missing=[]`；commission 旧 summary 作废，以 2026-06-07 14:15-16:14 的 clean rerun 为准
 - 后台回测豁免：
 
 ```text
-不适用，正式 base-cost 回测均前台可见执行。
+commission-only clean rerun 因 12 段耗时较长，使用 WSL 后台进程并持续读取 runner 日志监控。
+Windows PID: 49504；WSL parent PID: 133275；runner PID: 133283；完成后无残留 run_v2_backtest 进程。
+日志：results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/logs/formal_cost2x_commission/runner_20260607T_commission_wslcd.log
+查看：Get-Content -Encoding UTF8 <runner_log> -Tail 80
+停止方式（运行中）：Stop-Process -Id 49504，或在 WSL 中 kill 133275/133283。
 ```
 
 ### 结果路径
 
 ```text
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal/
+results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_slip2bps/
+results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commission/
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/
@@ -215,39 +231,52 @@ base-cost formal 完成 20/20，`completed_runs=20`、`missing=[]`、20 个 stat
 - `top5_ratio070_veto`：2025_20260519 final 比 baseline 高 `40,460.96`，MDD 改善 `0.0113`，交易少 `125`；2020_2021 和 2022_2023 final 分别低 `23,425.18`、`8,107.84`，但 MDD 均改善。
 - `top3_ratio070_gap050_veto`：2020_2021、2022_2023、2025_20260519 final 分别高 `6,348.83`、`2,715.30`、`9,542.17`；2024 低 `13,776.13`。
 - 所有 TopN 变体 2025_20260519 均未掉队，说明强趋势段没有被完全错过。
-- 成本扰动尝试：`formal_cost2x_slip2bps` 与 `formal_cost2x_commission` 均已生成并 dry-run 通过，但实际回测在 baseline 2020/2024 早段无 traceback 中断；现场存在无关 A23 WSL 回测进程，且 `dmesg` 有 Python/WSL 内核告警。成本扰动记为平台环境阻塞，不能作为有效结果。
+成本扰动子集完成情况：
+
+| 成本扰动 | 完成 | 变体 | `top3_ratio070_gap050_veto` 观察 | `top5_ratio070_veto` 观察 |
+| --- | ---: | --- | --- | --- |
+| `formal_cost2x_slip2bps` | 12/12 | baseline + Top3/gap + Top5 | 3/4 final 不低于 baseline，交易少 `243`，四段 final 合计多 `10464.85`；2024 仍低于 baseline，2020/2025 MDD 略差 | 2/4 final 不低于 baseline，交易少 `474`，四段 final 合计多 `28620.10`；2020/2022 final 低于 baseline，MDD 4/4 不差 |
+| `formal_cost2x_commission` | 12/12 | baseline + Top3/gap + Top5 | 3/4 final 不低于 baseline，交易少 `243`，四段 final 合计多 `9215.28`；2024 仍低于 baseline，2020/2025 MDD 略差 | 2/4 final 不低于 baseline，交易少 `474`，四段 final 合计多 `25626.05`；2020/2022 final 低于 baseline，MDD 4/4 不差 |
+
+commission-only 逐段事实：
+
+- `top3_ratio070_gap050_veto`：2020_2021 final 多 `7593.33`、2022_2023 多 `3645.71`、2024 少 `13061.08`、2025_20260519 多 `11037.32`。
+- `top5_ratio070_veto`：2020_2021 final 少 `19329.58`、2022_2023 少 `6429.50`、2024 多 `8214.09`、2025_20260519 多 `43171.04`。
+- 费用抽样：base-cost baseline 2020 前两笔 `fee=10.0/9.84`；clean commission-only 和 slip2bps baseline 2020 前两笔 `fee=20.0/19.68`；commission-only Top5 2025 前两笔 `fee=19.99/20.46`，确认成本扰动生效。
 
 ## 13. 支持证据
 
 - 平台已有 `choose_targets_with_topn_hold`，本轮新增 `strategy_params.topn_hold` 覆盖能力。
 - `python -m pytest src/tests/strategies/test_etf_dual_pool_topn_hold.py -q` 通过 10/10。
 - 20 个 base-cost formal 回测均有 `.status=0`。
+- 两组成本扰动子集均 strict 通过：`expected_runs=12`、`completed_runs=12`、`missing=[]`。
 - `topn_retained` 合计：Top3/0.70 为 266 次，Top3/0.85 为 186 次，Top5/0.70 为 342 次，Top3/0.70/gap0.50 为 182 次。
 
 ## 14. 反对证据
 
 - `top3_ratio070_veto` 与 `top5_ratio070_veto` 均触发“两段以上 final 低于 baseline”的证伪条件。
 - `top3_ratio085_veto` 四段 final 合计为负，说明不是简单收紧就能稳健。
-- 成本扰动未完成，成本优势不能确认。
+- Top5 在 base-cost、slip2bps 和 commission-only 三种成本口径下均只有 2/4 分段 final 不低于 baseline，不能通过预注册收益门槛。
+- Top3/gap 虽在三种成本口径下保持 3/4 分段 final 不低于 baseline，但 2024 final 明显低于 baseline，且 MDD 只有 2/4 不差。
 - 没有随机延迟和冷却期 live 实现负控。
 - 本实验不能直接证明 A23 与 TopN 叠加有效。
 
 ## 15. 偏差诊断
 
-- 本卡是 base-cost formal，不是成本稳健性完成证据。
+- 本卡已完成成本扰动子集，但不是全 5 个 TopN 变体的完整成本矩阵；成本结论仅覆盖 baseline + Top3/gap + Top5。
 - `top5_ratio070_veto` 的合计收益最高，但两个历史分段 final 低于 baseline，可能是反应变慢换来的 2025 噪声收益。
 - `top3_ratio070_gap050_veto` 证伪触发较少，但 MDD 仅 2/4 不差，且 2024 final 明显低于 baseline。
-- 成本扰动中断发生在 baseline，不是 TopN 特有；应等无关 A23 任务结束后重跑，或单独排查 WSL/ClickHouse 内存状态。
+- 早上的 commission summary 曾因旧 run/stale status 产生污染，已用下午 clean rerun 覆盖；后续引用必须使用 `summary_cost2x_commission` 中 2026-06-07 14:15-16:14 的 run_dir。
 
 ## 16. 研究判断
 
-建议状态：`observe / robustness_pending`
+建议状态：`observe / cost_completed_no_promote`
 
-理由：TopN 抗抖证明了“减少换仓”这个执行效果，但没有证明“稳定提升收益”。`top3_ratio070_gap050_veto` 和 `top5_ratio070_veto` 可进入成本扰动与随机延迟负控；`top3_ratio070_veto` 降优先级。未完成成本扰动前不得 promote，也不得改默认 hard5/A23。
+理由：TopN 抗抖证明了“减少换仓”这个执行效果，也证明 Top3/gap 和 Top5 在两类成本扰动下没有因成本加倍而整体崩掉。但它仍没有证明“稳定提升收益”：Top5 在 2020/2022 两段持续低于 baseline；Top3/gap 在 2024 明显低于 baseline且 MDD 稳定性不足。因此不改默认 hard5/A23，不新建 promote 决策卡。
 
 ## 17. 下一步
 
-1. 等 WSL 平台空闲后重跑 `formal_cost2x_commission` 与 `formal_cost2x_slip2bps`，先跑 baseline + `top3_ratio070_gap050_veto` + `top5_ratio070_veto`。
-2. 若成本扰动仍中断，单独开平台工程排障卡，检查 `risk_config.execution`、内存维护和 ClickHouse 连接池。
-3. 追加随机延迟换仓或冷却期负控；完成前不新开更大 TopN 网格。
-4. 若成本扰动通过，再考虑把 TopN 与 A23 作为组合交互实验，而不是直接替换 hard5。
+1. 追加随机延迟换仓或冷却期负控；完成前不新开更大 TopN 网格。
+2. 对 `top3_ratio070_gap050_veto` 做 2024 换仓事件归因，拆出收益损失、成本节省和 MDD 恶化来源。
+3. 若继续工程化，优先使用 `top3_ratio070_gap050_veto` 作为 A23 组合交互的候选，而不是 Top5 直接替换。
+4. 补未来函数审计和随机/错位保留负控；通过前不 promote、不改默认 hard5/A23。
