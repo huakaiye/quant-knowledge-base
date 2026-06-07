@@ -37,7 +37,8 @@
 		{"id":"score-cap-ekz8","type":"file","file":"04_实验记录/EX-20260607T152511Z-main-EKZ8_A22原生字段日志与未来函数二次审计.md","x":-650,"y":5295,"width":570,"height":260},
 		{"id":"score-cap-qtfv","type":"file","file":"04_实验记录/EX-20260607T154134Z-main-QTFV_A22原生forward shadow边界验证预注册.md","x":-650,"y":5625,"width":570,"height":270},
 		{"id":"score-cap-qtfv-decision","type":"file","file":"05_研究决策/DEC-20260607T185223Z-main-HH4B_A22原生forward shadow边界通过后观察决策.md","x":330,"y":5625,"width":560,"height":260},
-		{"id":"score-cap-nr75","type":"file","file":"04_实验记录/EX-20260607T190303Z-main-NR75_A22生产前默认关闭与未来函数静态门禁.md","x":-650,"y":5965,"width":570,"height":270}
+		{"id":"score-cap-nr75","type":"file","file":"04_实验记录/EX-20260607T190303Z-main-NR75_A22生产前默认关闭与未来函数静态门禁.md","x":-650,"y":5965,"width":570,"height":270},
+		{"id":"score-cap-ya5r","type":"file","file":"04_实验记录/EX-20260607T192201Z-main-YA5R_A22默认关闭observe硬5路径隔离审计.md","x":-650,"y":6305,"width":570,"height":270}
 	],
 	"edges":[
 		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
@@ -75,6 +76,7 @@
 		{"id":"edge-score-cap-ekz8-qtfv","fromNode":"score-cap-ekz8","fromSide":"bottom","toNode":"score-cap-qtfv","toSide":"top","label":"forward/shadow strict 通过"},
 		{"id":"edge-score-cap-qtfv-decision","fromNode":"score-cap-qtfv","fromSide":"right","toNode":"score-cap-qtfv-decision","toSide":"left","label":"observe default-off"},
 		{"id":"edge-score-cap-qtfv-nr75","fromNode":"score-cap-qtfv","fromSide":"bottom","toNode":"score-cap-nr75","toSide":"top","label":"静态默认关闭门禁"},
+		{"id":"edge-score-cap-nr75-ya5r","fromNode":"score-cap-nr75","fromSide":"bottom","toNode":"score-cap-ya5r","toSide":"top","label":"hard5 observe 隔离"},
 		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"}
 	]
 }
