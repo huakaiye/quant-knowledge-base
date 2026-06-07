@@ -33,7 +33,8 @@
 		{"id":"score-cap-k3ac-decision","type":"file","file":"05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策.md","x":330,"y":4295,"width":560,"height":250},
 		{"id":"score-cap-qxss","type":"file","file":"04_实验记录/EX-20260607T131336Z-main-QXSS_A22原生字段与未来函数审计预注册.md","x":-650,"y":4635,"width":570,"height":250},
 		{"id":"score-cap-a22n","type":"file","file":"04_实验记录/EX-20260607T131209Z-main-A22N_A22原生字段等价审计预注册.md","x":-650,"y":4945,"width":570,"height":270},
-		{"id":"score-cap-a22n-decision","type":"file","file":"05_研究决策/DEC-20260607T151252Z-main-A22N_A22原生字段等价通过后工程化决策.md","x":330,"y":4945,"width":560,"height":260}
+		{"id":"score-cap-a22n-decision","type":"file","file":"05_研究决策/DEC-20260607T151252Z-main-A22N_A22原生字段等价通过后工程化决策.md","x":330,"y":4945,"width":560,"height":260},
+		{"id":"score-cap-ekz8","type":"file","file":"04_实验记录/EX-20260607T152511Z-main-EKZ8_A22原生字段日志与未来函数二次审计.md","x":-650,"y":5295,"width":570,"height":260}
 	],
 	"edges":[
 		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
@@ -67,6 +68,7 @@
 		{"id":"edge-score-cap-k3ac-qxss","fromNode":"score-cap-k3ac","fromSide":"bottom","toNode":"score-cap-qxss","toSide":"top","label":"原生字段审计"},
 		{"id":"edge-score-cap-qxss-a22n","fromNode":"score-cap-qxss","fromSide":"bottom","toNode":"score-cap-a22n","toSide":"top","label":"native 等价 strict 通过"},
 		{"id":"edge-score-cap-a22n-decision","fromNode":"score-cap-a22n","fromSide":"right","toNode":"score-cap-a22n-decision","toSide":"left","label":"engineering equivalent"},
+		{"id":"edge-score-cap-a22n-ekz8","fromNode":"score-cap-a22n","fromSide":"bottom","toNode":"score-cap-ekz8","toSide":"top","label":"日志/日期 strict 通过"},
 		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"}
 	]
 }
