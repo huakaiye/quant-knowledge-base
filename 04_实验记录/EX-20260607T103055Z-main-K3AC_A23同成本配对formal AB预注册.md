@@ -3,13 +3,14 @@ type: 实验记录
 ex_id: EX-20260607T103055Z-main-K3AC
 rd_id: RD-20260605T133318Z-main-H6V3
 status: active
-stage: preregistered
+stage: configs_generated_waiting_backtest_slot
 owner: main
 created_at: 2026-06-07T10:30:55Z
 updated_at: 2026-06-07T18:52:00+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: score_hot_soft_budget_cost_pair
-decision_ids: []
+decision_ids:
+  - DEC-20260607T102206Z-main-XBWS
 lit_ids: []
 idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
@@ -26,7 +27,7 @@ result_paths:
   - results/v2/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60_cost2x_slip2bps/
 summary_paths:
   - results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/formal/summary.json
-quality_gate: L0_preregistered
+quality_gate: L0_configs_validated
 subagent_call_ids:
   - SUB-20260607T104500Z-main-CST9
 subagent_exemption:
@@ -48,10 +49,10 @@ tags: [双池轮动, score过热, A23, 同成本配对, cost2x, formal]
 
 这次实验想知道：A23 高成本失败是不是只是因为它被拿去和普通成本 A22 比，还是在同样高成本下也比 hard5 或 A22 差。  
 我们原本预计：如果 A22/A23 的高分软预算真有结构价值，那么在同一个 `cost2x_slip2bps` 成本口径下，它们仍应比 hard5 更好；如果连同成本 hard5 都打不过，说明高分软预算对成本太脆弱。  
-实际看到：待执行。  
-这说明：待执行。  
+实际看到：平台已生成 hard5/A22 两组 8 个 `cost2x_slip2bps` 配置，A23 4 段高成本证据可复用 LVV7；汇总脚本当前显示 `completed_evidence_runs=4/12`、`completed_new_k3ac_runs=0/8`。  
+这说明：同成本配对实验入口已经准备好，但还没有产生 hard5/A22 同成本正式回测结果，所以不能判断 A22/A23 是否通过。  
 但还不能说明：即使同成本通过，也还不能直接上线；仍需未来函数审计、样本外、负控和可能的换手约束验证。  
-下一步要做：生成 hard5/A22 cost2x 缺口配置，复用 LVV7 已完成的 A23 cost2x，跑四段 formal 并严格汇总。
+下一步要做：等待 TC8U 后台回测释放资源后，运行 hard5/A22 八段补跑，再做 strict 汇总。
 
 ## 2. 研究背景
 
@@ -124,13 +125,13 @@ VX4J 已经把 A23 的路线收窄：A23 相对 A22 的独有贡献只来自 202
 | 已做消融或负控 | 部分通过 | 2024 负控与 hard5/A22/A23 同成本对照 |
 | 未只报告最优结果 | 通过 | 固定 hard5/A22/A23 三组，全量汇总 |
 
-证据等级：`L0_preregistered`
+证据等级：`L0_configs_validated`
 
 ## 10. 子代理调用记录
 
 适配判断：`适合调用`
 
-调用状态：`called_pending`
+调用状态：`called_completed`
 
 子代理豁免：
 
@@ -140,9 +141,9 @@ VX4J 已经把 A23 的路线收窄：A23 相对 A22 的独有贡献只来自 202
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SUB-20260607T104500Z-main-CST9 | Kierkegaard | SUBTASK-20260607T104500Z-main-CST9_子查_A23同成本配置审计 | gpt-5.3-codex-spark | 2026-06-07T10:45:00Z | 计划读取 R010-A11/A22/A23 配置、策略成本字段和 run_dir | 无 | 只读检索，结果待回收 | 只做路径和字段核对，不判断策略优劣 | 待回收 | 待主控复核 | 待补 |
+| SUB-20260607T104500Z-main-CST9 | Kierkegaard | SUBTASK-20260607T104500Z-main-CST9_子查_A23同成本配置审计 | gpt-5.3-codex-spark | 2026-06-07T10:45:00Z | R010-A11 hard5、R010-A22 cap70、R010-A23 cost2x 四段配置和策略成本字段 | 无 | 只读字段审计，未修改文件 | 只做路径和字段核对，不判断策略优劣 | A22 使用 A13 风险预算字段表达 cap70，A23 使用 A22 tier 字段；三组语义不同但同成本字段可统一 | 主控已按其建议生成 hard5/A22 cost2x 派生配置，并复用 A23 cost2x 证据 | 支持 K3AC 固定三组同成本配对，不扩 A23 阈值或换手参数 |
 
-台账行：待同步 `01_台账/实验台账.csv` 与 `01_台账/子代理调用台账.csv`。
+台账行：已同步 `01_台账/实验台账.csv` 与 `01_台账/子代理调用台账.csv`。
 
 ## 11. 执行记录
 
@@ -159,6 +160,8 @@ cd /mnt/e/量化平台_V1.4.0
 PYTHONIOENCODING=utf-8 python3 -m py_compile scripts/research/generate_k3ac_a23_paired_cost_configs.py scripts/research/summarize_k3ac_a23_paired_cost.py
 bash -n scripts/research/run_k3ac_a23_paired_cost.sh
 PYTHONIOENCODING=utf-8 python3 scripts/research/generate_k3ac_a23_paired_cost_configs.py
+DRY_RUN=1 bash scripts/research/run_k3ac_a23_paired_cost.sh
+PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py
 PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8 scripts/research/run_k3ac_a23_paired_cost.sh 2>&1 | tee results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/runner.log
 PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py --strict
 ```
@@ -180,28 +183,38 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 
 ## 12. 实际观察
 
-待执行。
+- `generate_k3ac_a23_paired_cost_configs.py` 已生成 8 个 hard5/A22 同成本配置：2 个 variant × 4 个 segment。
+- 字段复核显示 hard5 仍为 `max_score=5`、`score_hot_filter_mode=hard_cap`；A22 仍为 `max_score=9999`、`score_hot_filter_mode=conditional_hot_state`、`r010a13_score56_risk_budget_enabled=true`、`risk_cap=0.7`。
+- 两组新配置均已统一成本字段：`fee_params.commission_rate=0.0002`、`min_commission=5`、`r010b5_research_cost_override_enabled=true`、`r010b5_research_fund_slippage_bps=2.0`、`risk_config.execution.slippage_bps=2.0`。
+- `DRY_RUN=1 bash scripts/research/run_k3ac_a23_paired_cost.sh` 显示待运行范围为 hard5/A22 两组共 8 段；A23 cost2x/slip2bps 由汇总脚本从 R010-A23/state_tier_hot_budget 复用。
+- 非 strict 汇总已生成 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=4`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=0`。
+- 正式回测暂缓，因为 TC8U `formal_delay_negative_control` 仍有后台 `src/run_v2_backtest.py` 进程；K3AC runner 默认有并发保护，资源释放前不启动。
 
 ## 13. 支持证据
 
-待执行。
+- 配置生成脚本、运行脚本、汇总脚本已通过语法检查。
+- 子代理 CST9 只读审计确认三组四段来源配置存在，且 A23 普通模板与 cost2x 版本差异只在成本、slippage、name/output_dir 等预期字段，因此 A23 cost2x 可作为 K3AC 正式证据复用。
+- 平台字段复核显示 hard5/A22 派生配置只改变成本口径、名称和输出目录，不改变 hard5 或 A22 的核心策略语义。
 
 ## 14. 反对证据
 
-待执行。
+- 当前 hard5/A22 的 8 段同成本正式回测尚未运行，不能判断 A22/A23 是否通过。
+- K3AC 仍依赖既有 A23 cost2x 结果的日志和 manifest；strict 汇总前必须确认 A23 4 段也具备 `exit_status=0`、manifest 和 summary。
 
 ## 15. 偏差诊断
 
-待执行。
+- 暂无策略结果偏差可诊断；当前偏差风险主要是把“配置已准备好”误读成“实验已完成”。本记录明确保持 active，不做 promote/kill。
+- 当前不设置 `ALLOW_CONCURRENT_BACKTEST=1`，避免 K3AC 与 TC8U 后台实验抢占 ClickHouse 和内存资源。
 
 ## 16. 研究判断
 
-建议状态：`active / preregistered`
+建议状态：`active / configs_generated_waiting_backtest_slot`
 
-理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。
+理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。配置层已就绪，但 formal 证据仍缺 hard5/A22 同成本 8 段补跑。
 
 ## 17. 下一步
 
-1. 生成 hard5/A22 两组 cost2x 缺口配置。
-2. 运行 8 个缺口回测，复用 4 个 A23 cost2x 已完成 run。
-3. strict 汇总三组同成本结果，决定 A22/A23 是否还能进入下一轮换手约束研究。
+1. 等 TC8U 后台回测结束。
+2. 运行 `bash scripts/research/run_k3ac_a23_paired_cost.sh` 补齐 hard5/A22 8 段。
+3. 运行 `PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py --strict`。
+4. 根据 strict 结果决定 A22/A23 是否还能进入下一轮换手约束研究。
