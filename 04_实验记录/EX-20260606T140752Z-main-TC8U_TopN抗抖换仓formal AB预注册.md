@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260606T140752Z-main-TC8U
 rd_id: RD-20260605T115651Z-main-EXE0
 status: active
-stage: formal_cost_completed_c35j_negative_control_observe_no_promote
+stage: formal_delay_negative_control_partial_17of20_random_complete_observe_no_promote
 owner: main
 created_at: 2026-06-06T14:07:52Z
-updated_at: 2026-06-07T18:06:48+08:00
+updated_at: 2026-06-07T20:05:06+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 执行与换仓模块
 decision_ids:
@@ -33,8 +33,9 @@ summary_paths:
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/summary.json
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/summary.json
   - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/summary.json
+  - results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_delay_negative_control_partial/summary.json
   - scripts/research/summarize_tc8u_topn_antishake.py
-quality_gate: L2_formal_cost_completed_c35j_negative_control_observe_no_promote
+quality_gate: L2_formal_cost_completed_random_delay_negative_control_confirmed_partial
 subagent_call_ids:
   - SUB-20260606T140000Z-main-TOPN
   - SUB-20260606T150000Z-main-TC8U-AUDIT
@@ -64,7 +65,7 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成,
 实际看到：base-cost formal 已完成 20/20；成本扰动子集 `baseline_top1_hard5`、`top3_ratio070_gap050_veto`、`top5_ratio070_veto` 在 `formal_cost2x_slip2bps` 和 `formal_cost2x_commission` 均完成 12/12 strict 汇总。
 这说明：TopN 抗抖确实能减少换仓噪声；`top3_ratio070_gap050_veto` 在两组成本扰动中都只有 2024 一个分段 final 低于 baseline，更适合作为后续负控候选。`top5_ratio070_veto` 合计收益更高且 MDD 四段都不差，但 2020_2021 与 2022_2023 仍低于 baseline，不能 promote。
 对新手来说：少换仓不是天然更好，它可能是在强趋势里减少噪声，也可能是在趋势切换时反应变慢。
-下游 C35J 已完成切换延迟负控：固定 seed 的 `random50` 能在 3/4 分段复制并超过 Top3/gap，说明 TopN/gap 的机制解释被普通延迟混淆，不能 promote。TC8U 自身的 `formal_delay_negative_control` 还在后台补完整 20/20，用来确认脚本和口径层面的稳健性。
+下游 C35J 已完成切换延迟负控：固定 seed 的 `random50` 能在 3/4 分段复制并超过 Top3/gap，说明 TopN/gap 的机制解释被普通延迟混淆，不能 promote。TC8U 自身的 `formal_delay_negative_control` 已完成 16/20，其中 `delay_random050_no_topn` 四段完整：3/4 分段 final 不低于 baseline、3/4 分段 MDD 不差、交易数 4/4 更低，四段 final 合计多 `88976.39`，显著强于 Top3/gap 的 `+4830.17`。
 下一步要做：不再扩大 TopN 网格；等待 TC8U 自身负控 20/20 后只做严格汇总，不把随机延迟、confirm1 或 Top3/gap 写入默认交易逻辑。若要叠加 A23，必须新开组合交互实验。
 
 ## 2. 研究背景
@@ -141,7 +142,7 @@ tags: [双池轮动, TopN抗抖, 执行模块, formal完成, 成本扰动完成,
 | 样本内、验证集、样本外划分清楚 | 部分完成 | 四段固定：2020_2021、2022_2023、2024、2025_20260519 |
 | 邻近参数敏感性合理 | 部分完成 | ratio 0.70/0.85、Top3/Top5、gap 0/0.50 |
 | 成本、滑点或换手扰动已检查 | 已完成子集 | `formal_cost2x_slip2bps` 与 `formal_cost2x_commission` 均完成 baseline + Top3/gap + Top5 的 12/12 strict 汇总；不是全 5 个 TopN 变体成本矩阵 |
-| 已做消融或负控 | 已完成下游负控，TC8U 自身补跑中 | baseline 与邻近收紧完成；C35J `confirm1/random50` 16/16 strict 完成并触发 observe；TC8U `formal_delay_negative_control` 背景补跑中 |
+| 已做消融或负控 | 下游负控完成，TC8U 自身负控 partial 强化 | baseline 与邻近收紧完成；C35J `confirm1/random50` 16/16 strict 完成并触发 observe；TC8U `formal_delay_negative_control` 已完成 16/20，其中随机延迟四段完整并进一步强化负控 |
 | 未只报告最优结果 | 已满足 | 汇总脚本输出全部 base-cost 变体 |
 
 证据等级：`L2_formal_cost_completed_c35j_negative_control_observe_no_promote`
@@ -220,6 +221,7 @@ results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/formal_cost2x_commis
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary/
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_slip2bps/
 results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_cost2x_commission/
+results/v2/research/R010-TOPN/EX-20260606T140752Z-main-TC8U/summary_delay_negative_control_partial/
 ```
 
 ## 12. 实际观察
@@ -251,6 +253,14 @@ commission-only 逐段事实：
 - `top5_ratio070_veto`：2020_2021 final 少 `19329.58`、2022_2023 少 `6429.50`、2024 多 `8214.09`、2025_20260519 多 `43171.04`。
 - 费用抽样：base-cost baseline 2020 前两笔 `fee=10.0/9.84`；clean commission-only 和 slip2bps baseline 2020 前两笔 `fee=20.0/19.68`；commission-only Top5 2025 前两笔 `fee=19.99/20.46`，确认成本扰动生效。
 
+TC8U 自身 `formal_delay_negative_control` partial 进展：
+
+- 当前完成 `17/20`：baseline、Top3/gap、confirm1、random50 四组已完整，`top3_gap_confirm1_veto` 已完成 2020_2021，仍缺 2022_2023、2024、2025_20260519 三段。
+- `delay_random050_no_topn` 四段完整后，相对 baseline 为 3/4 分段 final 不低、3/4 分段 MDD 不差、4/4 分段交易数更低，四段 final 合计多 `88976.39`，交易少 `309`。
+- 随机延迟逐段：2020_2021 final 多 `29134.29`、2022_2023 少 `20452.35`、2024 多 `5833.77`、2025_20260519 多 `74460.68`。
+- 对比 Top3/gap：`top3_ratio070_gap050_veto` 四段 final 合计只多 `4830.17`，且 2024 少 `13776.13`；随机延迟的收益改善更强但没有 TopN 机制含义，因此 TopN/gap 机制解释继续被负控压制。
+- `top3_gap_confirm1_veto` 首段 2020_2021 final `240661.17`，相对 baseline 多 `12523.86`，MDD 改善 `0.00593`，交易少 `200`，`topn_retained=48`；但只完成 1/4，不能推翻 random50 负控。
+
 ## 13. 支持证据
 
 - 平台已有 `choose_targets_with_topn_hold`，本轮新增 `strategy_params.topn_hold` 覆盖能力。
@@ -266,7 +276,7 @@ commission-only 逐段事实：
 - Top5 在 base-cost、slip2bps 和 commission-only 三种成本口径下均只有 2/4 分段 final 不低于 baseline，不能通过预注册收益门槛。
 - Top3/gap 虽在三种成本口径下保持 3/4 分段 final 不低于 baseline，但 2024 final 明显低于 baseline，且 MDD 只有 2/4 不差。
 - C35J 随机延迟负控已触发机制混淆：`random50` 相对 Top3/gap 为 3/4 分段 final 不低、3/4 分段 MDD 不差，四段合计 final 多 `93692.92`；因此 Top3/gap 不能 promote。
-- TC8U 自身 `formal_delay_negative_control` 尚未完成 20/20；截至 2026-06-07T18:06:48+08:00 为 7/20 完成，当前 `top3_ratio070_gap050_veto/2025_20260519` 约 23%，完成前只作为运行中交叉核对，不新增结论。
+- TC8U 自身 `formal_delay_negative_control` 尚未完成 20/20；截至 2026-06-07T20:05:06+08:00 为 17/20 完成，仍缺 `top3_gap_confirm1_veto` 三段，因此不能运行 strict 完成结论。但随机延迟四段已完整，负控强度较 7/20 阶段明显增强。
 - 本实验不能直接证明 A23 与 TopN 叠加有效。
 
 ## 15. 偏差诊断
@@ -280,7 +290,7 @@ commission-only 逐段事实：
 
 建议状态：`observe / cost_completed_negative_control_triggered_no_promote`
 
-理由：TopN 抗抖证明了“减少换仓”这个执行效果，也证明 Top3/gap 和 Top5 在两类成本扰动下没有因成本加倍而整体崩掉。但它仍没有证明“稳定提升收益”：Top5 在 2020/2022 两段持续低于 baseline；Top3/gap 在 2024 明显低于 baseline 且 MDD 稳定性不足。下游 C35J 又显示普通随机延迟能在 3/4 分段复制并超过 Top3/gap，机制解释被负控混淆。因此不改默认 hard5/A23，已同步 [[05_研究决策/DEC-20260607T095915Z-main-BP3L_TopN抗抖随机延迟负控后观察决策|BP3L observe 决策]]。
+理由：TopN 抗抖证明了“减少换仓”这个执行效果，也证明 Top3/gap 和 Top5 在两类成本扰动下没有因成本加倍而整体崩掉。但它仍没有证明“稳定提升收益”：Top5 在 2020/2022 两段持续低于 baseline；Top3/gap 在 2024 明显低于 baseline 且 MDD 稳定性不足。下游 C35J 又显示普通随机延迟能在 3/4 分段复制并超过 Top3/gap；TC8U 自身随机延迟四段完整后也显示 `+88976.39` 的合计 final 差，机制解释被负控进一步压制。因此不改默认 hard5/A23，已同步 [[05_研究决策/DEC-20260607T095915Z-main-BP3L_TopN抗抖随机延迟负控后观察决策|BP3L observe 决策]]。
 
 ## 17. 下一步
 

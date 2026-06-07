@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260607T103055Z-main-K3AC
 rd_id: RD-20260605T133318Z-main-H6V3
 status: active
-stage: formal_running_partial_concurrent_deviation
+stage: formal_running_partial_hard5_complete_a23_vs_hard5_pass
 owner: main
 created_at: 2026-06-07T10:30:55Z
-updated_at: 2026-06-07T19:43:36+08:00
+updated_at: 2026-06-07T19:58:40+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: score_hot_soft_budget_cost_pair
 decision_ids:
@@ -27,7 +27,7 @@ result_paths:
   - results/v2/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60_cost2x_slip2bps/
 summary_paths:
   - results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/formal/summary.json
-quality_gate: L1_partial_running
+quality_gate: L2_partial_a23_vs_hard5_pass_a22_missing
 subagent_call_ids:
   - SUB-20260607T104500Z-main-CST9
 subagent_exemption:
@@ -49,8 +49,8 @@ tags: [双池轮动, score过热, A23, 同成本配对, cost2x, formal]
 
 这次实验想知道：A23 高成本失败是不是只是因为它被拿去和普通成本 A22 比，还是在同样高成本下也比 hard5 或 A22 差。  
 我们原本预计：如果 A22/A23 的高分软预算真有结构价值，那么在同一个 `cost2x_slip2bps` 成本口径下，它们仍应比 hard5 更好；如果连同成本 hard5 都打不过，说明高分软预算对成本太脆弱。  
-实际看到：平台已生成 hard5/A22 两组 8 个 `cost2x_slip2bps` 配置，A23 4 段高成本证据可复用 LVV7；外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动 K3AC，当前 hard5 同成本已完成 2020_2021、2022_2023 与 2024 三段，正在运行 2025_20260519 段。非 strict 汇总显示 `completed_evidence_runs=7/12`、`completed_new_k3ac_runs=3/8`。  
-这说明：同成本配对已经产生部分 hard5 正式回测结果，但仍缺 hard5 2025 和全部 A22 同成本补跑，所以不能判断 A22/A23 是否通过。  
+实际看到：平台已生成 hard5/A22 两组 8 个 `cost2x_slip2bps` 配置，A23 4 段高成本证据可复用 LVV7；外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动 K3AC，当前 hard5 同成本四段已全部完成，A22 同成本正在运行 2020_2021 段。非 strict 汇总显示 `completed_evidence_runs=8/12`、`completed_new_k3ac_runs=4/8`。  
+这说明：A23 同成本已经通过相对 hard5 同成本的第一道门：4/4 分段 final 不低、4/4 分段 MDD 不差，四段 final 合计多 `37626.78`。但仍缺全部 A22 同成本补跑，所以不能判断 A23 是否只是 A22 cap70 的同义表达，也不能宣布 K3AC 通过。  
 但还不能说明：即使同成本通过，也还不能直接上线；仍需未来函数审计、样本外、负控和可能的换手约束验证。  
 下一步要做：等待当前 K3AC runner 补齐 hard5/A22 八段后，运行 strict 汇总；由于本次实际执行与预注册的“等待 TC8U 释放资源”不同，最终必须把并发启动作为执行偏差审计。
 
@@ -189,10 +189,11 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 - 两组新配置均已统一成本字段：`fee_params.commission_rate=0.0002`、`min_commission=5`、`r010b5_research_cost_override_enabled=true`、`r010b5_research_fund_slippage_bps=2.0`、`risk_config.execution.slippage_bps=2.0`。
 - `DRY_RUN=1 bash scripts/research/run_k3ac_a23_paired_cost.sh` 显示待运行范围为 hard5/A22 两组共 8 段；A23 cost2x/slip2bps 由汇总脚本从 R010-A23/state_tier_hot_budget 复用。
 - 外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动正式补跑；runner 日志根为 `results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/20260607T110543Z/`。
-- hard5 同成本已完成 `2020_2021`、`2022_2023` 与 `2024` 三段：`2020_2021` final `213091.47`、MDD `-21.6947%`、交易 `559`；`2022_2023` final `124873.55`、交易 `450`；`2024` final `163161.20`、MDD `-27.4756%`、交易 `279`。
-- 非 strict 汇总已刷新 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=7`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=3`。
-- 已完成三段中，A23 cost2x 相对 hard5 cost2x 为 3/3 final 不低、3/3 MDD 不差；2024 负控段 final 和 MDD 完全一致，`negative_control_2024_final_identical=true`。但 hard5 2025 和全部 A22 cost2x 仍缺失，不能提前通过。
-- 当前 runner 仍在运行 hard5 同成本 2025_20260519 段；最近观察进度为 2025-01-17、`3%`、权益 `105942.27`。
+- hard5 同成本四段已完成：`2020_2021` final `213091.47`、MDD `-21.6947%`、交易 `559`；`2022_2023` final `124873.55`、MDD `-28.2228%`、交易 `450`；`2024` final `163161.20`、MDD `-27.4756%`、交易 `279`；`2025_20260519` final `302895.29`、MDD `-16.9949%`、交易 `464`。
+- 非 strict 汇总已刷新 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=8`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=4`。
+- A23 cost2x 相对 hard5 cost2x 为 4/4 final 不低、4/4 MDD 不差；四段 final 差为 `+1141.38`、`+7321.61`、`0.00`、`+29163.79`，合计 `+37626.78`；MDD 差为 `+0.0052`、`+0.0348`、`0.0000`、`+0.0193`。
+- 2024 负控段 final、MDD、交易和费用完全一致，`negative_control_2024_final_identical=true`。
+- 当前 runner 正在运行 A22 cap70 同成本 2020_2021 段；最近观察进度为 2020-03-04、`8%`、权益 `102315.70`。
 
 ## 13. 支持证据
 
@@ -202,7 +203,7 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 
 ## 14. 反对证据
 
-- 当前 hard5/A22 的 8 段同成本正式回测只完成 3 段，不能判断 A22/A23 是否通过。
+- 当前 hard5/A22 的 8 段同成本正式回测完成 4 段，A22 四段仍缺失，不能判断 A22/A23 是否通过。
 - K3AC 仍依赖既有 A23 cost2x 结果的日志和 manifest；strict 汇总前必须确认 A23 4 段也具备 `exit_status=0`、manifest 和 summary。
 
 ## 15. 偏差诊断
@@ -212,9 +213,9 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 
 ## 16. 研究判断
 
-建议状态：`active / formal_running_partial_concurrent_deviation`
+建议状态：`active / formal_running_partial_hard5_complete_a23_vs_hard5_pass`
 
-理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。当前已有 partial formal 证据，但 formal 证据仍缺 hard5 2025 和 A22 四段；并发执行偏差需要最终审计。
+理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。当前 A23 已通过相对 hard5 同成本的收益/回撤门槛，但 formal 证据仍缺 A22 四段；并发执行偏差需要最终审计。
 
 ## 17. 下一步
 
