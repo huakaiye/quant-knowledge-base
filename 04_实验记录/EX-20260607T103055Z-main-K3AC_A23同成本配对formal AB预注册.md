@@ -2,15 +2,16 @@
 type: 实验记录
 ex_id: EX-20260607T103055Z-main-K3AC
 rd_id: RD-20260605T133318Z-main-H6V3
-status: active
-stage: formal_running_partial_a22_3of4_a23_vs_hard5_pass
+status: completed
+stage: formal_strict_pass_a22_preferred_a23_marginal
 owner: main
 created_at: 2026-06-07T10:30:55Z
-updated_at: 2026-06-07T20:44:46+08:00
+updated_at: 2026-06-07T21:01:08+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: score_hot_soft_budget_cost_pair
 decision_ids:
   - DEC-20260607T102206Z-main-XBWS
+  - DEC-20260607T125847Z-main-WQ8R
 lit_ids: []
 idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
@@ -27,9 +28,10 @@ result_paths:
   - results/v2/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60_cost2x_slip2bps/
 summary_paths:
   - results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/formal/summary.json
-quality_gate: L2_partial_a23_vs_hard5_pass_a22_3of4
+quality_gate: L2_formal_strict_pass_a22_preferred_a23_marginal
 subagent_call_ids:
   - SUB-20260607T104500Z-main-CST9
+  - SUB-20260607T130000Z-main-RSLT
 subagent_exemption:
 tags: [双池轮动, score过热, A23, 同成本配对, cost2x, formal]
 ---
@@ -42,6 +44,7 @@ tags: [双池轮动, score过热, A23, 同成本配对, cost2x, formal]
 - 策略档案：[[03_策略档案/STRAT-20260605T115651Z-main-DP00_双池轮动策略档案|双池轮动策略档案]]
 - 上游实验：[[04_实验记录/EX-20260607T101347Z-main-VX4J_A23事件归因与成本换手约束只读预注册|VX4J A23 事件归因与成本换手约束]]
 - 上游决策：[[05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策|XBWS A23 先做同成本配对决策]]
+- 结果决策：[[05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策|WQ8R K3AC 同成本后 A22 优先]]
 - 研究质量审计：[[08_方法论/研究质量审计规范|研究质量审计规范]]
 - 子代理调用台账：[[01_台账/子代理调用台账.csv|子代理调用台账]]
 
@@ -49,10 +52,10 @@ tags: [双池轮动, score过热, A23, 同成本配对, cost2x, formal]
 
 这次实验想知道：A23 高成本失败是不是只是因为它被拿去和普通成本 A22 比，还是在同样高成本下也比 hard5 或 A22 差。  
 我们原本预计：如果 A22/A23 的高分软预算真有结构价值，那么在同一个 `cost2x_slip2bps` 成本口径下，它们仍应比 hard5 更好；如果连同成本 hard5 都打不过，说明高分软预算对成本太脆弱。  
-实际看到：平台已生成 hard5/A22 两组 8 个 `cost2x_slip2bps` 配置，A23 4 段高成本证据可复用 LVV7；外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动 K3AC，当前 hard5 同成本四段已全部完成，A22 同成本已完成 2020_2021、2022_2023 与 2024，正在运行 2025_20260519。非 strict 汇总显示 `completed_evidence_runs=11/12`、`completed_new_k3ac_runs=7/8`。  
-这说明：A23 同成本已经通过相对 hard5 同成本的第一道门：4/4 分段 final 不低、4/4 分段 MDD 不差，四段 final 合计多 `37626.78`。A22 已完成的 3 段相对 hard5 也都不差；其中 2022_2023 的 A22 与 A23 完全一致，2024 三组完全一致且负控通过，说明这些段的改善主要来自 A22 cap70 或没有触发差异，而不是 A23 tier。A22 仍缺 2025_20260519，不能宣布 K3AC 通过。  
-但还不能说明：即使同成本通过，也还不能直接上线；仍需未来函数审计、样本外、负控和可能的换手约束验证。  
-下一步要做：等待当前 K3AC runner 补齐 hard5/A22 八段后，运行 strict 汇总；由于本次实际执行与预注册的“等待 TC8U 释放资源”不同，最终必须把并发启动作为执行偏差审计。
+实际看到：K3AC strict 已完成 12/12，`strict_missing=[]`，所有门槛通过。A22 cap70 同成本相对 hard5 同成本 4/4 final 不低、4/4 MDD 不差，四段 final 合计多 `37591.85`；A23 同成本相对 hard5 同成本 4/4 final 不低、4/4 MDD 不差，四段 final 合计多 `37626.78`。  
+这说明：高分软预算在同成本口径下确实优于 hard5，直接废除 hard5 不对，但用 A22 这种“高分少买一点”的方式比 hard5 一刀切更有证据。A23 虽然也通过 hard5 对照，但相对 A22 只多 `34.93`，其中 2025_20260519 还少 `287.02` 且 MDD 略深 `0.00020`，独立价值很小。  
+但还不能说明：A22 已可直接上线；仍需未来函数审计、原生字段清理、forward/OOS 或生产 shadow 边界验证。  
+下一步要做：把 A22 cap70 固化为 hard5 替代研究的首选挑战者，A23 只保留为 broad-blowoff 风险解释和备用挑战者；不继续为 A23 加复杂换手约束。
 
 ## 2. 研究背景
 
@@ -121,11 +124,11 @@ VX4J 已经把 A23 的路线收窄：A23 相对 A22 的独有贡献只来自 202
 | 参数搜索空间已预注册 | 通过 | 固定三组同成本对照，不调阈值 |
 | 样本内、验证集、样本外划分清楚 | 部分通过 | 沿用四段 formal；forward OOS 仍待后续 |
 | 邻近参数敏感性合理 | 上游通过 | LVV7 阈值邻域 24/24，非本实验搜索对象 |
-| 成本、滑点或换手扰动已检查 | 待完成 | 本实验就是同成本扰动正式检查 |
+| 成本、滑点或换手扰动已检查 | 通过 | 本实验完成 hard5/A22/A23 同成本 `cost2x_slip2bps` 12/12 strict |
 | 已做消融或负控 | 部分通过 | 2024 负控与 hard5/A22/A23 同成本对照 |
 | 未只报告最优结果 | 通过 | 固定 hard5/A22/A23 三组，全量汇总 |
 
-证据等级：`L0_configs_validated`
+证据等级：`L2_formal_strict_pass_a22_preferred`
 
 ## 10. 子代理调用记录
 
@@ -136,12 +139,13 @@ VX4J 已经把 A23 的路线收窄：A23 相对 A22 的独有贡献只来自 202
 子代理豁免：
 
 ```text
-不适用；本轮已调用只读配置审计子代理。
+不适用；本轮已调用只读配置审计和 strict 结果复核子代理。
 ```
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | SUB-20260607T104500Z-main-CST9 | Kierkegaard | SUBTASK-20260607T104500Z-main-CST9_子查_A23同成本配置审计 | gpt-5.3-codex-spark | 2026-06-07T10:45:00Z | R010-A11 hard5、R010-A22 cap70、R010-A23 cost2x 四段配置和策略成本字段 | 无 | 只读字段审计，未修改文件 | 只做路径和字段核对，不判断策略优劣 | A22 使用 A13 风险预算字段表达 cap70，A23 使用 A22 tier 字段；三组语义不同但同成本字段可统一 | 主控已按其建议生成 hard5/A22 cost2x 派生配置，并复用 A23 cost2x 证据 | 支持 K3AC 固定三组同成本配对，不扩 A23 阈值或换手参数 |
+| SUB-20260607T130000Z-main-RSLT | Kierkegaard | SUBTASK-20260607T130000Z-main-RSLT_K3AC同成本strict结果复核 | gpt-5.3-codex-spark | 2026-06-07T13:00:00Z | K3AC summary.json、comparison_pairs.csv、segment_metrics.csv、runner.log、runner.exit | 无 | 只读复核 strict 结果、CSV 和日志状态 | 只做证据完整性和门槛核对，不做策略优劣或 promote/park/kill 判断 | A23 四段为复用历史 run；2025 相对 A22 轻微变差；runner.log 主日志不如各段 run.log 直接 | 主控已复核 `summary.json`、`comparison_pairs.csv`、`segment_metrics.csv`、runner.exit=0 和 8 段 `exit_status=0` | 支持把 K3AC 记为“可采信 formal 同成本证据”，并保留 A23 复用与 2025 轻微落后的边界 |
 
 台账行：已同步 `01_台账/实验台账.csv` 与 `01_台账/子代理调用台账.csv`。
 
@@ -190,7 +194,7 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 - `DRY_RUN=1 bash scripts/research/run_k3ac_a23_paired_cost.sh` 显示待运行范围为 hard5/A22 两组共 8 段；A23 cost2x/slip2bps 由汇总脚本从 R010-A23/state_tier_hot_budget 复用。
 - 外部已用 `ALLOW_CONCURRENT_BACKTEST=1` 启动正式补跑；runner 日志根为 `results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/logs/formal/20260607T110543Z/`。
 - hard5 同成本四段已完成：`2020_2021` final `213091.47`、MDD `-21.6947%`、交易 `559`；`2022_2023` final `124873.55`、MDD `-28.2228%`、交易 `450`；`2024` final `163161.20`、MDD `-27.4756%`、交易 `279`；`2025_20260519` final `302895.29`、MDD `-16.9949%`、交易 `464`。
-- 非 strict 汇总已刷新 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=11`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=7`。
+- Strict 汇总已刷新 `summary/formal/summary.json`：`expected_evidence_runs=12`、`completed_evidence_runs=12`、`expected_new_k3ac_runs=8`、`completed_new_k3ac_runs=8`、`strict_missing=[]`、`all_gates_pass=true`。
 - A23 cost2x 相对 hard5 cost2x 为 4/4 final 不低、4/4 MDD 不差；四段 final 差为 `+1141.38`、`+7321.61`、`0.00`、`+29163.79`，合计 `+37626.78`；MDD 差为 `+0.0052`、`+0.0348`、`0.0000`、`+0.0193`。
 - 2024 负控段 final、MDD、交易和费用完全一致，`negative_control_2024_final_identical=true`。
 - A22 cap70 同成本 2020_2021 已完成：final `213910.90`、MDD `-21.3887%`、交易 `581`；相对 hard5 同成本多 `819.43`，MDD 改善 `0.00306`。
@@ -198,33 +202,36 @@ results/v2/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/summary/f
 - A22 cap70 同成本 2022_2023 已完成：final `132195.16`、MDD `-24.7470%`、交易 `466`；相对 hard5 同成本多 `7321.61`，MDD 改善 `0.03476`。
 - A23 cost2x 与 A22 cap70 cost2x 在 2022_2023 完全一致：final、MDD、交易和费用都相同，说明该段 A23 tier 没有新增贡献。
 - A22 cap70 同成本 2024 已完成：final `163161.20`、MDD `-27.4756%`、交易 `279`；与 hard5/A23 同成本完全一致，`negative_control_2024_final_spread=0.0`，负控通过。
-- 当前 runner 正在运行 A22 cap70 同成本 2025_20260519 段；最近观察进度为 2025-03-17、`14%`、权益 `121777.20`。
+- A22 cap70 同成本 2025_20260519 已完成：final `332346.10`、MDD `-15.0398%`、交易 `505`；相对 hard5 同成本多 `29450.81`，MDD 改善 `0.01955`。
+- A22 cap70 同成本相对 hard5 同成本四段合计 final 多 `37591.85`，4/4 final 不低、4/4 MDD 不差；交易数合计多 `79`，但 2025 段 fee 反而少 `102.81`，说明优势不是简单用多交易换收益。
+- A23 cost2x 相对 A22 cost2x 四段合计仅多 `34.93`：2020_2021 多 `321.95`，2022_2023 与 2024 完全一致，2025_20260519 少 `287.02` 且 MDD 略深 `0.00020`。这通过“不系统性弱于 A22”的门槛，但不足以证明 A23 复杂分层值得优先于 A22。
+- 证据审计：`segment_metrics.csv` 共 12 行，其中 `K3AC_new_run=8`、`reused_LVV7_A23_cost2x=4`；`cost_fields_ok/has_summary/log_exists/manifest_exists` 全部为 `True`，`exit_status` 全部为 `0`，`log_has_risk=False`。
 
 ## 13. 支持证据
 
 - 配置生成脚本、运行脚本、汇总脚本已通过语法检查。
 - 子代理 CST9 只读审计确认三组四段来源配置存在，且 A23 普通模板与 cost2x 版本差异只在成本、slippage、name/output_dir 等预期字段，因此 A23 cost2x 可作为 K3AC 正式证据复用。
+- 子代理 RSLT 只读复核给出“可采信”：12/12 证据完整、8/8 新跑完成、A23 复用证据日志和 manifest 存在、全部 strict gates 为 true。
 - 平台字段复核显示 hard5/A22 派生配置只改变成本口径、名称和输出目录，不改变 hard5 或 A22 的核心策略语义。
 
 ## 14. 反对证据
 
-- 当前 hard5/A22 的 8 段同成本正式回测完成 7 段，A22 仍缺 2025_20260519，不能判断 A22/A23 是否通过。
-- K3AC 仍依赖既有 A23 cost2x 结果的日志和 manifest；strict 汇总前必须确认 A23 4 段也具备 `exit_status=0`、manifest 和 summary。
+- A23 虽通过相对 hard5 的门槛，但相对 A22 的独立收益只有 `+34.93`，且 2025_20260519 低于 A22 `287.02`、MDD 略深；复杂度收益比不足。
+- K3AC 仍依赖既有 A23 cost2x 结果作为 4 段复用证据；本次审计确认其日志、manifest、summary 和 `exit_status=0` 齐全，但结论仍应标注为“8 段新跑 + 4 段复用”。
 
 ## 15. 偏差诊断
 
-- 执行偏差：本实验预注册时要求等待 TC8U 释放资源，但实际外部启动命令包含 `ALLOW_CONCURRENT_BACKTEST=1`，与 TC8U 同时运行。该偏差需要在最终 strict 后单独审计；若出现日志缺失、runner 非 0、错误标记或资源争用迹象，不得把本轮结果直接作为 clean formal。
-- 结果偏差风险：A23 相对 hard5 已有四段完整优势，但 A22 同成本仍缺 2025_20260519，不能替代最终 strict 汇总和执行偏差审计。
+- 执行偏差：本实验预注册时要求等待 TC8U 释放资源，但实际外部启动命令包含 `ALLOW_CONCURRENT_BACKTEST=1`，与 TC8U 同时运行。最终审计显示 runner.exit 为 `0`，8 个新跑 run log、manifest、summary、`exit_status=0` 齐全，未发现 `Traceback/ERROR/Exception/exit_status非0` 风险标记；因此该偏差需要记录，但不否决本轮 strict formal 证据。
+- 结果偏差风险：A22/A23 的 2025 优势仍可能依赖强趋势窗口；K3AC 证明同成本下 A22/A23 优于 hard5，但不能单独证明生产默认可立即切换。
 
 ## 16. 研究判断
 
-建议状态：`active / formal_running_partial_a22_3of4_a23_vs_hard5_pass`
+建议状态：`completed / formal_strict_pass_a22_preferred_a23_marginal`
 
-理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。当前 A23 已通过相对 hard5 同成本的收益/回撤门槛，A22 已有 3/3 完成分段相对 hard5 不差，2024 负控完全一致；但 formal 证据仍缺 A22 2025_20260519，并发执行偏差需要最终审计。
+理由：本实验只处理 XBWS 明确要求的公平成本对照，不改变默认 hard5，也不引入新换手参数。Strict 结果显示 A22 与 A23 均通过相对 hard5 的收益/回撤门槛，2024 负控完全一致；但 A23 相对 A22 只有极小合计增量且 2025 小幅更弱，因此下一轮应优先推进 A22 cap70 的原生实现、审计和 shadow 边界，而不是继续给 A23 增加复杂换手约束。
 
 ## 17. 下一步
 
-1. 继续监控当前 K3AC runner，直到 hard5/A22 8 段全部完成。
-2. 运行 `PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_k3ac_a23_paired_cost.py --strict`。
-3. 复核每段 `.run.log`、manifest、summary、`exit_status=0` 和 runner.exit；记录并发执行偏差是否影响 formal 可信度。
-4. 根据 strict 结果决定 A22/A23 是否还能进入下一轮换手约束研究。
+1. 新增结果决策 `DEC-20260607T125847Z-main-WQ8R`：A22 cap70 升为 hard5 替代首选挑战者；A23 保留为 broad-blowoff 风险解释和备用挑战者。
+2. 不直接切换生产默认；先做 A22 原生字段/日志清理、未来函数和配置差异审计。
+3. 若继续做交易层修复，应围绕 A22 开启最小 shadow 或 forward/OOS 边界验证；不为 A23 单独新开换手约束 formal。

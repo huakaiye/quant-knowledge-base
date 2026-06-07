@@ -28,7 +28,9 @@
 		{"id":"score-cap-a23-d09-decision","type":"file","file":"05_研究决策/DEC-20260606T083101Z-main-S7NP_A23_92_4_d09晋级为hard5替代首选候选.md","x":330,"y":2803,"width":540,"height":623},
 		{"id":"score-cap-a23-lvv7","type":"file","file":"04_实验记录/EX-20260606T075615Z-main-LVV7_A23完整邻域与cap成本稳健性补证.md","x":-650,"y":3605,"width":570,"height":250},
 		{"id":"score-cap-a23-vx4j","type":"file","file":"04_实验记录/EX-20260607T101347Z-main-VX4J_A23事件归因与成本换手约束只读预注册.md","x":-650,"y":3925,"width":570,"height":280},
-		{"id":"score-cap-a23-xbws","type":"file","file":"05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策.md","x":330,"y":3925,"width":540,"height":260}
+		{"id":"score-cap-a23-xbws","type":"file","file":"05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策.md","x":330,"y":3925,"width":540,"height":260},
+		{"id":"score-cap-k3ac","type":"file","file":"04_实验记录/EX-20260607T103055Z-main-K3AC_A23同成本配对formal AB预注册.md","x":-650,"y":4295,"width":570,"height":260},
+		{"id":"score-cap-k3ac-decision","type":"file","file":"05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策.md","x":330,"y":4295,"width":560,"height":250}
 	],
 	"edges":[
 		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
@@ -57,6 +59,8 @@
 		{"id":"edge-score-cap-a23-d09-lvv7","fromNode":"score-cap-a23-d09","fromSide":"bottom","toNode":"score-cap-a23-lvv7","toSide":"top","label":"完整邻域与成本"},
 		{"id":"edge-score-cap-a23-lvv7-vx4j","fromNode":"score-cap-a23-lvv7","fromSide":"bottom","toNode":"score-cap-a23-vx4j","toSide":"top","label":"事件归因"},
 		{"id":"edge-score-cap-a23-vx4j-xbws","fromNode":"score-cap-a23-vx4j","fromSide":"right","toNode":"score-cap-a23-xbws","toSide":"left","label":"revise 同成本配对"},
+		{"id":"edge-score-cap-a23-xbws-k3ac","fromNode":"score-cap-a23-xbws","fromSide":"bottom","toNode":"score-cap-k3ac","toSide":"top","label":"formal 同成本"},
+		{"id":"edge-score-cap-k3ac-decision","fromNode":"score-cap-k3ac","fromSide":"right","toNode":"score-cap-k3ac-decision","toSide":"left","label":"A22 preferred"},
 		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"}
 	]
 }
