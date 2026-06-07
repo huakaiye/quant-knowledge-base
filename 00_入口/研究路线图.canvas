@@ -30,7 +30,9 @@
 		{"id":"score-cap-a23-vx4j","type":"file","file":"04_实验记录/EX-20260607T101347Z-main-VX4J_A23事件归因与成本换手约束只读预注册.md","x":-650,"y":3925,"width":570,"height":280},
 		{"id":"score-cap-a23-xbws","type":"file","file":"05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策.md","x":330,"y":3925,"width":540,"height":260},
 		{"id":"score-cap-k3ac","type":"file","file":"04_实验记录/EX-20260607T103055Z-main-K3AC_A23同成本配对formal AB预注册.md","x":-650,"y":4295,"width":570,"height":260},
-		{"id":"score-cap-k3ac-decision","type":"file","file":"05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策.md","x":330,"y":4295,"width":560,"height":250}
+		{"id":"score-cap-k3ac-decision","type":"file","file":"05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策.md","x":330,"y":4295,"width":560,"height":250},
+		{"id":"score-cap-qxss","type":"file","file":"04_实验记录/EX-20260607T131336Z-main-QXSS_A22原生字段与未来函数审计预注册.md","x":-650,"y":4635,"width":570,"height":250},
+		{"id":"score-cap-a22n","type":"file","file":"04_实验记录/EX-20260607T131209Z-main-A22N_A22原生字段等价审计预注册.md","x":-650,"y":4945,"width":570,"height":270}
 	],
 	"edges":[
 		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
@@ -61,6 +63,8 @@
 		{"id":"edge-score-cap-a23-vx4j-xbws","fromNode":"score-cap-a23-vx4j","fromSide":"right","toNode":"score-cap-a23-xbws","toSide":"left","label":"revise 同成本配对"},
 		{"id":"edge-score-cap-a23-xbws-k3ac","fromNode":"score-cap-a23-xbws","fromSide":"bottom","toNode":"score-cap-k3ac","toSide":"top","label":"formal 同成本"},
 		{"id":"edge-score-cap-k3ac-decision","fromNode":"score-cap-k3ac","fromSide":"right","toNode":"score-cap-k3ac-decision","toSide":"left","label":"A22 preferred"},
+		{"id":"edge-score-cap-k3ac-qxss","fromNode":"score-cap-k3ac","fromSide":"bottom","toNode":"score-cap-qxss","toSide":"top","label":"原生字段审计"},
+		{"id":"edge-score-cap-qxss-a22n","fromNode":"score-cap-qxss","fromSide":"bottom","toNode":"score-cap-a22n","toSide":"top","label":"native 等价 formal"},
 		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"}
 	]
 }
