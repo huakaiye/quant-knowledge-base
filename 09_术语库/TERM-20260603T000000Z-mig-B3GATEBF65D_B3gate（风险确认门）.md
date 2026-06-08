@@ -2,26 +2,26 @@
 type: 术语
 term_id: TERM-20260603T000000Z-mig-B3GATEBF65D
 legacy_id: "B3 gate"
-migration_status: migrated_unverified
-evidence_level: legacy_raw
+migration_status: reviewed_readonly_baseline_skeleton
+evidence_level: L2_readonly_platform_review
 source_old_path: 'E:\【笔记库】\量化研究库\📖 概念\B3 gate.md'
 source_old_relative_path: '📖 概念/B3 gate.md'
 owner: mig
 created_at: 2026-06-05T12:00:00Z
-updated_at: 2026-06-05T12:00:00Z
-tags: [旧库迁移, 未复核]
+updated_at: 2026-06-08T01:12:30Z
+tags: [旧库迁移, 已复核, 防御骨架]
 ---
 
 # B3 gate（风险确认门）
 
 ## 迁移说明
 
-- 迁移状态：机械迁移，尚未人工复核。
+- 迁移状态：已由 [[04_实验记录/EX-20260608T005518Z-main-XK5W_B3Gate与TieredV2旧证据复核|XK5W]] 只读复核。
 - 原旧库 ID：`B3 gate`
 - 来源旧库路径：`E:\【笔记库】\量化研究库\📖 概念\B3 gate.md`
 - 新库 ID：`TERM-20260603T000000Z-mig-B3GATEBF65D`
-- 证据等级：legacy_raw
-- 结论边界：本页保留旧库内容，不代表新库已经采纳旧结论。
+- 证据等级：L2_readonly_platform_review
+- 结论边界：B3 gate 被新库采纳为防御仓位骨架的风险确认门；它只约束全弱持续状态下的风险仓，不是独立 alpha，也不代表旧实盘开关已通过当前生产 promote。
 
 ## 关联链接
 
@@ -30,6 +30,8 @@ tags: [旧库迁移, 未复核]
 - 关联策略：待复核
 - 迁移规范：[[08_方法论/研究库迁移规范|研究库迁移规范]]
 - 研究质量审计：[[08_方法论/研究质量审计规范|研究质量审计规范]]
+- 新库复核：[[04_实验记录/EX-20260608T005518Z-main-XK5W_B3Gate与TieredV2旧证据复核|B3Gate 与 TieredV2 旧证据复核]]
+- 当前决策：[[05_研究决策/DEC-20260608T005556Z-main-U7FN_B3Gate与TieredV2复核后保留为防御骨架决策|B3Gate 与 TieredV2 保留为防御骨架]]
 
 ## 复核清单
 

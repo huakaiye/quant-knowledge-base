@@ -2,26 +2,26 @@
 type: 研究方向
 rd_id: RD-20260603T000000Z-mig-ETF7D5F7
 legacy_id: "ETF双池防守系统"
-migration_status: migrated_unverified
-evidence_level: legacy_raw
+migration_status: reviewed_readonly_baseline_skeleton
+evidence_level: L2_readonly_platform_review
 source_old_path: 'E:\【笔记库】\量化研究库\🧭 方向\ETF双池防守系统.md'
 source_old_relative_path: '🧭 方向/ETF双池防守系统.md'
 owner: mig
 created_at: 2026-06-05T12:00:00Z
-updated_at: 2026-06-05T12:00:00Z
-tags: [旧库迁移, 未复核]
+updated_at: 2026-06-08T01:12:30Z
+tags: [旧库迁移, 已复核, 防御骨架]
 ---
 
 # B3 Gate + Tiered-v2 —— 防守系统研究总结
 
 ## 迁移说明
 
-- 迁移状态：机械迁移，尚未人工复核。
+- 迁移状态：已由 [[04_实验记录/EX-20260608T005518Z-main-XK5W_B3Gate与TieredV2旧证据复核|XK5W]] 只读复核。
 - 原旧库 ID：`ETF双池防守系统`
 - 来源旧库路径：`E:\【笔记库】\量化研究库\🧭 方向\ETF双池防守系统.md`
 - 新库 ID：`RD-20260603T000000Z-mig-ETF7D5F7`
-- 证据等级：legacy_raw
-- 结论边界：本页保留旧库内容，不代表新库已经采纳旧结论。
+- 证据等级：L2_readonly_platform_review
+- 结论边界：新库采纳 B3Gate/tiered-v2 为防御仓位骨架；旧库“实盘启用”和“四段验证通过”仅作为历史事实，不代表当前新库 production promote。
 
 ## 关联链接
 
@@ -30,6 +30,12 @@ tags: [旧库迁移, 未复核]
 - 关联策略：待复核
 - 迁移规范：[[08_方法论/研究库迁移规范|研究库迁移规范]]
 - 研究质量审计：[[08_方法论/研究质量审计规范|研究质量审计规范]]
+- 新库复核：[[04_实验记录/EX-20260608T005518Z-main-XK5W_B3Gate与TieredV2旧证据复核|B3Gate 与 TieredV2 旧证据复核]]
+- 当前决策：[[05_研究决策/DEC-20260608T005556Z-main-U7FN_B3Gate与TieredV2复核后保留为防御骨架决策|B3Gate 与 TieredV2 保留为防御骨架]]
+
+## 新库复核更新
+
+2026-06-08：XK5W 复核确认旧链条总体可作为防御骨架。关键证据是 tiered-v2 四段拼接收益 `+1468.34%`、最大回撤 `-27.13%`，相对 B3-gate-cap80 收益多 `117.30pp`、回撤改善 `2.88pp`。边界是：2020_2021 回撤未改善，2022_2023 收益低于 cap80 约 `1.01pp`，且缺完整成本扰动和错位负控。本页旧原文保留，但不再按“无条件实盘通过”解释。
 
 ## 复核清单
 
