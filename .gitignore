@@ -13,6 +13,7 @@ cache/
 .research.local.json
 .env.local
 research.local.json
+conflict-files-obsidian-git.md
 
 # 平台回测输出和运行日志应保存在本机 QUANT_PLATFORM_ROOT 指向的平台目录。
 results/
