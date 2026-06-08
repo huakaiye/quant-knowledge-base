@@ -2,26 +2,26 @@
 type: 术语
 term_id: TERM-20260603T000000Z-mig-TIEREDV252E3B
 legacy_id: "tiered-v2（分层强度防守）"
-migration_status: migrated_unverified
-evidence_level: legacy_raw
+migration_status: reviewed_readonly_baseline_skeleton
+evidence_level: L2_readonly_platform_review
 source_old_path: 'E:\【笔记库】\量化研究库\📖 概念\tiered-v2（分层强度防守）.md'
 source_old_relative_path: '📖 概念/tiered-v2（分层强度防守）.md'
 owner: mig
 created_at: 2026-06-05T12:00:00Z
-updated_at: 2026-06-05T12:00:00Z
-tags: [旧库迁移, 未复核]
+updated_at: 2026-06-08T01:12:30Z
+tags: [旧库迁移, 已复核, 防御骨架]
 ---
 
 # tiered-v2（分层强度防守）
 
 ## 迁移说明
 
-- 迁移状态：机械迁移，尚未人工复核。
+- 迁移状态：已由 [[04_实验记录/EX-20260608T005518Z-main-XK5W_B3Gate与TieredV2旧证据复核|XK5W]] 只读复核。
 - 原旧库 ID：`tiered-v2（分层强度防守）`
 - 来源旧库路径：`E:\【笔记库】\量化研究库\📖 概念\tiered-v2（分层强度防守）.md`
 - 新库 ID：`TERM-20260603T000000Z-mig-TIEREDV252E3B`
-- 证据等级：legacy_raw
-- 结论边界：本页保留旧库内容，不代表新库已经采纳旧结论。
+- 证据等级：L2_readonly_platform_review
+- 结论边界：新库采纳 tiered-v2 作为 B3Gate 生效后的防御仓位骨架，不把它视为新的 alpha promote，也不允许在旧证据上后验扩 cap50/cap40 或阈值网格。
 
 ## 关联链接
 
@@ -30,6 +30,8 @@ tags: [旧库迁移, 未复核]
 - 关联策略：待复核
 - 迁移规范：[[08_方法论/研究库迁移规范|研究库迁移规范]]
 - 研究质量审计：[[08_方法论/研究质量审计规范|研究质量审计规范]]
+- 新库复核：[[04_实验记录/EX-20260608T005518Z-main-XK5W_B3Gate与TieredV2旧证据复核|B3Gate 与 TieredV2 旧证据复核]]
+- 当前决策：[[05_研究决策/DEC-20260608T005556Z-main-U7FN_B3Gate与TieredV2复核后保留为防御骨架决策|B3Gate 与 TieredV2 保留为防御骨架]]
 
 ## 复核清单
 
