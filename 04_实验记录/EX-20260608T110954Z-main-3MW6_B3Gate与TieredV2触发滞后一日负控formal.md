@@ -2,11 +2,11 @@
 type: 实验记录
 ex_id: EX-20260608T110954Z-main-3MW6
 rd_id: RD-20260605T115651Z-main-DEF0
-status: active
-stage: preregistered_ready_to_run
+status: completed
+stage: formal_negative_control_passed_continue_review
 owner: main
 created_at: 2026-06-08T11:09:54Z
-updated_at: 2026-06-08T11:22:08Z
+updated_at: 2026-06-11T13:55:00+08:00
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 防御模块
 decision_ids:
@@ -23,7 +23,7 @@ result_paths:
   - results/v2/research/R010-B4/EX-20260608T110954Z-main-3MW6/logs/formal/
 summary_paths:
   - results/v2/research/R010-B4/EX-20260608T110954Z-main-3MW6/summary/formal/
-quality_gate: L3_formal_negative_control_pending
+quality_gate: L3_formal_negative_control_passed
 subagent_call_ids:
   - SUB-20260608T110000Z-main-B3NC
 subagent_exemption:
@@ -164,7 +164,7 @@ PYTHONUNBUFFERED=1 bash scripts/research/run_b3nc_trigger_lag_formal.sh
 PYTHONPATH=src python3 scripts/research/summarize_b3nc_trigger_lag_formal.py
 ```
 
-运行状态：尚未启动 formal。2026-06-08T11:22:08Z 检查到 WSL 内已有 `pid=661` 正在运行 `python3 src/run_v2_backtest.py --config configs/v2_migrate_80_small_cap.json`，脚本为避免抢占回测槽而拒绝并行启动。该进程不是本轮 B3NC 进程，主控未擅自终止。
+运行状态：formal 已完成并完成汇总。2026-06-11 复查时，结果目录中已有 8 个 `summary.json`；随后运行 `PYTHONPATH=src python3 scripts/research/summarize_b3nc_trigger_lag_formal.py` 生成 summary 与 lag audit。
 
 ### 可见进度与日志
 
@@ -185,28 +185,38 @@ results/v2/research/R010-B4/EX-20260608T110954Z-main-3MW6/summary/formal/
 
 | 指标 | 基准 | 本次 | 变化 | 解释 |
 | --- | --- | --- | --- | --- |
-| 8 个 formal run | 待执行 | 待执行 | 待执行 | 待执行 |
+| 8 个 formal run | 待执行 | 8/8 完成 | 完成 | cap80 lag1 与 tiered-v2 lag1 各 4 个分段均有 `summary.json`。 |
+| lag 字段审计 | 待检查 | 通过 | 通过 | `lag_audit_ok=true`，3084 条 action 均记录 lag applied，`source_after_trade_count=0`。 |
+| tiered-v2 非滞后复合收益 | `12.1507` | `11.4591` | lag1 低于非滞后 | 滞后一日削弱 tiered-v2 表现，支持及时触发具有信息量。 |
+| cap80 非滞后复合收益 | `11.3111` | cap80 lag1 `10.9427` | lag1 低于非滞后 | cap80 骨架也受滞后一日削弱。 |
+| tiered lag1 vs cap80 分段 final | cap80 成本门禁 | 2/4 不低 | 未复现成本门禁 | lag1 tiered 未能稳定复现 B3QC 中 tiered-v2 的优势。 |
+| tiered lag1 vs cap80 分段 MDD | cap80 成本门禁 | 1/4 不差 | 未复现成本门禁 | 滞后触发下回撤改善证据不足。 |
+| 2025_20260519 tiered lag1 vs cap80 | cap80 | `-6114.55` | 近端落后 | 近端分段不支持把 lag1 视为等价替代。 |
 
 ## 13. 支持证据
 
-- 待 formal 完成后填写。
+- `quality_gates.json` 给出 `lag_negative_control_pass=true`，`decision_hint=timely_trigger_supported_continue_review`。
+- `tiered_lag_compound_return=11.4591` 低于 `tiered_nonlag_compound_return=12.1507`，滞后一日不能完整复制非滞后表现。
+- `lag_audit.csv` 显示每个分段的 `source_after_trade_count=0`，未发现 lag source 日期越过 trade date 的边界问题。
 
 ## 14. 反对证据
 
-- 待 formal 完成后填写。
+- `tiered_v2_lag1_cost2x_slip2bps` 复合收益仍高于 `cap80_cost2x_slip2bps`，因此不能简单断言 tiered-v2 完全失效。
+- 但 tiered lag1 相对 cap80 的分段 final 仅 2/4 不低、MDD 仅 1/4 不差，且 2025_20260519 落后 `6114.55`，未复现 B3QC 成本门禁。
+- 本轮负控只证明及时触发有增量信息，不证明当前 live 阈值已经是最优，也不支持扩 cap 或阈值。
 
 ## 15. 偏差诊断
 
-待 formal 完成后填写。
+本轮审计重点是 `trigger_lag_days=1` 是否真实生效。汇总脚本审计 `lag_applied`、`lag_source_date` 与 `trade_date`，未发现 `lag_source_date >= trade_date`。需要注意：lag1 仍可能受状态自相关影响，因此不能把 lag1 仍有较高复合收益解释为滞后触发也有效；本轮判断以“是否复现非滞后成本门禁”为核心。
 
 ## 16. 研究判断
 
-建议状态：`active_preregistered`
+建议状态：`completed_negative_control_passed_continue_review`
 
-理由：预注册已完成，配置已生成，尚未运行 formal。
+理由：B3Gate/tiered-v2 触发滞后一日负控通过。lag1 未能复现非滞后 tiered-v2 的成本门禁优势，支持“及时风险触发”不是纯粹由低仓位或状态自相关复制出来。但这仍不是 production promote：tiered-v2 需要继续实盘 shadow、触发日归因和持久门槛敏感性审计。
 
 ## 17. 下一步
 
-1. 在 WSL 内运行 `scripts/research/run_b3nc_trigger_lag_formal.sh`。
-2. 运行 `scripts/research/summarize_b3nc_trigger_lag_formal.py`。
-3. 根据 summary 与 lag audit 补齐实际观察、支持证据、反对证据和决策卡。
+1. 新增或维护实盘 shadow 观察表，记录 `ma20_breadth`、`median20`、`top5_exhausted`、`gate_active` 与 state-only cap 候选。
+2. 不改 live 默认 cap、阈值、状态标签；如继续推进，只能新开“极端状态绕过/缩短持久确认”的预注册负控。
+3. 后续决策卡应把本轮结论收口为：B3/tiered-v2 继续保留为防御骨架，但不 production promote。
