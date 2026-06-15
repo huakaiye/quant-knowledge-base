@@ -56,7 +56,6 @@
 		{"id":"intraday-hot-lit-ry67","type":"file","file":"06_文献资料/00_待处理/LIT-20260613T002924Z-main-RY67_顶刊盘中交易与注意力机制灵感综述.md","x":4320,"y":1635,"width":570,"height":260},
 		{"id":"intraday-hot-u92n","type":"file","file":"04_实验记录/EX-20260613T010025Z-main-U92N_1309盘中热点事件数据可用性审计.md","x":3320,"y":2120,"width":570,"height":250},
 		{"id":"intraday-hot-vgmh","type":"file","file":"04_实验记录/EX-20260613T021659Z-main-VGMH_1309盘中热点事件收益面板预注册.md","x":4320,"y":2120,"width":570,"height":250},
-		{"id":"theme-forward-decision","type":"file","file":"05_研究决策/DEC-20260605T235338Z-main-WVZZ_主题簇强主线不作为正向放行条件.md","x":1330,"y":1880,"width":640,"height":530},
 		{"id":"theme-vvvn-decision","type":"file","file":"05_研究决策/DEC-20260607T235302Z-main-8GQQ_主题簇金融风险预算formal失败后暂停决策.md","x":1100,"y":2920,"width":640,"height":280},
 		{"id":"theme-vvvn","type":"file","file":"04_实验记录/EX-20260606T000758Z-main-VVVN_主题簇金融坏桶风险预算formal V2 AB预注册.md","x":2035,"y":2553,"width":500,"height":250},
 		{"id":"mom5-event-lfeh","type":"file","file":"05_研究决策/DEC-20260612T163918Z-main-LFEH_短线热点错过事件只读归因失败后暂停决策.md","x":2250,"y":2025,"width":570,"height":240},
@@ -71,7 +70,8 @@
 		{"id":"rd-mcyg-dm","type":"file","file":"02_研究方向/RD-20260614T115209Z-main-MCYG_双池轮动动量崩溃事前暴露管理.md","x":5750,"y":3860,"width":560,"height":260},
 		{"id":"ex-j7ef-dm","type":"file","file":"04_实验记录/EX-20260614T115454Z-main-J7EF_DM式事前暴露vs B3事后门控四段formal预注册.md","x":5750,"y":4200,"width":560,"height":260},
 		{"id":"rd-r25x-52wk","type":"file","file":"02_研究方向/RD-20260614T115209Z-main-R25X_双池轮动52周高点锚定信号.md","x":5750,"y":2680,"width":560,"height":260},
-		{"id":"lit-a9bk-52wk","type":"file","file":"06_文献资料/00_待处理/LIT-20260614T112631Z-main-A9BK_52周高点动量George Hwang 2004.md","x":5760,"y":2240,"width":560,"height":260}
+		{"id":"lit-a9bk-52wk","type":"file","file":"06_文献资料/00_待处理/LIT-20260614T112631Z-main-A9BK_52周高点动量George Hwang 2004.md","x":5760,"y":2240,"width":560,"height":260},
+		{"id":"theme-forward-decision","type":"file","file":"05_研究决策/DEC-20260605T235338Z-main-WVZZ_主题簇强主线不作为正向放行条件.md","x":1010,"y":1980,"width":640,"height":530}
 	],
 	"edges":[
 		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
