@@ -10,6 +10,8 @@ owner: mig
 created_at: 2026-06-05T12:00:00Z
 updated_at: 2026-06-08T01:12:30Z
 tags: [旧库迁移, 已复核, 防御骨架]
+status: observe
+parent_rd_id: RD-20260605T115651Z-main-DEF0
 ---
 
 # B3 Gate + Tiered-v2 —— 防守系统研究总结

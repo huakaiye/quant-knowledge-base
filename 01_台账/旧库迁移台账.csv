@@ -1,4 +1,4 @@
-﻿"new_id","mig_batch_id","old_id","kind","old_relative_path","new_relative_path","title","migration_status","evidence_level"
+"new_id","mig_batch_id","old_id","kind","old_relative_path","new_relative_path","title","migration_status","evidence_level"
 "STRAT-20260603T000000Z-mig-ETF67741","MIG-20260605T120000Z-mig-BATCH","ETF双池动量轮动","strategy","🏷️ 策略\ETF双池动量轮动.md","03_策略档案\STRAT-20260603T000000Z-mig-ETF67741_ETF双池动量轮动.md","ETF双池动量轮动","migrated_unverified","legacy_raw"
 "STRAT-20260603T000000Z-mig-R2ETF1108E","MIG-20260605T120000Z-mig-BATCH","R2 ETF动量轮动","strategy","🏷️ 策略\R2 ETF动量轮动.md","03_策略档案\STRAT-20260603T000000Z-mig-R2ETF1108E_R2ETF动量轮动.md","R2 ETF动量轮动","migrated_unverified","legacy_raw"
 "STRAT-20260603T000000Z-mig-TFCB1F","MIG-20260605T120000Z-mig-BATCH","动量趋势日内做T","strategy","🏷️ 策略\动量趋势日内做T.md","03_策略档案\STRAT-20260603T000000Z-mig-TFCB1F_动量趋势日内做T.md","动量趋势日内做T","migrated_unverified","legacy_raw"

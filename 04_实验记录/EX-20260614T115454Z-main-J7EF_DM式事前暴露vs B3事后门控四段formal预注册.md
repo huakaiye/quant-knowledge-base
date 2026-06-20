@@ -2,11 +2,11 @@
 type: 实验记录
 ex_id: EX-20260614T115454Z-main-J7EF
 rd_id: RD-20260614T115209Z-main-MCYG
-status: preregistered
-stage: preregistered
+status: active
+stage: engineering_smoke_warning
 owner: main
 created_at: 2026-06-14T11:54:54Z
-updated_at: 2026-06-14T18:00:00Z
+updated_at: 2026-06-17T14:45:00Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 防御模块事前暴露管理
 decision_ids: []
@@ -20,9 +20,9 @@ result_paths:
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/
 summary_paths:
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/summary/
-quality_gate: preregistered
+quality_gate: smoke_failed_not_formal
 subagent_call_ids: []
-subagent_exemption: "当前工具环境子代理调用频繁超时未返回,本轮预注册文档建设主控亲自执行;主控:main;时间:2026-06-14T18:00:00Z"
+subagent_exemption: "2026-06-14 预注册建设阶段:当前工具环境子代理调用频繁超时未返回,主控亲自执行;2026-06-17 工程烟测阶段:工具层未提供可合规调用的子代理入口且用户未显式要求子代理;主控:Codex/main"
 tags: [双池轮动, 防御模块, 动量崩溃, 事前暴露, 四段formal, 预注册]
 ---
 
@@ -45,10 +45,10 @@ tags: [双池轮动, 防御模块, 动量崩溃, 事前暴露, 四段formal, 预
 
 这次实验想知道：把防御模块的"事后回撤门控"（B3/tiered-v2，回撤发生后才动），升级为 Daniel-Moskowitz 的"事前动态暴露管理"——基于动量组合自身已实现方差和市场牛熊状态，在崩溃发生前主动降仓，是否能在 2020_2021 段改善 B3 未能改善的回撤。
 我们原本预计：DM 式事前降仓应在 2020_2021 broad blowoff 见顶前主动降仓，使该段 MDD 改善 ≥1pp；同时在 2025_20260519 强趋势段不显著错过收益。
-实际看到：待执行（预注册阶段）。
-这说明：待执行。
-但还不能说明：待执行。
-下一步要做：在平台新增 DM 式事前暴露逻辑（动量方差倒数 × 市场状态门控，默认关闭），生成 4 段 config + 随机方差负控，跑四段 formal。
+实际看到：平台已实现默认关闭的 DM 事前波动率暴露层，并完成 2024 段工程烟测与两个负控；主候选 `dm_var_state` 最终权益 `151635.12`，低于当前代码 baseline `167005.22`，最大回撤也更深（`-28.83%` vs `-26.99%`）。`dm_var_only` 和滞后方差负控同样低于 baseline，且滞后方差负控反而高于主候选。
+这说明：当前实现会在 2024 年 1 月、10-11 月、12 月等高波动趋势段缩仓，实际更像滞后式风险压缩，未解决用户指出的"策略滞后性太大"问题。
+但还不能说明：DM 顶刊方向整体无效，因为 2020_2021 核心段、2022_2023 和 2025_20260519 尚未跑完 formal；本轮结果只能作为工程烟测和机制警告，不能升级为正式结论。
+下一步要做：暂缓直接消耗完整 20 组 formal；若继续 DM，必须另开修订实验，重定义门控为"高动量后高波动/首次冲击前置"而不是 `unfavorable` 状态追认。优先转推更贴近滞后问题的盘中首次冲击或 rolling learning-to-rank。
 
 ## 2. 研究背景
 
@@ -143,6 +143,7 @@ Daniel-Moskowitz（2016, JFE）证明动量崩溃有强事前信号（策略自�
 
 ```text
 子代理豁免：当前工具环境子代理调用频繁超时未返回，本轮预注册文档建设主控亲自执行；主控：main；时间：2026-06-14T18:00:00Z。
+子代理豁免：工具层未提供可合规调用的子代理入口，且用户未显式要求子代理；主控：Codex；时间：2026-06-17T14:45:00Z。
 ```
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
@@ -155,15 +156,15 @@ Daniel-Moskowitz（2016, JFE）证明动量崩溃有强事前信号（策略自�
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/
-  - baseline_b3_tiered_v2_*.json (4 段)
-  - dm_exposure_var_state_*.json (4 段)
-  - dm_exposure_var_only_*.json (4 段)
-  - dm_exposure_shuffled_var_*.json (4 段)
-  - dm_exposure_cost2x_slip2bps_*.json (4 段)
+${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/formal/
+  - baseline_b3_tiered_v2/j7ef_baseline_b3_tiered_v2_*.json (4 段)
+  - dm_var_state/j7ef_dm_var_state_*.json (4 段)
+  - dm_var_only/j7ef_dm_var_only_*.json (4 段)
+  - dm_shuffled_var/j7ef_dm_shuffled_var_*.json (4 段)
+  - dm_var_state_cost2x_slip2bps/j7ef_dm_var_state_cost2x_slip2bps_*.json (4 段)
 ```
 
-**工程前置**：平台新增 DM 式事前暴露逻辑（动量组合已实现方差 + 市场状态门控，默认关闭）。作为 B3/tiered-v2 的补充层而非替代。市场基准 `510300.XSHG` 已接入。
+**工程前置**：平台已新增 DM 式事前暴露逻辑（目标组合上一交易日前已实现方差 + 状态门控，默认关闭）。作为 B3/tiered-v2 的补充层而非替代。2026-06-17 本轮实现实际使用目标组合自身过去 20 日日收益波动率；`dm_shuffled_var` 采用滞后 20 日旧窗口作为负控，不使用未来方差。
 
 ### 运行命令
 
@@ -179,35 +180,68 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/<run_id>/summary/
+${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/formal/<variant>/<segment>/<job_id>/summary.json
 ```
 
 ## 12. 实际观察
 
-待执行。
+2026-06-17 已完成 2024 段工程烟测与两个负控。该结果不是四段 formal 结论，只用于检查实现与机制方向。
 
-| 指标 | 基准 | 本次 | 变化 | 解释 |
-| --- | --- | --- | --- | --- |
+| 2024 段 | 最终权益 | 总收益 | 最大回撤 | 成交笔数 | 解释 |
+| --- | --- | --- | --- | --- | --- |
+| `baseline_b3_tiered_v2` | `167005.22` | `67.01%` | `-26.99%` | `281` | 当前代码下的同配置 B3/tiered-v2 基准 |
+| `dm_var_state` | `151635.12` | `51.64%` | `-28.83%` | `308` | 主候选明显落后，回撤更深 |
+| `dm_var_only` | `155427.00` | `55.43%` | `-29.15%` | `325` | 去掉状态门控仍落后，说明单纯波动率缩放也惩罚趋势 |
+| `dm_shuffled_var` | `159667.80` | `59.67%` | `-26.98%` | `297` | 滞后方差负控高于主候选，机制解释力不足 |
+
+触发统计：
+
+| 变体 | DM 判断条数 | 真实缩仓条数 | 最低 scale | 最高年化已实现波动率 | 观察 |
+| --- | --- | --- | --- | --- | --- |
+| `dm_var_state` | `242` | `70` | `0.70` | `119.82%` | 缩仓集中在 2024-01、2024-10/11、2024-12 |
+| `dm_var_only` | `242` | `102` | `0.70` | `119.82%` | 触发更多，结果仍落后 |
+| `dm_shuffled_var` | `242` | `43` | `0.70` | `82.13%` | 负控更少触发，反而更接近 baseline |
 
 ## 13. 支持证据
 
-待执行。
+- 平台实现默认关闭，只有 J7EF formal 配置显式打开 `dm_exposure_enabled`。
+- `dm_var_state` 日志中有 242 条 DM 判断记录，说明不是空跑；70 条真实缩仓，最低 scale 到 `0.70`。
+- 使用当前代码重跑 baseline 2024，结果与历史 B3/tiered-v2 2024 一致：最终权益 `167005.22`，最大回撤 `-26.99%`，排除旧结果版本漂移。
 
 ## 14. 反对证据
 
-待执行。
+- 2024 段主候选 `dm_var_state` 相对 baseline 少 `15370.10`，最大回撤加深约 `1.84pp`。
+- `dm_var_only` 也落后，说明问题不只是 `unfavorable` 状态门控。
+- `dm_shuffled_var` 负控高于主候选，说明真实近端方差在 2024 未提供比滞后方差更可靠的风险信息。
+- 触发日期覆盖部分反弹和主升段，行为上仍有"等波动升高后追认缩仓"的滞后特征。
 
 ## 15. 偏差诊断
 
-待执行。实验前预测和实际结果有哪些不一致？可能原因是什么？
+- 与预测不一致：原预测要求 2024 中性、不显著伤害；实际 2024 主候选收益和回撤同时恶化。
+- 可能原因 1：`unfavorable` 状态对 ETF 轮动来说太像事后确认，触发发生在波动已经升高之后。
+- 可能原因 2：ETF 双池的主要收益来自高波动趋势段，简单方差倒数缩放会系统性砍掉趋势 beta。
+- 可能原因 3：DM 原论文的"市场大跌后反弹期动量崩溃"机制，不能直接等价到当前 ETF 主题轮动的日内换强与高分预算问题。
+- 可能原因 4：当前门控没有识别"首次冲击"或"昨日未热后新热"，仍在用日线状态追认风险。
 
 ## 16. 研究判断
 
-建议状态：`preregistered`（待执行）
+建议状态：`active / engineering_smoke_warning`。
+
+当前不继续直接跑完整 20 组 formal。原因不是算力节省，而是 2024 工程烟测已经暴露机制方向不满足"减少滞后"目标：主候选和负控都显示波动率缩放在强趋势段惩罚收益，且不改善回撤。
+
+这不是 `park/kill` 最终决策；若要正式改变路线，需另补研究决策或新实验。
 
 ## 17. 下一步
 
-执行本预注册——实现 DM 式事前暴露逻辑，跑四段 formal + 负控。它能减少的不确定性：**事前暴露管理能否补充 B3/tiered-v2 在 2020_2021 段的回撤缺口。**
+短线下一步：
+
+1. 不把 J7EF 当前 `target_vol=30% + unfavorable/state_or_blowoff` 方案继续全量 formal。
+2. 若继续 DM 顶刊方向，必须新开修订实验：用"高动量后高波动"、"首次冲击后扩散失败"或"高分状态预算"重定义门控，不得在看过 2024 后直接改本实验参数。
+3. 优先推进更贴近滞后问题的两个方向：
+   - 盘中首次冲击：从已证伪的朴素 13:09 Top1 转成"昨日未热/首次盘中冲击/同主题扩散负控"。
+   - rolling learning-to-rank：用未来 H3/H5 超额、RankIC、TopK 命中和换手惩罚替代历史路径 R 方。
+
+本预注册原始目标仍是：**事前暴露管理能否补充 B3/tiered-v2 在 2020_2021 段的回撤缺口。**当前 2024 烟测提示应先修订机制再跑四段。
 
 若通过：向 promote_candidate 推进，作为 B3/tiered-v2 的补充层（不是替代）。
 若失败：明确 park 边界；若 var_only 退化为宽基 vol scale，则写入"动量 vol target 在 ETF 层面亦无效"的强化反证。

@@ -1,0 +1,206 @@
+{
+    "nodes":  [
+                  {
+                      "id":  "group-dynheat",
+                      "type":  "group",
+                      "label":  "动态资金热度单模块消融",
+                      "color":  "5",
+                      "x":  -40,
+                      "y":  -80,
+                      "width":  5760,
+                      "height":  800
+                  },
+                  {
+                      "id":  "dynheat-sc65",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260613T032439Z-main-SC65_双池轮动动态池资金热度因子复现验证.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-fwze",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260613T110126Z-main-FWZE_双池轮动动态资金热度单模块消融.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-h35f",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260613T032446Z-main-H35F_动态池资金热度因子策略还原四段回测预注册.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-lys9",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260613T064749Z-main-LYS9_动态池资金热度因子复现后路线判断.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-7hkt",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260613T110139Z-main-7HKT_动态资金热度复权门禁与单模块消融预注册.md",
+                      "text":  null,
+                      "x":  1280,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-hmz3",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260614T040739Z-main-HMZ3_ETF复权断点分类与可见日黑名单预注册.md",
+                      "text":  null,
+                      "x":  1920,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-lklt",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260614T042453Z-main-LKLT_ETF断点可见性证明与门禁V2预注册.md",
+                      "text":  null,
+                      "x":  2560,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-jvtq",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T152809Z-main-JVTQ_R7N7同口径隔离后复权门禁重跑.md",
+                      "text":  null,
+                      "x":  3200,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-vynr",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T154411Z-main-VYNR_R7N7同口径动态资金热度历史消融.md",
+                      "text":  null,
+                      "x":  3840,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-x7pj",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260613T122346Z-main-X7PJ_动态资金热度全量复权门禁失败后暂停formal.md",
+                      "text":  null,
+                      "x":  4480,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dynheat-3csw",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260617T203236Z-main-3CSW_动态资金热度同口径formal失败后暂停.md",
+                      "text":  null,
+                      "x":  5120,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  }
+              ],
+    "edges":  [
+                  {
+                      "id":  "edge-dynheat-sc65-h35f",
+                      "fromNode":  "dynheat-sc65",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-h35f",
+                      "toSide":  "left",
+                      "label":  "完整策略复现"
+                  },
+                  {
+                      "id":  "edge-dynheat-h35f-lys9",
+                      "fromNode":  "dynheat-h35f",
+                      "fromSide":  "bottom",
+                      "toNode":  "dynheat-lys9",
+                      "toSide":  "top",
+                      "label":  "整包 park"
+                  },
+                  {
+                      "id":  "edge-dynheat-lys9-fwze",
+                      "fromNode":  "dynheat-lys9",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-fwze",
+                      "toSide":  "left",
+                      "label":  "拆成单模块消融"
+                  },
+                  {
+                      "id":  "edge-dynheat-fwze-7hkt",
+                      "fromNode":  "dynheat-fwze",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-7hkt",
+                      "toSide":  "left",
+                      "label":  "复权门禁"
+                  },
+                  {
+                      "id":  "edge-dynheat-7hkt-x7pj",
+                      "fromNode":  "dynheat-7hkt",
+                      "fromSide":  "bottom",
+                      "toNode":  "dynheat-x7pj",
+                      "toSide":  "top",
+                      "label":  "gate_pass=false"
+                  },
+                  {
+                      "id":  "edge-dynheat-7hkt-hmz3",
+                      "fromNode":  "dynheat-7hkt",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-hmz3",
+                      "toSide":  "left",
+                      "label":  "断点分类"
+                  },
+                  {
+                      "id":  "edge-dynheat-hmz3-lklt",
+                      "fromNode":  "dynheat-hmz3",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-lklt",
+                      "toSide":  "left",
+                      "label":  "可见性门禁V2"
+                  },
+                  {
+                      "id":  "edge-dynheat-lklt-jvtq",
+                      "fromNode":  "dynheat-lklt",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-jvtq",
+                      "toSide":  "left",
+                      "label":  "R7N7同口径门禁通过"
+                  },
+                  {
+                      "id":  "edge-dynheat-jvtq-vynr",
+                      "fromNode":  "dynheat-jvtq",
+                      "fromSide":  "right",
+                      "toNode":  "dynheat-vynr",
+                      "toSide":  "left",
+                      "label":  "同口径formal失败"
+                  },
+                  {
+                      "id":  "edge-dynheat-vynr-3csw",
+                      "fromNode":  "dynheat-vynr",
+                      "fromSide":  "bottom",
+                      "toNode":  "dynheat-3csw",
+                      "toSide":  "top",
+                      "label":  "park FWZE"
+                  }
+              ]
+}

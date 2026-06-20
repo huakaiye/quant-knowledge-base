@@ -22,15 +22,17 @@
 
 1. `README.md`
 2. `00_入口/研究驾驶舱.md`
-3. `00_入口/当前状态.md`
-4. `08_方法论/命名与编号规范.md`
-5. `08_方法论/研究方法论.md`
-6. `08_方法论/研究质量审计规范.md`
-7. `08_方法论/平台协作规范.md`
-8. `08_方法论/子代理调度规范.md`
-9. `08_方法论/Obsidian使用规范.md`
-10. `08_方法论/Obsidian双向链接规范.md`
-11. 如涉及回测平台，用 `tools/Get-QuantPlatformRoot.ps1` 解析本机平台根路径后，再读 `<QUANT_PLATFORM_ROOT>\AGENTS.md`
+3. `00_入口/研究图谱.md`（机器可读图摘要素；资产变更后用 `tools/Build-ResearchGraph.ps1` 重建）
+4. `00_入口/当前状态.md`
+5. `08_方法论/命名与编号规范.md`
+6. `08_方法论/frontmatter规范.md`（字段 schema 单一事实源，新建资产必读）
+7. `08_方法论/研究方法论.md`
+8. `08_方法论/研究质量审计规范.md`
+9. `08_方法论/平台协作规范.md`
+10. `08_方法论/子代理调度规范.md`
+11. `08_方法论/Obsidian使用规范.md`
+12. `08_方法论/Obsidian双向链接规范.md`
+13. 如涉及回测平台，用 `tools/Get-QuantPlatformRoot.ps1` 解析本机平台根路径后，再读 `<QUANT_PLATFORM_ROOT>\AGENTS.md`
 
 ## 系统边界
 
@@ -191,9 +193,11 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONPATH=src python3 src/run_v2_backtest
 结束前至少检查：
 
 - 新增文件是否有唯一 ID。
-- `01_台账/` 是否同步更新。
+- 新增资产的 frontmatter 是否符合 `08_方法论/frontmatter规范.md`（必填字段、枚举值、字段名单复数）。
+- `01_台账/` 是否同步更新（file 列用 `/` 分隔符，时间用 ISO8601-Z，UTF-8 无 BOM）。
+- `00_入口/研究图谱.json` 和 `研究图谱.md` 是否需要用 `tools/Build-ResearchGraph.ps1` 重建（新增/修改资产后必须重建，验证 0 悬空边）。
 - `00_入口/研究驾驶舱.md` 是否需要更新。
-- `00_入口/研究路线图.canvas` 是否需要更新。
+- `00_入口/研究路线图.canvas` 或对应子 Canvas（`02_研究方向/<rd_id>_路线图.canvas`）是否需要更新；新增分支超过 10 个实验节点时拆子 Canvas，不压缩全局图。
 - 新术语是否进入 `09_术语库/术语库.md`。
 - 核心资产是否补齐 Obsidian 双向链接。
 - 子代理调用是否已记录到正文和 `01_台账/子代理调用台账.csv`，或是否写明豁免原因。

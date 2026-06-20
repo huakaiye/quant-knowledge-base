@@ -10,6 +10,8 @@ owner: mig
 created_at: 2026-06-05T12:00:00Z
 updated_at: 2026-06-10T15:50:00+08:00
 tags: [旧库迁移, 未复核]
+status: active
+parent_rd_id:
 ---
 
 # 小市值 T0 —— 研究总结

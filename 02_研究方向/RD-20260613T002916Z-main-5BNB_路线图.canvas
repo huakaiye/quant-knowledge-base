@@ -1,0 +1,260 @@
+{
+    "nodes":  [
+                  {
+                      "id":  "group-intraday",
+                      "type":  "group",
+                      "label":  "盘中热点与非R方排序",
+                      "color":  "5",
+                      "x":  -40,
+                      "y":  -440,
+                      "width":  5760,
+                      "height":  1620
+                  },
+                  {
+                      "id":  "intraday-hot-5bnb",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260613T002916Z-main-5BNB_双池轮动盘中可交易热点事件诊断.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "rd-q88k-nonr2",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260617T204310Z-main-Q88K_双池轮动顶刊非R方横截面排序.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "lit-6jy4-nonr2",
+                      "type":  "file",
+                      "file":  "06_文献资料/00_待处理/LIT-20260617T204327Z-main-6JY4_顶刊横截面机器学习与特征压缩综述.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  -360,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-u92n",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260613T010025Z-main-U92N_1309盘中热点事件数据可用性审计.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-lit-ry67",
+                      "type":  "file",
+                      "file":  "06_文献资料/00_待处理/LIT-20260613T002924Z-main-RY67_顶刊盘中交易与注意力机制灵感综述.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-vgmh",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260613T021659Z-main-VGMH_1309盘中热点事件收益面板预注册.md",
+                      "text":  null,
+                      "x":  1280,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-vzda",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T144855Z-main-VZDA_盘中首次冲击事件收益面板.md",
+                      "text":  null,
+                      "x":  1920,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-gu38",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T150155Z-main-GU38_R方之外滚动收缩排序只读面板.md",
+                      "text":  null,
+                      "x":  2560,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-myhu",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T151048Z-main-MYHU_R方之外Listwise排序与前热残余过滤只读面板.md",
+                      "text":  null,
+                      "x":  3200,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "intraday-hot-uayf",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260617T151659Z-main-UAYF_盘中热点与R方之外排序连续负控失败后park.md",
+                      "text":  null,
+                      "x":  3840,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-mtex-nonr2",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T204318Z-main-MTEX_非R方日频横截面排序只读面板.md",
+                      "text":  null,
+                      "x":  4480,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-9vwx-fixed-blend",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T210334Z-main-9VWX_固定非R方blend组合级formal.md",
+                      "text":  null,
+                      "x":  5120,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dec-w29b-nonr2",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260617T205354Z-main-W29B_非R方日频PLS失败后修订.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dec-9prq-fixed-blend",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260617T212155Z-main-9PRQ_固定非R方blend 2024 smoke失败后暂停.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  }
+              ],
+    "edges":  [
+                  {
+                      "id":  "edge-intraday-5bnb-lit-ry67",
+                      "fromNode":  "intraday-hot-5bnb",
+                      "fromSide":  "right",
+                      "toNode":  "intraday-hot-lit-ry67",
+                      "toSide":  "left",
+                      "label":  "顶刊机制灵感"
+                  },
+                  {
+                      "id":  "edge-intraday-5bnb-u92n",
+                      "fromNode":  "intraday-hot-5bnb",
+                      "fromSide":  "bottom",
+                      "toNode":  "intraday-hot-u92n",
+                      "toSide":  "top",
+                      "label":  "数据门禁通过"
+                  },
+                  {
+                      "id":  "edge-intraday-u92n-vgmh",
+                      "fromNode":  "intraday-hot-u92n",
+                      "fromSide":  "right",
+                      "toNode":  "intraday-hot-vgmh",
+                      "toSide":  "left",
+                      "label":  "收益面板失败"
+                  },
+                  {
+                      "id":  "edge-intraday-vgmh-vzda",
+                      "fromNode":  "intraday-hot-vgmh",
+                      "fromSide":  "right",
+                      "toNode":  "intraday-hot-vzda",
+                      "toSide":  "left",
+                      "label":  "首次冲击仍失败"
+                  },
+                  {
+                      "id":  "edge-intraday-vzda-gu38",
+                      "fromNode":  "intraday-hot-vzda",
+                      "fromSide":  "right",
+                      "toNode":  "intraday-hot-gu38",
+                      "toSide":  "left",
+                      "label":  "R²之外排序仍未过门槛"
+                  },
+                  {
+                      "id":  "edge-intraday-gu38-myhu",
+                      "fromNode":  "intraday-hot-gu38",
+                      "fromSide":  "right",
+                      "toNode":  "intraday-hot-myhu",
+                      "toSide":  "left",
+                      "label":  "listwise v2仍失败"
+                  },
+                  {
+                      "id":  "edge-intraday-myhu-uayf",
+                      "fromNode":  "intraday-hot-myhu",
+                      "fromSide":  "bottom",
+                      "toNode":  "intraday-hot-uayf",
+                      "toSide":  "top",
+                      "label":  "park 5BNB"
+                  },
+                  {
+                      "id":  "edge-intraday-uayf-rd-q88k",
+                      "fromNode":  "intraday-hot-uayf",
+                      "fromSide":  "right",
+                      "toNode":  "rd-q88k-nonr2",
+                      "toSide":  "left",
+                      "label":  "转向广义核心排序"
+                  },
+                  {
+                      "id":  "edge-lit-6jy4-rd-q88k",
+                      "fromNode":  "lit-6jy4-nonr2",
+                      "fromSide":  "bottom",
+                      "toNode":  "rd-q88k-nonr2",
+                      "toSide":  "top",
+                      "label":  "顶刊横截面方法"
+                  },
+                  {
+                      "id":  "edge-rd-q88k-ex-mtex",
+                      "fromNode":  "rd-q88k-nonr2",
+                      "fromSide":  "right",
+                      "toNode":  "ex-mtex-nonr2",
+                      "toSide":  "left",
+                      "label":  "只读面板失败"
+                  },
+                  {
+                      "id":  "edge-ex-mtex-dec-w29b",
+                      "fromNode":  "ex-mtex-nonr2",
+                      "fromSide":  "bottom",
+                      "toNode":  "dec-w29b-nonr2",
+                      "toSide":  "top",
+                      "label":  "revise"
+                  },
+                  {
+                      "id":  "edge-dec-w29b-ex-9vwx",
+                      "fromNode":  "dec-w29b-nonr2",
+                      "fromSide":  "right",
+                      "toNode":  "ex-9vwx-fixed-blend",
+                      "toSide":  "left",
+                      "label":  "fixed blend确认"
+                  },
+                  {
+                      "id":  "edge-ex-9vwx-dec-9prq",
+                      "fromNode":  "ex-9vwx-fixed-blend",
+                      "fromSide":  "bottom",
+                      "toNode":  "dec-9prq-fixed-blend",
+                      "toSide":  "top",
+                      "label":  "park Q88K"
+                  }
+              ]
+}

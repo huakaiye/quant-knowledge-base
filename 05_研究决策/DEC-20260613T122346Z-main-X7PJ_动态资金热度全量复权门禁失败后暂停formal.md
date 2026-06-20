@@ -2,11 +2,11 @@
 type: 研究决策
 dec_id: DEC-20260613T122346Z-main-X7PJ
 rd_ids: [RD-20260613T110126Z-main-FWZE]
-ex_ids: [EX-20260613T110139Z-main-7HKT, EX-20260614T040739Z-main-HMZ3, EX-20260614T042453Z-main-LKLT]
+ex_ids: [EX-20260613T110139Z-main-7HKT, EX-20260614T040739Z-main-HMZ3, EX-20260614T042453Z-main-LKLT, EX-20260614T070420Z-main-MJU9, EX-20260614T083146Z-main-R7N7, EX-20260617T152809Z-main-JVTQ]
 decision: revise
 owner: main
 created_at: 2026-06-13T12:23:46Z
-updated_at: 2026-06-14T04:45:00Z
+updated_at: 2026-06-17T15:36:00Z
 impact: direction
 subagent_call_ids: [SUB-20260613T113000Z-main-7HKTQA, SUB-20260614T040600Z-main-HMZ3RO, SUB-20260614T042100Z-main-LKLTRO]
 subagent_exemption:
@@ -22,6 +22,7 @@ tags: [ETF, 动态池, 资金热度, 复权门禁, data-gate, revise]
 - 上一张决策：[[05_研究决策/DEC-20260613T064749Z-main-LYS9_动态池资金热度因子复现后路线判断|LYS9 动态池资金热度复现后路线判断]]
 - 后续实验：[[04_实验记录/EX-20260614T040739Z-main-HMZ3_ETF复权断点分类与可见日黑名单预注册|HMZ3 ETF 复权断点分类与可见日黑名单]]
 - 后续实验：[[04_实验记录/EX-20260614T042453Z-main-LKLT_ETF断点可见性证明与门禁V2预注册|LKLT ETF 断点可见性证明与门禁 V2]]
+- 后续实验：[[04_实验记录/EX-20260617T152809Z-main-JVTQ_R7N7同口径隔离后复权门禁重跑|JVTQ R7N7 同口径隔离后复权门禁重跑]]
 - 研究驾驶舱：[[00_入口/研究驾驶舱|研究驾驶舱]]
 - 子代理调用台账：[[01_台账/子代理调用台账.csv|子代理调用台账]]
 
@@ -29,9 +30,9 @@ tags: [ETF, 动态池, 资金热度, 复权门禁, data-gate, revise]
 
 `revise`
 
-7HKT 全 ETF、全区间复权/份额断点门禁失败，动态池/资金热度单模块消融暂不进入收益 formal。HMZ3 和 LKLT 的后续诊断缩小了问题范围，但没有解除 formal 阻断。
+7HKT 全 ETF、全区间复权/份额断点门禁失败后，动态池/资金热度单模块消融曾暂不进入收益 formal。HMZ3、LKLT、MJU9 和 R7N7 的后续诊断缩小了问题范围；JVTQ 已确认 `R7N7-v1` 在历史同口径层面覆盖 MJU9/HMZ3 高风险阻断项。
 
-这不是否决动态池或资金热度因子，而是暂停它们的收益验证：在 ETF 复权、份额折算或异常价格断点没有被解释和处理前，继续跑 A1/A2/A3/A4 会把数据断点收益、剔除规则和真实信号混在一起，结论不可归因。
+这不是否决动态池或资金热度因子，也不是放开 live/实盘边界。当前决策修订为：允许另开 baseline/B0/G0/A1/A2/A3/A4 同口径历史收益消融预注册；所有变体必须应用同一套 `R7N7-v1` 历史局部剔除窗口。`source_repair_required_rows=37`、`live_repair_gate_pass=false`，所以仍不允许 shadow、实盘、live 自动过滤或源数据已修复表述。
 
 ## 这个节点是什么
 
@@ -90,19 +91,20 @@ tags: [ETF, 动态池, 资金热度, 复权门禁, data-gate, revise]
 
 2026-06-14 补充 2：LKLT 已证明三条 `515050.XSHG` factor-only 不能过滤事件日当天交易，只能从事件日收盘后的下一交易日形成 live block 候选；两段状态窗口的闭合依赖未来事件，只能做历史污染定位，不能原样实盘过滤。因此本决策仍维持 `revise`，收益 formal 不恢复。
 
+2026-06-17 补充 3：JVTQ 已把 `R7N7-v1` 接入 MJU9/7HKT/HMZ3/LKLT 同口径复核，MJU9 高风险残留 `0`、HMZ3 阻断类残留 `0`、变体覆盖失败 `0`、`same_day_live_usable_rows=0`，`historical_isolation_gate_pass=true`、`formal_resume_gate_pass=true`；但 `source_repair_required_rows=37`、`live_repair_gate_pass=false`。因此本决策的“暂停收益 formal”边界修订为：允许另开同口径历史收益消融预注册，不允许实盘/shadow/live 自动修复。
+
 仍然不确定的内容包括：
 
 - 哪些断点是真实份额折算，哪些是平台复权口径错误。
-- 能否完成 `515050.XSHG` 源头修复，或建立对 B0/G0 和所有候选变体同口径的保守隔离规则。
-- 修复门禁后，A1/A2/A3/A4 是否有任何分段能稳定优于当前双池基线。
+- 能否完成源头修复，解除 `37` 条高风险事件的 live/source repair 阻断。
+- 在同口径历史隔离后，A1/A2/A3/A4 是否有任何分段能稳定优于当前双池基线。
 
 ## 后续动作
 
-- 新开或续开 `515050.XSHG` 源头修复任务，优先查 factor-only 的平台数据口径。
-- 若短期不能修复，预注册保守隔离规则；规则必须对 B0/G0 和所有候选变体同口径。
-- 用同一处理口径重跑数据门禁，确保基线和候选变体面对同一数据条件。
-- 只有 `gate_pass=true` 或断点全部可解释且有可复现处理规则后，才允许生成 A1/A2/A3/A4 formal 配置。
-- 在门禁通过前，不改实盘默认、不写 shadow、不引入动态池或资金热度交易逻辑。
+- 新开同口径历史收益消融预注册，baseline/B0/G0/A1/A2/A3/A4 必须全部应用 `R7N7-v1` 历史局部剔除窗口。
+- 收益解释必须区分“剔除异常数据带来的改善”和“动态池/资金热度信号带来的改善”。
+- 继续保留源头修复任务，优先处理 factor-only、factor_jump_missing_real 和 price_jump_without_factor 的平台数据口径。
+- 不改实盘默认、不写 shadow、不把 `R7N7-v1` 写入 live 自动过滤或交易逻辑。
 
 ## 需要同步更新
 

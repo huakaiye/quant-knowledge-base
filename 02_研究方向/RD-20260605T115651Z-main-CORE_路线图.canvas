@@ -1,0 +1,254 @@
+{
+    "nodes":  [
+                  {
+                      "id":  "group-core",
+                      "type":  "group",
+                      "label":  "核心轮动（LM3D/顶刊信号）",
+                      "color":  "5",
+                      "x":  -40,
+                      "y":  -440,
+                      "width":  4480,
+                      "height":  1620
+                  },
+                  {
+                      "id":  "rd-t6r6-residual",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260614T115209Z-main-T6R6_双池轮动残差动量信号构造.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "rd-r25x-52wk",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260614T115209Z-main-R25X_双池轮动52周高点锚定信号.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "mom5-hot",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260611T080655Z-main-JN9Q_双池轮动5日路径动量与过热评分重标定.md",
+                      "text":  null,
+                      "x":  1280,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "lit-wevv-residual",
+                      "type":  "file",
+                      "file":  "06_文献资料/00_待处理/LIT-20260614T112624Z-main-WEVV_残差动量Blitz Huij Martens 2011.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  -360,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "lit-a9bk-52wk",
+                      "type":  "file",
+                      "file":  "06_文献资料/00_待处理/LIT-20260614T112631Z-main-A9BK_52周高点动量George Hwang 2004.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  -360,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "core-lm3d",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260606T012550Z-main-LM3D_动量评分尺度与Top4排名权重预注册.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "core-lm3d-yjrn",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260608T001011Z-main-YJRN_LM3D成本错位与未来函数审计闭环.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-rneu-residual",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260614T115453Z-main-RNEU_残差动量vs25日加权回归路径四段formal预注册.md",
+                      "text":  null,
+                      "x":  1280,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-mcws-52wk",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260614T115454Z-main-MCWS_52周高点组合信号四段formal预注册.md",
+                      "text":  null,
+                      "x":  1920,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "mom5-hot-9qrg",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260612T090249Z-main-9QRG_5日成交量与A22A23重标定formal预注册.md",
+                      "text":  null,
+                      "x":  2560,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "mom5-event-vz8q",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260612T163128Z-main-VZ8Q_双池轮动短线热点错过事件诊断.md",
+                      "text":  null,
+                      "x":  3200,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "mom5-event-22p6",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260612T163128Z-main-22P6_短线热点错过事件只读归因预注册.md",
+                      "text":  null,
+                      "x":  3840,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "core-lm3d-decision",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260606T122535Z-main-GAAL_LM3D年化尺度与Top4权重不进入默认逻辑.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "mom5-hot-5bu8",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260612T154000Z-main-5BU8_5日成交量与A22A23重标定失败后暂停主排序替代路线.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "mom5-event-lfeh",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260612T163918Z-main-LFEH_短线热点错过事件只读归因失败后暂停决策.md",
+                      "text":  null,
+                      "x":  1280,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  }
+              ],
+    "edges":  [
+                  {
+                      "id":  "edge-core-lm3d-decision",
+                      "fromNode":  "core-lm3d",
+                      "fromSide":  "right",
+                      "toNode":  "core-lm3d-decision",
+                      "toSide":  "left",
+                      "label":  "kill candidates"
+                  },
+                  {
+                      "id":  "edge-core-lm3d-yjrn",
+                      "fromNode":  "core-lm3d",
+                      "fromSide":  "bottom",
+                      "toNode":  "core-lm3d-yjrn",
+                      "toSide":  "top",
+                      "label":  "quality closure"
+                  },
+                  {
+                      "id":  "edge-mom5-hot-9qrg",
+                      "fromNode":  "mom5-hot",
+                      "fromSide":  "right",
+                      "toNode":  "mom5-hot-9qrg",
+                      "toSide":  "left",
+                      "label":  "volume+A22/A23 formal"
+                  },
+                  {
+                      "id":  "edge-mom5-hot-5bu8",
+                      "fromNode":  "mom5-hot-9qrg",
+                      "fromSide":  "bottom",
+                      "toNode":  "mom5-hot-5bu8",
+                      "toSide":  "top",
+                      "label":  "park route"
+                  },
+                  {
+                      "id":  "edge-mom5-hot-event-vz8q",
+                      "fromNode":  "mom5-hot-5bu8",
+                      "fromSide":  "right",
+                      "toNode":  "mom5-event-vz8q",
+                      "toSide":  "left",
+                      "label":  "事件级只读归因"
+                  },
+                  {
+                      "id":  "edge-mom5-event-22p6",
+                      "fromNode":  "mom5-event-vz8q",
+                      "fromSide":  "right",
+                      "toNode":  "mom5-event-22p6",
+                      "toSide":  "left",
+                      "label":  "readonly panel"
+                  },
+                  {
+                      "id":  "edge-mom5-event-lfeh",
+                      "fromNode":  "mom5-event-22p6",
+                      "fromSide":  "bottom",
+                      "toNode":  "mom5-event-lfeh",
+                      "toSide":  "top",
+                      "label":  "park event route"
+                  },
+                  {
+                      "id":  "edge-lit-wevv-rd-t6r6",
+                      "fromNode":  "lit-wevv-residual",
+                      "fromSide":  "bottom",
+                      "toNode":  "rd-t6r6-residual",
+                      "toSide":  "top",
+                      "label":  "来源文献"
+                  },
+                  {
+                      "id":  "edge-rd-t6r6-ex-rneu",
+                      "fromNode":  "rd-t6r6-residual",
+                      "fromSide":  "bottom",
+                      "toNode":  "ex-rneu-residual",
+                      "toSide":  "top",
+                      "label":  "预注册"
+                  },
+                  {
+                      "id":  "edge-lit-a9bk-rd-r25x",
+                      "fromNode":  "lit-a9bk-52wk",
+                      "fromSide":  "bottom",
+                      "toNode":  "rd-r25x-52wk",
+                      "toSide":  "top",
+                      "label":  "来源文献"
+                  },
+                  {
+                      "id":  "edge-rd-r25x-ex-mcws",
+                      "fromNode":  "rd-r25x-52wk",
+                      "fromSide":  "bottom",
+                      "toNode":  "ex-mcws-52wk",
+                      "toSide":  "top",
+                      "label":  "预注册"
+                  }
+              ]
+}

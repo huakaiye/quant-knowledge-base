@@ -1,0 +1,232 @@
+{
+    "nodes":  [
+                  {
+                      "id":  "group-defense",
+                      "type":  "group",
+                      "label":  "防御模块（DM崩溃保护）",
+                      "color":  "5",
+                      "x":  -40,
+                      "y":  -440,
+                      "width":  4480,
+                      "height":  1620
+                  },
+                  {
+                      "id":  "rd-mcyg-dm",
+                      "type":  "file",
+                      "file":  "02_研究方向/RD-20260614T115209Z-main-MCYG_双池轮动动量崩溃事前暴露管理.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  0,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "lit-vy4k-dm",
+                      "type":  "file",
+                      "file":  "06_文献资料/00_待处理/LIT-20260614T112631Z-main-VY4K_动量崩溃保护Daniel Moskowitz 2016.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  -360,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "lit-rdha-fit-target",
+                      "type":  "file",
+                      "file":  "06_文献资料/00_待处理/LIT-20260617T220410Z-main-RDHA_顶刊拟合目标替代与动量崩溃前置暴露.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  -360,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-j7ef-dm",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260614T115454Z-main-J7EF_DM式事前暴露vs B3事后门控四段formal预注册.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-ljq7-dm-label",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T212938Z-main-LJQ7_DM前置风险标签只读面板.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-xa5u-d2-overheat",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T213634Z-main-XA5U_过热动量前置暴露D2 smoke.md",
+                      "text":  null,
+                      "x":  1280,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-b6fl-d2-formal",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260617T220410Z-main-B6FL_过热动量D2四段formal与负控.md",
+                      "text":  null,
+                      "x":  1920,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-k3yl-crash-prob",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260618T030506Z-main-K3YL_崩溃概率与下尾分位数只读面板.md",
+                      "text":  null,
+                      "x":  2560,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-5lls-d3-strict",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260618T032837Z-main-5LLS_过热高波低广度严格动作smoke.md",
+                      "text":  null,
+                      "x":  3200,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "ex-z78j-state-transition",
+                      "type":  "file",
+                      "file":  "04_实验记录/EX-20260618T052620Z-main-Z78J_过热后趋势继续判别只读面板.md",
+                      "text":  null,
+                      "x":  3840,
+                      "y":  440,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dec-uarf-d2-overheat",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260617T215629Z-main-UARF_过热动量D2 smoke通过后进入formal.md",
+                      "text":  null,
+                      "x":  0,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  },
+                  {
+                      "id":  "dec-ur6s-d2-overheat-fail",
+                      "type":  "file",
+                      "file":  "05_研究决策/DEC-20260618T024516Z-main-UR6S_过热动量D2四段formal失败后暂停推广.md",
+                      "text":  null,
+                      "x":  640,
+                      "y":  900,
+                      "width":  560,
+                      "height":  240
+                  }
+              ],
+    "edges":  [
+                  {
+                      "id":  "edge-lit-vy4k-rd-mcyg",
+                      "fromNode":  "lit-vy4k-dm",
+                      "fromSide":  "bottom",
+                      "toNode":  "rd-mcyg-dm",
+                      "toSide":  "top",
+                      "label":  "来源文献"
+                  },
+                  {
+                      "id":  "edge-rd-mcyg-ex-j7ef",
+                      "fromNode":  "rd-mcyg-dm",
+                      "fromSide":  "bottom",
+                      "toNode":  "ex-j7ef-dm",
+                      "toSide":  "top",
+                      "label":  "原DM smoke警告"
+                  },
+                  {
+                      "id":  "edge-j7ef-ljq7",
+                      "fromNode":  "ex-j7ef-dm",
+                      "fromSide":  "right",
+                      "toNode":  "ex-ljq7-dm-label",
+                      "toSide":  "left",
+                      "label":  "只读标签修订"
+                  },
+                  {
+                      "id":  "edge-ljq7-xa5u",
+                      "fromNode":  "ex-ljq7-dm-label",
+                      "fromSide":  "right",
+                      "toNode":  "ex-xa5u-d2-overheat",
+                      "toSide":  "left",
+                      "label":  "overheat-only smoke通过"
+                  },
+                  {
+                      "id":  "edge-xa5u-uarf",
+                      "fromNode":  "ex-xa5u-d2-overheat",
+                      "fromSide":  "bottom",
+                      "toNode":  "dec-uarf-d2-overheat",
+                      "toSide":  "top",
+                      "label":  "formal candidate"
+                  },
+                  {
+                      "id":  "edge-lit-rdha-rd-mcyg",
+                      "fromNode":  "lit-rdha-fit-target",
+                      "fromSide":  "bottom",
+                      "toNode":  "rd-mcyg-dm",
+                      "toSide":  "top",
+                      "label":  "拟合目标替代"
+                  },
+                  {
+                      "id":  "edge-uarf-b6fl",
+                      "fromNode":  "dec-uarf-d2-overheat",
+                      "fromSide":  "right",
+                      "toNode":  "ex-b6fl-d2-formal",
+                      "toSide":  "left",
+                      "label":  "四段formal预注册"
+                  },
+                  {
+                      "id":  "edge-xa5u-b6fl",
+                      "fromNode":  "ex-xa5u-d2-overheat",
+                      "fromSide":  "right",
+                      "toNode":  "ex-b6fl-d2-formal",
+                      "toSide":  "left",
+                      "label":  "固定候选+负控"
+                  },
+                  {
+                      "id":  "edge-b6fl-ur6s",
+                      "fromNode":  "ex-b6fl-d2-formal",
+                      "fromSide":  "bottom",
+                      "toNode":  "dec-ur6s-d2-overheat-fail",
+                      "toSide":  "top",
+                      "label":  "formal失败→revise"
+                  },
+                  {
+                      "id":  "edge-ur6s-k3yl",
+                      "fromNode":  "dec-ur6s-d2-overheat-fail",
+                      "fromSide":  "right",
+                      "toNode":  "ex-k3yl-crash-prob",
+                      "toSide":  "left",
+                      "label":  "只读概率/下尾评分"
+                  },
+                  {
+                      "id":  "edge-k3yl-5lls",
+                      "fromNode":  "ex-k3yl-crash-prob",
+                      "fromSide":  "right",
+                      "toNode":  "ex-5lls-d3-strict",
+                      "toSide":  "left",
+                      "label":  "极小动作smoke失败"
+                  },
+                  {
+                      "id":  "edge-5lls-z78j",
+                      "fromNode":  "ex-5lls-d3-strict",
+                      "fromSide":  "right",
+                      "toNode":  "ex-z78j-state-transition",
+                      "toSide":  "left",
+                      "label":  "状态转移守门失败"
+                  }
+              ]
+}
