@@ -1,656 +1,402 @@
 {
-    "nodes":  [
-                  {
-                      "id":  "group-scorecap",
-                      "type":  "group",
-                      "label":  "score过热拥挤机制主线",
-                      "color":  "5",
-                      "x":  -40,
-                      "y":  -80,
-                      "width":  16640,
-                      "height":  1260
-                  },
-                  {
-                      "id":  "score-cap",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T133318Z-main-H6V3_双池轮动score过热拥挤机制模块.md",
-                      "text":  null,
-                      "x":  0,
-                      "y":  0,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a25-wemy",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260619T083919Z-main-WEMY_双池轮动A股撤离追高状态机.md",
-                      "text":  null,
-                      "x":  640,
-                      "y":  0,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a20",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260605T184943Z-main-Q3YU_A20-A21市场状态高分延续放行formal V2与路径依赖反证.md",
-                      "text":  null,
-                      "x":  0,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a22",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260605T220429Z-main-EQFU_A22高分状态风险预算formal V2四段回测.md",
-                      "text":  null,
-                      "x":  640,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260606T073600Z-main-R8M6_A23状态分层预算88_6探索四段回测.md",
-                      "text":  null,
-                      "x":  1280,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23-d09",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260606T083100Z-main-D9QK_A23状态分层预算92_4_d09四段回测.md",
-                      "text":  null,
-                      "x":  1920,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23-lvv7",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260606T075615Z-main-LVV7_A23完整邻域与cap成本稳健性补证.md",
-                      "text":  null,
-                      "x":  2560,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23-vx4j",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T101347Z-main-VX4J_A23事件归因与成本换手约束只读预注册.md",
-                      "text":  null,
-                      "x":  3200,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23-xbws",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策.md",
-                      "text":  null,
-                      "x":  3840,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-k3ac",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T103055Z-main-K3AC_A23同成本配对formal AB预注册.md",
-                      "text":  null,
-                      "x":  4480,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-qxss",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T131336Z-main-QXSS_A22原生字段与未来函数审计预注册.md",
-                      "text":  null,
-                      "x":  5120,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a22n",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T131209Z-main-A22N_A22原生字段等价审计预注册.md",
-                      "text":  null,
-                      "x":  5760,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-ekz8",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T152511Z-main-EKZ8_A22原生字段日志与未来函数二次审计.md",
-                      "text":  null,
-                      "x":  6400,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-qtfv",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T154134Z-main-QTFV_A22原生forward shadow边界验证预注册.md",
-                      "text":  null,
-                      "x":  7040,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-nr75",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T190303Z-main-NR75_A22生产前默认关闭与未来函数静态门禁.md",
-                      "text":  null,
-                      "x":  7680,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-ya5r",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T192201Z-main-YA5R_A22默认关闭observe硬5路径隔离审计.md",
-                      "text":  null,
-                      "x":  8320,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-lwc4",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260607T215224Z-main-LWC4_A22默认关闭observe近端forward样本门禁.md",
-                      "text":  null,
-                      "x":  8960,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-gnqh",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260608T010245Z-main-GNQH_A22收益有效性证据闭环只读复核.md",
-                      "text":  null,
-                      "x":  9600,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a25-urwl",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260619T083927Z-main-URWL_A25撤离修复追高状态机只读面板预注册.md",
-                      "text":  null,
-                      "x":  10240,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a25-56r5",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260619T084542Z-main-56R5_A25首版状态机失败后转外部注意力与订单层决策.md",
-                      "text":  null,
-                      "x":  10880,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a26-mkg3",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260619T091618Z-main-MKG3_A26成交换手涨停压力修复派发只读面板.md",
-                      "text":  null,
-                      "x":  11520,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a26-dnla",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260619T092251Z-main-DNLA_A26本地成交换手压力失败后停止可见字段扩展.md",
-                      "text":  null,
-                      "x":  12160,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a27-6txm",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260619T093316Z-main-6TXM_A27真实订单生命周期与外部注意力入口门禁.md",
-                      "text":  null,
-                      "x":  12800,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a27-zdd3",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260619T093740Z-main-ZDD3_A27入口门禁失败后暂停WEMY实证推进.md",
-                      "text":  null,
-                      "x":  13440,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a27-hjgj",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260619T100752Z-main-HJGJ_排除QMT后WEMY转非QMT外部数据路线.md",
-                      "text":  null,
-                      "x":  14080,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-wemy-66qh",
-                      "type":  "file",
-                      "file":  "06_文献资料/00_待处理/LIT-20260619T104218Z-main-66QH_顶刊K线成交量过热修复因子机制综述.md",
-                      "text":  null,
-                      "x":  14720,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a28-un96",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260619T113348Z-main-UN96_A28非QMT量价结构状态机数据门禁.md",
-                      "text":  null,
-                      "x":  15360,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a28-5e5g",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260619T114146Z-main-5E5G_A28量价结构门禁通过后转过热veto正式实验.md",
-                      "text":  null,
-                      "x":  16000,
-                      "y":  440,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a20-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260605T184943Z-main-CKNC_A20进入候选但不替代默认hard5且A21不晋级.md",
-                      "text":  null,
-                      "x":  0,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a22-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260605T220430Z-main-9QNJ_A22cap70晋级为hard5替代首选候选但暂不默认上线.md",
-                      "text":  null,
-                      "x":  640,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260606T073601Z-main-VK2A_A23不替代A22cap70但保留为风险平衡挑战者.md",
-                      "text":  null,
-                      "x":  1280,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a23-d09-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260606T083101Z-main-S7NP_A23_92_4_d09晋级为hard5替代首选候选.md",
-                      "text":  null,
-                      "x":  1920,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-k3ac-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策.md",
-                      "text":  null,
-                      "x":  2560,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-a22n-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260607T151252Z-main-A22N_A22原生字段等价通过后工程化决策.md",
-                      "text":  null,
-                      "x":  3200,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-qtfv-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260607T185223Z-main-HH4B_A22原生forward shadow边界通过后观察决策.md",
-                      "text":  null,
-                      "x":  3840,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  },
-                  {
-                      "id":  "score-cap-gnqh-decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260608T010610Z-main-G9HZ_A22收益有效性闭环后维持观察决策.md",
-                      "text":  null,
-                      "x":  4480,
-                      "y":  900,
-                      "width":  560,
-                      "height":  240
-                  }
-              ],
-    "edges":  [
-                  {
-                      "id":  "edge-score-cap-a20",
-                      "fromNode":  "score-cap",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a20",
-                      "toSide":  "top",
-                      "label":  "formal candidate"
-                  },
-                  {
-                      "id":  "edge-score-cap-a20-decision",
-                      "fromNode":  "score-cap-a20",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-a20-decision",
-                      "toSide":  "left",
-                      "label":  "promote candidate"
-                  },
-                  {
-                      "id":  "edge-score-cap-a20-a22",
-                      "fromNode":  "score-cap-a20",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a22",
-                      "toSide":  "top",
-                      "label":  "非二元预算"
-                  },
-                  {
-                      "id":  "edge-score-cap-a22-decision",
-                      "fromNode":  "score-cap-a22",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-a22-decision",
-                      "toSide":  "left",
-                      "label":  "current candidate"
-                  },
-                  {
-                      "id":  "edge-score-cap-a22-a23",
-                      "fromNode":  "score-cap-a22",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a23",
-                      "toSide":  "top",
-                      "label":  "状态分层挑战者"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-decision",
-                      "fromNode":  "score-cap-a23",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-a23-decision",
-                      "toSide":  "left",
-                      "label":  "revise challenger"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-d09",
-                      "fromNode":  "score-cap-a23",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a23-d09",
-                      "toSide":  "top",
-                      "label":  "dispersion 修正"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-d09-decision",
-                      "fromNode":  "score-cap-a23-d09",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-a23-d09-decision",
-                      "toSide":  "left",
-                      "label":  "promote current"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-d09-lvv7",
-                      "fromNode":  "score-cap-a23-d09",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a23-lvv7",
-                      "toSide":  "top",
-                      "label":  "完整邻域与成本"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-lvv7-vx4j",
-                      "fromNode":  "score-cap-a23-lvv7",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a23-vx4j",
-                      "toSide":  "top",
-                      "label":  "事件归因"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-vx4j-xbws",
-                      "fromNode":  "score-cap-a23-vx4j",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-a23-xbws",
-                      "toSide":  "left",
-                      "label":  "revise 同成本配对"
-                  },
-                  {
-                      "id":  "edge-score-cap-a23-xbws-k3ac",
-                      "fromNode":  "score-cap-a23-xbws",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-k3ac",
-                      "toSide":  "top",
-                      "label":  "formal 同成本"
-                  },
-                  {
-                      "id":  "edge-score-cap-k3ac-decision",
-                      "fromNode":  "score-cap-k3ac",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-k3ac-decision",
-                      "toSide":  "left",
-                      "label":  "A22 preferred"
-                  },
-                  {
-                      "id":  "edge-score-cap-k3ac-qxss",
-                      "fromNode":  "score-cap-k3ac",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-qxss",
-                      "toSide":  "top",
-                      "label":  "原生字段审计"
-                  },
-                  {
-                      "id":  "edge-score-cap-qxss-a22n",
-                      "fromNode":  "score-cap-qxss",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a22n",
-                      "toSide":  "top",
-                      "label":  "native 等价 strict 通过"
-                  },
-                  {
-                      "id":  "edge-score-cap-a22n-decision",
-                      "fromNode":  "score-cap-a22n",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-a22n-decision",
-                      "toSide":  "left",
-                      "label":  "engineering equivalent"
-                  },
-                  {
-                      "id":  "edge-score-cap-a22n-ekz8",
-                      "fromNode":  "score-cap-a22n",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-ekz8",
-                      "toSide":  "top",
-                      "label":  "日志/日期 strict 通过"
-                  },
-                  {
-                      "id":  "edge-score-cap-ekz8-qtfv",
-                      "fromNode":  "score-cap-ekz8",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-qtfv",
-                      "toSide":  "top",
-                      "label":  "forward/shadow strict 通过"
-                  },
-                  {
-                      "id":  "edge-score-cap-qtfv-decision",
-                      "fromNode":  "score-cap-qtfv",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-qtfv-decision",
-                      "toSide":  "left",
-                      "label":  "observe default-off"
-                  },
-                  {
-                      "id":  "edge-score-cap-qtfv-nr75",
-                      "fromNode":  "score-cap-qtfv",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-nr75",
-                      "toSide":  "top",
-                      "label":  "静态默认关闭门禁"
-                  },
-                  {
-                      "id":  "edge-score-cap-nr75-ya5r",
-                      "fromNode":  "score-cap-nr75",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-ya5r",
-                      "toSide":  "top",
-                      "label":  "hard5 observe 隔离"
-                  },
-                  {
-                      "id":  "edge-score-cap-ya5r-lwc4",
-                      "fromNode":  "score-cap-ya5r",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-lwc4",
-                      "toSide":  "top",
-                      "label":  "近端 forward observe"
-                  },
-                  {
-                      "id":  "edge-score-cap-lwc4-gnqh",
-                      "fromNode":  "score-cap-lwc4",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-gnqh",
-                      "toSide":  "top",
-                      "label":  "收益证据闭环"
-                  },
-                  {
-                      "id":  "edge-score-cap-gnqh-decision",
-                      "fromNode":  "score-cap-gnqh",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-gnqh-decision",
-                      "toSide":  "left",
-                      "label":  "observe retained"
-                  },
-                  {
-                      "id":  "edge-score-cap-a25-wemy",
-                      "fromNode":  "score-cap",
-                      "fromSide":  "left",
-                      "toNode":  "score-cap-a25-wemy",
-                      "toSide":  "right",
-                      "label":  "A25撤离追高状态机"
-                  },
-                  {
-                      "id":  "edge-score-cap-a25-urwl",
-                      "fromNode":  "score-cap-a25-wemy",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a25-urwl",
-                      "toSide":  "top",
-                      "label":  "只读面板失败"
-                  },
-                  {
-                      "id":  "edge-score-cap-a25-56r5",
-                      "fromNode":  "score-cap-a25-urwl",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a25-56r5",
-                      "toSide":  "top",
-                      "label":  "park并转外部证据"
-                  },
-                  {
-                      "id":  "edge-score-cap-a26-mkg3",
-                      "fromNode":  "score-cap-a25-56r5",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a26-mkg3",
-                      "toSide":  "top",
-                      "label":  "成交压力复核仍失败"
-                  },
-                  {
-                      "id":  "edge-score-cap-a26-dnla",
-                      "fromNode":  "score-cap-a26-mkg3",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a26-dnla",
-                      "toSide":  "top",
-                      "label":  "停止可见字段扩展"
-                  },
-                  {
-                      "id":  "edge-score-cap-a27-6txm",
-                      "fromNode":  "score-cap-a26-dnla",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a27-6txm",
-                      "toSide":  "top",
-                      "label":  "真实数据入口门禁"
-                  },
-                  {
-                      "id":  "edge-score-cap-a27-zdd3",
-                      "fromNode":  "score-cap-a27-6txm",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a27-zdd3",
-                      "toSide":  "top",
-                      "label":  "入口阻塞后park"
-                  },
-                  {
-                      "id":  "edge-score-cap-a27-hjgj",
-                      "fromNode":  "score-cap-a27-zdd3",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a27-hjgj",
-                      "toSide":  "top",
-                      "label":  "排除QMT转非QMT数据"
-                  },
-                  {
-                      "id":  "edge-score-cap-wemy-66qh",
-                      "fromNode":  "score-cap-a27-hjgj",
-                      "fromSide":  "right",
-                      "toNode":  "score-cap-wemy-66qh",
-                      "toSide":  "left",
-                      "label":  "顶刊量价结构机制"
-                  },
-                  {
-                      "id":  "edge-score-cap-66qh-a28",
-                      "fromNode":  "score-cap-wemy-66qh",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a28-un96",
-                      "toSide":  "top",
-                      "label":  "M1-M16数据门禁通过"
-                  },
-                  {
-                      "id":  "edge-score-cap-a28-5e5g",
-                      "fromNode":  "score-cap-a28-un96",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap-a28-5e5g",
-                      "toSide":  "top",
-                      "label":  "revise到frozen-veto formal"
-                  }
-              ]
+	"nodes":[
+		{"id":"group-scorecap","type":"group","x":-40,"y":-80,"width":16640,"height":1260,"color":"5","label":"score过热拥挤机制主线"},
+		{
+			"id":"score-cap",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T133318Z-main-H6V3_双池轮动score过热拥挤机制模块.md",
+			"text":null,
+			"x":0,
+			"y":0,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a20",
+			"type":"file",
+			"file":"04_实验记录/EX-20260605T184943Z-main-Q3YU_A20-A21市场状态高分延续放行formal V2与路径依赖反证.md",
+			"text":null,
+			"x":0,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a22",
+			"type":"file",
+			"file":"04_实验记录/EX-20260605T220429Z-main-EQFU_A22高分状态风险预算formal V2四段回测.md",
+			"text":null,
+			"x":640,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23-d09",
+			"type":"file",
+			"file":"04_实验记录/EX-20260606T083100Z-main-D9QK_A23状态分层预算92_4_d09四段回测.md",
+			"text":null,
+			"x":1920,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a22n-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260607T151252Z-main-A22N_A22原生字段等价通过后工程化决策.md",
+			"text":null,
+			"x":3200,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-qtfv-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260607T185223Z-main-HH4B_A22原生forward shadow边界通过后观察决策.md",
+			"text":null,
+			"x":3840,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-gnqh-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260608T010610Z-main-G9HZ_A22收益有效性闭环后维持观察决策.md",
+			"text":null,
+			"x":4480,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23-lvv7",
+			"type":"file",
+			"file":"04_实验记录/EX-20260606T075615Z-main-LVV7_A23完整邻域与cap成本稳健性补证.md",
+			"text":null,
+			"x":2560,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23-vx4j",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T101347Z-main-VX4J_A23事件归因与成本换手约束只读预注册.md",
+			"text":null,
+			"x":3200,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23-xbws",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260607T102206Z-main-XBWS_A23事件归因后先做同成本配对决策.md",
+			"text":null,
+			"x":3840,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-k3ac",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T103055Z-main-K3AC_A23同成本配对formal AB预注册.md",
+			"text":null,
+			"x":4480,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-qxss",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T131336Z-main-QXSS_A22原生字段与未来函数审计预注册.md",
+			"text":null,
+			"x":5120,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a22n",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T131209Z-main-A22N_A22原生字段等价审计预注册.md",
+			"text":null,
+			"x":5760,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-ekz8",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T152511Z-main-EKZ8_A22原生字段日志与未来函数二次审计.md",
+			"text":null,
+			"x":6400,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-qtfv",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T154134Z-main-QTFV_A22原生forward shadow边界验证预注册.md",
+			"text":null,
+			"x":7040,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-nr75",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T190303Z-main-NR75_A22生产前默认关闭与未来函数静态门禁.md",
+			"text":null,
+			"x":7680,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-ya5r",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T192201Z-main-YA5R_A22默认关闭observe硬5路径隔离审计.md",
+			"text":null,
+			"x":8320,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23",
+			"type":"file",
+			"file":"04_实验记录/EX-20260606T073600Z-main-R8M6_A23状态分层预算88_6探索四段回测.md",
+			"text":null,
+			"x":1280,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-lwc4",
+			"type":"file",
+			"file":"04_实验记录/EX-20260607T215224Z-main-LWC4_A22默认关闭observe近端forward样本门禁.md",
+			"text":null,
+			"x":8960,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-gnqh",
+			"type":"file",
+			"file":"04_实验记录/EX-20260608T010245Z-main-GNQH_A22收益有效性证据闭环只读复核.md",
+			"text":null,
+			"x":9600,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a25-56r5",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260619T084542Z-main-56R5_A25首版状态机失败后转外部注意力与订单层决策.md",
+			"text":null,
+			"x":10880,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a26-mkg3",
+			"type":"file",
+			"file":"04_实验记录/EX-20260619T091618Z-main-MKG3_A26成交换手涨停压力修复派发只读面板.md",
+			"text":null,
+			"x":11520,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a26-dnla",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260619T092251Z-main-DNLA_A26本地成交换手压力失败后停止可见字段扩展.md",
+			"text":null,
+			"x":12160,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a27-6txm",
+			"type":"file",
+			"file":"04_实验记录/EX-20260619T093316Z-main-6TXM_A27真实订单生命周期与外部注意力入口门禁.md",
+			"text":null,
+			"x":12800,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a27-zdd3",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260619T093740Z-main-ZDD3_A27入口门禁失败后暂停WEMY实证推进.md",
+			"text":null,
+			"x":13440,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a27-hjgj",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260619T100752Z-main-HJGJ_排除QMT后WEMY转非QMT外部数据路线.md",
+			"text":null,
+			"x":14080,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-wemy-66qh",
+			"type":"file",
+			"file":"06_文献资料/00_待处理/LIT-20260619T104218Z-main-66QH_顶刊K线成交量过热修复因子机制综述.md",
+			"text":null,
+			"x":14720,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a28-un96",
+			"type":"file",
+			"file":"04_实验记录/EX-20260619T113348Z-main-UN96_A28非QMT量价结构状态机数据门禁.md",
+			"text":null,
+			"x":15360,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a28-5e5g",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260619T114146Z-main-5E5G_A28量价结构门禁通过后转过热veto正式实验.md",
+			"text":null,
+			"x":16000,
+			"y":440,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a22-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260605T220430Z-main-9QNJ_A22cap70晋级为hard5替代首选候选但暂不默认上线.md",
+			"text":null,
+			"x":640,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260606T073601Z-main-VK2A_A23不替代A22cap70但保留为风险平衡挑战者.md",
+			"text":null,
+			"x":1280,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a23-d09-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260606T083101Z-main-S7NP_A23_92_4_d09晋级为hard5替代首选候选.md",
+			"text":null,
+			"x":1920,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-k3ac-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260607T125847Z-main-WQ8R_K3AC同成本通过后A22优先于A23决策.md",
+			"text":null,
+			"x":2560,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a20-decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260605T184943Z-main-CKNC_A20进入候选但不替代默认hard5且A21不晋级.md",
+			"text":null,
+			"x":0,
+			"y":900,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a25-wemy",
+			"type":"file",
+			"file":"02_研究方向/RD-20260619T083919Z-main-WEMY_双池轮动A股撤离追高状态机.md",
+			"text":null,
+			"x":1280,
+			"y":0,
+			"width":560,
+			"height":240
+		},
+		{
+			"id":"score-cap-a25-urwl",
+			"type":"file",
+			"file":"04_实验记录/EX-20260619T083927Z-main-URWL_A25撤离修复追高状态机只读面板预注册.md",
+			"text":null,
+			"x":10240,
+			"y":440,
+			"width":560,
+			"height":240
+		}
+	],
+	"edges":[
+		{"id":"edge-score-cap-a20","fromNode":"score-cap","fromSide":"bottom","toNode":"score-cap-a20","toSide":"top","label":"formal candidate"},
+		{"id":"edge-score-cap-a20-decision","fromNode":"score-cap-a20","fromSide":"right","toNode":"score-cap-a20-decision","toSide":"left","label":"promote candidate"},
+		{"id":"edge-score-cap-a20-a22","fromNode":"score-cap-a20","fromSide":"bottom","toNode":"score-cap-a22","toSide":"top","label":"非二元预算"},
+		{"id":"edge-score-cap-a22-decision","fromNode":"score-cap-a22","fromSide":"right","toNode":"score-cap-a22-decision","toSide":"left","label":"current candidate"},
+		{"id":"edge-score-cap-a22-a23","fromNode":"score-cap-a22","fromSide":"bottom","toNode":"score-cap-a23","toSide":"top","label":"状态分层挑战者"},
+		{"id":"edge-score-cap-a23-decision","fromNode":"score-cap-a23","fromSide":"right","toNode":"score-cap-a23-decision","toSide":"left","label":"revise challenger"},
+		{"id":"edge-score-cap-a23-d09","fromNode":"score-cap-a23","fromSide":"bottom","toNode":"score-cap-a23-d09","toSide":"top","label":"dispersion 修正"},
+		{"id":"edge-score-cap-a23-d09-decision","fromNode":"score-cap-a23-d09","fromSide":"right","toNode":"score-cap-a23-d09-decision","toSide":"left","label":"promote current"},
+		{"id":"edge-score-cap-a23-d09-lvv7","fromNode":"score-cap-a23-d09","fromSide":"bottom","toNode":"score-cap-a23-lvv7","toSide":"top","label":"完整邻域与成本"},
+		{"id":"edge-score-cap-a23-lvv7-vx4j","fromNode":"score-cap-a23-lvv7","fromSide":"bottom","toNode":"score-cap-a23-vx4j","toSide":"top","label":"事件归因"},
+		{"id":"edge-score-cap-a23-vx4j-xbws","fromNode":"score-cap-a23-vx4j","fromSide":"right","toNode":"score-cap-a23-xbws","toSide":"left","label":"revise 同成本配对"},
+		{"id":"edge-score-cap-a23-xbws-k3ac","fromNode":"score-cap-a23-xbws","fromSide":"bottom","toNode":"score-cap-k3ac","toSide":"top","label":"formal 同成本"},
+		{"id":"edge-score-cap-k3ac-decision","fromNode":"score-cap-k3ac","fromSide":"right","toNode":"score-cap-k3ac-decision","toSide":"left","label":"A22 preferred"},
+		{"id":"edge-score-cap-k3ac-qxss","fromNode":"score-cap-k3ac","fromSide":"bottom","toNode":"score-cap-qxss","toSide":"top","label":"原生字段审计"},
+		{"id":"edge-score-cap-qxss-a22n","fromNode":"score-cap-qxss","fromSide":"bottom","toNode":"score-cap-a22n","toSide":"top","label":"native 等价 strict 通过"},
+		{"id":"edge-score-cap-a22n-decision","fromNode":"score-cap-a22n","fromSide":"right","toNode":"score-cap-a22n-decision","toSide":"left","label":"engineering equivalent"},
+		{"id":"edge-score-cap-a22n-ekz8","fromNode":"score-cap-a22n","fromSide":"bottom","toNode":"score-cap-ekz8","toSide":"top","label":"日志/日期 strict 通过"},
+		{"id":"edge-score-cap-ekz8-qtfv","fromNode":"score-cap-ekz8","fromSide":"bottom","toNode":"score-cap-qtfv","toSide":"top","label":"forward/shadow strict 通过"},
+		{"id":"edge-score-cap-qtfv-decision","fromNode":"score-cap-qtfv","fromSide":"right","toNode":"score-cap-qtfv-decision","toSide":"left","label":"observe default-off"},
+		{"id":"edge-score-cap-qtfv-nr75","fromNode":"score-cap-qtfv","fromSide":"bottom","toNode":"score-cap-nr75","toSide":"top","label":"静态默认关闭门禁"},
+		{"id":"edge-score-cap-nr75-ya5r","fromNode":"score-cap-nr75","fromSide":"bottom","toNode":"score-cap-ya5r","toSide":"top","label":"hard5 observe 隔离"},
+		{"id":"edge-score-cap-ya5r-lwc4","fromNode":"score-cap-ya5r","fromSide":"bottom","toNode":"score-cap-lwc4","toSide":"top","label":"近端 forward observe"},
+		{"id":"edge-score-cap-lwc4-gnqh","fromNode":"score-cap-lwc4","fromSide":"bottom","toNode":"score-cap-gnqh","toSide":"top","label":"收益证据闭环"},
+		{"id":"edge-score-cap-gnqh-decision","fromNode":"score-cap-gnqh","fromSide":"right","toNode":"score-cap-gnqh-decision","toSide":"left","label":"observe retained"},
+		{"id":"edge-score-cap-a25-wemy","fromNode":"score-cap","fromSide":"left","toNode":"score-cap-a25-wemy","toSide":"right","label":"A25撤离追高状态机"},
+		{"id":"edge-score-cap-a25-urwl","fromNode":"score-cap-a25-wemy","fromSide":"bottom","toNode":"score-cap-a25-urwl","toSide":"top","label":"只读面板失败"},
+		{"id":"edge-score-cap-a25-56r5","fromNode":"score-cap-a25-urwl","fromSide":"bottom","toNode":"score-cap-a25-56r5","toSide":"top","label":"park并转外部证据"},
+		{"id":"edge-score-cap-a26-mkg3","fromNode":"score-cap-a25-56r5","fromSide":"bottom","toNode":"score-cap-a26-mkg3","toSide":"top","label":"成交压力复核仍失败"},
+		{"id":"edge-score-cap-a26-dnla","fromNode":"score-cap-a26-mkg3","fromSide":"bottom","toNode":"score-cap-a26-dnla","toSide":"top","label":"停止可见字段扩展"},
+		{"id":"edge-score-cap-a27-6txm","fromNode":"score-cap-a26-dnla","fromSide":"bottom","toNode":"score-cap-a27-6txm","toSide":"top","label":"真实数据入口门禁"},
+		{"id":"edge-score-cap-a27-zdd3","fromNode":"score-cap-a27-6txm","fromSide":"bottom","toNode":"score-cap-a27-zdd3","toSide":"top","label":"入口阻塞后park"},
+		{"id":"edge-score-cap-a27-hjgj","fromNode":"score-cap-a27-zdd3","fromSide":"bottom","toNode":"score-cap-a27-hjgj","toSide":"top","label":"排除QMT转非QMT数据"},
+		{"id":"edge-score-cap-wemy-66qh","fromNode":"score-cap-a27-hjgj","fromSide":"right","toNode":"score-cap-wemy-66qh","toSide":"left","label":"顶刊量价结构机制"},
+		{"id":"edge-score-cap-66qh-a28","fromNode":"score-cap-wemy-66qh","fromSide":"bottom","toNode":"score-cap-a28-un96","toSide":"top","label":"M1-M16数据门禁通过"},
+		{"id":"edge-score-cap-a28-5e5g","fromNode":"score-cap-a28-un96","fromSide":"bottom","toNode":"score-cap-a28-5e5g","toSide":"top","label":"revise到frozen-veto formal"}
+	]
 }

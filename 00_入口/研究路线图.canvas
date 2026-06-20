@@ -1,291 +1,146 @@
 {
-    "nodes":  [
-                  {
-                      "id":  "dashboard",
-                      "type":  "file",
-                      "file":  "00_入口/研究驾驶舱.md",
-                      "text":  null,
-                      "x":  -1070,
-                      "y":  30,
-                      "width":  360,
-                      "height":  180
-                  },
-                  {
-                      "id":  "method",
-                      "type":  "file",
-                      "file":  "08_方法论/路线图维护规范.md",
-                      "text":  null,
-                      "x":  -1490,
-                      "y":  -915,
-                      "width":  420,
-                      "height":  250
-                  },
-                  {
-                      "id":  "legend",
-                      "type":  "text",
-                      "file":  null,
-                      "text":  "# 研究路线图\n\n使用 Obsidian Canvas 查看本图。\n\n- 鼠标滚轮：缩放\n- 拖拽空白处：平移\n- 双击文件节点：打开正文\n\n本图只放全局骨架。详细实验、指标和路径以台账与正文为准。",
-                      "x":  -850,
-                      "y":  -920,
-                      "width":  460,
-                      "height":  260
-                  },
-                  {
-                      "id":  "dp00",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-DP00_双池轮动策略.md",
-                      "text":  null,
-                      "x":  -120,
-                      "y":  5,
-                      "width":  420,
-                      "height":  220
-                  },
-                  {
-                      "id":  "base",
-                      "type":  "file",
-                      "file":  "04_实验记录/EX-20260605T115651Z-main-BASE_双池轮动基线资产盘点预注册.md",
-                      "text":  null,
-                      "x":  -120,
-                      "y":  -360,
-                      "width":  420,
-                      "height":  180
-                  },
-                  {
-                      "id":  "decision",
-                      "type":  "file",
-                      "file":  "05_研究决策/DEC-20260605T115651Z-main-DP00_双池轮动拆分为策略方向与模块子方向.md",
-                      "text":  null,
-                      "x":  640,
-                      "y":  -410,
-                      "width":  420,
-                      "height":  180
-                  },
-                  {
-                      "id":  "off0",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-OFF0_双池轮动进攻模块.md",
-                      "text":  null,
-                      "x":  -980,
-                      "y":  525,
-                      "width":  410,
-                      "height":  230
-                  },
-                  {
-                      "id":  "core",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-CORE_双池轮动核心轮动模块.md",
-                      "text":  null,
-                      "x":  -530,
-                      "y":  525,
-                      "width":  430,
-                      "height":  230
-                  },
-                  {
-                      "id":  "def0",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-DEF0_双池轮动防御模块.md",
-                      "text":  null,
-                      "x":  0,
-                      "y":  545,
-                      "width":  400,
-                      "height":  230
-                  },
-                  {
-                      "id":  "exe0",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-EXE0_双池轮动执行与换仓模块.md",
-                      "text":  null,
-                      "x":  710,
-                      "y":  525,
-                      "width":  620,
-                      "height":  315
-                  },
-                  {
-                      "id":  "theme-mainline",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T131301Z-main-KC7N_双池轮动主题簇主线确认模块.md",
-                      "text":  null,
-                      "x":  1830,
-                      "y":  555,
-                      "width":  430,
-                      "height":  220
-                  },
-                  {
-                      "id":  "score-cap",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T133318Z-main-H6V3_双池轮动score过热拥挤机制模块.md",
-                      "text":  null,
-                      "x":  -650,
-                      "y":  1405,
-                      "width":  500,
-                      "height":  235
-                  },
-                  {
-                      "id":  "entry-scorecap",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T133318Z-main-H6V3_路线图.canvas",
-                      "x":  1500,
-                      "y":  300,
-                      "width":  460,
-                      "height":  200
-                  },
-                  {
-                      "id":  "entry-defense",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-DEF0_路线图.canvas",
-                      "x":  2040,
-                      "y":  300,
-                      "width":  460,
-                      "height":  200
-                  },
-                  {
-                      "id":  "entry-core",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T115651Z-main-CORE_路线图.canvas",
-                      "x":  2580,
-                      "y":  300,
-                      "width":  460,
-                      "height":  200
-                  },
-                  {
-                      "id":  "entry-dynheat",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260613T110126Z-main-FWZE_路线图.canvas",
-                      "x":  3120,
-                      "y":  300,
-                      "width":  460,
-                      "height":  200
-                  },
-                  {
-                      "id":  "entry-intraday",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260613T002916Z-main-5BNB_路线图.canvas",
-                      "x":  3660,
-                      "y":  300,
-                      "width":  460,
-                      "height":  200
-                  },
-                  {
-                      "id":  "entry-theme",
-                      "type":  "file",
-                      "file":  "02_研究方向/RD-20260605T131301Z-main-KC7N_路线图.canvas",
-                      "x":  4200,
-                      "y":  300,
-                      "width":  460,
-                      "height":  200
-                  }
-              ],
-    "edges":  [
-                  {
-                      "id":  "edge-dashboard-dp00",
-                      "fromNode":  "dashboard",
-                      "fromSide":  "right",
-                      "toNode":  "dp00",
-                      "toSide":  "left",
-                      "label":  "当前主线"
-                  },
-                  {
-                      "id":  "edge-dp00-off0",
-                      "fromNode":  "dp00",
-                      "fromSide":  "bottom",
-                      "toNode":  "off0",
-                      "toSide":  "top",
-                      "label":  "模块"
-                  },
-                  {
-                      "id":  "edge-dp00-core",
-                      "fromNode":  "dp00",
-                      "fromSide":  "bottom",
-                      "toNode":  "core",
-                      "toSide":  "top",
-                      "label":  "模块"
-                  },
-                  {
-                      "id":  "edge-dp00-def0",
-                      "fromNode":  "dp00",
-                      "fromSide":  "bottom",
-                      "toNode":  "def0",
-                      "toSide":  "top",
-                      "label":  "模块"
-                  },
-                  {
-                      "id":  "edge-dp00-exe0",
-                      "fromNode":  "dp00",
-                      "fromSide":  "bottom",
-                      "toNode":  "exe0",
-                      "toSide":  "top",
-                      "label":  "模块"
-                  },
-                  {
-                      "id":  "edge-dp00-theme-mainline",
-                      "fromNode":  "dp00",
-                      "fromSide":  "bottom",
-                      "toNode":  "theme-mainline",
-                      "toSide":  "top",
-                      "label":  "非 hard5 新方向"
-                  },
-                  {
-                      "id":  "edge-dp00-score-cap",
-                      "fromNode":  "dp00",
-                      "fromSide":  "bottom",
-                      "toNode":  "score-cap",
-                      "toSide":  "top",
-                      "label":  "score 过热"
-                  },
-                  {
-                      "id":  "77f37dc84725d392",
-                      "fromNode":  "method",
-                      "fromSide":  "right",
-                      "toNode":  "legend",
-                      "toSide":  "left"
-                  },
-                  {
-                      "id":  "edge-dp00-entry-scorecap",
-                      "fromNode":  "dp00",
-                      "fromSide":  "right",
-                      "toNode":  "entry-scorecap",
-                      "toSide":  "left",
-                      "label":  "score过热拥挤机制主线"
-                  },
-                  {
-                      "id":  "edge-dp00-entry-defense",
-                      "fromNode":  "dp00",
-                      "fromSide":  "right",
-                      "toNode":  "entry-defense",
-                      "toSide":  "left",
-                      "label":  "防御模块（DM崩溃保护）"
-                  },
-                  {
-                      "id":  "edge-dp00-entry-core",
-                      "fromNode":  "dp00",
-                      "fromSide":  "right",
-                      "toNode":  "entry-core",
-                      "toSide":  "left",
-                      "label":  "核心轮动（LM3D/顶刊信号）"
-                  },
-                  {
-                      "id":  "edge-dp00-entry-dynheat",
-                      "fromNode":  "dp00",
-                      "fromSide":  "right",
-                      "toNode":  "entry-dynheat",
-                      "toSide":  "left",
-                      "label":  "动态资金热度单模块消融"
-                  },
-                  {
-                      "id":  "edge-dp00-entry-intraday",
-                      "fromNode":  "dp00",
-                      "fromSide":  "right",
-                      "toNode":  "entry-intraday",
-                      "toSide":  "left",
-                      "label":  "盘中热点与非R方排序"
-                  },
-                  {
-                      "id":  "edge-dp00-entry-theme",
-                      "fromNode":  "dp00",
-                      "fromSide":  "right",
-                      "toNode":  "entry-theme",
-                      "toSide":  "left",
-                      "label":  null
-                  }
-              ]
+	"nodes":[
+		{
+			"id":"dashboard",
+			"type":"file",
+			"file":"00_入口/研究驾驶舱.md",
+			"text":null,
+			"x":-1070,
+			"y":30,
+			"width":360,
+			"height":180
+		},
+		{
+			"id":"method",
+			"type":"file",
+			"file":"08_方法论/路线图维护规范.md",
+			"text":null,
+			"x":-1490,
+			"y":-915,
+			"width":420,
+			"height":250
+		},
+		{
+			"id":"legend",
+			"type":"text",
+			"file":null,
+			"text":"# 研究路线图\n\n使用 Obsidian Canvas 查看本图。\n\n- 鼠标滚轮：缩放\n- 拖拽空白处：平移\n- 双击文件节点：打开正文\n\n本图只放全局骨架。详细实验、指标和路径以台账与正文为准。",
+			"x":-850,
+			"y":-920,
+			"width":460,
+			"height":260
+		},
+		{
+			"id":"dp00",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T115651Z-main-DP00_双池轮动策略.md",
+			"text":null,
+			"x":-120,
+			"y":5,
+			"width":420,
+			"height":220
+		},
+		{
+			"id":"base",
+			"type":"file",
+			"file":"04_实验记录/EX-20260605T115651Z-main-BASE_双池轮动基线资产盘点预注册.md",
+			"text":null,
+			"x":-120,
+			"y":-360,
+			"width":420,
+			"height":180
+		},
+		{
+			"id":"decision",
+			"type":"file",
+			"file":"05_研究决策/DEC-20260605T115651Z-main-DP00_双池轮动拆分为策略方向与模块子方向.md",
+			"text":null,
+			"x":640,
+			"y":-410,
+			"width":420,
+			"height":180
+		},
+		{
+			"id":"off0",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T115651Z-main-OFF0_双池轮动进攻模块.md",
+			"text":null,
+			"x":-980,
+			"y":525,
+			"width":410,
+			"height":230
+		},
+		{
+			"id":"core",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T115651Z-main-CORE_双池轮动核心轮动模块.md",
+			"text":null,
+			"x":-530,
+			"y":525,
+			"width":430,
+			"height":230
+		},
+		{
+			"id":"def0",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T115651Z-main-DEF0_双池轮动防御模块.md",
+			"text":null,
+			"x":0,
+			"y":545,
+			"width":400,
+			"height":230
+		},
+		{
+			"id":"exe0",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T115651Z-main-EXE0_双池轮动执行与换仓模块.md",
+			"text":null,
+			"x":710,
+			"y":525,
+			"width":620,
+			"height":315
+		},
+		{
+			"id":"theme-mainline",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T131301Z-main-KC7N_双池轮动主题簇主线确认模块.md",
+			"text":null,
+			"x":1830,
+			"y":555,
+			"width":430,
+			"height":220
+		},
+		{
+			"id":"score-cap",
+			"type":"file",
+			"file":"02_研究方向/RD-20260605T133318Z-main-H6V3_双池轮动score过热拥挤机制模块.md",
+			"text":null,
+			"x":-650,
+			"y":1405,
+			"width":500,
+			"height":235
+		},
+		{"id":"entry-scorecap","type":"file","file":"02_研究方向/RD-20260605T133318Z-main-H6V3_路线图.canvas","x":1380,"y":300,"width":580,"height":300},
+		{"id":"entry-defense","type":"file","file":"02_研究方向/RD-20260605T115651Z-main-DEF0_路线图.canvas","x":2040,"y":300,"width":460,"height":200},
+		{"id":"entry-core","type":"file","file":"02_研究方向/RD-20260605T115651Z-main-CORE_路线图.canvas","x":2580,"y":300,"width":460,"height":200},
+		{"id":"entry-dynheat","type":"file","file":"02_研究方向/RD-20260613T110126Z-main-FWZE_路线图.canvas","x":3120,"y":300,"width":460,"height":200},
+		{"id":"entry-intraday","type":"file","file":"02_研究方向/RD-20260613T002916Z-main-5BNB_路线图.canvas","x":3660,"y":300,"width":460,"height":200},
+		{"id":"entry-theme","type":"file","file":"02_研究方向/RD-20260605T131301Z-main-KC7N_路线图.canvas","x":4200,"y":300,"width":460,"height":200}
+	],
+	"edges":[
+		{"id":"edge-dashboard-dp00","fromNode":"dashboard","fromSide":"right","toNode":"dp00","toSide":"left","label":"当前主线"},
+		{"id":"edge-dp00-off0","fromNode":"dp00","fromSide":"bottom","toNode":"off0","toSide":"top","label":"模块"},
+		{"id":"edge-dp00-core","fromNode":"dp00","fromSide":"bottom","toNode":"core","toSide":"top","label":"模块"},
+		{"id":"edge-dp00-def0","fromNode":"dp00","fromSide":"bottom","toNode":"def0","toSide":"top","label":"模块"},
+		{"id":"edge-dp00-exe0","fromNode":"dp00","fromSide":"bottom","toNode":"exe0","toSide":"top","label":"模块"},
+		{"id":"edge-dp00-theme-mainline","fromNode":"dp00","fromSide":"bottom","toNode":"theme-mainline","toSide":"top","label":"非 hard5 新方向"},
+		{"id":"edge-dp00-score-cap","fromNode":"dp00","fromSide":"bottom","toNode":"score-cap","toSide":"top","label":"score 过热"},
+		{"id":"77f37dc84725d392","fromNode":"method","fromSide":"right","toNode":"legend","toSide":"left"},
+		{"id":"edge-dp00-entry-scorecap","fromNode":"dp00","fromSide":"right","toNode":"entry-scorecap","toSide":"left","label":"score过热拥挤机制主线"},
+		{"id":"edge-dp00-entry-defense","fromNode":"dp00","fromSide":"right","toNode":"entry-defense","toSide":"left","label":"防御模块（DM崩溃保护）"},
+		{"id":"edge-dp00-entry-core","fromNode":"dp00","fromSide":"right","toNode":"entry-core","toSide":"left","label":"核心轮动（LM3D/顶刊信号）"},
+		{"id":"edge-dp00-entry-dynheat","fromNode":"dp00","fromSide":"right","toNode":"entry-dynheat","toSide":"left","label":"动态资金热度单模块消融"},
+		{"id":"edge-dp00-entry-intraday","fromNode":"dp00","fromSide":"right","toNode":"entry-intraday","toSide":"left","label":"盘中热点与非R方排序"},
+		{"id":"edge-dp00-entry-theme","fromNode":"dp00","fromSide":"right","toNode":"entry-theme","toSide":"left"}
+	]
 }
