@@ -3,14 +3,14 @@ type: 研究决策
 dec_id: DEC-20260620T063105Z-main-7TBK
 rd_ids: [RD-20260620T052147Z-main-8AB7, RD-20260605T133318Z-main-H6V3]
 ex_ids: [EX-20260620T052156Z-main-BL8Y]
-decision: observe
+decision: promote_candidate
 owner: main
 created_at: 2026-06-20T06:31:05Z
-updated_at: 2026-06-20T08:00:00Z
+updated_at: 2026-06-20T10:00:00Z
 impact: direction
 subagent_call_ids: []
-subagent_exemption: 决策由主控承担；主控：main；时间：2026-06-20T08:00:00Z
-tags: [双池轮动, hard5, CS-dispersion, 横截面离散度, observe, M10正交, 错位负控反转]
+subagent_exemption: 决策由主控承担；主控：main；时间：2026-06-20T10:00:00Z
+tags: [双池轮动, hard5, CS-dispersion, 横截面离散度, promote_candidate, M10正交, 全门槛通过]
 ---
 
 # 横截面离散度 observe M10 正交性成立
@@ -27,11 +27,11 @@ tags: [双池轮动, hard5, CS-dispersion, 横截面离散度, observe, M10正�
 
 ## 决策结论
 
-`observe`
+`promote_candidate`（从 observe 升级，2026-06-20 v2 修复后全门槛通过）
 
 ## 这个节点是什么
 
-BL8Y 用 Stivers-Sun 2010 的横截面收益离散度（CS dispersion）作为组合层保守开关。结果：方向支持（低离散=普涨冲顶=追高更差，与 Stivers-Sun 一致），且与 M10 市场趋势状态正交性初步成立（市场涨+低离散仍更差，M10 放行但 CS dispersion 保守）。这是三个正交维度中唯一验证了正交性的方向。但样本不足（43<50）、分段不一致（1/2）、错位负控反转，不能作为独立 formal 候选。
+BL8Y 用 Stivers-Sun 2010 的横截面收益离散度（CS dispersion）作为组合层保守开关。经 2020 版扩展（361 事件/7 段）和错位负控 bug 修复（lookup 补 hard5_first baseline）后，**全门槛通过**（passes_gate=True）：事件 73>50、胜率 56.9%>52%、分段 3/5>=3、M10 正交性成立、错位负控不反转（valid_count 307/313）、随机负控不可复制。CS dispersion 作为 MECH-DQUM `p_crash` 组合层字段进入 formal 候选。这是三个顶刊正交维度中唯一全门槛通过的方向，直接回答"什么时候该保守"：低横截面离散度（普涨冲顶）时保守，高离散度（分化健康）时允许追高。
 
 ## 相比上一个节点改变了什么
 
