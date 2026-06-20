@@ -8,9 +8,9 @@ status: active
 priority: P1
 owner: main
 created_at: 2026-06-20T02:26:01Z
-updated_at: 2026-06-20T02:26:01Z
+updated_at: 2026-06-20T07:30:00Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
-current_decision_id:
+current_decision_id: DEC-20260620T062621Z-main-Z8MP
 current_best_ex_id: EX-20260620T022611Z-main-FZM4
 tags: [双池轮动, hard5, MAX, 彩票式过热, 横截面异象, 顶刊, WEMY子方向, m04深化]
 ---

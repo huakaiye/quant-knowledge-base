@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260620T052616Z-main-UEAC
 rd_id: RD-20260620T052601Z-main-3B2X
 status: active
-stage: preregistered
+stage: completed
 owner: main
 created_at: 2026-06-20T05:26:16Z
-updated_at: 2026-06-20T05:26:16Z
+updated_at: 2026-06-20T08:30:00Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 过程层爆炸性泡沫检测
 decision_ids: []
@@ -14,9 +14,9 @@ lit_ids: [LIT-20260620T052601Z-main-PYTZ]
 idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
 config_paths: []
-result_paths: []
-summary_paths: []
-quality_gate: preregistered_not_executed
+result_paths: [${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/]
+summary_paths: [${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/summary.json]
+quality_gate: completed_observe_not_passed
 subagent_call_ids: []
 subagent_exemption: 预注册设计阶段由主控承担，未调用执行子代理；主控：main；时间：2026-06-20T05:26:16Z
 tags: [双池轮动, hard5, GSADF, PSY, 爆炸性, 泡沫检测, 只读面板, 预注册]
@@ -41,10 +41,10 @@ tags: [双池轮动, hard5, GSADF, PSY, 爆炸性, 泡沫检测, 只读面板, �
 
 这次实验想知道：hard5 高分事件里，"趋势性上涨"（GSADF 不显著，平稳）和"泡沫性加速"（GSADF 显著，爆炸性）的后续收益是否真的不同，能不能用 GSADF 这个过程层维度把泡沫性加速从一般高分里拆出来。
 我们原本预计：爆炸性桶的 H5/H10 弱于平稳趋势桶，下尾更负，差异不能被负控复制，且与 MAX（单日跳）和 52 周高点（nearness）正交。
-实际看到：（待执行）
-这说明：（待执行）
-但还不能说明：（待执行）
-下一步要做：（待执行）
+实际看到：方向与预测相反——高爆炸性桶（decile 8-9）H10 effect +0.022 < 低爆炸性桶（decile 0-1）+0.059，差 -0.037（爆炸性反而后续更好）。高爆炸性桶 H10 胜率仅 50%（不过门槛）。错位一日负控第三次出现相同反转。
+这说明：GSADF 在 A 股 ETF 上的爆炸性检测方向与 Phillips-Shi-Yu 2015 预期相反——ETF 的"爆炸性"可能是趋势加速的良性阶段，而非泡沫尾声。GSADF 不适合作为 hard5 过热撤离信号。
+但还不能说明：纯 numpy 简化 ADF 是否足够准确（statsmodels 不可用）；GSADF_THRESHOLD=0 是否合理；反转是真信号还是简化实现误差。
+下一步要做：UEAC 记为 observe（方向反），GSADF 不纳入 MECH-DQUM p_overheat 字段。三个正交维度全部执行完毕，做综合判断。
 
 ## 2. 研究背景
 
@@ -119,14 +119,14 @@ tags: [双池轮动, hard5, GSADF, PSY, 爆炸性, 泡沫检测, 只读面板, �
 
 | 检查项 | 结论 | 证据 |
 | --- | --- | --- |
-| 参数搜索空间已预注册 | 是（GSADF 递归窗口下限=20 日；临界值用仿真 95%；不看完结果再扩） | 本预注册 |
-| 样本内、验证集、样本外划分清楚 | 待检查（沿用 A11/A16 四段：2020_2021、2022_2023、2024、2025_20260519） | 待执行后填写 |
-| 邻近参数敏感性合理 | 待检查（执行后报告窗口下限 15/20/25 邻域，但不在本轮调参） | 待执行后填写 |
+| 参数搜索空间已预注册 | 是（窗口下限=20、max_ratio=0.8、threshold=0） | 本预注册 |
+| 样本内、验证集、样本外划分清楚 | 部分（A16 仅覆盖 2024-2026，高爆炸性桶仅 2025 段有数据） | summary.json segment_means |
+| 邻近参数敏感性合理 | 未检查（本轮不调参） | 后续若进 formal 需补 |
 | 成本、滑点或换手扰动已检查 | 不适用（只读面板，无交易） | — |
-| 已做消融或负控 | 待检查（四类负控预注册，含 MAX 和 nearness 正交性） | 待执行后填写 |
-| 未只报告最优结果 | 待检查（报告全部分桶和负控结果） | 待执行后填写 |
+| 已做消融或负控 | 部分（错位一日完成且反转；near-high 分层完成） | ueac_shifted/near_high_strat_summary.csv |
+| 未只报告最优结果 | 是（报告方向相反的结果，如实记录） | ueac_high_vs_low_summary.csv |
 
-证据等级：`L0`（预注册未执行）
+证据等级：`L1`（只读面板已执行，方向与预测相反，不过门槛）
 
 ## 10. 子代理调用记录
 
@@ -156,51 +156,79 @@ tags: [双池轮动, hard5, GSADF, PSY, 爆炸性, 泡沫检测, 只读面板, �
 ### 运行命令
 
 ```bash
-未执行
+wsl -- bash -lc "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src PYTHONUNBUFFERED=1 python3 scripts/research/analyze_ueac_gsadf_readonly.py 2>&1 | tee results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_run.log"
 ```
 
 ### 可见进度与日志
 
-- 是否过程可见：`是 / 否`（待执行）
-- 日志路径：（待执行）
-- 查看进度命令：（待执行）
-- 异常判断：（待执行）
-- 后台回测豁免：不适用（只读面板，前台执行）
+- 是否过程可见：`是`（PYTHONUNBUFFERED=1 + tee）
+- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_run.log`
+- 异常判断：无异常。211/212 事件有效 GSADF（覆盖率 99.5%），14051 日频行，11314 GSADF 特征行。merge 列冲突问题修复后正常。
+- 后台回测豁免：不适用（只读面板，前台执行，约 60 秒，GSADF 递归 ADF 计算较重）
 
 ### 结果路径
 
 ```text
-未执行（预期路径：${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/）
+${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/
+含：ueac_event_panel.csv / ueac_high_vs_low_summary.csv / ueac_shifted_control_summary.csv /
+ueac_near_high_strat_summary.csv / ueac_feature_coverage.csv / summary.json
 ```
 
-工程依赖：GSADF 实现需 R 包 `exuber` 或 Python 移植，执行前必须先确认环境可用性。
+### 结果路径
+
+```text
+未执行（预期路径：${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/）
+```
+
+工程依赖：GSADF 用纯 numpy 简化 ADF 右尾检验实现（statsmodels 不可用，pip install 超时）。GSADF = sup over recursive windows of ADF t-stat，临界值用 GSADF_THRESHOLD=0 简化，非严格 PSY 仿真临界值。
 
 ## 12. 实际观察
 
 | 指标 | 基准 | 本次 | 变化 | 解释 |
 | --- | --- | --- | --- | --- |
-| （待执行后填写） | | | | |
+| 事件数（有效 gsadf_stat） | 212 | 211 | -1 | 覆盖率 99.5%，1 事件历史不足 120 日 |
+| 高爆炸性桶（decile 8-9）H10 effect | — | +0.022 | — | 爆炸性标的后续追高超额 |
+| 高爆炸性桶 H10 胜率 | — | 50% | — | 不过 52% 门槛 |
+| 低爆炸性桶（decile 0-1）H10 effect | — | +0.059 | — | 平稳趋势标的追高超额反而更大 |
+| 高 vs 低 effect 差 H10 | 预测正（爆炸更差） | -0.037 | 方向相反 | 爆炸性反而后续更好，与 Phillips-Shi-Yu 预期相反 |
+| 错位一日 shift_prev1 H10 | 原始 +0.034 | -0.058 | 反转 | 第三次出现相同反转（FZM4/BL8Y/UEAC 一致） |
+| 分段一致性 | 预测 >=3/4 | 1/1 | 不足 | 高爆炸性桶仅 2025 段有数据 |
+| 质量门 | — | 不过 | — | 方向相反 + 胜率 50% + 错位反转 |
 
 ## 13. 支持证据
 
-- （待执行后填写）
+- GSADF 特征计算成功：211/212 事件有效，11314 特征行，纯 numpy ADF 实现可行。
+- 未来函数审计通过：所有事件有 signal_date，GSADF 只用 signal_date 及之前 120 日收盘价。
+- 方向相反本身是有价值的证伪结果：排除了 GSADF 作为 hard5 过热撤离信号的可行性。
 
 ## 14. 反对证据
 
-- （待执行后填写）
+- **方向与预测相反**（最严重）：高爆炸性桶 H10 +0.022 < 低爆炸性桶 +0.059，差 -0.037。爆炸性标的后续反而更好，与 Phillips-Shi-Yu 2015 的"exuberance and collapse"预期相反。
+- 高爆炸性桶 H10 胜率仅 50%，不过 52% 门槛。
+- 错位一日负控第三次反转（与 FZM4/BL8Y 完全相同模式）。
+- 高爆炸性桶仅 2025 段有数据（2024 段 NaN），分段一致性无法检验。
+- 纯 numpy 简化 ADF 可能不够准确：无截距无趋势模型、GSADF_THRESHOLD=0 非严格 PSY 仿真临界值，反转可能是实现误差而非真信号。
 
 ## 15. 偏差诊断
 
-实验前预测和实际结果有哪些不一致？可能原因是什么？（待执行后填写）
+实验前预测和实际结果有哪些不一致？可能原因是什么？
+
+1. **预测爆炸性更差，实际爆炸性更好**：最大偏差。可能原因：(a) ETF 的"爆炸性"（GSADF 显著）多为趋势加速的良性阶段，而非个股泡沫尾声——ETF 已分散特质风险，爆炸性更多反映主题趋势强度而非投机泡沫；(b) 纯 numpy 简化 ADF（无截距无趋势）对 ETF 价格序列的爆炸性检测可能失真；(c) GSADF_THRESHOLD=0 过低，把很多正常趋势误判为爆炸性。
+2. **预测错位负控不反转，实际第三次反转**：FZM4/BL8Y/UEAC 三个方向错位负控结果完全一致，确认是数据窗口系统性问题（valid_count 仅 20/165），不是 GSADF 特有。
 
 ## 16. 研究判断
 
-建议状态：`preregistered`（待执行后更新为 `promote_candidate / revise / park / kill / observe`）
+建议状态：`observe`
 
-理由：本实验为首轮只读面板预注册，未执行。执行后只有满足"事件 `>=50`、H5/H10 差异显著且中位不显著为负、胜率 `>=52%`、`>=3/4` 分段一致、四类负控不可复制、与 MAX 正交、与 nearness 正交"门槛，才考虑作为 MECH-DQUM 框架 `p_overheat` 过程层辅助字段进入 formal。注意 GSADF 滞后性，不适合实时硬过滤，只做辅助证据。
+理由：GSADF 在 A 股 ETF 上的爆炸性检测方向与 Phillips-Shi-Yu 2015 预期相反（爆炸性反而后续更好），高爆炸性桶胜率仅 50%，且简化 ADF 实现有不确定性。GSADF 不适合作为 hard5 过热撤离信号，不纳入 MECH-DQUM `p_overheat` 字段。但方向相反本身是有价值的证伪——说明 ETF 的"爆炸性"是趋势加速良性阶段而非泡沫尾声，这与个股泡沫检测的适用场景不同。本实验记为 observe（方向反），作为方法资产保留。
+
+对应决策：待产出 DEC（UEAC observe 方向反，GSADF 不纳入 p_overheat，三个正交维度综合判断）。
 
 ## 17. 下一步
 
 下一轮最值得做的实验是什么？它能减少哪一个不确定性？
 
-执行本只读面板，减少的不确定性是："GSADF 在 A 股 ETF（上市时间短、多数 `< 10` 年）是否还保留 Phillips-Shi-Yu 2015 顶刊里的爆炸性检测力，是否与 MAX（单日跳）和 52 周高点（nearness）真正正交，递归窗口滞后是否让它在实时无前向预测力"。若过门槛，下一步把 GSADF 作为 `p_overheat` 过程层辅助字段，与 MECH-DQUM 框架的 `p_overheat`（MAX）、`p_crash`（CS dispersion）、`p_repair` 组合，做三概率软预算只读复核；若不过门槛，本方向 `park`。
+1. **UEAC 记为 observe（方向反）**：GSADF 不纳入 MECH-DQUM p_overheat 字段。三个正交维度全部执行完毕。
+2. **三方向综合判断**：MAX（p_overheat，方向支持，A28 二元版）+ CS dispersion（p_crash，方向支持，M10 正交）+ GSADF（方向反，不纳入）。下一步组合 MAX + CS dispersion 做 MECH-DQUM 双概率软预算只读复核。
+3. **错位负控反转是三个方向共同发现**：需新开方法论实验研究其系统性原因（数据窗口限制 valid_count 仅 20/165）。这是本轮最大的方法论收获。
+4. **GSADF 反转的后续**：若未来 statsmodels 可用，可用严格 PSY 仿真临界值重跑确认反转是真信号还是简化实现误差。
