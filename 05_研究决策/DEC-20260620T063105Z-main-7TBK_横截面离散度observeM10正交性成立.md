@@ -91,3 +91,15 @@ BL8Y 用 Stivers-Sun 2010 的横截面收益离散度（CS dispersion）作为�
 - [x] 实验台账
 - [x] 决策台账
 - [x] 子代理调用台账（无新增）
+
+## formal 后续更正（2026-06-20，DEC-XSNQ）
+
+本决策（DEC-7TBK）当时基于 BL8Y 只读面板全门槛通过，将 CS dispersion 升为 promote_candidate 并写"低离散（普涨冲顶）保守、高离散（分化健康）允许追高"。**后续 EX-S8BP formal 证明此方向不可行，且本决策的方向符号解释有误**：
+
+1. **方向符号错误**：本决策 line 34/61 称"低离散 H10 effect +0.018 > 高离散 -0.000，方向与 Stivers-Sun 2010 一致（低离散=追高更差）"。但经核实 `analyze_r010a16_hot_state_panel.py:277`，`raw_top_diff_h10_vs_hard5 = 追高标的收益 − hard5保守持仓收益`（正值=追高胜=hard5误杀）。361 版低离散桶 H10 effect = **+0.0313**（正值），实际含义是"低离散日追高**胜过** hard5（hard5 误杀，应放行）"，与"追高更差应保守"表述**符号相反**。
+
+2. **formal 结论**：EX-S8BP 双方向配对 formal 证明，无论按数据方向（低离散放行）还是理论方向（高离散放行），均未通过 4/4 final + 3/4 MDD + cost2x 稳健门槛。CS dispersion 组合层开关 park。根本矛盾是组合层标量无法区分"低离散=普涨健康（2020 牛市）"vs"低离散=普涨冲顶（2025 结构分化）"。
+
+3. **本决策状态**：7TBK 的 promote_candidate 判断已被 XSNQ 的 park 决策覆盖。8AB7 方向 status 从 active 改为 park，current_decision_id 从 7TBK 改为 XSNQ。CS dispersion 留作未来 MECH-DQUM 双概率联合的条件先验，不单独复活。
+
+详见 [[04_实验记录/EX-20260620T094932Z-main-S8BP_CS dispersion 组合层双方向配对 formal|EX-S8BP]] 和 [[05_研究决策/DEC-20260620T150805Z-main-XSNQ_CS dispersion 组合层双方向配对 formal 决策|DEC-XSNQ]]。
