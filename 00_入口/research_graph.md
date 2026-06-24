@@ -1,6 +1,6 @@
 # 研究知识图谱
 
-更新时间：2026-06-24T04:39:03Z
+更新时间：2026-06-24T06:28:58Z
 
 机器可读图谱：本目录下同名 JSON 文件（供 agent 和工具查询）。本文档为人类可读接手摘要。
 
@@ -8,17 +8,17 @@
 
 | Metric | Value |
 | --- | --- |
-| 节点数 | 580 |
-| 边数 | 786 |
+| 节点数 | 581 |
+| 边数 | 788 |
 | 悬空边 | 0 |
-| 近 7 天变更 | 157 |
+| 近 7 天变更 | 158 |
 
 ### 按类型统计
 
 | 类型 | 数量 |
 | --- | --- |
 | DEC | 192 |
-| EX | 256 |
+| EX | 257 |
 | IDEA | 31 |
 | LIT | 52 |
 | RD | 42 |
@@ -51,7 +51,7 @@
   - 最新实验：EX-20260620T052616Z-main-UEAC
   - 当前决策：DEC-20260620T063752Z-main-NEEU
 - **RD-20260624T014933Z-main-NQS5** 双池轮动 low 桶放行机制入池失效诊断与修复（父方向：RD-20260605T115651Z-main-DP00）
-  - 最新实验：EX-20260624T022318Z-main-9WDE
+  - 最新实验：EX-20260624T061755Z-main-CXCP
   - 当前决策：DEC-20260624T014933Z-main-3TWB
 - **RD-20260614T115209Z-main-MCYG** 双池轮动动量崩溃事前暴露管理（父方向：RD-20260605T115651Z-main-DEF0）
   - 最新实验：EX-20260618T145033Z-main-KFSQ
@@ -77,25 +77,25 @@
 
 | ID | 类型 | 标题 | 更新时间 | 文件 |
 | --- | --- | --- | --- | --- |
-| DEC-20260617T215629Z-main-UARF | DEC | 过热动量D2 smoke通过后进入formal | 2026-06-17T21:58:00Z | DEC-20260617T215629Z-main-UARF_过热动量D2 smoke通过后进入formal.md |
 | DEC-20260617T212155Z-main-9PRQ | DEC | 固定非R方blend 2024 smoke失败后暂停 | 2026-06-17T21:24:00Z | DEC-20260617T212155Z-main-9PRQ_固定非R方blend 2024 smoke失败后暂停.md |
-| DEC-20260618T092315Z-main-PASY | DEC | 非R方强势阶段转移连续只读失败后暂停 | 2026-06-18T09:23:42Z | DEC-20260618T092315Z-main-PASY_非R方强势阶段转移连续只读失败后暂停.md |
-| DEC-20260618T024516Z-main-UR6S | DEC | 过热动量D2四段formal失败后暂停推广 | 2026-06-18T02:50:00Z | DEC-20260618T024516Z-main-UR6S_过热动量D2四段formal失败后暂停推广.md |
 | DEC-20260617T205354Z-main-W29B | DEC | 非R方日频PLS失败后修订 | 2026-06-17T20:58:00Z | DEC-20260617T205354Z-main-W29B_非R方日频PLS失败后修订.md |
-| DEC-20260613T122346Z-main-X7PJ | DEC | 动态资金热度全量复权门禁失败后暂停formal | 2026-06-17T15:36:00Z | DEC-20260613T122346Z-main-X7PJ_动态资金热度全量复权门禁失败后暂停formal.md |
-| EX-20260624T022318Z-main-9WDE | EX | 双池轮动low桶放行机制信号标的入池失效只读诊断 | 2026-06-24T05:00:00Z | EX-20260624T022318Z-main-9WDE_双池轮动low桶放行机制信号标的入池失效只读诊断.md |
+| DEC-20260618T024516Z-main-UR6S | DEC | 过热动量D2四段formal失败后暂停推广 | 2026-06-18T02:50:00Z | DEC-20260618T024516Z-main-UR6S_过热动量D2四段formal失败后暂停推广.md |
+| DEC-20260617T215629Z-main-UARF | DEC | 过热动量D2 smoke通过后进入formal | 2026-06-17T21:58:00Z | DEC-20260617T215629Z-main-UARF_过热动量D2 smoke通过后进入formal.md |
 | DEC-20260617T203236Z-main-3CSW | DEC | 动态资金热度同口径formal失败后暂停 | 2026-06-17T20:40:00Z | DEC-20260617T203236Z-main-3CSW_动态资金热度同口径formal失败后暂停.md |
+| EX-20260624T061755Z-main-CXCP | EX | 个股 overnight_share 选股价值只读模拟：事件级信号在组合层可交易约束下是否复现 | 2026-06-24T06:30:00Z | EX-20260624T061755Z-main-CXCP_个股overnight_share选股价值只读模拟 事件级信号在组合层可交易约束下是否复现.md |
+| EX-20260624T022318Z-main-9WDE | EX | 双池轮动low桶放行机制信号标的入池失效只读诊断 | 2026-06-24T05:00:00Z | EX-20260624T022318Z-main-9WDE_双池轮动low桶放行机制信号标的入池失效只读诊断.md |
 | DEC-20260617T151659Z-main-UAYF | DEC | 盘中热点与R方之外排序连续负控失败后park | 2026-06-17T15:18:30Z | DEC-20260617T151659Z-main-UAYF_盘中热点与R方之外排序连续负控失败后park.md |
-| DEC-20260618T095611Z-main-GBK9 | DEC | 分钟路径H5替代失败后转短半衰期目标 | 2026-06-18T09:56:11Z | DEC-20260618T095611Z-main-GBK9_分钟路径H5替代失败后转短半衰期目标.md |
-| DEC-20260618T140056Z-main-FDSQ | DEC | 事件簇hazard只读接近但未通过后修订 | 2026-06-18T14:00:56Z | DEC-20260618T140056Z-main-FDSQ_事件簇hazard只读接近但未通过后修订.md |
+| DEC-20260613T122346Z-main-X7PJ | DEC | 动态资金热度全量复权门禁失败后暂停formal | 2026-06-17T15:36:00Z | DEC-20260613T122346Z-main-X7PJ_动态资金热度全量复权门禁失败后暂停formal.md |
+| DEC-20260618T092315Z-main-PASY | DEC | 非R方强势阶段转移连续只读失败后暂停 | 2026-06-18T09:23:42Z | DEC-20260618T092315Z-main-PASY_非R方强势阶段转移连续只读失败后暂停.md |
 | DEC-20260618T134120Z-main-L8GT | DEC | 组合层下尾经济损失校准失败后暂停 | 2026-06-18T13:41:49Z | DEC-20260618T134120Z-main-L8GT_组合层下尾经济损失校准失败后暂停.md |
-| DEC-20260618T144237Z-main-GNSM | DEC | 生命周期双组件episode负控未过后暂停 | 2026-06-18T14:42:37Z | DEC-20260618T144237Z-main-GNSM_生命周期双组件episode负控未过后暂停.md |
-| DEC-20260618T142119Z-main-NWY3 | DEC | episode_age稳定性审计严格随机未过后修订 | 2026-06-18T14:21:51Z | DEC-20260618T142119Z-main-NWY3_episode_age稳定性审计严格随机未过后修订.md |
 | DEC-20260618T131519Z-main-UR2G | DEC | B3 state-only extreme缺口归因失败后不动作化 | 2026-06-18T13:15:47Z | DEC-20260618T131519Z-main-UR2G_B3 state-only extreme缺口归因失败后不动作化.md |
-| DEC-20260618T104520Z-main-N7RL | DEC | 组合切换成本无交易带失败后暂停 | 2026-06-18T10:45:20Z | DEC-20260618T104520Z-main-N7RL_组合切换成本无交易带失败后暂停.md |
-| DEC-20260618T101850Z-main-RZSM | DEC | 短半衰期H0H1探索负控后暂停 | 2026-06-18T10:18:50Z | DEC-20260618T101850Z-main-RZSM_短半衰期H0H1探索负控后暂停.md |
+| DEC-20260618T142119Z-main-NWY3 | DEC | episode_age稳定性审计严格随机未过后修订 | 2026-06-18T14:21:51Z | DEC-20260618T142119Z-main-NWY3_episode_age稳定性审计严格随机未过后修订.md |
+| DEC-20260618T140056Z-main-FDSQ | DEC | 事件簇hazard只读接近但未通过后修订 | 2026-06-18T14:00:56Z | DEC-20260618T140056Z-main-FDSQ_事件簇hazard只读接近但未通过后修订.md |
 | DEC-20260618T124615Z-main-7JGR | DEC | B3弱势持久确认缩短formal失败后不推广 | 2026-06-18T12:46:15Z | DEC-20260618T124615Z-main-7JGR_B3弱势持久确认缩短formal失败后不推广.md |
+| DEC-20260618T101850Z-main-RZSM | DEC | 短半衰期H0H1探索负控后暂停 | 2026-06-18T10:18:50Z | DEC-20260618T101850Z-main-RZSM_短半衰期H0H1探索负控后暂停.md |
+| DEC-20260618T095611Z-main-GBK9 | DEC | 分钟路径H5替代失败后转短半衰期目标 | 2026-06-18T09:56:11Z | DEC-20260618T095611Z-main-GBK9_分钟路径H5替代失败后转短半衰期目标.md |
 | DEC-20260618T110703Z-main-FF3K | DEC | 微观数据缺口确认后暂停低滞后执行实验 | 2026-06-18T11:07:03Z | DEC-20260618T110703Z-main-FF3K_微观数据缺口确认后暂停低滞后执行实验.md |
+| DEC-20260618T104520Z-main-N7RL | DEC | 组合切换成本无交易带失败后暂停 | 2026-06-18T10:45:20Z | DEC-20260618T104520Z-main-N7RL_组合切换成本无交易带失败后暂停.md |
 | EX-20260624T013047Z-main-GTUS | EX | Tushare申万行业成分导入门禁 | 2026-06-24T01:34:12Z | EX-20260624T013047Z-main-GTUS_Tushare申万行业成分导入门禁.md |
 | EX-20260621T015355Z-main-F44P | EX | A29 frozen-veto 组合层双方向配对 formal | 2026-06-22T09:00:00Z | EX-20260621T015355Z-main-F44P_A29 frozen-veto 组合层双方向配对 formal.md |
 | EX-20260620T094932Z-main-S8BP | EX | CS dispersion 组合层双方向配对 formal | 2026-06-20T18:30:00Z | EX-20260620T094932Z-main-S8BP_CS dispersion 组合层双方向配对 formal.md |
@@ -116,6 +116,7 @@
 | EX-20260622T104131Z-main-6XCN | EX | 隔夜收益完全放行 V2 组合层 formal | 2026-06-22T17:15:00Z | EX-20260622T104131Z-main-6XCN_隔夜收益完全放行V2组合层formal.md |
 | EX-20260623T125125Z-main-UTMF | EX | 行业状态机与个股增强最小规格预注册 | 2026-06-23T13:10:37Z | EX-20260623T125125Z-main-UTMF_行业状态机与个股增强最小规格预注册.md |
 | EX-20260623T015816Z-main-ZGHC | EX | 隔夜收益信号组合层落差归因数据门禁 | 2026-06-23T15:30:00Z | EX-20260623T015816Z-main-ZGHC_隔夜收益信号组合层落差归因数据门禁.md |
+| DEC-20260618T144237Z-main-GNSM | DEC | 生命周期双组件episode负控未过后暂停 | 2026-06-18T14:42:37Z | DEC-20260618T144237Z-main-GNSM_生命周期双组件episode负控未过后暂停.md |
 | LIT-20260613T002924Z-main-RY67 | LIT | 顶刊盘中交易与注意力机制灵感综述 | 2026-06-17T15:18:30Z | LIT-20260613T002924Z-main-RY67_顶刊盘中交易与注意力机制灵感综述.md |
 | DEC-20260624T042716Z-main-KZ7L | DEC | overnight 研究链概念错配修正：个股层 low 桶信号 ≠ 池子层 median 门槛放行 | 2026-06-24T04:50:00Z | DEC-20260624T042716Z-main-KZ7L_overnight研究链概念错配修正 个股层low桶信号不等于池子层median门槛放行.md |
 | LIT-20260617T220410Z-main-RDHA | LIT | 顶刊拟合目标替代与动量崩溃前置暴露 | 2026-06-18T05:31:22Z | LIT-20260617T220410Z-main-RDHA_顶刊拟合目标替代与动量崩溃前置暴露.md |
@@ -126,7 +127,6 @@
 | DEC-20260624T013403Z-main-9AF6 | DEC | 申万行业成分采用独立membership事实表 | 2026-06-24T01:34:12Z | DEC-20260624T013403Z-main-9AF6_申万行业成分采用独立membership事实表.md |
 | DEC-20260623T235142Z-main-2UF3 | DEC | 历史行业成分源缺失后暂停个股增强实现 | 2026-06-23T23:51:57Z | DEC-20260623T235142Z-main-2UF3_历史行业成分源缺失后暂停个股增强实现.md |
 | LIT-20260619T104218Z-main-66QH | LIT | 顶刊K线成交量过热修复因子机制综述 | 2026-06-19T18:55:00+08:00 | LIT-20260619T104218Z-main-66QH_顶刊K线成交量过热修复因子机制综述.md |
-| MECH-20260620T154049Z-main-2JVB | IDEA | 顶刊灵感2 拥挤度同质化同步 Stein 2009 | 2026-06-20T16:00:00Z | MECH-20260620T154049Z-main-2JVB_顶刊灵感2 拥挤度同质化同步 Stein 2009.md |
 
 ## 悬空边（schema 完整性警告）
 
