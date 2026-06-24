@@ -46,3 +46,8 @@ reports/
 
 # 保留台账 CSV，不要全局忽略 CSV。
 !01_台账/*.csv
+
+# Windows cmd 重定向意外产物（保留设备名）
+nul
+NUL
+/nul
