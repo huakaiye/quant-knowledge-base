@@ -92,7 +92,9 @@ CS dispersion（组合层标量）和 frozen-veto（个股层结构）两条过�
 
 ## 当前下一步
 
-**方向 park（DEC-GHZE）**。隔夜收益信号在事件级全门禁通过（H10+0.0434/胜率61.7%/分段6/7），但接进组合层后四段稳健性不足：V1 cap70、V2 满仓放行（2020_2021 +15.2% 最强单段）、V2+市场状态门三条 formal 均未反超 hard5。EX-7KMP 的市场状态门虽方向性有效（2022 熊市 +0.6%、2025 反弹 +6.0% 改善、MDD 3/4 通过），但双口径（cost1x + cost2x）下 0/4 段反超 baseline_hard5，证伪条件触发 3/5。
+**方向 park（DEC-GHZE）+ overnight 链最终 park（DEC-G6M9，2026-06-24）**。隔夜收益信号在事件级全门禁通过（H10+0.0434/胜率61.7%/分段6/7），但接进组合层后四段稳健性不足：V1 cap70、V2 满仓放行（2020_2021 +15.2% 最强单段）、V2+市场状态门三条 formal 均未反超 hard5。EX-7KMP 的市场状态门虽方向性有效（2022 熊市 +0.6%、2025 反弹 +6.0% 改善、MDD 3/4 通过），但双口径（cost1x + cost2x）下 0/4 段反超 baseline_hard5，证伪条件触发 3/5。
+
+> ⚠️ **overnight 链最终 park 注记（DEC-G6M9，2026-06-24）**：经 EX-CXCP 真正测试个股 overnight_share 选股，负控证明信号超额≈0（low 桶 +0.50% − 随机 +0.42% = +0.08%），组合层 0/4 赢 hard5。整个 overnight 研究链彻底关闭。本方向 park 结论彻底确认。详见 [[05_研究决策/DEC-20260624T072541Z-main-G6M9_overnight研究链最终park 个股low桶信号在ETF池选股无alpha负控证据确凿|DEC-G6M9]]。
 
 > ⚠️ **概念错配修正（DEC-KZ7L，2026-06-24）**：上述"接进组合层后跑不过 hard5"的叙事需修正——经 EX-9WDE 读代码确认，V1/V2/市场门三条 formal 的 `overnight_share_gate` 放行 = "池子 median 门槛放宽 score 上限"，**不是**"把个股 low 桶信号接进选股"。因此"信号接进组合层后跑不过 hard5"准确说法是"放宽动量门槛跑不过 hard5"，与"low 桶个股信号有没有用"是两回事。详见 [[05_研究决策/DEC-20260624T042716Z-main-KZ7L_overnight研究链概念错配修正 个股层low桶信号不等于池子层median门槛放行|DEC-KZ7L]]。
 
