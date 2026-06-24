@@ -1,12 +1,12 @@
 {
-    "generated_at_utc":  "2026-06-24T02:00:26Z",
+    "generated_at_utc":  "2026-06-24T02:34:32Z",
     "summary":  {
-                    "node_count":  578,
-                    "edge_count":  777,
+                    "node_count":  579,
+                    "edge_count":  779,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  7,
-                                    "EX":  255,
+                                    "EX":  256,
                                     "RD":  42,
                                     "IDEA":  31,
                                     "DEC":  191,
@@ -17,7 +17,7 @@
                                          "park":  23,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  155
+                    "recent_change_count_7d":  156
                 },
     "active_directions":  [
                               "RD-20260605T131301Z-main-KC7N",
@@ -582,7 +582,7 @@
                       "scope":  "模块",
                       "module_type":  "双池轮动low桶放行机制入池失效诊断与修复",
                       "current_decision_id":  "DEC-20260624T014933Z-main-3TWB",
-                      "current_best_ex_id":  ""
+                      "current_best_ex_id":  "EX-20260624T022318Z-main-9WDE"
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3133,6 +3133,16 @@
                       "file":  "EX-20260624T013047Z-main-GTUS_Tushare申万行业成分导入门禁.md",
                       "rd_id":  "RD-20260623T125116Z-main-DVXD",
                       "stage":  "storage_design_gate_completed_no_network"
+                  },
+                  {
+                      "id":  "EX-20260624T022318Z-main-9WDE",
+                      "type":  "EX",
+                      "title":  "双池轮动low桶放行机制信号标的入池失效只读诊断",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-24T03:00:00Z",
+                      "file":  "EX-20260624T022318Z-main-9WDE_双池轮动low桶放行机制信号标的入池失效只读诊断.md",
+                      "rd_id":  "RD-20260624T014933Z-main-NQS5",
+                      "stage":  "preregistered"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -8811,6 +8821,16 @@
                       "rel":  "produced_decision"
                   },
                   {
+                      "from":  "EX-20260624T022318Z-main-9WDE",
+                      "to":  "RD-20260624T014933Z-main-NQS5",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260624T022318Z-main-9WDE",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
                       "from":  "DEC-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "decision_affects"
@@ -9885,6 +9905,14 @@
 
                        ],
     "recent_changes_7d":  [
+                              {
+                                  "id":  null,
+                                  "type":  null,
+                                  "title":  null,
+                                  "status":  null,
+                                  "updated_at":  null,
+                                  "file":  null
+                              },
                               {
                                   "id":  null,
                                   "type":  null,
