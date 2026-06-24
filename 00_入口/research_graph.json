@@ -1,15 +1,15 @@
 {
-    "generated_at_utc":  "2026-06-24T02:34:32Z",
+    "generated_at_utc":  "2026-06-24T04:39:03Z",
     "summary":  {
-                    "node_count":  579,
-                    "edge_count":  779,
+                    "node_count":  580,
+                    "edge_count":  786,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  7,
                                     "EX":  256,
                                     "RD":  42,
                                     "IDEA":  31,
-                                    "DEC":  191,
+                                    "DEC":  192,
                                     "LIT":  52
                                 },
                     "rd_by_status":  {
@@ -17,7 +17,7 @@
                                          "park":  23,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  156
+                    "recent_change_count_7d":  157
                 },
     "active_directions":  [
                               "RD-20260605T131301Z-main-KC7N",
@@ -3138,11 +3138,11 @@
                       "id":  "EX-20260624T022318Z-main-9WDE",
                       "type":  "EX",
                       "title":  "双池轮动low桶放行机制信号标的入池失效只读诊断",
-                      "status":  "draft",
-                      "updated_at":  "2026-06-24T03:00:00Z",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-24T05:00:00Z",
                       "file":  "EX-20260624T022318Z-main-9WDE_双池轮动low桶放行机制信号标的入池失效只读诊断.md",
                       "rd_id":  "RD-20260624T014933Z-main-NQS5",
-                      "stage":  "preregistered"
+                      "stage":  "concept_mismatch_confirmed"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -5244,6 +5244,17 @@
                       "decision":  "park",
                       "rd_ids":  "RD-20260623T015758Z-main-JFHA",
                       "ex_ids":  "EX-20260623T234233Z-main-E3TQ"
+                  },
+                  {
+                      "id":  "DEC-20260624T042716Z-main-KZ7L",
+                      "type":  "DEC",
+                      "title":  "overnight 研究链概念错配修正：个股层 low 桶信号 ≠ 池子层 median 门槛放行",
+                      "status":  null,
+                      "updated_at":  "2026-06-24T04:50:00Z",
+                      "file":  "DEC-20260624T042716Z-main-KZ7L_overnight研究链概念错配修正 个股层low桶信号不等于池子层median门槛放行.md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260624T014933Z-main-NQS5;RD-20260623T015758Z-main-JFHA;RD-20260622T030341Z-main-S2T4",
+                      "ex_ids":  "EX-20260624T022318Z-main-9WDE;EX-20260623T234233Z-main-E3TQ;EX-20260622T031432Z-main-7TJU"
                   },
                   {
                       "id":  "LIT-20260605T133336Z-main-67C4",
@@ -8827,6 +8838,11 @@
                   },
                   {
                       "from":  "EX-20260624T022318Z-main-9WDE",
+                      "to":  "DEC-20260624T042716Z-main-KZ7L",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260624T022318Z-main-9WDE",
                       "to":  "MECH-20260620T154044Z-main-MATN",
                       "rel":  "idea_source"
                   },
@@ -9896,6 +9912,36 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "RD-20260624T014933Z-main-NQS5",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "RD-20260623T015758Z-main-JFHA",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "EX-20260624T022318Z-main-9WDE",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "EX-20260623T234233Z-main-E3TQ",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "EX-20260622T031432Z-main-7TJU",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "strategy_of"
@@ -9905,6 +9951,14 @@
 
                        ],
     "recent_changes_7d":  [
+                              {
+                                  "id":  null,
+                                  "type":  null,
+                                  "title":  null,
+                                  "status":  null,
+                                  "updated_at":  null,
+                                  "file":  null
+                              },
                               {
                                   "id":  null,
                                   "type":  null,
