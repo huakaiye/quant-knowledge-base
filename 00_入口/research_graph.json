@@ -1,5 +1,5 @@
 {
-    "generated_at_utc":  "2026-06-28T09:13:59Z",
+    "generated_at_utc":  "2026-06-28T11:31:10Z",
     "summary":  {
                     "node_count":  600,
                     "edge_count":  842,
@@ -3298,10 +3298,10 @@
                       "type":  "EX",
                       "title":  "EX-20260628T120000Z-main-D3",
                       "status":  "completed",
-                      "updated_at":  "2026-06-28T16:00:00Z",
+                      "updated_at":  "2026-06-28T17:00:00Z",
                       "file":  "EX-20260628T120000Z-main-D3_raw_closes缓存累加污染根因定论.md",
                       "rd_id":  "RD-20260605T115651Z-main-DEF0",
-                      "stage":  "修复验证完成_结论定论_颠覆HUWV叙事_补四段vs十一年归因实测"
+                      "stage":  "修复验证完成_结论定论_颠覆HUWV叙事_补归因实测_补三版本对照表"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
