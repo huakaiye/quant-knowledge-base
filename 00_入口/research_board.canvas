@@ -3,11 +3,11 @@
                   {
                       "id":  "board-today",
                       "type":  "text",
-                      "text":  "# last 3 days\r\n\r\n### 2026-06-24 overnight研究链最终park 个股low桶信号在ETF池选股无alpha负控证据确凿\r\nEX-CXCP真正测试个股overnight_share选股:B名义+0.50%但随机替换负控+0.42%超额仅+0.08%;C组合层模拟0/4赢hard5且3段负收益(-18.4%/-60.4%/+35.9%输/-32.5%);错位+1天几乎不变;EX-7TJU +5.33%是标的池差异+beta...\r\n\r\n### 2026-06-24 overnight研究链概念错配修正 个股层low桶信号不等于池子层median门槛放行\r\nEX-9WDE读代码+扫日志确认:overnight_share_gate放行=放宽动量score上限(5-\u003e8)非指定买入low桶个股;组合层按动量选股与个股overnight_share无关;事件级与组合层是两个不相关实验被当因果链两端;5份资产加注记不删原文;统计数字全对仅归因解读需修正\r\n\r\n### 2026-06-24 E3TQ逐日净值分解归因后park退出机制维度并开新方向放行未生效诊断\r\n旧面板残差39-499%账本坏掉触发红线;改逐日净值分解残差全0%闭环;退出非主因(rank_drop卖对-8.3%);根因是放行机制未生效27只信号标的仅12只入仓退出无可管之物;park退出维度但留活口\r\n\r\n### 2026-06-24 申万行业成分采用独立membership事实表\r\nTushare申万行业成分导入采用industry_stock_membership作为历史事实源;不把jq_stock_info作为历史事实表;index_constituent只做完整快照兼容层\r\n\r\n### 2026-06-23 历史行业成分源缺失后暂停个股增强实现\r\nQKD7确认本地无可用历史行业成分:静态行业字段覆盖率0,801成分/行情为0,文件扫描无疑似源数据;只有API文档不能回测\r\n\r\n### 2026-06-23 ETF代理池final_top错位负控失败后暂停\r\n2GV8显示final_top_lead1强于正确日期且随机替换也为正;final_top未通过基础负控,暂停交易化回测\r\n\r\n### 2026-06-23 ETF代理池收益验证后保留过热降权单因子\r\n3GNZ显示final_top T+10均值最高而final_confirmed低于raw_top;保留过热降权单因子,暂停组合状态机\r\n\r\n### 2026-06-23 行业个股增强数据门禁后先走ETF代理池\r\n数据门禁显示个股可交易字段可用,但行业字段和801行业成分缺失;直接行业内个股formal暂不推进,先做行业/主题ETF代理池状态机面板\r\n\r\n### 2026-06-22 7KMP隔夜收益时段条件化市场门formal证伪决策\r\npark:隔夜放行方向搁置hard5维持上限;市场门组件代码保留默认false;选项2全年年化V2微弱反超待后续样本验证;选项3分数上限设计完成待定\r\n\r\n### 2026-06-22 A29 frozen-veto formal联合veto未过门槛+实现bug\r\n联合veto仅2/4段赢;2025段veto误伤修复反弹惨败;m14/m04/m01全池聚合口径失真;参数矩阵无必要;转向MECH-MATN隔夜收益新立项",
+                      "text":  "# last 3 days\r\n\r\n### 2026-06-27 A2趋势破位升级决策被十一年回测推翻\r\n十一年回测推翻A2升级RA5决策: A2 39.43x落后RA5 47.50x(-16.9%); A2牛顶崩盘零防御盲区(2015); 4段空仓重置高估A2 V型过滤效果; A2降为V型多发时段可选组件不升级; RA5维持防御主选\r\n\r\n### 2026-06-27 A2趋势破位升级RA5第三维L2robustness更新shadow配置\r\n下限空仓路线最优方案从RA5瞬时三维门控(17.03x 2025段-8.9%)升级为A2趋势破位三维门控(18.72x+9.9% 2025段-0.0%伤害清零); A2单点formal+A2n邻域(8pair)全过达RA6同等L2_robustness严谨度; 诊断0/21 vs 242/242在f...\r\n\r\n### 2026-06-27 RA5三维门控promote_candidate 进入shadow灰度\r\n四条证伪全通过 全样本复合17.03x(+8.6%)超越baseline 五轮首次; 2025段-8.9%(200日均线过滤牛市回调触发21-\u003e3次); 2024段+26.3%维持正贡献; 2022改善5.18pp; 三维=分数xret20广度xhs300-200日趋势 三个正交维度; 负控byte...\r\n\r\n### 2026-06-26 RA3kill与RA4observe 下限空仓路线场景判定\r\nRA3(60日均值)kill:2024段+67%做成-9.5% 924被滞后漏光 全面更差;RA4(分数xret20广度)observe:2024段+28.7%四轮首次战胜baseline 彻底解决RA3滞后渗漏死穴 但2025段-25.7%牛市回调误触发 全样本-12.9%;RA1/RA2/RA3...",
                       "x":  -880,
                       "y":  -460,
                       "width":  840,
-                      "height":  675,
+                      "height":  500,
                       "color":  "4"
                   },
                   {
@@ -63,11 +63,11 @@
                   {
                       "id":  "board-RD-20260605T115651Z-main-DEF0",
                       "type":  "text",
-                      "text":  "# 双池轮动防御模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n**focus**: EX-20260608T041610Z-main-B3QC\r\n## decisions\r\n### [park] B3 state-only extreme缺口归因失败后不动作化\r\n- 28Z4证伪state-only extreme绕过确认：919个事件覆盖4段，但未来10日DD5率22.85%低于quiet 24.91%，路径最差收益均值未更差，分段仅2/4更差，shift_prev1和随机负控均不支持。\r\n- next: park state-only extreme动作化路线；不绕过B3持久确认，不改实盘、不shadow、不observe，不扫state-only阈值、cap或确认天数。\r\n\r\n### [park] B3弱势持久确认缩短formal失败后不推广\r\n- 592F证伪fast_confirm3缩短确认：fast tiered复合收益+1154.89%低于原tiered-v2 +1215.07%，相对原分段final仅1/4不低，2025 final少4882.88；但回撤更浅、相对fast cap80有增量、lag1负控干净。\r\n- next: park fast_confirm3；原B3Gate/tiered-v2防御骨架仍保留为研究基准；不改实盘、不shadow、不observe，不在592F上扩确认天数或cap。",
+                      "text":  "# 双池轮动防御模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n**focus**: EX-20260608T041610Z-main-B3QC\r\n## decisions\r\n### [superseded_by_long_cycle] A2趋势破位升级决策被十一年回测推翻\r\n- 十一年回测推翻A2升级RA5决策: A2 39.43x落后RA5 47.50x(-16.9%); A2牛顶崩盘零防御盲区(2015); 4段空仓重置高估A2 V型过滤效果; A2降为V型多发时段可选组件不升级; RA5维持防御主选\r\n- next: DEC-K7R9补注RA5真实价值主要2015类牛顶崩盘; 研究质量审计规范待更新; 路线重点转向牛顶崩盘防御+样本外\r\n\r\n### [promote_candidate_upgrade] A2趋势破位升级RA5第三维L2robustness更新shadow配置\r\n- 下限空仓路线最优方案从RA5瞬时三维门控(17.03x 2025段-8.9%)升级为A2趋势破位三维门控(18.72x+9.9% 2025段-0.0%伤害清零); A2单点formal+A2n邻域(8pair)全过达RA6同等L2_robustness严谨度; 诊断0/21 vs 242/242在formal完美复现; shadow配置同步trend_bre...\r\n- next: P0解锁实盘QMT(P0工程阻塞)→P1配置shadow dry-run(trend_break+slope_window)→P2积累样本外触发→P3核对触发归因→P4样本外达标后新开DEC评估production promote",
                       "x":  780,
                       "y":  1760,
                       "width":  740,
-                      "height":  405,
+                      "height":  434,
                       "color":  "1"
                   },
                   {

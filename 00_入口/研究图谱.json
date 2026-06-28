@@ -1,33 +1,33 @@
 {
-    "generated_at_utc":  "2026-06-20T04:02:17Z",
+    "generated_at_utc":  "2026-06-26T17:47:48Z",
     "summary":  {
-                    "node_count":  535,
-                    "edge_count":  691,
+                    "node_count":  593,
+                    "edge_count":  819,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  7,
-                                    "EX":  237,
-                                    "RD":  36,
-                                    "IDEA":  27,
-                                    "DEC":  178,
-                                    "LIT":  50
+                                    "EX":  266,
+                                    "RD":  42,
+                                    "IDEA":  31,
+                                    "DEC":  195,
+                                    "LIT":  52
                                 },
                     "rd_by_status":  {
-                                         "active":  14,
-                                         "revise":  1,
-                                         "park":  18,
+                                         "active":  15,
+                                         "park":  24,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  129
+                    "recent_change_count_7d":  70
                 },
     "active_directions":  [
+                              "RD-20260605T131301Z-main-KC7N",
                               "RD-20260605T115651Z-main-OFF0",
                               "RD-20260605T115651Z-main-EXE0",
-                              "RD-20260605T115651Z-main-DP00",
-                              "RD-20260605T131301Z-main-KC7N",
+                              "RD-20260605T133318Z-main-H6V3",
+                              "RD-20260620T052601Z-main-3B2X",
                               "RD-20260620T022601Z-main-GHZL",
                               "RD-20260614T115209Z-main-MCYG",
-                              "RD-20260605T133318Z-main-H6V3",
+                              "RD-20260605T115651Z-main-DP00",
                               "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260523T000000Z-mig-BLF20260523002F8A70",
                               "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -211,7 +211,7 @@
                       "type":  "RD",
                       "title":  "双池轮动策略",
                       "status":  "active",
-                      "updated_at":  "2026-06-08T07:06:01Z",
+                      "updated_at":  "2026-06-23T12:51:47Z",
                       "file":  "RD-20260605T115651Z-main-DP00_双池轮动策略.md",
                       "parent_rd_id":  "",
                       "scope":  "策略",
@@ -483,27 +483,105 @@
                       "id":  "RD-20260619T083919Z-main-WEMY",
                       "type":  "RD",
                       "title":  "双池轮动A股撤离追高状态机",
-                      "status":  "revise",
-                      "updated_at":  "2026-06-19T19:43:00+08:00",
+                      "status":  "park",
+                      "updated_at":  "2026-06-22T09:30:00Z",
                       "file":  "RD-20260619T083919Z-main-WEMY_双池轮动A股撤离追高状态机.md",
                       "parent_rd_id":  "RD-20260605T133318Z-main-H6V3",
                       "scope":  "模块",
                       "module_type":  "核心轮动风控诊断模块",
-                      "current_decision_id":  "DEC-20260619T114146Z-main-5E5G",
-                      "current_best_ex_id":  "EX-20260619T113348Z-main-UN96"
+                      "current_decision_id":  "DEC-20260621T024805Z-main-CHCD",
+                      "current_best_ex_id":  "EX-20260621T015355Z-main-F44P"
                   },
                   {
                       "id":  "RD-20260620T022601Z-main-GHZL",
                       "type":  "RD",
                       "title":  "双池轮动 MAX 彩票式过热信号",
                       "status":  "active",
-                      "updated_at":  "2026-06-20T02:26:01Z",
+                      "updated_at":  "2026-06-20T07:30:00Z",
                       "file":  "RD-20260620T022601Z-main-GHZL_双池轮动MAX彩票式过热信号.md",
                       "parent_rd_id":  "RD-20260619T083919Z-main-WEMY",
                       "scope":  "模块",
                       "module_type":  "撤离追高状态机 m04 单因子深化",
-                      "current_decision_id":  "",
+                      "current_decision_id":  "DEC-20260620T062621Z-main-Z8MP",
                       "current_best_ex_id":  "EX-20260620T022611Z-main-FZM4"
+                  },
+                  {
+                      "id":  "RD-20260620T052147Z-main-8AB7",
+                      "type":  "RD",
+                      "title":  "双池轮动横截面离散度组合层保守开关",
+                      "status":  "park",
+                      "updated_at":  "2026-06-20T18:30:00Z",
+                      "file":  "RD-20260620T052147Z-main-8AB7_双池轮动横截面离散度组合层保守开关.md",
+                      "parent_rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "scope":  "模块",
+                      "module_type":  "组合层横截面离散度保守开关",
+                      "current_decision_id":  "DEC-20260620T150805Z-main-XSNQ",
+                      "current_best_ex_id":  "EX-20260620T094932Z-main-S8BP"
+                  },
+                  {
+                      "id":  "RD-20260620T052601Z-main-3B2X",
+                      "type":  "RD",
+                      "title":  "双池轮动 GSADF 爆炸性泡沫检测",
+                      "status":  "active",
+                      "updated_at":  "2026-06-20T08:30:00Z",
+                      "file":  "RD-20260620T052601Z-main-3B2X_双池轮动GSADF爆炸性泡沫检测.md",
+                      "parent_rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "scope":  "模块",
+                      "module_type":  "过程层爆炸性泡沫检测",
+                      "current_decision_id":  "DEC-20260620T063752Z-main-NEEU",
+                      "current_best_ex_id":  "EX-20260620T052616Z-main-UEAC"
+                  },
+                  {
+                      "id":  "RD-20260622T030341Z-main-S2T4",
+                      "type":  "RD",
+                      "title":  "隔夜收益知情交易个股层 p_repair 信号",
+                      "status":  "park",
+                      "updated_at":  "2026-06-23T00:55:00Z",
+                      "file":  "RD-20260622T030341Z-main-S2T4_隔夜收益知情交易个股层p_repair信号.md",
+                      "parent_rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "scope":  "模块",
+                      "module_type":  "核心轮动风控诊断模块（个股层 p_repair）",
+                      "current_decision_id":  "DEC-20260622T163008Z-main-GHZE",
+                      "current_best_ex_id":  "EX-20260622T133000Z-main-7KMP"
+                  },
+                  {
+                      "id":  "RD-20260623T015758Z-main-JFHA",
+                      "type":  "RD",
+                      "title":  "双池轮动隔夜收益信号组合层落差归因与退出机制",
+                      "status":  "park",
+                      "updated_at":  "2026-06-24T02:45:00Z",
+                      "file":  "RD-20260623T015758Z-main-JFHA_双池轮动隔夜收益信号组合层落差归因与退出机制.md",
+                      "parent_rd_id":  "RD-20260622T030341Z-main-S2T4",
+                      "scope":  "模块",
+                      "module_type":  "个股层隔夜收益信号组合层落差归因与退出机制",
+                      "current_decision_id":  "DEC-20260624T014933Z-main-3TWB",
+                      "current_best_ex_id":  "EX-20260623T234233Z-main-E3TQ"
+                  },
+                  {
+                      "id":  "RD-20260623T125116Z-main-DVXD",
+                      "type":  "RD",
+                      "title":  "双池轮动行业状态机与个股增强模块",
+                      "status":  "park",
+                      "updated_at":  "2026-06-24T01:34:12Z",
+                      "file":  "RD-20260623T125116Z-main-DVXD_双池轮动行业状态机与个股增强模块.md",
+                      "parent_rd_id":  "RD-20260605T115651Z-main-DP00",
+                      "scope":  "模块",
+                      "module_type":  "进攻与核心轮动扩展模块",
+                      "current_decision_id":  "DEC-20260624T013403Z-main-9AF6",
+                      "current_best_ex_id":  "EX-20260624T013047Z-main-GTUS"
+                  },
+                  {
+                      "id":  "RD-20260624T014933Z-main-NQS5",
+                      "type":  "RD",
+                      "title":  "双池轮动 low 桶放行机制入池失效诊断与修复",
+                      "status":  "park",
+                      "updated_at":  "2026-06-24T07:35:00Z",
+                      "file":  "RD-20260624T014933Z-main-NQS5_双池轮动low桶放行机制入池失效诊断与修复.md",
+                      "parent_rd_id":  "RD-20260605T115651Z-main-DP00",
+                      "scope":  "模块",
+                      "module_type":  "双池轮动low桶放行机制入池失效诊断与修复",
+                      "current_decision_id":  "DEC-20260624T072541Z-main-G6M9",
+                      "current_best_ex_id":  "EX-20260624T061755Z-main-CXCP"
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -2870,10 +2948,300 @@
                       "type":  "EX",
                       "title":  "MAX 彩票式过热只读面板预注册",
                       "status":  "active",
-                      "updated_at":  "2026-06-20T02:26:11Z",
+                      "updated_at":  "2026-06-20T07:30:00Z",
                       "file":  "EX-20260620T022611Z-main-FZM4_MAX彩票式过热只读面板预注册.md",
                       "rd_id":  "RD-20260620T022601Z-main-GHZL",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260620T052156Z-main-BL8Y",
+                      "type":  "EX",
+                      "title":  "横截面离散度组合层保守开关只读面板预注册",
+                      "status":  "active",
+                      "updated_at":  "2026-06-20T08:00:00Z",
+                      "file":  "EX-20260620T052156Z-main-BL8Y_横截面离散度组合层保守开关只读面板预注册.md",
+                      "rd_id":  "RD-20260620T052147Z-main-8AB7",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260620T052616Z-main-UEAC",
+                      "type":  "EX",
+                      "title":  "GSADF 爆炸性泡沫只读面板预注册",
+                      "status":  "active",
+                      "updated_at":  "2026-06-20T08:30:00Z",
+                      "file":  "EX-20260620T052616Z-main-UEAC_GSADF爆炸性泡沫只读面板预注册.md",
+                      "rd_id":  "RD-20260620T052601Z-main-3B2X",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260620T065134Z-main-XX6D",
+                      "type":  "EX",
+                      "title":  "错位负控反转方法论诊断预注册",
+                      "status":  "active",
+                      "updated_at":  "2026-06-20T10:00:00Z",
+                      "file":  "EX-20260620T065134Z-main-XX6D_错位负控反转方法论诊断预注册.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260620T094932Z-main-S8BP",
+                      "type":  "EX",
+                      "title":  "CS dispersion 组合层双方向配对 formal",
+                      "status":  "park",
+                      "updated_at":  "2026-06-20T18:30:00Z",
+                      "file":  "EX-20260620T094932Z-main-S8BP_CS dispersion 组合层双方向配对 formal.md",
+                      "rd_id":  "RD-20260620T052147Z-main-8AB7",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260621T015355Z-main-F44P",
+                      "type":  "EX",
+                      "title":  "A29 frozen-veto 组合层双方向配对 formal",
+                      "status":  "park",
+                      "updated_at":  "2026-06-22T09:00:00Z",
+                      "file":  "EX-20260621T015355Z-main-F44P_A29 frozen-veto 组合层双方向配对 formal.md",
+                      "rd_id":  "RD-20260619T083919Z-main-WEMY",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260622T030348Z-main-J3YY",
+                      "type":  "EX",
+                      "title":  "隔夜收益数据门禁与字段质量审计",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-22T03:50:00Z",
+                      "file":  "EX-20260622T030348Z-main-J3YY_隔夜收益数据门禁与字段质量审计.md",
+                      "rd_id":  "RD-20260622T030341Z-main-S2T4",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260622T031432Z-main-7TJU",
+                      "type":  "EX",
+                      "title":  "隔夜收益知情交易只读面板预注册",
+                      "status":  "promote_candidate",
+                      "updated_at":  "2026-06-22T04:30:00Z",
+                      "file":  "EX-20260622T031432Z-main-7TJU_隔夜收益知情交易只读面板预注册.md",
+                      "rd_id":  "RD-20260622T030341Z-main-S2T4",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260622T033017Z-main-PNV8",
+                      "type":  "EX",
+                      "title":  "隔夜收益日内主导放行组合层formal",
+                      "status":  "revise",
+                      "updated_at":  "2026-06-22T06:00:00Z",
+                      "file":  "EX-20260622T033017Z-main-PNV8_隔夜收益日内主导放行组合层formal.md",
+                      "rd_id":  "RD-20260622T030341Z-main-S2T4",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260622T104131Z-main-6XCN",
+                      "type":  "EX",
+                      "title":  "隔夜收益完全放行 V2 组合层 formal",
+                      "status":  "revise",
+                      "updated_at":  "2026-06-22T17:15:00Z",
+                      "file":  "EX-20260622T104131Z-main-6XCN_隔夜收益完全放行V2组合层formal.md",
+                      "rd_id":  "RD-20260622T030341Z-main-S2T4",
+                      "stage":  "executed_observed"
+                  },
+                  {
+                      "id":  "EX-20260622T133000Z-main-7KMP",
+                      "type":  "EX",
+                      "title":  "隔夜收益时段条件化市场状态gate组合层formal",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-22T16:30:00Z",
+                      "file":  "EX-20260622T133000Z-main-7KMP_隔夜收益时段条件化市场状态gate组合层formal.md",
+                      "rd_id":  "RD-20260622T030341Z-main-S2T4",
+                      "stage":  "executed_observed"
+                  },
+                  {
+                      "id":  "EX-20260623T015816Z-main-ZGHC",
+                      "type":  "EX",
+                      "title":  "隔夜收益信号组合层落差归因数据门禁",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-23T15:30:00Z",
+                      "file":  "EX-20260623T015816Z-main-ZGHC_隔夜收益信号组合层落差归因数据门禁.md",
+                      "rd_id":  "RD-20260623T015758Z-main-JFHA",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260623T125125Z-main-UTMF",
+                      "type":  "EX",
+                      "title":  "行业状态机与个股增强最小规格预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-23T13:10:37Z",
+                      "file":  "EX-20260623T125125Z-main-UTMF_行业状态机与个股增强最小规格预注册.md",
+                      "rd_id":  "RD-20260623T125116Z-main-DVXD",
+                      "stage":  "data_gate_completed"
+                  },
+                  {
+                      "id":  "EX-20260623T132332Z-main-MTPU",
+                      "type":  "EX",
+                      "title":  "行业ETF代理池状态机只读面板",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-23T13:27:47Z",
+                      "file":  "EX-20260623T132332Z-main-MTPU_行业ETF代理池状态机只读面板.md",
+                      "rd_id":  "RD-20260623T125116Z-main-DVXD",
+                      "stage":  "readonly_panel_completed"
+                  },
+                  {
+                      "id":  "EX-20260623T133642Z-main-3GNZ",
+                      "type":  "EX",
+                      "title":  "行业ETF代理池状态机未来收益验证",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-23T13:39:45Z",
+                      "file":  "EX-20260623T133642Z-main-3GNZ_行业ETF代理池状态机未来收益验证.md",
+                      "rd_id":  "RD-20260623T125116Z-main-DVXD",
+                      "stage":  "forward_return_panel_completed"
+                  },
+                  {
+                      "id":  "EX-20260623T134732Z-main-2GV8",
+                      "type":  "EX",
+                      "title":  "final_top相对raw_top错位负控",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-23T13:50:24Z",
+                      "file":  "EX-20260623T134732Z-main-2GV8_final_top相对raw_top错位负控.md",
+                      "rd_id":  "RD-20260623T125116Z-main-DVXD",
+                      "stage":  "negative_control_failed"
+                  },
+                  {
+                      "id":  "EX-20260623T234233Z-main-E3TQ",
+                      "type":  "EX",
+                      "title":  "隔夜收益信号组合层落差归因只读面板",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-24T02:30:00Z",
+                      "file":  "EX-20260623T234233Z-main-E3TQ_隔夜收益信号组合层落差归因只读面板.md",
+                      "rd_id":  "RD-20260623T015758Z-main-JFHA",
+                      "stage":  "formal_completed_with_revision"
+                  },
+                  {
+                      "id":  "EX-20260623T234552Z-main-QKD7",
+                      "type":  "EX",
+                      "title":  "历史行业成分数据源盘点门禁",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-23T23:51:57Z",
+                      "file":  "EX-20260623T234552Z-main-QKD7_历史行业成分数据源盘点门禁.md",
+                      "rd_id":  "RD-20260623T125116Z-main-DVXD",
+                      "stage":  "data_source_inventory_completed"
+                  },
+                  {
+                      "id":  "EX-20260624T013047Z-main-GTUS",
+                      "type":  "EX",
+                      "title":  "Tushare申万行业成分导入门禁",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-24T01:34:12Z",
+                      "file":  "EX-20260624T013047Z-main-GTUS_Tushare申万行业成分导入门禁.md",
+                      "rd_id":  "RD-20260623T125116Z-main-DVXD",
+                      "stage":  "storage_design_gate_completed_no_network"
+                  },
+                  {
+                      "id":  "EX-20260624T022318Z-main-9WDE",
+                      "type":  "EX",
+                      "title":  "双池轮动low桶放行机制信号标的入池失效只读诊断",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-24T05:00:00Z",
+                      "file":  "EX-20260624T022318Z-main-9WDE_双池轮动low桶放行机制信号标的入池失效只读诊断.md",
+                      "rd_id":  "RD-20260624T014933Z-main-NQS5",
+                      "stage":  "concept_mismatch_confirmed"
+                  },
+                  {
+                      "id":  "EX-20260624T061755Z-main-CXCP",
+                      "type":  "EX",
+                      "title":  "个股 overnight_share 选股价值只读模拟：事件级信号在组合层可交易约束下是否复现",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-24T06:50:00Z",
+                      "file":  "EX-20260624T061755Z-main-CXCP_个股overnight_share选股价值只读模拟 事件级信号在组合层可交易约束下是否复现.md",
+                      "rd_id":  "RD-20260624T014933Z-main-NQS5",
+                      "stage":  "formal_completed_signal_no_alpha"
+                  },
+                  {
+                      "id":  "EX-20260625T012736Z-main-IRPR",
+                      "type":  "EX",
+                      "title":  "IR 替代 R2 口径差异只读探针预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-25T04:00:00Z",
+                      "file":  "EX-20260625T012736Z-main-IRPR_IR替代R2口径差异只读探针预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-CORE",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260625T054748Z-main-DGPR",
+                      "type":  "EX",
+                      "title":  "双门槛分数空仓只读探针预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-25T06:15:00Z",
+                      "file":  "EX-20260625T054748Z-main-DGPR_双门槛分数空仓只读探针预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260625T073027Z-main-DGPR2",
+                      "type":  "EX",
+                      "title":  "非对称保险丝低分空仓探针预注册",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-25T07:30:27Z",
+                      "file":  "EX-20260625T073027Z-main-DGPR2_非对称保险丝低分空仓探针预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
                       "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260625T075938Z-main-RA1",
+                      "type":  "EX",
+                      "title":  "规则A低分切防御ETF正式回测预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-25T09:40:00Z",
+                      "file":  "EX-20260625T075938Z-main-RA1_规则A低分切防御ETF正式回测预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260625T110234Z-main-RA2",
+                      "type":  "EX",
+                      "title":  "规则A防抖动冷却期正式回测预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-25T11:50:00Z",
+                      "file":  "EX-20260625T110234Z-main-RA2_规则A防抖动冷却期正式回测预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260626T001500Z-main-RA3",
+                      "type":  "EX",
+                      "title":  "制度识别器（60日均值）低分切防御正式回测预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-26T09:40:00Z",
+                      "file":  "EX-20260626T001500Z-main-RA3_制度识别器60日均值低分切防御正式回测预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260626T014954Z-main-RA4",
+                      "type":  "EX",
+                      "title":  "分数×ret20广度二维门控低分切防御正式回测预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-26T10:25:00Z",
+                      "file":  "EX-20260626T014954Z-main-RA4_分数ret20广度二维门控低分切防御正式回测预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260626T030352Z-main-RA5",
+                      "type":  "EX",
+                      "title":  "分数×ret20广度×hs300趋势三维门控低分切防御正式回测预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-26T11:45:00Z",
+                      "file":  "EX-20260626T030352Z-main-RA5_分数ret20hs300三维门控低分切防御正式回测预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260626T154216Z-main-RA6",
+                      "type":  "EX",
+                      "title":  "三维门控阈值微扰矩阵非过拟合验证预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-27T01:35:00Z",
+                      "file":  "EX-20260626T154216Z-main-RA6_三维门控阈值微扰矩阵非过拟合验证预注册.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "completed_neighbors_passed"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -4834,6 +5202,193 @@
                       "ex_ids":  "EX-20260619T113348Z-main-UN96"
                   },
                   {
+                      "id":  "DEC-20260620T062621Z-main-Z8MP",
+                      "type":  "DEC",
+                      "title":  "FZM4 MAX 彩票式过热 observe A28 二元版优先",
+                      "status":  null,
+                      "updated_at":  "2026-06-20T07:30:00Z",
+                      "file":  "DEC-20260620T062621Z-main-Z8MP_FZM4MAX彩票式过热observeA28二元版优先.md",
+                      "decision":  "observe",
+                      "rd_ids":  "RD-20260620T022601Z-main-GHZL;RD-20260605T133318Z-main-H6V3",
+                      "ex_ids":  "EX-20260620T022611Z-main-FZM4"
+                  },
+                  {
+                      "id":  "DEC-20260620T063105Z-main-7TBK",
+                      "type":  "DEC",
+                      "title":  "横截面离散度 observe M10 正交性成立",
+                      "status":  null,
+                      "updated_at":  "2026-06-20T10:00:00Z",
+                      "file":  "DEC-20260620T063105Z-main-7TBK_横截面离散度observeM10正交性成立.md",
+                      "decision":  "promote_candidate",
+                      "rd_ids":  "RD-20260620T052147Z-main-8AB7;RD-20260605T133318Z-main-H6V3",
+                      "ex_ids":  "EX-20260620T052156Z-main-BL8Y"
+                  },
+                  {
+                      "id":  "DEC-20260620T063752Z-main-NEEU",
+                      "type":  "DEC",
+                      "title":  "GSADF 爆炸性 observe 方向反不纳入",
+                      "status":  null,
+                      "updated_at":  "2026-06-20T08:30:00Z",
+                      "file":  "DEC-20260620T063752Z-main-NEEU_GSADF爆炸性observe方向反不纳入.md",
+                      "decision":  "observe",
+                      "rd_ids":  "RD-20260620T052601Z-main-3B2X;RD-20260605T133318Z-main-H6V3",
+                      "ex_ids":  "EX-20260620T052616Z-main-UEAC"
+                  },
+                  {
+                      "id":  "DEC-20260620T150805Z-main-XSNQ",
+                      "type":  "DEC",
+                      "title":  "CS dispersion 组合层双方向配对 formal 决策",
+                      "status":  null,
+                      "updated_at":  "2026-06-20T18:30:00Z",
+                      "file":  "DEC-20260620T150805Z-main-XSNQ_CS dispersion 组合层双方向配对 formal 决策.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260620T052147Z-main-8AB7",
+                      "ex_ids":  "EX-20260620T094932Z-main-S8BP"
+                  },
+                  {
+                      "id":  "DEC-20260621T024805Z-main-CHCD",
+                      "type":  "DEC",
+                      "title":  "A29 frozen-veto 组合层双方向配对 formal 决策",
+                      "status":  null,
+                      "updated_at":  "2026-06-22T09:30:00Z",
+                      "file":  "DEC-20260621T024805Z-main-CHCD_A29 frozen-veto 组合层双方向配对 formal 决策.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260619T083919Z-main-WEMY",
+                      "ex_ids":  "EX-20260621T015355Z-main-F44P"
+                  },
+                  {
+                      "id":  "DEC-20260622T123321Z-main-78RB",
+                      "type":  "DEC",
+                      "title":  "隔夜收益放行 formal 决策（V1 revise → V2 revise）",
+                      "status":  null,
+                      "updated_at":  "2026-06-22T13:00:00Z",
+                      "file":  "DEC-20260622T123321Z-main-78RB_隔夜收益放行formal决策(V1 revise V2 revise).md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260622T030341Z-main-S2T4",
+                      "ex_ids":  "EX-20260622T033017Z-main-PNV8;EX-20260622T104131Z-main-6XCN"
+                  },
+                  {
+                      "id":  "DEC-20260622T163008Z-main-GHZE",
+                      "type":  "DEC",
+                      "title":  "7KMP 隔夜收益时段条件化市场门 formal 证伪决策",
+                      "status":  null,
+                      "updated_at":  "2026-06-22T16:45:00Z",
+                      "file":  "DEC-20260622T163008Z-main-GHZE_7KMP隔夜收益时段条件化市场门formal证伪决策.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260622T030341Z-main-S2T4",
+                      "ex_ids":  "EX-20260622T133000Z-main-7KMP;EX-20260622T104131Z-main-6XCN;EX-20260622T033017Z-main-PNV8"
+                  },
+                  {
+                      "id":  "DEC-20260623T131037Z-main-M4XJ",
+                      "type":  "DEC",
+                      "title":  "行业个股增强数据门禁后先走ETF代理池",
+                      "status":  null,
+                      "updated_at":  "2026-06-23T13:10:37Z",
+                      "file":  "DEC-20260623T131037Z-main-M4XJ_行业个股增强数据门禁后先走ETF代理池.md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260623T125116Z-main-DVXD",
+                      "ex_ids":  "EX-20260623T125125Z-main-UTMF"
+                  },
+                  {
+                      "id":  "DEC-20260623T133954Z-main-67YJ",
+                      "type":  "DEC",
+                      "title":  "ETF代理池收益验证后保留过热降权单因子",
+                      "status":  null,
+                      "updated_at":  "2026-06-23T13:39:54Z",
+                      "file":  "DEC-20260623T133954Z-main-67YJ_ETF代理池收益验证后保留过热降权单因子.md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260623T125116Z-main-DVXD",
+                      "ex_ids":  "EX-20260623T133642Z-main-3GNZ"
+                  },
+                  {
+                      "id":  "DEC-20260623T135036Z-main-PFMU",
+                      "type":  "DEC",
+                      "title":  "ETF代理池final_top错位负控失败后暂停",
+                      "status":  null,
+                      "updated_at":  "2026-06-23T13:50:36Z",
+                      "file":  "DEC-20260623T135036Z-main-PFMU_ETF代理池final_top错位负控失败后暂停.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260623T125116Z-main-DVXD",
+                      "ex_ids":  "EX-20260623T134732Z-main-2GV8"
+                  },
+                  {
+                      "id":  "DEC-20260623T235142Z-main-2UF3",
+                      "type":  "DEC",
+                      "title":  "历史行业成分源缺失后暂停个股增强实现",
+                      "status":  null,
+                      "updated_at":  "2026-06-23T23:51:57Z",
+                      "file":  "DEC-20260623T235142Z-main-2UF3_历史行业成分源缺失后暂停个股增强实现.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260623T125116Z-main-DVXD",
+                      "ex_ids":  "EX-20260623T234552Z-main-QKD7"
+                  },
+                  {
+                      "id":  "DEC-20260624T013403Z-main-9AF6",
+                      "type":  "DEC",
+                      "title":  "申万行业成分采用独立membership事实表",
+                      "status":  null,
+                      "updated_at":  "2026-06-24T01:34:12Z",
+                      "file":  "DEC-20260624T013403Z-main-9AF6_申万行业成分采用独立membership事实表.md",
+                      "decision":  "accept",
+                      "rd_ids":  "RD-20260623T125116Z-main-DVXD",
+                      "ex_ids":  "EX-20260624T013047Z-main-GTUS"
+                  },
+                  {
+                      "id":  "DEC-20260624T014933Z-main-3TWB",
+                      "type":  "DEC",
+                      "title":  "E3TQ 逐日净值分解归因后 park 退出机制维度并开新方向放行未生效诊断",
+                      "status":  null,
+                      "updated_at":  "2026-06-24T02:35:00Z",
+                      "file":  "DEC-20260624T014933Z-main-3TWB_E3TQ逐日净值分解归因后park退出机制维度并开新方向放行未生效诊断.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260623T015758Z-main-JFHA",
+                      "ex_ids":  "EX-20260623T234233Z-main-E3TQ"
+                  },
+                  {
+                      "id":  "DEC-20260624T042716Z-main-KZ7L",
+                      "type":  "DEC",
+                      "title":  "overnight 研究链概念错配修正：个股层 low 桶信号 ≠ 池子层 median 门槛放行",
+                      "status":  null,
+                      "updated_at":  "2026-06-24T04:50:00Z",
+                      "file":  "DEC-20260624T042716Z-main-KZ7L_overnight研究链概念错配修正 个股层low桶信号不等于池子层median门槛放行.md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260624T014933Z-main-NQS5;RD-20260623T015758Z-main-JFHA;RD-20260622T030341Z-main-S2T4",
+                      "ex_ids":  "EX-20260624T022318Z-main-9WDE;EX-20260623T234233Z-main-E3TQ;EX-20260622T031432Z-main-7TJU"
+                  },
+                  {
+                      "id":  "DEC-20260624T072541Z-main-G6M9",
+                      "type":  "DEC",
+                      "title":  "overnight 研究链最终 park：个股 low 桶信号在 ETF 池选股无 alpha，负控证据确凿",
+                      "status":  null,
+                      "updated_at":  "2026-06-24T07:30:00Z",
+                      "file":  "DEC-20260624T072541Z-main-G6M9_overnight研究链最终park 个股low桶信号在ETF池选股无alpha负控证据确凿.md",
+                      "decision":  "park",
+                      "rd_ids":  "RD-20260624T014933Z-main-NQS5;RD-20260623T015758Z-main-JFHA;RD-20260622T030341Z-main-S2T4",
+                      "ex_ids":  "EX-20260624T061755Z-main-CXCP;EX-20260624T022318Z-main-9WDE;EX-20260623T234233Z-main-E3TQ;EX-20260622T031432Z-main-7TJU"
+                  },
+                  {
+                      "id":  "DEC-20260626T024211Z-main-W4Q7",
+                      "type":  "DEC",
+                      "title":  "RA3 kill 与 RA4 observe：下限空仓路线场景判定",
+                      "status":  null,
+                      "updated_at":  "2026-06-26T02:42:11Z",
+                      "file":  "DEC-20260626T024211Z-main-W4Q7_RA3kill与RA4observe下限空仓路线场景判定.md",
+                      "decision":  "observe",
+                      "rd_ids":  "RD-20260605T115651Z-main-DEF0",
+                      "ex_ids":  "EX-20260626T001500Z-main-RA3;EX-20260626T014954Z-main-RA4;EX-20260625T075938Z-main-RA1;EX-20260625T110234Z-main-RA2"
+                  },
+                  {
+                      "id":  "DEC-20260626T035024Z-main-K7R9",
+                      "type":  "DEC",
+                      "title":  "RA5 三维门控 promote_candidate：进入 shadow 灰度",
+                      "status":  null,
+                      "updated_at":  "2026-06-27T01:40:00Z",
+                      "file":  "DEC-20260626T035024Z-main-K7R9_RA5三维门控promote_candidate进入shadow灰度.md",
+                      "decision":  "promote_candidate",
+                      "rd_ids":  "RD-20260605T115651Z-main-DEF0",
+                      "ex_ids":  "EX-20260626T030352Z-main-RA5;EX-20260626T014954Z-main-RA4;EX-20260625T075938Z-main-RA1;EX-20260626T154216Z-main-RA6"
+                  },
+                  {
                       "id":  "LIT-20260605T133336Z-main-67C4",
                       "type":  "LIT",
                       "title":  "score 过热拥挤机制文献映射",
@@ -4928,6 +5483,22 @@
                       "status":  "todo",
                       "updated_at":  "2026-06-20T02:25:39Z",
                       "file":  "LIT-20260620T022539Z-main-36A6_MAX彩票式过热BaliCakiciWhitelaw2011.md"
+                  },
+                  {
+                      "id":  "LIT-20260620T052147Z-main-86GQ",
+                      "type":  "LIT",
+                      "title":  "横截面收益离散度 Stivers Sun 2010",
+                      "status":  "todo",
+                      "updated_at":  "2026-06-20T05:21:47Z",
+                      "file":  "LIT-20260620T052147Z-main-86GQ_横截面收益离散度StiversSun2010.md"
+                  },
+                  {
+                      "id":  "LIT-20260620T052601Z-main-PYTZ",
+                      "type":  "LIT",
+                      "title":  "GSADF 爆炸性泡沫 Phillips Shi Yu 2015",
+                      "status":  "todo",
+                      "updated_at":  "2026-06-20T05:26:01Z",
+                      "file":  "LIT-20260620T052601Z-main-PYTZ_GSADF爆炸性泡沫PhillipsShiYu2015.md"
                   },
                   {
                       "id":  "LIT-20260603T000000Z-mig-1999MOSKOWITZ83801",
@@ -5243,6 +5814,42 @@
                       "subtype":  "因子数据灵感"
                   },
                   {
+                      "id":  "MECH-20260620T060722Z-main-APH5",
+                      "type":  "IDEA",
+                      "title":  "FZM4 MAX 彩票式过热只读面板脚本设计",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-20T06:07:22Z",
+                      "file":  "MECH-20260620T060722Z-main-APH5_FZM4MAX彩票式过热只读面板脚本设计.md",
+                      "subtype":  "因子数据灵感"
+                  },
+                  {
+                      "id":  "MECH-20260620T154044Z-main-MATN",
+                      "type":  "IDEA",
+                      "title":  "顶刊灵感1 隔夜收益知情交易 Lou Polk Skouras 2019",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-20T16:00:00Z",
+                      "file":  "MECH-20260620T154044Z-main-MATN_顶刊灵感1 隔夜收益知情交易 Lou Polk Skouras 2019.md",
+                      "subtype":  "因子数据灵感"
+                  },
+                  {
+                      "id":  "MECH-20260620T154049Z-main-2JVB",
+                      "type":  "IDEA",
+                      "title":  "顶刊灵感2 拥挤度同质化同步 Stein 2009",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-20T16:00:00Z",
+                      "file":  "MECH-20260620T154049Z-main-2JVB_顶刊灵感2 拥挤度同质化同步 Stein 2009.md",
+                      "subtype":  "因子数据灵感"
+                  },
+                  {
+                      "id":  "MECH-20260620T154049Z-main-XPVF",
+                      "type":  "IDEA",
+                      "title":  "顶刊灵感3 ETF份额变动申赎流 Ben-David 2018",
+                      "status":  "draft",
+                      "updated_at":  "2026-06-20T16:00:00Z",
+                      "file":  "MECH-20260620T154049Z-main-XPVF_顶刊灵感3 ETF份额变动申赎流 Ben-David 2018.md",
+                      "subtype":  "因子数据灵感"
+                  },
+                  {
                       "id":  "IDEA-20260521T000000Z-mig-I202605210017AD87",
                       "type":  "IDEA",
                       "title":  "I20260521-001 ETF趋势确认与防守切换",
@@ -5535,7 +6142,7 @@
                       "type":  "STRAT",
                       "title":  "双池轮动策略",
                       "status":  "active",
-                      "updated_at":  "2026-06-08T15:25:59+08:00",
+                      "updated_at":  "2026-06-23T12:51:47Z",
                       "file":  "STRAT-20260605T115651Z-main-DP00_双池轮动策略档案.md",
                       "rd_id":  "RD-20260605T115651Z-main-DP00"
                   }
@@ -5704,6 +6311,36 @@
                   {
                       "from":  "RD-20260620T022601Z-main-GHZL",
                       "to":  "RD-20260619T083919Z-main-WEMY",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260620T052147Z-main-8AB7",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260620T052601Z-main-3B2X",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260622T030341Z-main-S2T4",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260623T015758Z-main-JFHA",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260623T125116Z-main-DVXD",
+                      "to":  "RD-20260605T115651Z-main-DP00",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260624T014933Z-main-NQS5",
+                      "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "parent"
                   },
                   {
@@ -8087,6 +8724,341 @@
                       "rel":  "lit_source"
                   },
                   {
+                      "from":  "EX-20260620T022611Z-main-FZM4",
+                      "to":  "MECH-20260620T060722Z-main-APH5",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260620T052156Z-main-BL8Y",
+                      "to":  "RD-20260620T052147Z-main-8AB7",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260620T052156Z-main-BL8Y",
+                      "to":  "LIT-20260620T052147Z-main-86GQ",
+                      "rel":  "lit_source"
+                  },
+                  {
+                      "from":  "EX-20260620T052616Z-main-UEAC",
+                      "to":  "RD-20260620T052601Z-main-3B2X",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260620T052616Z-main-UEAC",
+                      "to":  "LIT-20260620T052601Z-main-PYTZ",
+                      "rel":  "lit_source"
+                  },
+                  {
+                      "from":  "EX-20260620T065134Z-main-XX6D",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260620T094932Z-main-S8BP",
+                      "to":  "RD-20260620T052147Z-main-8AB7",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260620T094932Z-main-S8BP",
+                      "to":  "DEC-20260620T150805Z-main-XSNQ",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260620T094932Z-main-S8BP",
+                      "to":  "LIT-20260620T052147Z-main-86GQ",
+                      "rel":  "lit_source"
+                  },
+                  {
+                      "from":  "EX-20260620T094932Z-main-S8BP",
+                      "to":  "MECH-20260619T025934Z-main-DQUM",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260620T094932Z-main-S8BP",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260620T094932Z-main-S8BP",
+                      "to":  "MECH-20260620T154049Z-main-2JVB",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260621T015355Z-main-F44P",
+                      "to":  "RD-20260619T083919Z-main-WEMY",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260621T015355Z-main-F44P",
+                      "to":  "DEC-20260621T024805Z-main-CHCD",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260621T015355Z-main-F44P",
+                      "to":  "LIT-20260620T022539Z-main-36A6",
+                      "rel":  "lit_source"
+                  },
+                  {
+                      "from":  "EX-20260621T015355Z-main-F44P",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260622T030348Z-main-J3YY",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260622T030348Z-main-J3YY",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260622T031432Z-main-7TJU",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260622T031432Z-main-7TJU",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260622T033017Z-main-PNV8",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260622T033017Z-main-PNV8",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260622T104131Z-main-6XCN",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260622T104131Z-main-6XCN",
+                      "to":  "DEC-20260622T123321Z-main-78RB",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260622T104131Z-main-6XCN",
+                      "to":  "DEC-20260622T163008Z-main-GHZE",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260622T104131Z-main-6XCN",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260622T133000Z-main-7KMP",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260622T133000Z-main-7KMP",
+                      "to":  "DEC-20260622T163008Z-main-GHZE",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260622T133000Z-main-7KMP",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260623T015816Z-main-ZGHC",
+                      "to":  "RD-20260623T015758Z-main-JFHA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T015816Z-main-ZGHC",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260623T125125Z-main-UTMF",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T125125Z-main-UTMF",
+                      "to":  "DEC-20260623T131037Z-main-M4XJ",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T132332Z-main-MTPU",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T132332Z-main-MTPU",
+                      "to":  "DEC-20260623T131037Z-main-M4XJ",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T133642Z-main-3GNZ",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T133642Z-main-3GNZ",
+                      "to":  "DEC-20260623T131037Z-main-M4XJ",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T133642Z-main-3GNZ",
+                      "to":  "DEC-20260623T133954Z-main-67YJ",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T134732Z-main-2GV8",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T134732Z-main-2GV8",
+                      "to":  "DEC-20260623T133954Z-main-67YJ",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T134732Z-main-2GV8",
+                      "to":  "DEC-20260623T135036Z-main-PFMU",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T234233Z-main-E3TQ",
+                      "to":  "RD-20260623T015758Z-main-JFHA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T234233Z-main-E3TQ",
+                      "to":  "DEC-20260624T014933Z-main-3TWB",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260623T234233Z-main-E3TQ",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260623T234552Z-main-QKD7",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260623T234552Z-main-QKD7",
+                      "to":  "DEC-20260623T235142Z-main-2UF3",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260624T013047Z-main-GTUS",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260624T013047Z-main-GTUS",
+                      "to":  "DEC-20260624T013403Z-main-9AF6",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260624T022318Z-main-9WDE",
+                      "to":  "RD-20260624T014933Z-main-NQS5",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260624T022318Z-main-9WDE",
+                      "to":  "DEC-20260624T042716Z-main-KZ7L",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260624T022318Z-main-9WDE",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260624T061755Z-main-CXCP",
+                      "to":  "RD-20260624T014933Z-main-NQS5",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260624T061755Z-main-CXCP",
+                      "to":  "DEC-20260624T072541Z-main-G6M9",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260624T061755Z-main-CXCP",
+                      "to":  "MECH-20260620T154044Z-main-MATN",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260625T012736Z-main-IRPR",
+                      "to":  "RD-20260605T115651Z-main-CORE",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260625T054748Z-main-DGPR",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260625T073027Z-main-DGPR2",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260625T075938Z-main-RA1",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260625T110234Z-main-RA2",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260626T001500Z-main-RA3",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260626T001500Z-main-RA3",
+                      "to":  "DEC-20260626T024211Z-main-W4Q7",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260626T014954Z-main-RA4",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260626T014954Z-main-RA4",
+                      "to":  "DEC-20260626T024211Z-main-W4Q7",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260626T030352Z-main-RA5",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260626T030352Z-main-RA5",
+                      "to":  "DEC-20260626T035024Z-main-K7R9",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260626T154216Z-main-RA6",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260626T154216Z-main-RA6",
+                      "to":  "DEC-20260626T035024Z-main-K7R9",
+                      "rel":  "produced_decision"
+                  },
+                  {
                       "from":  "DEC-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "decision_affects"
@@ -8992,6 +9964,281 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260620T062621Z-main-Z8MP",
+                      "to":  "RD-20260620T022601Z-main-GHZL",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T062621Z-main-Z8MP",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T062621Z-main-Z8MP",
+                      "to":  "EX-20260620T022611Z-main-FZM4",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260620T063105Z-main-7TBK",
+                      "to":  "RD-20260620T052147Z-main-8AB7",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T063105Z-main-7TBK",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T063105Z-main-7TBK",
+                      "to":  "EX-20260620T052156Z-main-BL8Y",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260620T063752Z-main-NEEU",
+                      "to":  "RD-20260620T052601Z-main-3B2X",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T063752Z-main-NEEU",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T063752Z-main-NEEU",
+                      "to":  "EX-20260620T052616Z-main-UEAC",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260620T150805Z-main-XSNQ",
+                      "to":  "RD-20260620T052147Z-main-8AB7",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260620T150805Z-main-XSNQ",
+                      "to":  "EX-20260620T094932Z-main-S8BP",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260621T024805Z-main-CHCD",
+                      "to":  "RD-20260619T083919Z-main-WEMY",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260621T024805Z-main-CHCD",
+                      "to":  "EX-20260621T015355Z-main-F44P",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260622T123321Z-main-78RB",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260622T123321Z-main-78RB",
+                      "to":  "EX-20260622T033017Z-main-PNV8",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260622T123321Z-main-78RB",
+                      "to":  "EX-20260622T104131Z-main-6XCN",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260622T163008Z-main-GHZE",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260622T163008Z-main-GHZE",
+                      "to":  "EX-20260622T133000Z-main-7KMP",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260622T163008Z-main-GHZE",
+                      "to":  "EX-20260622T104131Z-main-6XCN",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260622T163008Z-main-GHZE",
+                      "to":  "EX-20260622T033017Z-main-PNV8",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260623T131037Z-main-M4XJ",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260623T131037Z-main-M4XJ",
+                      "to":  "EX-20260623T125125Z-main-UTMF",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260623T133954Z-main-67YJ",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260623T133954Z-main-67YJ",
+                      "to":  "EX-20260623T133642Z-main-3GNZ",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260623T135036Z-main-PFMU",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260623T135036Z-main-PFMU",
+                      "to":  "EX-20260623T134732Z-main-2GV8",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260623T235142Z-main-2UF3",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260623T235142Z-main-2UF3",
+                      "to":  "EX-20260623T234552Z-main-QKD7",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T013403Z-main-9AF6",
+                      "to":  "RD-20260623T125116Z-main-DVXD",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T013403Z-main-9AF6",
+                      "to":  "EX-20260624T013047Z-main-GTUS",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T014933Z-main-3TWB",
+                      "to":  "RD-20260623T015758Z-main-JFHA",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T014933Z-main-3TWB",
+                      "to":  "EX-20260623T234233Z-main-E3TQ",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "RD-20260624T014933Z-main-NQS5",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "RD-20260623T015758Z-main-JFHA",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "EX-20260624T022318Z-main-9WDE",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "EX-20260623T234233Z-main-E3TQ",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T042716Z-main-KZ7L",
+                      "to":  "EX-20260622T031432Z-main-7TJU",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "RD-20260624T014933Z-main-NQS5",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "RD-20260623T015758Z-main-JFHA",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "RD-20260622T030341Z-main-S2T4",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "EX-20260624T061755Z-main-CXCP",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "EX-20260624T022318Z-main-9WDE",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "EX-20260623T234233Z-main-E3TQ",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260624T072541Z-main-G6M9",
+                      "to":  "EX-20260622T031432Z-main-7TJU",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T024211Z-main-W4Q7",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260626T024211Z-main-W4Q7",
+                      "to":  "EX-20260626T001500Z-main-RA3",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T024211Z-main-W4Q7",
+                      "to":  "EX-20260626T014954Z-main-RA4",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T024211Z-main-W4Q7",
+                      "to":  "EX-20260625T075938Z-main-RA1",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T024211Z-main-W4Q7",
+                      "to":  "EX-20260625T110234Z-main-RA2",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T035024Z-main-K7R9",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260626T035024Z-main-K7R9",
+                      "to":  "EX-20260626T030352Z-main-RA5",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T035024Z-main-K7R9",
+                      "to":  "EX-20260626T014954Z-main-RA4",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T035024Z-main-K7R9",
+                      "to":  "EX-20260625T075938Z-main-RA1",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260626T035024Z-main-K7R9",
+                      "to":  "EX-20260626T154216Z-main-RA6",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "strategy_of"
@@ -9001,478 +10248,6 @@
 
                        ],
     "recent_changes_7d":  [
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
                               {
                                   "id":  null,
                                   "type":  null,
