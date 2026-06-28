@@ -12,7 +12,6 @@ module_type: 防御模块
 decision_ids:
   - DEC-20260626T035024Z-main-K7R9
   - DEC-20260627T073551Z-main-DTH2
-  - DEC-20260627T135725Z-main-HUWV
 lit_ids: []
 idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}

@@ -1,8 +1,8 @@
 ---
-id: EX-20260628T120000Z-main-D3
+ex_id: EX-20260628T120000Z-main-D3
 title: raw_closes 缓存跨日累加污染——十一年回测广度/中位收益失真真因定论
-type: experiment
-rd_id: RD-DEFENSE
+type: 实验记录
+rd_id: RD-20260605T115651Z-main-DEF0
 ex_type: bug调查
 status: completed
 stage: 修复验证完成_结论定论_颠覆HUWV叙事
@@ -17,6 +17,9 @@ related_decisions:
   - DEC-20260627T073551Z-main-DTH2
 config_path: ""
 result_path: "${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py"
+subagent_call_ids:
+  - SUB-20260628T100000Z-main-D3CACHE
+  - SUB-20260628T143000Z-main-D7CFG
 tags: [bug调查, 缓存污染, raw_closes, state_prices, 长周期回测, 路径依赖, 十一年回测, 根因定论, 推翻EX-8XXB, 推翻EX-HUWV, 修复验证, 结论反转, A2最优, D3]
 ---
 

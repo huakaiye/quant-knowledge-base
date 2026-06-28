@@ -1,12 +1,12 @@
 {
-    "generated_at_utc":  "2026-06-27T14:06:09Z",
+    "generated_at_utc":  "2026-06-28T08:22:23Z",
     "summary":  {
-                    "node_count":  598,
-                    "edge_count":  835,
+                    "node_count":  600,
+                    "edge_count":  842,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  7,
-                                    "EX":  270,
+                                    "EX":  272,
                                     "RD":  42,
                                     "IDEA":  31,
                                     "DEC":  196,
@@ -17,7 +17,7 @@
                                          "park":  24,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  66
+                    "recent_change_count_7d":  52
                 },
     "active_directions":  [
                               "RD-20260605T131301Z-main-KC7N",
@@ -3277,11 +3277,31 @@
                       "id":  "EX-20260627T135725Z-main-HUWV",
                       "type":  "EX",
                       "title":  "十一年长周期回测揭示 4 段空仓重置假象",
-                      "status":  "completed",
-                      "updated_at":  "2026-06-27T21:30:00Z",
+                      "status":  "superseded",
+                      "updated_at":  "2026-06-28T15:30:00Z",
                       "file":  "EX-20260627T135725Z-main-HUWV_十一年长周期回测揭示4段空仓重置假象.md",
                       "rd_id":  "RD-20260605T115651Z-main-DEF0",
-                      "stage":  "completed"
+                      "stage":  "superseded_by_EX-D3_fixed_results"
+                  },
+                  {
+                      "id":  "EX-20260627T154439Z-main-8XXB",
+                      "type":  "EX",
+                      "title":  "ret20_breadth fallback 估算污染广度 bug 修复",
+                      "status":  "superseded",
+                      "updated_at":  "2026-06-28T12:40:00Z",
+                      "file":  "EX-20260627T154439Z-main-8XXB_ret20_breadth fallback估算污染广度bug修复.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "superseded_by_EX-D3_诊断方向错误"
+                  },
+                  {
+                      "id":  "EX-20260628T120000Z-main-D3",
+                      "type":  "EX",
+                      "title":  "EX-20260628T120000Z-main-D3",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-28T15:30:00Z",
+                      "file":  "EX-20260628T120000Z-main-D3_raw_closes缓存累加污染根因定论.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "修复验证完成_结论定论_颠覆HUWV叙事"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -3291,7 +3311,7 @@
                       "updated_at":  "2026-06-05T12:00:00Z",
                       "file":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82_D20260529-R014阴跌分桶过滤修订.md",
                       "decision":  "observe",
-                      "rd_ids":  "",
+                      "rd_ids":  "RD-20260605T115651Z-main-DEF0",
                       "ex_ids":  ""
                   },
                   {
@@ -5422,22 +5442,22 @@
                       "type":  "DEC",
                       "title":  "RA5 三维门控 promote_candidate：进入 shadow 灰度",
                       "status":  null,
-                      "updated_at":  "2026-06-27T21:45:00Z",
+                      "updated_at":  "2026-06-28T15:30:00Z",
                       "file":  "DEC-20260626T035024Z-main-K7R9_RA5三维门控promote_candidate进入shadow灰度.md",
-                      "decision":  "promote_candidate",
+                      "decision":  "revise",
                       "rd_ids":  "RD-20260605T115651Z-main-DEF0",
-                      "ex_ids":  "EX-20260626T030352Z-main-RA5;EX-20260626T014954Z-main-RA4;EX-20260625T075938Z-main-RA1;EX-20260626T154216Z-main-RA6;EX-20260627T135725Z-main-HUWV"
+                      "ex_ids":  "EX-20260626T030352Z-main-RA5;EX-20260626T014954Z-main-RA4;EX-20260625T075938Z-main-RA1;EX-20260626T154216Z-main-RA6;EX-20260627T135725Z-main-HUWV;EX-20260628T120000Z-main-D3"
                   },
                   {
                       "id":  "DEC-20260627T073551Z-main-DTH2",
                       "type":  "DEC",
                       "title":  "DEC-DTH2 A2 趋势破位升级 RA5 第三维为 L2_robustness 并更新 shadow 配置",
                       "status":  null,
-                      "updated_at":  "2026-06-27T21:40:00Z",
+                      "updated_at":  "2026-06-28T15:30:00Z",
                       "file":  "DEC-20260627T073551Z-main-DTH2_A2趋势破位升级RA5第三维L2robustness更新shadow配置.md",
-                      "decision":  "superseded_by_long_cycle",
+                      "decision":  "promote_candidate",
                       "rd_ids":  "RD-20260605T115651Z-main-DEF0",
-                      "ex_ids":  "EX-20260627T053730Z-main-JTX7;EX-20260627T063703Z-main-XSFC;EX-20260626T030352Z-main-RA5;EX-20260626T154216Z-main-RA6;EX-20260627T005518Z-main-GUWQ"
+                      "ex_ids":  "EX-20260627T053730Z-main-JTX7;EX-20260627T063703Z-main-XSFC;EX-20260626T030352Z-main-RA5;EX-20260626T154216Z-main-RA6;EX-20260627T005518Z-main-GUWQ;EX-20260628T120000Z-main-D3"
                   },
                   {
                       "id":  "LIT-20260605T133336Z-main-67C4",
@@ -9155,6 +9175,31 @@
                       "rel":  "produced_decision"
                   },
                   {
+                      "from":  "EX-20260627T154439Z-main-8XXB",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260627T154439Z-main-8XXB",
+                      "to":  "DEC-20260626T035024Z-main-K7R9",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260627T154439Z-main-8XXB",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260628T120000Z-main-D3",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "decision_affects"
+                  },
+                  {
                       "from":  "DEC-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "decision_affects"
@@ -10340,6 +10385,11 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260626T035024Z-main-K7R9",
+                      "to":  "EX-20260628T120000Z-main-D3",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "DEC-20260627T073551Z-main-DTH2",
                       "to":  "RD-20260605T115651Z-main-DEF0",
                       "rel":  "decision_affects"
@@ -10370,6 +10420,11 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260627T073551Z-main-DTH2",
+                      "to":  "EX-20260628T120000Z-main-D3",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "strategy_of"
@@ -10379,118 +10434,6 @@
 
                        ],
     "recent_changes_7d":  [
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
                               {
                                   "id":  null,
                                   "type":  null,
