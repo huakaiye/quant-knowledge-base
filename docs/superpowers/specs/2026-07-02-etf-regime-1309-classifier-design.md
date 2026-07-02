@@ -67,8 +67,10 @@
 
 | 指标 | 公式 | 回归窗口 | 用途 |
 |---|---|---|---|
-| `score_1309`（本设计主用） | `exp(slope × 250) × R²` | 25 点 = `[过去24个交易日收盘价] + [今日13:09价]` | 主分析 |
+| `score_1309`（本设计主用） | `(exp(slope × 250) − 1) × R²`（**含 −1**，与平台 `momentum.py:174-175` 一致） | 25 点 = `[过去24个交易日收盘价] + [今日13:09价]` | 主分析 |
 | `score_close`（对照基准） | 同上 | 25 点 = `[过去25个交易日收盘价]` | 对照，看 13:09 采样是否带来增量 |
+
+⚠️ **公式修正**：平台实测 score 公式是 `(exp(slope×annualization) − 1) × R²`（`momentum.py:174-175`），研究库此前描述 `exp(slope×250)×R²` 漏了 `-1`。本设计沿用平台实际口径。回归采用**加权 log 线性回归**（权重 `linspace(1.0, 2.0, n)`，越靠后越大；R² 用一次权重；`momentum.py:144-180`），直接调用 `weighted_regression_momentum_scores(prices, window=25, annualization=250)` 复刻生产口径。
 
 ⚠️ **口径说明**：`score_1309` 用"24 收盘 + 今日 13:09"而非"25 个 13:09 价"，理由：13:09 决策时能看到的最新 25 个点就是这 25 个，且语义与日频 score_close 对齐便于对比。这一口径需在实现时复核（见 §8 待确认项）。
 
@@ -174,9 +176,9 @@
 
 ## 8. 待确认项（实现前必须解决）
 
-1. **`score_1309` 口径**：默认"24 收盘 + 今日 13:09"。需在实现时与平台现有 score 计算逻辑（`src/quant_v2/utils/momentum.py`）对齐，确认 25 点回归的实现细节。
-2. **标的池**：与生产策略同池，需从平台配置（DP00 策略档案）取出 ETF 池清单，确认 13:09 分钟数据全覆盖。
-3. **13:09 定义**：本设计默认 13:09 = 当日 13:09:00 的分钟 close。若实盘决策实际用 13:09:00~13:09:59 的某个成交点（如 VWAP），需对齐。
+1. **`score_1309` 口径**：默认"24 收盘 + 今日 13:09"。需在实现时与平台现有 score 计算逻辑（`src/quant_v2/utils/momentum.py`）对齐，确认 25 点回归的实现细节。✅ 已核实：复刻生产口径用 `weighted_regression_momentum_scores(prices, window=25, annualization=250)`（`momentum.py:12`），返回 DataFrame[annualized_returns, r2, score]；权重 log 回归。
+2. **标的池**：与生产策略同池，需从平台配置（DP00 策略档案）取出 ETF 池清单，确认 13:09 分钟数据全覆盖。✅ 已核实：ETF 池硬编码在 `src/strategies/research/etf_dual_pool_all_weather_bear_defense.py:44-72` 的 `STATIC_ETF_POOL`（约 130 只）；无独立 csv/json 池文件。
+3. **13:09 定义**：本设计默认 13:09 = 当日 13:09:00 的分钟 close。若实盘决策实际用 13:09:00~13:09:59 的某个成交点（如 VWAP），需对齐。✅ 已核实：取分钟 close 用 `ClickHouseDataPortal.load_minute_field_snapshot(day, symbols, event_times=["13:09:00"], fields=("close",))`（`clickhouse_portal.py:1306`）；分钟表 factor 100% 为空，前复权需用日频 factor 还原（见实现计划 §Task 2）。
 
 ## 9. 后续决策路径（看面板结果怎么走，预承诺）
 
