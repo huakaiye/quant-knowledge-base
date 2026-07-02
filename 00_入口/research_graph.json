@@ -1,40 +1,42 @@
 {
-    "generated_at_utc":  "2026-06-28T11:56:51Z",
+    "generated_at_utc":  "2026-07-02T05:29:09Z",
     "summary":  {
-                    "node_count":  600,
-                    "edge_count":  842,
+                    "node_count":  630,
+                    "edge_count":  893,
                     "dangling_edge_count":  0,
                     "by_type":  {
-                                    "STRAT":  7,
-                                    "EX":  272,
-                                    "RD":  42,
-                                    "IDEA":  31,
-                                    "DEC":  196,
+                                    "STRAT":  8,
+                                    "EX":  296,
+                                    "RD":  44,
+                                    "IDEA":  32,
+                                    "DEC":  198,
                                     "LIT":  52
                                 },
                     "rd_by_status":  {
-                                         "active":  15,
+                                         "active":  16,
+                                         "draft":  1,
                                          "park":  24,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  52
+                    "recent_change_count_7d":  48
                 },
     "active_directions":  [
                               "RD-20260605T131301Z-main-KC7N",
-                              "RD-20260605T115651Z-main-OFF0",
-                              "RD-20260605T115651Z-main-EXE0",
                               "RD-20260605T133318Z-main-H6V3",
+                              "RD-20260605T115651Z-main-EXE0",
+                              "RD-20260605T115651Z-main-OFF0",
                               "RD-20260620T052601Z-main-3B2X",
-                              "RD-20260620T022601Z-main-GHZL",
+                              "RD-20260701T033937Z-main-HTGA",
                               "RD-20260614T115209Z-main-MCYG",
-                              "RD-20260605T115651Z-main-DP00",
+                              "RD-20260620T022601Z-main-GHZL",
                               "RD-20260528T000000Z-mig-BLF20260528004996F7",
-                              "RD-20260523T000000Z-mig-BLF20260523002F8A70",
-                              "RD-20260523T000000Z-mig-BLF20260523001134E1",
                               "RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
+                              "RD-20260523T000000Z-mig-BLF20260523001134E1",
+                              "RD-20260523T000000Z-mig-BLF20260523002F8A70",
                               "RD-20260605T115651Z-main-DEF0",
-                              "RD-20260605T115651Z-main-CORE",
-                              "RD-20260605T000000Z-mig-R010AF00BB"
+                              "RD-20260605T115651Z-main-DP00",
+                              "RD-20260605T000000Z-mig-R010AF00BB",
+                              "RD-20260605T115651Z-main-CORE"
                           ],
     "nodes":  [
                   {
@@ -582,6 +584,32 @@
                       "module_type":  "双池轮动low桶放行机制入池失效诊断与修复",
                       "current_decision_id":  "DEC-20260624T072541Z-main-G6M9",
                       "current_best_ex_id":  "EX-20260624T061755Z-main-CXCP"
+                  },
+                  {
+                      "id":  "RD-20260701T033937Z-main-HTGA",
+                      "type":  "RD",
+                      "title":  "V科技队科技股动量轮动复现",
+                      "status":  "active",
+                      "updated_at":  "2026-07-01T05:12:01Z",
+                      "file":  "RD-20260701T033937Z-main-HTGA_V科技队科技股动量轮动复现.md",
+                      "parent_rd_id":  "",
+                      "scope":  "策略",
+                      "module_type":  "个股静态池动量轮动",
+                      "current_decision_id":  "DEC-20260701T040358Z-main-CFP5",
+                      "current_best_ex_id":  "EX-20260701T050820Z-main-QL89"
+                  },
+                  {
+                      "id":  "RD-20260702T045340Z-main-Y4KC",
+                      "type":  "RD",
+                      "title":  "双池轮动全池1309市场状态分类模块",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-02T04:53:40Z",
+                      "file":  "RD-20260702T045340Z-main-Y4KC_双池轮动全池1309市场状态分类模块.md",
+                      "parent_rd_id":  "RD-20260605T115651Z-main-DP00",
+                      "scope":  "模块",
+                      "module_type":  "市场状态识别模块",
+                      "current_decision_id":  "",
+                      "current_best_ex_id":  ""
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3304,6 +3332,246 @@
                       "stage":  "修复验证完成_结论定论_三版本对照表_A2防御行为画像"
                   },
                   {
+                      "id":  "EX-20260628T190000Z-main-A2AUDIT",
+                      "type":  "EX",
+                      "title":  "A2 未来函数审计 post-fix 复审：广度关链路无残留定论",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-28T19:00:00Z",
+                      "file":  "EX-20260628T190000Z-main-A2AUDIT_A2未来函数审计post-fix复审广度关链路无残留定论.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_审计定论"
+                  },
+                  {
+                      "id":  "EX-20260628T230000Z-main-A2COST",
+                      "type":  "EX",
+                      "title":  "A2 成本扰动 cost2x/cost3x：证伪预测，超额依赖低换手假设",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T13:10:00Z",
+                      "file":  "EX-20260628T230000Z-main-A2COST_A2成本扰动cost2xcost3x证伪预测超额依赖低换手假设.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_四段口径结论已被十一年cost2x推翻_见EX-A2C2X11Y"
+                  },
+                  {
+                      "id":  "EX-20260629T100000Z-main-A2SENS",
+                      "type":  "EX",
+                      "title":  "A2 参数敏感性 9 点网格：中心点最优，breadth 关冗余线索",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T10:30:00Z",
+                      "file":  "EX-20260629T100000Z-main-A2SENS_A2参数敏感性9点网格中心点最优breadth冗余.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_参数稳健性确认_breadth冗余线索"
+                  },
+                  {
+                      "id":  "EX-20260629T110000Z-main-A2ABLATION",
+                      "type":  "EX",
+                      "title":  "A2 消融实验：breadth 关最关键，分数关相对可省（纠正 P3 猜测）",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T11:30:00Z",
+                      "file":  "EX-20260629T110000Z-main-A2ABLATION_A2消融实验breadth关最关键分数关可省.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_消融定论_breadth最关键_纠正P3猜测"
+                  },
+                  {
+                      "id":  "EX-20260629T120000Z-main-A2VERIFY",
+                      "type":  "EX",
+                      "title":  "A2 四项验证综合报告：定位校准为\"降回撤可选组件\"",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T13:20:00Z",
+                      "file":  "EX-20260629T120000Z-main-A2VERIFY_A2四项验证综合报告最终定位降回撤组件.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_P2成本结论被十一年cost2x推翻_定位恢复综合最优_见EX-A2C2X11Y"
+                  },
+                  {
+                      "id":  "EX-20260629T130000Z-main-A2C2X11Y",
+                      "type":  "EX",
+                      "title":  "A2 十一年 cost2x 反转四段结论：空仓减换手使成本反优",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T13:30:00Z",
+                      "file":  "EX-20260629T130000Z-main-A2C2X11Y_A2十一年cost2x反转四段结论空仓减换手使成本反优.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_重大反转"
+                  },
+                  {
+                      "id":  "EX-20260629T140000Z-main-A2NOGRAD",
+                      "type":  "EX",
+                      "title":  "A2 消融实验：拆掉渐进式减仓后回撤暴增 10pp，证伪\"冗余\"猜测",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T22:00:00Z",
+                      "file":  "EX-20260629T140000Z-main-A2NOGRAD_A2消融拆掉渐进式减仓回撤暴增10pp证伪冗余猜测.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_消融实验证伪冗余猜测渐进式减仓是核心价值"
+                  },
+                  {
+                      "id":  "EX-20260629T145619Z-main-FXF4",
+                      "type":  "EX",
+                      "title":  "A2 基准标的风格错配只读诊断（A2 改进计划阶段 0.1）",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T15:40:00Z",
+                      "file":  "EX-20260629T145619Z-main-FXF4_A2基准标的风格错配只读诊断.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "diagnostic_completed_基准错配假设证伪_附带锁定反应式滞后通病_见第16节"
+                  },
+                  {
+                      "id":  "EX-20260629T151849Z-main-2ZBC",
+                      "type":  "EX",
+                      "title":  "A2 出口抖动与不对称设计只读诊断（A2 改进计划阶段 0.2）",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T16:10:00Z",
+                      "file":  "EX-20260629T151849Z-main-2ZBC_A2出口抖动与不对称设计只读诊断.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "diagnostic_completed_抖动假设成立_定位2023反弹段_为出口确认formal提供量化靶子"
+                  },
+                  {
+                      "id":  "EX-20260629T152523Z-main-NBWM",
+                      "type":  "EX",
+                      "title":  "A2 反应式滞后量化与预警信号候选筛选（A2 改进计划阶段 0.4）",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-29T16:40:00Z",
+                      "file":  "EX-20260629T152523Z-main-NBWM_A2反应式滞后量化与预警信号候选筛选.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "diagnostic_completed_锁定L2死叉为最优预警候选_L1跌幅速率因V型误报淘汰"
+                  },
+                  {
+                      "id":  "EX-20260629T234837Z-main-XRTJ",
+                      "type":  "EX",
+                      "title":  "A2 出口确认 exit_confirm_days 邻域 formal（A2 改进计划阶段 1.1）",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-30T10:30:00Z",
+                      "file":  "EX-20260629T234837Z-main-XRTJ_A2出口确认exit_confirm_days邻域formal.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "formal_completed_十一年口径H1证伪_exit_confirm对A2最终收益零净影响"
+                  },
+                  {
+                      "id":  "EX-20260629T234912Z-main-JA43",
+                      "type":  "EX",
+                      "title":  "L2 死叉预警信号组合层 formal 与负控（A2 改进计划阶段 2）",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-30T11:00:00Z",
+                      "file":  "EX-20260629T234912Z-main-JA43_L2死叉预警信号组合层formal与负控.md",
+                      "rd_id":  "RD-20260605T115651Z-main-DEF0",
+                      "stage":  "diagnostic_completed_L2死叉单独信号证伪_6次触发4次误报_预警式方向暂停"
+                  },
+                  {
+                      "id":  "EX-20260630T0900Z-main-CFCK",
+                      "type":  "EX",
+                      "title":  "score 横截面分布鸡头凤尾结构只读面板",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-30T10:30:00+08:00",
+                      "file":  "EX-20260630T0900Z-main-CFCK_score横截面分布鸡头凤尾结构只读面板.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "completed"
+                  },
+                  {
+                      "id":  "EX-20260630T115352Z-main-QA5T",
+                      "type":  "EX",
+                      "title":  "A2 策略容量上限与低流动性 ETF 冲击诊断",
+                      "status":  "completed",
+                      "updated_at":  "2026-06-30T12:30:00Z",
+                      "file":  "EX-20260630T115352Z-main-QA5T_A2策略容量上限与低流动性ETF冲击诊断.md",
+                      "rd_id":  "RD-20260605T115651Z-main-EXE0",
+                      "stage":  "diagnostic_completed_重大发现_A2真实参与率10.27%远超预期_触碰低流动性ETF_固定滑点后期不准"
+                  },
+                  {
+                      "id":  "EX-20260701T0200Z-main-RSTR",
+                      "type":  "EX",
+                      "title":  "动态鸡头横截面排名与后续收益追踪只读面板",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T03:30:00+08:00",
+                      "file":  "EX-20260701T0200Z-main-RSTR_动态鸡头横截面排名与后续收益追踪只读面板.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "completed_readonly_rooster_panel"
+                  },
+                  {
+                      "id":  "EX-20260701T033946Z-main-MUG3",
+                      "type":  "EX",
+                      "title":  "V科技队本地还原smoke预注册",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T03:46:19Z",
+                      "file":  "EX-20260701T033946Z-main-MUG3_V科技队本地还原smoke预注册.md",
+                      "rd_id":  "RD-20260701T033937Z-main-HTGA",
+                      "stage":  "completed_smoke_passed"
+                  },
+                  {
+                      "id":  "EX-20260701T035651Z-main-BMB4",
+                      "type":  "EX",
+                      "title":  "V科技队正式复现与首轮负控门禁",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T04:04:12Z",
+                      "file":  "EX-20260701T035651Z-main-BMB4_V科技队正式复现与首轮负控门禁.md",
+                      "rd_id":  "RD-20260701T033937Z-main-HTGA",
+                      "stage":  "completed_negative_control_failed"
+                  },
+                  {
+                      "id":  "EX-20260701T041118Z-main-WYDP",
+                      "type":  "EX",
+                      "title":  "V科技队多随机种子与排序贡献失败归因",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-01T04:11:18Z",
+                      "file":  "EX-20260701T041118Z-main-WYDP_V科技队多随机种子与排序贡献失败归因.md",
+                      "rd_id":  "RD-20260701T033937Z-main-HTGA",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260701T044905Z-main-MSMK",
+                      "type":  "EX",
+                      "title":  "V科技队9db模拟实盘口径核验与2026复现",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T04:58:25Z",
+                      "file":  "EX-20260701T044905Z-main-MSMK_V科技队9db模拟实盘口径核验与2026复现.md",
+                      "rd_id":  "RD-20260701T033937Z-main-HTGA",
+                      "stage":  "completed_9db_external_reproduction_failed"
+                  },
+                  {
+                      "id":  "EX-20260701T0500Z-main-REGM",
+                      "type":  "EX",
+                      "title":  "2026 全年分数结构状态与调仓策略面板",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T06:30:00+08:00",
+                      "file":  "EX-20260701T0500Z-main-REGM_2026全年分数结构状态与调仓策略面板.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "completed_readonly_regime_strategy_panel"
+                  },
+                  {
+                      "id":  "EX-20260701T050820Z-main-QL89",
+                      "type":  "EX",
+                      "title":  "V科技队9db早盘再平衡口径候选复现",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T05:12:01Z",
+                      "file":  "EX-20260701T050820Z-main-QL89_V科技队9db早盘再平衡口径候选复现.md",
+                      "rd_id":  "RD-20260701T033937Z-main-HTGA",
+                      "stage":  "completed_execution_shape_partial_pass_return_fail"
+                  },
+                  {
+                      "id":  "EX-20260701T112000Z-main-HLDR",
+                      "type":  "EX",
+                      "title":  "A2 非拥挤常态旧仓保留换仓门槛预注册",
+                      "status":  "active",
+                      "updated_at":  "2026-07-01T11:20:00Z",
+                      "file":  "EX-20260701T112000Z-main-HLDR_A2非拥挤常态旧仓保留换仓门槛预注册.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260701T153000Z-main-D4FIX",
+                      "type":  "EX",
+                      "title":  "数据新鲜度审计与 V2 管线根因修复",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-01T15:50:00Z",
+                      "file":  "EX-20260701T153000Z-main-D4FIX_V2管线数据缺失审计与根因修复.md",
+                      "rd_id":  "RD-20260618T105950Z-main-7FY3",
+                      "stage":  "formal_completed_data_repaired_scripts_hardened"
+                  },
+                  {
+                      "id":  "EX-20260702T045517Z-main-JGEG",
+                      "type":  "EX",
+                      "title":  "ETF全池1309市场状态GMM分类只读面板",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-02T05:30:00Z",
+                      "file":  "EX-20260702T045517Z-main-JGEG_ETF全池1309市场状态GMM分类只读面板.md",
+                      "rd_id":  "RD-20260702T045340Z-main-Y4KC",
+                      "stage":  "completed_readonly_beta_park"
+                  },
+                  {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "type":  "DEC",
                       "title":  "D20260529-R014 阴跌分桶过滤修订",
@@ -5453,11 +5721,33 @@
                       "type":  "DEC",
                       "title":  "DEC-DTH2 A2 趋势破位升级 RA5 第三维为 L2_robustness 并更新 shadow 配置",
                       "status":  null,
-                      "updated_at":  "2026-06-28T15:30:00Z",
+                      "updated_at":  "2026-06-29T13:30:00Z",
                       "file":  "DEC-20260627T073551Z-main-DTH2_A2趋势破位升级RA5第三维L2robustness更新shadow配置.md",
                       "decision":  "promote_candidate",
                       "rd_ids":  "RD-20260605T115651Z-main-DEF0",
                       "ex_ids":  "EX-20260627T053730Z-main-JTX7;EX-20260627T063703Z-main-XSFC;EX-20260626T030352Z-main-RA5;EX-20260626T154216Z-main-RA6;EX-20260627T005518Z-main-GUWQ;EX-20260628T120000Z-main-D3"
+                  },
+                  {
+                      "id":  "DEC-20260701T040358Z-main-CFP5",
+                      "type":  "DEC",
+                      "title":  "V科技队首轮负控失败后暂停实盘还原",
+                      "status":  null,
+                      "updated_at":  "2026-07-01T05:12:01Z",
+                      "file":  "DEC-20260701T040358Z-main-CFP5_V科技队首轮负控失败后暂停实盘还原.md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260701T033937Z-main-HTGA",
+                      "ex_ids":  "EX-20260701T035651Z-main-BMB4;EX-20260701T044905Z-main-MSMK;EX-20260701T050820Z-main-QL89"
+                  },
+                  {
+                      "id":  "DEC-20260701T112100Z-main-KPHD",
+                      "type":  "DEC",
+                      "title":  "KPHD hard5 覆盖空白确认与常态旧仓保留立项",
+                      "status":  null,
+                      "updated_at":  "2026-07-01T11:21:00Z",
+                      "file":  "DEC-20260701T112100Z-main-KPHD_hard5覆盖空白确认与常态旧仓保留立项.md",
+                      "decision":  "draft",
+                      "rd_ids":  "RD-20260605T133318Z-main-H6V3;RD-20260605T115651Z-main-DP00",
+                      "ex_ids":  "EX-20260701T112000Z-main-HLDR"
                   },
                   {
                       "id":  "LIT-20260605T133336Z-main-67C4",
@@ -5921,6 +6211,15 @@
                       "subtype":  "因子数据灵感"
                   },
                   {
+                      "id":  "MECH-20260629T234714Z-main-EFHW",
+                      "type":  "IDEA",
+                      "title":  "A2 改进方向备选清单与阶段 0 诊断结论沉淀",
+                      "status":  "active",
+                      "updated_at":  "2026-06-30T00:50:00Z",
+                      "file":  "MECH-20260629T234714Z-main-EFHW_A2改进方向备选清单与阶段0诊断结论沉淀.md",
+                      "subtype":  "因子数据灵感"
+                  },
+                  {
                       "id":  "IDEA-20260521T000000Z-mig-I202605210017AD87",
                       "type":  "IDEA",
                       "title":  "I20260521-001 ETF趋势确认与防守切换",
@@ -6216,6 +6515,15 @@
                       "updated_at":  "2026-06-23T12:51:47Z",
                       "file":  "STRAT-20260605T115651Z-main-DP00_双池轮动策略档案.md",
                       "rd_id":  "RD-20260605T115651Z-main-DP00"
+                  },
+                  {
+                      "id":  "STRAT-20260701T034401Z-main-YDL6",
+                      "type":  "STRAT",
+                      "title":  "V科技队科技股动量轮动策略档案",
+                      "status":  "observe",
+                      "updated_at":  "2026-07-01T05:12:01Z",
+                      "file":  "STRAT-20260701T034401Z-main-YDL6_V科技队科技股动量轮动策略档案.md",
+                      "rd_id":  "RD-20260701T033937Z-main-HTGA"
                   }
               ],
     "edges":  [
@@ -6411,6 +6719,11 @@
                   },
                   {
                       "from":  "RD-20260624T014933Z-main-NQS5",
+                      "to":  "RD-20260605T115651Z-main-DP00",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260702T045340Z-main-Y4KC",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "parent"
                   },
@@ -9195,6 +9508,216 @@
                       "rel":  "experiment_of"
                   },
                   {
+                      "from":  "EX-20260628T190000Z-main-A2AUDIT",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260628T190000Z-main-A2AUDIT",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260628T230000Z-main-A2COST",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260628T230000Z-main-A2COST",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T100000Z-main-A2SENS",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T100000Z-main-A2SENS",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T110000Z-main-A2ABLATION",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T110000Z-main-A2ABLATION",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T120000Z-main-A2VERIFY",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T120000Z-main-A2VERIFY",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T130000Z-main-A2C2X11Y",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T130000Z-main-A2C2X11Y",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T140000Z-main-A2NOGRAD",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T140000Z-main-A2NOGRAD",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T145619Z-main-FXF4",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T145619Z-main-FXF4",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T151849Z-main-2ZBC",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T151849Z-main-2ZBC",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T152523Z-main-NBWM",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T152523Z-main-NBWM",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T234837Z-main-XRTJ",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T234837Z-main-XRTJ",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T234837Z-main-XRTJ",
+                      "to":  "MECH-20260629T234714Z-main-EFHW",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260629T234912Z-main-JA43",
+                      "to":  "RD-20260605T115651Z-main-DEF0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260629T234912Z-main-JA43",
+                      "to":  "DEC-20260627T073551Z-main-DTH2",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260629T234912Z-main-JA43",
+                      "to":  "MECH-20260629T234714Z-main-EFHW",
+                      "rel":  "idea_source"
+                  },
+                  {
+                      "from":  "EX-20260630T0900Z-main-CFCK",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260630T115352Z-main-QA5T",
+                      "to":  "RD-20260605T115651Z-main-EXE0",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T0200Z-main-RSTR",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T033946Z-main-MUG3",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T035651Z-main-BMB4",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T035651Z-main-BMB4",
+                      "to":  "DEC-20260701T040358Z-main-CFP5",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260701T041118Z-main-WYDP",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T044905Z-main-MSMK",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T044905Z-main-MSMK",
+                      "to":  "DEC-20260701T040358Z-main-CFP5",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260701T0500Z-main-REGM",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T050820Z-main-QL89",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T050820Z-main-QL89",
+                      "to":  "DEC-20260701T040358Z-main-CFP5",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260701T112000Z-main-HLDR",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260701T112000Z-main-HLDR",
+                      "to":  "DEC-20260701T112100Z-main-KPHD",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260701T153000Z-main-D4FIX",
+                      "to":  "RD-20260618T105950Z-main-7FY3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260702T045517Z-main-JGEG",
+                      "to":  "RD-20260702T045340Z-main-Y4KC",
+                      "rel":  "experiment_of"
+                  },
+                  {
                       "from":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "to":  "RD-20260605T115651Z-main-DEF0",
                       "rel":  "decision_affects"
@@ -10425,8 +10948,48 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260701T040358Z-main-CFP5",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260701T040358Z-main-CFP5",
+                      "to":  "EX-20260701T035651Z-main-BMB4",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260701T040358Z-main-CFP5",
+                      "to":  "EX-20260701T044905Z-main-MSMK",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260701T040358Z-main-CFP5",
+                      "to":  "EX-20260701T050820Z-main-QL89",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260701T112100Z-main-KPHD",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260701T112100Z-main-KPHD",
+                      "to":  "RD-20260605T115651Z-main-DP00",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260701T112100Z-main-KPHD",
+                      "to":  "EX-20260701T112000Z-main-HLDR",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
+                      "rel":  "strategy_of"
+                  },
+                  {
+                      "from":  "STRAT-20260701T034401Z-main-YDL6",
+                      "to":  "RD-20260701T033937Z-main-HTGA",
                       "rel":  "strategy_of"
                   }
               ],
@@ -10434,38 +10997,6 @@
 
                        ],
     "recent_changes_7d":  [
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
                               {
                                   "id":  null,
                                   "type":  null,
