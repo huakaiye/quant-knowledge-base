@@ -403,3 +403,100 @@ shim 检查 `QMT_USE_BRIDGE`：
 | 日期 | 变更 |
 |------|------|
 | 2026-07-04 | 初版，基于 C2/C3/C4 实测 + 10 个子代理调研 |
+
+---
+
+## 15. 架构变更补充（2026-07-04 实测后）
+
+### 15.1 daemon 线程 socket 方案失败
+
+**原设计的"socketserver.ThreadingTCPServer + ThreadPoolExecutor"方案在实测中完全失败。**
+
+C5 echo server（纯 socket 最小验证）实测发现：
+- daemon 线程启动后，`accept()` 第二轮卡死（`settimeout(1.0)` 也不返回）
+- `sendall` 报 `WinError 10038`（非套接字操作）
+- 心跳日志只出现一次就停
+
+**根因**（迅投官方文档 dict.thinktrader.net/innerApi/user_attention.html 原文）：
+> QMT 中，python 无法使用多线程和多进程，而且所有策略都在同一线程中执行。
+
+QMT 的 C++ host 不给 Python 子线程独立调度。`threading.Thread(daemon=True)` 在 QMT 里不是真正的独立线程。
+
+### 15.2 转向 tornado HTTP 方案
+
+**子代理 SUB-20260704T-CASELOOKUP** 找到迅投官方论坛 tid=63（流光，2023-12-18）的公开成功案例，确认唯一可行的模式是 **tornado HTTP server + IOLoop 单线程事件循环**：
+
+```python
+def init(ContextInfo):
+    app = make_app()
+    app.ContextInfo = ContextInfo
+    app.listen(port)
+    IOLoop.instance().start()    # 在 init() 阻塞
+```
+
+**为什么 tornado 成功而 threading 失败**：
+- tornado 的 IOLoop 是单线程事件循环，用 `select.select` 内核层多路复用
+- 不需要多线程，一个线程内既能 accept、又能处理请求
+- 完美绕开 QMT 单线程限制
+- 客户端自带 tornado 6.0.2（ipykernel 依赖）
+
+### 15.3 协议变更
+
+| 维度 | 原设计（socket） | 实际实现（tornado） |
+|------|------------------|---------------------|
+| 传输层 | 行分隔 JSON over TCP | HTTP REST |
+| 框架 | socketserver.ThreadingTCPServer | tornado 6.0.2 |
+| 线程模型 | ThreadPoolExecutor max=8 真并发 | IOLoop 单线程事件循环 |
+| 下单并发 | 多线程并发调 passorder | 顺序处理（IOLoop 内同步） |
+| 协议复杂度 | 自定义行分隔 | 标准 HTTP（curl 可测） |
+
+### 15.4 并发模型变更
+
+原设计的"路线 1a 真并发"在 tornado 单线程模型下不直接适用。但：
+- C4 v1 已证明 passorder 跨线程并发零崩溃（156 次）
+- tornado IOLoop 顺序处理请求，每次 passorder ~1ms
+- 策略是分钟级轮询，顺序处理完全够用
+- **单线程反而更安全**（passorder 永远在 IOLoop 线程调，零跨线程风险）
+
+### 15.5 命令集映射变更
+
+命令从"行分隔 JSON cmd"改为"HTTP 端点"：
+
+| 原命令 | 新端点 | 方法 |
+|--------|--------|------|
+| cmd:ping | /ping | GET |
+| cmd:order_stock | /order_stock | POST (JSON body) |
+| cmd:query_stock_positions | /query/positions | GET |
+| cmd:query_stock_asset | /query/asset | GET |
+| cmd:query_stock_orders | /query/orders | GET |
+| cmd:get_full_tick | /tick?codes=... | GET |
+| cmd:get_market_data_ex | /kline?code=... | GET |
+| cmd:get_instrument_detail | /instrument?code=... | GET |
+| cmd:get_trading_dates | /trading_dates?market=... | GET |
+
+### 15.6 字段名映射（实测发现）
+
+`get_trade_detail_data` 返回的是 C++ 原始对象，字段为 `m_` 前缀（如 `m_dAssetBalance`）。shim 必须做字段映射：
+
+| 策略期望字段 | 实际 m_ 字段 |
+|-------------|-------------|
+| asset.total_asset | m_dAssetBalance |
+| asset.cash | m_dAvailable |
+| position.stock_code | m_strInstrumentID + m_strExchangeID 拼接 |
+| position.volume | m_nVolume |
+| position.can_use_volume | m_nCanUseVolume |
+| position.avg_price | m_dAvgOpenPrice |
+
+映射表实现在 `_bridge_client.py` 的 `_ASSET_MAP` / `_POSITION_MAP` / `_ORDER_MAP`。
+
+### 15.7 实测验证结果
+
+EX-ZVJH 端到端测试 6/6 通过：
+1. ✅ 常量同源（STOCK_BUY=23, ORDER_SUCCEEDED=56）
+2. ✅ StockAccount 值对象
+3. ✅ connect 返回 0
+4. ✅ asset.total_asset=135051.12 cash=325.62（字段映射正确）
+5. ✅ positions 513290.SH vol=70500（字段映射正确）
+6. ✅ tick lastPrice=100.616（实时行情）
+
+**唯一待验证**：实盘交易时段 order_stock DELTA>0（周一开盘验证）。

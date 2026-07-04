@@ -1,34 +1,34 @@
 {
-    "generated_at_utc":  "2026-07-02T05:29:09Z",
+    "generated_at_utc":  "2026-07-04T15:39:20Z",
     "summary":  {
-                    "node_count":  630,
-                    "edge_count":  893,
+                    "node_count":  636,
+                    "edge_count":  904,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  8,
-                                    "EX":  296,
-                                    "RD":  44,
+                                    "EX":  300,
+                                    "RD":  45,
                                     "IDEA":  32,
-                                    "DEC":  198,
+                                    "DEC":  199,
                                     "LIT":  52
                                 },
                     "rd_by_status":  {
-                                         "active":  16,
-                                         "draft":  1,
-                                         "park":  24,
+                                         "active":  17,
+                                         "park":  25,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  48
+                    "recent_change_count_7d":  41
                 },
     "active_directions":  [
-                              "RD-20260605T131301Z-main-KC7N",
                               "RD-20260605T133318Z-main-H6V3",
-                              "RD-20260605T115651Z-main-EXE0",
-                              "RD-20260605T115651Z-main-OFF0",
-                              "RD-20260620T052601Z-main-3B2X",
-                              "RD-20260701T033937Z-main-HTGA",
                               "RD-20260614T115209Z-main-MCYG",
+                              "RD-20260605T115651Z-main-OFF0",
+                              "RD-20260605T131301Z-main-KC7N",
+                              "RD-20260701T033937Z-main-HTGA",
+                              "RD-20260703T081815Z-main-LMIG",
                               "RD-20260620T022601Z-main-GHZL",
+                              "RD-20260620T052601Z-main-3B2X",
+                              "RD-20260605T115651Z-main-EXE0",
                               "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
                               "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -602,14 +602,27 @@
                       "id":  "RD-20260702T045340Z-main-Y4KC",
                       "type":  "RD",
                       "title":  "双池轮动全池1309市场状态分类模块",
-                      "status":  "draft",
-                      "updated_at":  "2026-07-02T04:53:40Z",
+                      "status":  "park",
+                      "updated_at":  "2026-07-02T05:35:00Z",
                       "file":  "RD-20260702T045340Z-main-Y4KC_双池轮动全池1309市场状态分类模块.md",
                       "parent_rd_id":  "RD-20260605T115651Z-main-DP00",
                       "scope":  "模块",
                       "module_type":  "市场状态识别模块",
                       "current_decision_id":  "",
-                      "current_best_ex_id":  ""
+                      "current_best_ex_id":  "EX-20260702T045517Z-main-JGEG"
+                  },
+                  {
+                      "id":  "RD-20260703T081815Z-main-LMIG",
+                      "type":  "RD",
+                      "title":  "miniQMT 清退后实盘平台迁移",
+                      "status":  "active",
+                      "updated_at":  "2026-07-04T23:30:00Z",
+                      "file":  "RD-20260703T081815Z-main-LMIG_miniQMT清退后实盘平台迁移.md",
+                      "parent_rd_id":  "RD-20260605T115651Z-main-EXE0",
+                      "scope":  "模块",
+                      "module_type":  "实盘平台工程模块",
+                      "current_decision_id":  "DEC-20260704T153323Z-main-ELB2",
+                      "current_best_ex_id":  "EX-20260704T153310Z-main-ZVJH"
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3546,10 +3559,10 @@
                       "type":  "EX",
                       "title":  "A2 非拥挤常态旧仓保留换仓门槛预注册",
                       "status":  "active",
-                      "updated_at":  "2026-07-01T11:20:00Z",
+                      "updated_at":  "2026-07-02T01:30:00Z",
                       "file":  "EX-20260701T112000Z-main-HLDR_A2非拥挤常态旧仓保留换仓门槛预注册.md",
                       "rd_id":  "RD-20260605T133318Z-main-H6V3",
-                      "stage":  "preregistered"
+                      "stage":  "formal_completed_partial_pass"
                   },
                   {
                       "id":  "EX-20260701T153000Z-main-D4FIX",
@@ -3570,6 +3583,46 @@
                       "file":  "EX-20260702T045517Z-main-JGEG_ETF全池1309市场状态GMM分类只读面板.md",
                       "rd_id":  "RD-20260702T045340Z-main-Y4KC",
                       "stage":  "completed_readonly_beta_park"
+                  },
+                  {
+                      "id":  "EX-20260703T072709Z-main-HLDRX11",
+                      "type":  "EX",
+                      "title":  "HLDR ctrl_B（仅闸5 score 差距）十一年持仓继承复核预注册",
+                      "status":  "active",
+                      "updated_at":  "2026-07-03T07:27:09Z",
+                      "file":  "EX-20260703T072709Z-main-HLDRX11_HLDR仅闸5十一年持仓继承复核预注册.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "promote_candidate"
+                  },
+                  {
+                      "id":  "EX-20260703T081815Z-main-XTCN",
+                      "type":  "EX",
+                      "title":  "大QMT 内置 xtquant 连通性 smoke",
+                      "status":  "revise",
+                      "updated_at":  "2026-07-03T08:45:00Z",
+                      "file":  "EX-20260703T081815Z-main-XTCN_大QMT内置xtquant连通性smoke.md",
+                      "rd_id":  "RD-20260703T081815Z-main-LMIG",
+                      "stage":  "conclusive_attribution_confound_order_pending"
+                  },
+                  {
+                      "id":  "EX-20260704T055055Z-main-V21BS",
+                      "type":  "EX",
+                      "title":  "V21 基准确认：V20 + gap0.3 协同有效，确立为新基准",
+                      "status":  "active",
+                      "updated_at":  "2026-07-04T05:50:55Z",
+                      "file":  "EX-20260704T055055Z-main-V21BS_V21基准确认V20加gap0.3协同有效.md",
+                      "rd_id":  "RD-20260605T133318Z-main-H6V3",
+                      "stage":  "promote_candidate"
+                  },
+                  {
+                      "id":  "EX-20260704T153310Z-main-ZVJH",
+                      "type":  "EX",
+                      "title":  "QMTsocket桥接连通性与并发验证",
+                      "status":  "active",
+                      "updated_at":  "2026-07-04T23:30:00Z",
+                      "file":  "EX-20260704T153310Z-main-ZVJH_QMTsocket桥接连通性与并发验证.md",
+                      "rd_id":  "RD-20260703T081815Z-main-LMIG",
+                      "stage":  "smoke_passed_order_pending"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -5743,11 +5796,22 @@
                       "type":  "DEC",
                       "title":  "KPHD hard5 覆盖空白确认与常态旧仓保留立项",
                       "status":  null,
-                      "updated_at":  "2026-07-01T11:21:00Z",
+                      "updated_at":  "2026-07-02T02:00:00Z",
                       "file":  "DEC-20260701T112100Z-main-KPHD_hard5覆盖空白确认与常态旧仓保留立项.md",
-                      "decision":  "draft",
+                      "decision":  "promote_candidate",
                       "rd_ids":  "RD-20260605T133318Z-main-H6V3;RD-20260605T115651Z-main-DP00",
                       "ex_ids":  "EX-20260701T112000Z-main-HLDR"
+                  },
+                  {
+                      "id":  "DEC-20260704T153323Z-main-ELB2",
+                      "type":  "DEC",
+                      "title":  "大QMT直连证伪转socket桥接路线",
+                      "status":  null,
+                      "updated_at":  "2026-07-04T23:30:00Z",
+                      "file":  "DEC-20260704T153323Z-main-ELB2_大QMT直连证伪转socket桥接路线.md",
+                      "decision":  "promote_candidate",
+                      "rd_ids":  "RD-20260703T081815Z-main-LMIG",
+                      "ex_ids":  "EX-20260703T081815Z-main-XTCN;EX-20260704T153310Z-main-ZVJH"
                   },
                   {
                       "id":  "LIT-20260605T133336Z-main-67C4",
@@ -6725,6 +6789,11 @@
                   {
                       "from":  "RD-20260702T045340Z-main-Y4KC",
                       "to":  "RD-20260605T115651Z-main-DP00",
+                      "rel":  "parent"
+                  },
+                  {
+                      "from":  "RD-20260703T081815Z-main-LMIG",
+                      "to":  "RD-20260605T115651Z-main-EXE0",
                       "rel":  "parent"
                   },
                   {
@@ -9718,6 +9787,41 @@
                       "rel":  "experiment_of"
                   },
                   {
+                      "from":  "EX-20260703T072709Z-main-HLDRX11",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260703T072709Z-main-HLDRX11",
+                      "to":  "DEC-20260701T112100Z-main-KPHD",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260703T081815Z-main-XTCN",
+                      "to":  "RD-20260703T081815Z-main-LMIG",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260704T055055Z-main-V21BS",
+                      "to":  "RD-20260605T133318Z-main-H6V3",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260704T055055Z-main-V21BS",
+                      "to":  "DEC-20260701T112100Z-main-KPHD",
+                      "rel":  "produced_decision"
+                  },
+                  {
+                      "from":  "EX-20260704T153310Z-main-ZVJH",
+                      "to":  "RD-20260703T081815Z-main-LMIG",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260704T153310Z-main-ZVJH",
+                      "to":  "DEC-20260704T153323Z-main-ELB2",
+                      "rel":  "produced_decision"
+                  },
+                  {
                       "from":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "to":  "RD-20260605T115651Z-main-DEF0",
                       "rel":  "decision_affects"
@@ -10983,6 +11087,21 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260704T153323Z-main-ELB2",
+                      "to":  "RD-20260703T081815Z-main-LMIG",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260704T153323Z-main-ELB2",
+                      "to":  "EX-20260703T081815Z-main-XTCN",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
+                      "from":  "DEC-20260704T153323Z-main-ELB2",
+                      "to":  "EX-20260704T153310Z-main-ZVJH",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "strategy_of"
@@ -10997,62 +11116,6 @@
 
                        ],
     "recent_changes_7d":  [
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
                               {
                                   "id":  null,
                                   "type":  null,
