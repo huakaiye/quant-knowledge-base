@@ -1,24 +1,24 @@
 {
-    "generated_at_utc":  "2026-07-05T12:21:21Z",
+    "generated_at_utc":  "2026-07-05T13:06:20Z",
     "summary":  {
-                    "node_count":  643,
-                    "edge_count":  917,
+                    "node_count":  645,
+                    "edge_count":  921,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  8,
-                                    "EX":  303,
+                                    "EX":  304,
                                     "RD":  46,
                                     "IDEA":  32,
-                                    "DEC":  202,
+                                    "DEC":  203,
                                     "LIT":  52
                                 },
                     "rd_by_status":  {
                                          "active":  17,
-                                         "revise":  1,
+                                         "promote_candidate":  1,
                                          "park":  25,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  48
+                    "recent_change_count_7d":  50
                 },
     "active_directions":  [
                               "RD-20260605T133318Z-main-H6V3",
@@ -629,14 +629,14 @@
                       "id":  "RD-20260705T082951Z-main-QQ4W",
                       "type":  "RD",
                       "title":  "A2三关状态机式领先空仓信号重构",
-                      "status":  "revise",
-                      "updated_at":  "2026-07-05T20:30:00Z",
+                      "status":  "promote_candidate",
+                      "updated_at":  "2026-07-05T21:30:00Z",
                       "file":  "RD-20260705T082951Z-main-QQ4W_A2三关状态机式领先空仓信号重构.md",
                       "parent_rd_id":  "RD-20260605T115651Z-main-DP00",
                       "scope":  "模块",
                       "module_type":  "防御",
-                      "current_decision_id":  "DEC-20260705T121838Z-main-5USK",
-                      "current_best_ex_id":  "EX-20260705T112228Z-main-VYCD"
+                      "current_decision_id":  "DEC-20260705T130322Z-main-2ARE",
+                      "current_best_ex_id":  "EX-20260705T122822Z-main-SJHC"
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3669,6 +3669,16 @@
                       "stage":  "revise"
                   },
                   {
+                      "id":  "EX-20260705T122822Z-main-SJHC",
+                      "type":  "EX",
+                      "title":  "波动率精细化regime治2022慢熊误报",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-05T21:30:00Z",
+                      "file":  "EX-20260705T122822Z-main-SJHC_波动率精细化regime治2022慢熊误报.md",
+                      "rd_id":  "RD-20260705T082951Z-main-QQ4W",
+                      "stage":  "promote_candidate"
+                  },
+                  {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "type":  "DEC",
                       "title":  "D20260529-R014 阴跌分桶过滤修订",
@@ -5889,6 +5899,17 @@
                       "decision":  "revise",
                       "rd_ids":  "RD-20260705T082951Z-main-QQ4W",
                       "ex_ids":  "EX-20260705T112228Z-main-VYCD"
+                  },
+                  {
+                      "id":  "DEC-20260705T130322Z-main-2ARE",
+                      "type":  "DEC",
+                      "title":  "波动率regime三段全达标首次promote_candidate待全周期确认",
+                      "status":  null,
+                      "updated_at":  "2026-07-05T21:30:00Z",
+                      "file":  "DEC-20260705T130322Z-main-2ARE_波动率regime三段全达标首次promote_candidate待全周期确认.md",
+                      "decision":  "promote_candidate",
+                      "rd_ids":  "RD-20260705T082951Z-main-QQ4W",
+                      "ex_ids":  "EX-20260705T122822Z-main-SJHC"
                   },
                   {
                       "id":  "LIT-20260605T133336Z-main-67C4",
@@ -9934,6 +9955,16 @@
                       "rel":  "idea_source"
                   },
                   {
+                      "from":  "EX-20260705T122822Z-main-SJHC",
+                      "to":  "RD-20260705T082951Z-main-QQ4W",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260705T122822Z-main-SJHC",
+                      "to":  "MECH-20260629T234714Z-main-EFHW",
+                      "rel":  "idea_source"
+                  },
+                  {
                       "from":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "to":  "RD-20260605T115651Z-main-DEF0",
                       "rel":  "decision_affects"
@@ -11244,6 +11275,16 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260705T130322Z-main-2ARE",
+                      "to":  "RD-20260705T082951Z-main-QQ4W",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260705T130322Z-main-2ARE",
+                      "to":  "EX-20260705T122822Z-main-SJHC",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "strategy_of"
@@ -11258,6 +11299,22 @@
 
                        ],
     "recent_changes_7d":  [
+                              {
+                                  "id":  null,
+                                  "type":  null,
+                                  "title":  null,
+                                  "status":  null,
+                                  "updated_at":  null,
+                                  "file":  null
+                              },
+                              {
+                                  "id":  null,
+                                  "type":  null,
+                                  "title":  null,
+                                  "status":  null,
+                                  "updated_at":  null,
+                                  "file":  null
+                              },
                               {
                                   "id":  null,
                                   "type":  null,

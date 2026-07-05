@@ -300,4 +300,8 @@ EX-20260705T083000Z-main-JM24,RD-20260705T082951Z-main-QQ4W,completed,revise,状
 EX-20260705T100753Z-main-WXNH,RD-20260705T082951Z-main-QQ4W,completed,revise,状态机OR逻辑三关重构治分数短路,smart_or治EX-JM24分数短路;H1=2015回撤≥-18%且2025不误报,${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM25/,${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM25/,04_实验记录/EX-20260705T100753Z-main-WXNH_状态机OR逻辑三关重构治分数短路.md,DEC-20260705T104158Z-main-BPGZ,2026-07-05T10:07:53Z,2026-07-05T19:30:00Z,,创建EX-JM26分市况条件化OR(熊市OR/牛市AND)
 
 
+
 EX-20260705T112228Z-main-VYCD,RD-20260705T082951Z-main-QQ4W,completed,revise,分市况条件化OR逻辑治震荡市过度敏感,regime_gated_or牛市AND熊市OR;H1=2015≥-18%且2025/2022不退化,${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM26/,${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM26/,04_实验记录/EX-20260705T112228Z-main-VYCD_分市况条件化OR逻辑治震荡市过度敏感.md,DEC-20260705T121838Z-main-5USK,2026-07-05T11:22:28Z,2026-07-05T20:30:00Z,,创建EX-JM27精细化regime(波动率/趋势强度)
+
+
+EX-20260705T122822Z-main-SJHC,RD-20260705T082951Z-main-QQ4W,completed,promote_candidate,波动率精细化regime治2022慢熊误报,vol_regime_or波动率>0.30=高波动OR否则AND;H1=三段全达标,${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM27/,${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM27/,04_实验记录/EX-20260705T122822Z-main-SJHC_波动率精细化regime治2022慢熊误报.md,DEC-20260705T130322Z-main-2ARE,2026-07-05T12:28:22Z,2026-07-05T21:30:00Z,,全周期连乘+邻域CV+消融;全通过后正式promote
