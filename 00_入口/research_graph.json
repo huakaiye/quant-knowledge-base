@@ -1,43 +1,43 @@
 {
-    "generated_at_utc":  "2026-07-05T08:45:26Z",
+    "generated_at_utc":  "2026-07-05T10:06:07Z",
     "summary":  {
-                    "node_count":  638,
-                    "edge_count":  907,
+                    "node_count":  639,
+                    "edge_count":  909,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  8,
                                     "EX":  301,
                                     "RD":  46,
                                     "IDEA":  32,
-                                    "DEC":  199,
+                                    "DEC":  200,
                                     "LIT":  52
                                 },
                     "rd_by_status":  {
-                                         "active":  18,
+                                         "active":  17,
+                                         "revise":  1,
                                          "park":  25,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  43
+                    "recent_change_count_7d":  44
                 },
     "active_directions":  [
                               "RD-20260605T133318Z-main-H6V3",
                               "RD-20260614T115209Z-main-MCYG",
                               "RD-20260605T115651Z-main-OFF0",
                               "RD-20260605T131301Z-main-KC7N",
-                              "RD-20260620T022601Z-main-GHZL",
-                              "RD-20260703T081815Z-main-LMIG",
-                              "RD-20260705T082951Z-main-QQ4W",
-                              "RD-20260620T052601Z-main-3B2X",
                               "RD-20260701T033937Z-main-HTGA",
+                              "RD-20260703T081815Z-main-LMIG",
+                              "RD-20260620T022601Z-main-GHZL",
+                              "RD-20260620T052601Z-main-3B2X",
+                              "RD-20260605T115651Z-main-EXE0",
                               "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
                               "RD-20260523T000000Z-mig-BLF20260523001134E1",
                               "RD-20260523T000000Z-mig-BLF20260523002F8A70",
-                              "RD-20260605T000000Z-mig-R010AF00BB",
+                              "RD-20260605T115651Z-main-DEF0",
                               "RD-20260605T115651Z-main-DP00",
-                              "RD-20260605T115651Z-main-EXE0",
-                              "RD-20260605T115651Z-main-CORE",
-                              "RD-20260605T115651Z-main-DEF0"
+                              "RD-20260605T000000Z-mig-R010AF00BB",
+                              "RD-20260605T115651Z-main-CORE"
                           ],
     "nodes":  [
                   {
@@ -629,13 +629,13 @@
                       "id":  "RD-20260705T082951Z-main-QQ4W",
                       "type":  "RD",
                       "title":  "A2三关状态机式领先空仓信号重构",
-                      "status":  "active",
-                      "updated_at":  "2026-07-05T08:30:00Z",
+                      "status":  "revise",
+                      "updated_at":  "2026-07-05T18:00:00Z",
                       "file":  "RD-20260705T082951Z-main-QQ4W_A2三关状态机式领先空仓信号重构.md",
                       "parent_rd_id":  "RD-20260605T115651Z-main-DP00",
                       "scope":  "模块",
                       "module_type":  "防御",
-                      "current_decision_id":  "",
+                      "current_decision_id":  "DEC-20260705T100343Z-main-6FUV",
                       "current_best_ex_id":  "EX-20260705T083000Z-main-JM24"
                   },
                   {
@@ -3642,11 +3642,11 @@
                       "id":  "EX-20260705T083000Z-main-JM24",
                       "type":  "EX",
                       "title":  "状态机A2重构kofn投票三信号组合预注册",
-                      "status":  "active",
-                      "updated_at":  "2026-07-05T08:30:00Z",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-05T18:00:00Z",
                       "file":  "EX-20260705T083000Z-main-JM24_状态机A2重构kofn投票三信号组合预注册.md",
                       "rd_id":  "RD-20260705T082951Z-main-QQ4W",
-                      "stage":  "preregistered"
+                      "stage":  "revise"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -5836,6 +5836,17 @@
                       "decision":  "promote_candidate",
                       "rd_ids":  "RD-20260703T081815Z-main-LMIG",
                       "ex_ids":  "EX-20260703T081815Z-main-XTCN;EX-20260704T153310Z-main-ZVJH"
+                  },
+                  {
+                      "id":  "DEC-20260705T100343Z-main-6FUV",
+                      "type":  "DEC",
+                      "title":  "状态机A2三关重构主假设证伪与方向revise到OR逻辑",
+                      "status":  null,
+                      "updated_at":  "2026-07-05T18:00:00Z",
+                      "file":  "DEC-20260705T100343Z-main-6FUV_状态机A2三关重构主假设证伪与方向revise到OR逻辑.md",
+                      "decision":  "revise",
+                      "rd_ids":  "RD-20260705T082951Z-main-QQ4W",
+                      "ex_ids":  "EX-20260705T083000Z-main-JM24"
                   },
                   {
                       "id":  "LIT-20260605T133336Z-main-67C4",
@@ -11141,6 +11152,16 @@
                       "rel":  "decision_on_experiment"
                   },
                   {
+                      "from":  "DEC-20260705T100343Z-main-6FUV",
+                      "to":  "RD-20260705T082951Z-main-QQ4W",
+                      "rel":  "decision_affects"
+                  },
+                  {
+                      "from":  "DEC-20260705T100343Z-main-6FUV",
+                      "to":  "EX-20260705T083000Z-main-JM24",
+                      "rel":  "decision_on_experiment"
+                  },
+                  {
                       "from":  "STRAT-20260605T115651Z-main-DP00",
                       "to":  "RD-20260605T115651Z-main-DP00",
                       "rel":  "strategy_of"
@@ -11155,6 +11176,14 @@
 
                        ],
     "recent_changes_7d":  [
+                              {
+                                  "id":  null,
+                                  "type":  null,
+                                  "title":  null,
+                                  "status":  null,
+                                  "updated_at":  null,
+                                  "file":  null
+                              },
                               {
                                   "id":  null,
                                   "type":  null,

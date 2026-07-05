@@ -222,9 +222,19 @@ SUB-20260704T161000Z-main-RDYRECON,SUBTASK-RDYRECON,Explore,sonnet,main,E:/【�
 SUB-20260704T161500Z-main-DOCSYNC,SUBTASK-DOCSYNC,Explore,sonnet,main,E:/【笔记库】/量化研究库_V2.0.0/,盘点研究库文档同步现状,EX/DEC模板格式确认;New-ResearchItem.ps1用法确认;台账CSV精确格式(研究方向全双引号其余不引号;多值;分隔),EX-20260704T153310Z-main-ZVJH,,completed,main,low,2026-07-04T16:15:00Z,提供EX-ZVJH和DEC-ELB2的frontmatter模板;台账同步清单;子代理豁免:本次为文档同步盘点属检索类
 SUB-20260704T170000Z-main-CASELOOKUP,SUBTASK-CASELOOKUP,general-purpose,sonnet,main,互联网,找QMT进程内socket成功案例,找到流光tid=63 tornado方案(唯一公开成功案例);官方明确QMT无法多线程;GitHub所有bridge项目都走miniQMT 58610,EX-20260704T153310Z-main-ZVJH,,completed,main,low,2026-07-04T17:00:00Z,决定性发现:tornado HTTP+IOLoop单线程是唯一验证过的模式;迅投官方文档解释daemon线程失败根因;驱动架构从socket+threading转向tornado
 
+
 SUB-20260705T000000Z-main-CTX1,SUBTASK-CONTEXT-SCAN-1,Explore-1,gpt-5.3-codex-spark,main,入口文档5份,研究库全局结构归纳,建立研究库全局理解;定位v21实盘;梳理RD/EX/DEC链条;提炼3大失败模式;确认L3唯一活信号+214天滞后铁证,,,completed,main,low,2026-07-05T00:00:00Z,前期brainstorming上下文检索
+
 SUB-20260705T000000Z-main-CTX2,SUBTASK-CONTEXT-SCAN-2,Explore-2,gpt-5.3-codex-spark,main,方法论6份+台账3份,方法论硬规则与台账列结构归纳,确认硬规则与字段约束,,,completed,main,low,2026-07-05T00:00:00Z,确认实验硬规则与台账字段
+
 SUB-20260705T000000Z-main-CTX3,SUBTASK-CONTEXT-SCAN-3,Explore-3,gpt-5.3-codex-spark,main,v21相关8份,v21实盘运行逻辑定位,定位v21五层防线与回测指标,,,completed,main,low,2026-07-05T00:00:00Z,定位v21运行逻辑
+
 SUB-20260705T000000Z-main-CTX4,SUBTASK-CONTEXT-SCAN-4,Explore-4,gpt-5.3-codex-spark,main,近期EX/DEC18份,最近3月研究活动链条梳理,梳理9个已park方向+7个未验证假设+7大痛点,,,completed,main,low,2026-07-05T00:00:00Z,梳理失败模式与未验证假设
+
 SUB-20260705T010000Z-main-BULLPEAK,SUBTASK-2015-BULL-PEAK,Explore-5,gpt-5.3-codex-spark,main,2015/L3相关10份,2015牛顶A2表现深挖,确认A2在2015零防御;L3在EX-NBWM领先+30天但仅L1只读诊断,,,completed,main,low,2026-07-05T01:00:00Z,确认L3唯一活信号+214天滞后铁证
+
 SUB-20260705T010000Z-main-REACTIVEFAIL,SUBTASK-REACTIVE-LAG-FAILURES,Explore-6,gpt-5.3-codex-spark,main,MCYG/L2/L4/JA43/FXF4等12份,反应式滞后失败信号复盘,提炼3大失败模式:#1领先另一滞后指标/#2组合层alpha≈0/#3时段依赖,,,completed,main,low,2026-07-05T01:00:00Z,提炼3大失败模式与未穷尽变体
+
+
+SUB-20260705T050000Z-main-PLATFORMSCAN,SUBTASK-PLATFORM-SCAN,Explore-7,gpt-5.3-codex-spark,main,平台A2/状态机实现15份,盘点平台A2信号源码+状态机基础设施+负控工具+数据可用性,定位A2三关在action_ablation.py:6614-6761;发现现有_rule_a_state状态机+run_parallel_backtest.sh;CH hs300数据2015-2026完整,,,completed,main,low,2026-07-05T05:00:00Z,为EX-JM24实现提供精确代码位置与接口
+SUB-20260705T070000Z-main-HLDRDIAG,SUBTASK-HLDR-DIAG,Explore-8,gpt-5.3-codex-spark,main,action_ablation/hldr_variant对比,诊断两策略文件关系,确认两文件逻辑等价(复制粘贴+205行偏移);action_ablation可承载状态机扩展,,,completed,main,low,2026-07-05T07:00:00Z,确认action_ablation.py可作EX-JM24载体
