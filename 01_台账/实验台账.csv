@@ -296,4 +296,8 @@ EX-20260704T153310Z-main-ZVJH,RD-20260703T081815Z-main-LMIG,active,smoke_passed_
 EX-20260705T083000Z-main-JM24,RD-20260705T082951Z-main-QQ4W,completed,revise,状态机A2重构kofn投票三信号组合预注册,k-of-n投票状态机替换A2第三关反应式斜率;H1样本内2015回撤≥-15%且2025不误报,${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/state_machine_v1.json,${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM24/,04_实验记录/EX-20260705T083000Z-main-JM24_状态机A2重构kofn投票三信号组合预注册.md,,2026-07-05T08:30:00Z,2026-07-05T08:30:00Z,,启动 formal 135 组合参数扫描(5x3x3x3)+错位一日负控+随机100次+逐信号消融+邻域CV
 
 
+
 EX-20260705T100753Z-main-WXNH,RD-20260705T082951Z-main-QQ4W,completed,revise,状态机OR逻辑三关重构治分数短路,smart_or治EX-JM24分数短路;H1=2015回撤≥-18%且2025不误报,${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM25/,${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM25/,04_实验记录/EX-20260705T100753Z-main-WXNH_状态机OR逻辑三关重构治分数短路.md,DEC-20260705T104158Z-main-BPGZ,2026-07-05T10:07:53Z,2026-07-05T19:30:00Z,,创建EX-JM26分市况条件化OR(熊市OR/牛市AND)
+
+
+EX-20260705T112228Z-main-VYCD,RD-20260705T082951Z-main-QQ4W,completed,revise,分市况条件化OR逻辑治震荡市过度敏感,regime_gated_or牛市AND熊市OR;H1=2015≥-18%且2025/2022不退化,${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM26/,${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM26/,04_实验记录/EX-20260705T112228Z-main-VYCD_分市况条件化OR逻辑治震荡市过度敏感.md,DEC-20260705T121838Z-main-5USK,2026-07-05T11:22:28Z,2026-07-05T20:30:00Z,,创建EX-JM27精细化regime(波动率/趋势强度)

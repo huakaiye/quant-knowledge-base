@@ -204,4 +204,8 @@ DEC-20260704T153323Z-main-ELB2,RD-20260703T081815Z-main-LMIG,EX-20260703T081815Z
 "DEC-20260705T100343Z-main-6FUV","RD-20260705T082951Z-main-QQ4W","EX-20260705T083000Z-main-JM24","revise","状态机A2三关重构主假设证伪与方向revise到OR逻辑","revise","2026-07-05T10:03:43Z","2026-07-05T18:00:00Z","05_研究决策/DEC-20260705T100343Z-main-6FUV_状态机A2三关重构主假设证伪与方向revise到OR逻辑.md","EX-JM24 replace_slope 在 2015 因第一关分数短路而完全不生效;replace_full 生效但默认参数净负向;根因=三关AND逻辑被最严格的分数关卡死,非第三关slope滞后","创建 EX-JM25 状态机OR逻辑预注册(is_low = sm_triggered or (low_score and low_breadth));证伪条件=2025 V型误报"
 
 
+
 "DEC-20260705T104158Z-main-BPGZ","RD-20260705T082951Z-main-QQ4W","EX-20260705T100753Z-main-WXNH","revise","状态机OR逻辑2015有效但2022/2025退化revise到分市况条件化OR","revise","2026-07-05T10:41:58Z","2026-07-05T19:30:00Z","05_研究决策/DEC-20260705T104158Z-main-BPGZ_状态机OR逻辑2015有效但20222025退化revise到分市况条件化OR.md","smart_or在2015回撤-21.82%→-13.90%改善7.92pp且shift1负控复制回撤改善证明非偶然;但2022收益-14.80%、2025约+27.27%严重退化;保守L3=-4%/k=3仍退化=OR逻辑结构问题非参数","创建EX-JM26分市况条件化OR(熊市OR/牛市AND);证伪条件=2015/2022/2025三段都不退化"
+
+
+"DEC-20260705T121838Z-main-5USK","RD-20260705T082951Z-main-QQ4W","EX-20260705T112228Z-main-VYCD","revise","regime门控2015与2025成功但2022慢熊失效revise到精细化regime","revise","2026-07-05T12:18:38Z","2026-07-05T20:30:00Z","05_研究决策/DEC-20260705T121838Z-main-5USK_regime门控2015与2025成功但2022慢熊失效revise到精细化regime.md","regime_gated_or在2015回撤-21.82%→-14.14%改善7.68pp且收益+55.61%超baseline(三轮最佳);2025收益+56.30%大幅回升(vs JM25+27%);但2022与smart_or完全相同-14.80%(全年熊市regime一直走OR);shift1复制2015回撤改善证明信号有效","创建EX-JM27精细化regime(波动率/趋势强度替hs300vsma200);目标2022也不退化"
