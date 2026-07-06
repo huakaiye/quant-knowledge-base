@@ -27,7 +27,7 @@ result_paths:
   - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_*/
 quality_gate: 通过_参数稳健性确认_但breadth冗余线索待P4消融验证
 subagent_call_ids: []
-subagent_exemption: 本实验数据汇总简单(9点连乘对比), 主控直接完成; 定论(参数稳健性/breadth冗余线索)由主控承担; 主控: main; 时间: 2026-06-29T10:00:00Z
+subagent_exemption: 子代理豁免：本实验数据汇总简单(9点连乘对比)由主控直接完成，定论(参数稳健性/breadth冗余线索)由主控承担；主控：main；时间：2026-06-29T10:00:00Z
 tags: [防御模块, A2趋势破位, 参数敏感性, threshold, breadth, 9点网格, OFAT, 参数稳健性, breadth冗余, 中心点最优, A2SENS]
 ---
 
@@ -120,7 +120,9 @@ breadth 控制广度关（涨的票占比<breadth 才触发）。三关是 AND �
 
 1. **参数稳健性确认**：A2 的收益不会因参数小幅变化而崩溃（CV 5.6%），这降低了"参数过拟合"的担忧。中心点 th=2.0/br=0.5 的选择是合理的（U 型峰顶，非孤立峰）。
 2. **threshold 选择有事后风险但可接受**：th=2.0 继承自 RA6 对 RA5 的 OFAT（非看 A2 结果后调参），且 U 型对称说明是机制平衡点，过拟合风险低。但样本外验证仍需观察 th=2.0 是否在新行情下仍优。
-3. **breadth 冗余线索**：若 P4 消融确认去 breadth 后收益几乎不变，则可考虑简化 A2 为"分数关 + 趋势关"两关结构（减少一个被 bug 污染过的环节，提升鲁棒性）。
+3. **~~breadth 冗余线索~~（已被 P4 消融推翻，见下方纠正）**：~~若 P4 消融确认去 breadth 后收益几乎不变，则可考虑简化 A2 为"分数关 + 趋势关"两关结构~~。
+
+> ⚠️ **2026-06-29 P4 消融纠正**：本节"breadth 冗余线索"猜测已被 [[04_实验记录/EX-20260629T110000Z-main-A2ABLATION|EX-A2ABLATION]] 推翻。P4 消融显示**去 breadth 关收益暴跌 -35.5%（最关键关）**。教训："参数不敏感"（P3 测阈值 0.4-0.6 变化）≠"机制冗余"（P4 测有无）——breadth 阈值多少无所谓，但有没有这道关至关重要。A2 三关结构不可简化。
 
 ## 8. 对新手的短总结
 

@@ -1,7 +1,7 @@
 {
-    "generated_at_utc":  "2026-07-05T13:06:20Z",
+    "generated_at_utc":  "2026-07-05T13:11:22Z",
     "summary":  {
-                    "node_count":  645,
+                    "node_count":  646,
                     "edge_count":  921,
                     "dangling_edge_count":  0,
                     "by_type":  {
@@ -10,7 +10,7 @@
                                     "RD":  46,
                                     "IDEA":  32,
                                     "DEC":  203,
-                                    "LIT":  52
+                                    "LIT":  53
                                 },
                     "rd_by_status":  {
                                          "active":  17,
@@ -18,7 +18,7 @@
                                          "park":  25,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  50
+                    "recent_change_count_7d":  51
                 },
     "active_directions":  [
                               "RD-20260605T133318Z-main-H6V3",
@@ -6024,6 +6024,14 @@
                       "file":  "LIT-20260620T052601Z-main-PYTZ_GSADF爆炸性泡沫PhillipsShiYu2015.md"
                   },
                   {
+                      "id":  "LIT-20260705T130819Z-main-WXQC",
+                      "type":  "LIT",
+                      "title":  "AI量化小科普量化金融漫画解读合集",
+                      "status":  "待处理",
+                      "updated_at":  "2026-07-05T13:08:19Z",
+                      "file":  "LIT-20260705T130819Z-main-WXQC_AI量化小科普量化金融漫画解读合集.md"
+                  },
+                  {
                       "id":  "LIT-20260603T000000Z-mig-1999MOSKOWITZ83801",
                       "type":  "LIT",
                       "title":  "L20260531-031 Do Industries Explain Momentum?",
@@ -11299,6 +11307,14 @@
 
                        ],
     "recent_changes_7d":  [
+                              {
+                                  "id":  null,
+                                  "type":  null,
+                                  "title":  null,
+                                  "status":  null,
+                                  "updated_at":  null,
+                                  "file":  null
+                              },
                               {
                                   "id":  null,
                                   "type":  null,

@@ -1,0 +1,7 @@
+python37
+.
+..\api
+Libs
+Api
+# Uncomment to run site.main() automatically
+#import site

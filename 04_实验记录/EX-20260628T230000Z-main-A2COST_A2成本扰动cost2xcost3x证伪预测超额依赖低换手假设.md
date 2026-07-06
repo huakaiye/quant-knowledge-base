@@ -3,10 +3,10 @@ type: 实验记录
 ex_id: EX-20260628T230000Z-main-A2COST
 rd_id: RD-20260605T115651Z-main-DEF0
 status: completed
-stage: formal_completed_证伪预测
+stage: formal_completed_四段口径结论已被十一年cost2x推翻_见EX-A2C2X11Y
 owner: main
 created_at: 2026-06-28T23:00:00Z
-updated_at: 2026-06-28T23:30:00Z
+updated_at: 2026-06-29T13:10:00Z
 strategy_id: STRAT-20260605T115651Z-main-DP00
 module_type: 防御模块
 decision_ids:
@@ -22,11 +22,13 @@ result_paths:
   - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost3x_slip3bps/
 quality_gate: 通过_成本扰动验证完成_但证伪成本稳健性假设
 subagent_call_ids: []
-subagent_exemption: 本实验数据汇总简单(8段final/MDD对比), 主控直接完成; 定论(成本敏感性证伪A2全面最优)由主控承担; 主控: main; 时间: 2026-06-28T23:00:00Z
+subagent_exemption: 子代理豁免：本实验数据汇总简单(8段final/MDD对比)由主控直接完成，定论(成本敏感性证伪A2全面最优)由主控承担；主控：main；时间：2026-06-28T23:00:00Z
 tags: [防御模块, A2趋势破位, 成本扰动, cost2x, cost3x, 成本敏感性, 证伪预测, 超额依赖低换手, 负面结果, 成本稳健性, A2COST]
 ---
 
 # A2 成本扰动 cost2x/cost3x：证伪预测，超额依赖低换手假设
+
+> ⚠️⚠️ **本报告核心结论已被推翻（2026-06-29）。** 本报告基于**四段空仓重置口径**得出"cost2x 下 A2 被 baseline 反超 -5.2%、A2 仅降回撤"。但十一年持仓继承口径（更接近实盘）证明 **cost2x 下 A2 仍优 baseline +12.86%，超额反而比 cost1x（+8.24%）更大**。根因：A2 空仓期间少交易 162 笔（-6.2%），四段口径在段初强制建仓抹杀了这个优势。**本报告的回测数据（四段 cost2x 14.866x）仍有效，但"推广为 A2 成本不稳健"的结论作废。** 详见 [[04_实验记录/EX-20260629T130000Z-main-A2C2X11Y_A2十一年cost2x反转四段结论空仓减换手使成本反优|EX-A2C2X11Y]]。下方原文保留作为历史记录。
 
 > 本实验是 A2（趋势破位）的成本扰动验证。**实验前预测"cost2x 下 A2 超额缩水但仍>0"被证伪**：实际 cost2x 下 A2 四段连乘（14.866x）已被 baseline cost1x（15.683x）反超 -5.2%，cost3x 下反超 -25.5%。A2 的收益超额高度依赖低换手（理想成本）假设，一旦成本接近实盘，收益优势消失。这是对"A2 全面最优"叙事的重要修正——A2 的真实价值在高成本下从"收益+回撤双赢"降级为"仅降回撤"。
 
@@ -88,6 +90,8 @@ tags: [防御模块, A2趋势破位, 成本扰动, cost2x, cost3x, 成本敏感�
 **根因**：A2 相对 baseline 多了两类额外换手——① 触发空仓时清仓所有持仓进货币基金；② 市场恢复时从货币基金切回 hard5 持仓。这些额外交易在 cost1x（理想成本）下损耗可忽略，但在 cost2x/cost3x（接近实盘）下成为显著拖累。**A2 的收益超额本质上是"用额外换手换躲过大跌"，这个交换在低成本下划算、在高成本下不划算。**
 
 ## 7. 对决策的影响（重要修正）
+
+> ⚠️ **本节结论已被 EX-A2C2X11Y 推翻（2026-06-29）。** 十一年 cost2x 口径证明 A2 仍收益+回撤综合最优（+12.86%），本节"A2 仅降回撤、收益优势消失"的校准作废。DEC-DTH2 第 14 节已恢复 A2 综合最优定位。下方原文保留作为历史记录。
 
 本结果对 DEC-DTH2（A2 promote_candidate）的修正：
 
