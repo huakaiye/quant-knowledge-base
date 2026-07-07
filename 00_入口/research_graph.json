@@ -1,43 +1,45 @@
 {
-    "generated_at_utc":  "2026-07-05T13:11:22Z",
+    "generated_at_utc":  "2026-07-07T14:01:15Z",
     "summary":  {
-                    "node_count":  646,
-                    "edge_count":  921,
+                    "node_count":  657,
+                    "edge_count":  928,
                     "dangling_edge_count":  0,
                     "by_type":  {
-                                    "STRAT":  8,
-                                    "EX":  304,
-                                    "RD":  46,
+                                    "STRAT":  9,
+                                    "EX":  310,
+                                    "RD":  48,
                                     "IDEA":  32,
                                     "DEC":  203,
-                                    "LIT":  53
+                                    "LIT":  55
                                 },
                     "rd_by_status":  {
-                                         "active":  17,
-                                         "promote_candidate":  1,
+                                         "draft":  1,
                                          "park":  25,
-                                         "observe":  3
+                                         "observe":  3,
+                                         "active":  18,
+                                         "promote_candidate":  1
                                      },
-                    "recent_change_count_7d":  51
+                    "recent_change_count_7d":  45
                 },
     "active_directions":  [
                               "RD-20260605T133318Z-main-H6V3",
                               "RD-20260614T115209Z-main-MCYG",
                               "RD-20260605T115651Z-main-OFF0",
                               "RD-20260605T131301Z-main-KC7N",
-                              "RD-20260701T033937Z-main-HTGA",
-                              "RD-20260703T081815Z-main-LMIG",
                               "RD-20260620T022601Z-main-GHZL",
+                              "RD-20260703T081815Z-main-LMIG",
+                              "RD-20260707T043350Z-main-HMQD",
                               "RD-20260620T052601Z-main-3B2X",
-                              "RD-20260605T115651Z-main-EXE0",
+                              "RD-20260701T033937Z-main-HTGA",
                               "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
                               "RD-20260523T000000Z-mig-BLF20260523001134E1",
                               "RD-20260523T000000Z-mig-BLF20260523002F8A70",
-                              "RD-20260605T115651Z-main-DEF0",
-                              "RD-20260605T115651Z-main-DP00",
                               "RD-20260605T000000Z-mig-R010AF00BB",
-                              "RD-20260605T115651Z-main-CORE"
+                              "RD-20260605T115651Z-main-DP00",
+                              "RD-20260605T115651Z-main-EXE0",
+                              "RD-20260605T115651Z-main-CORE",
+                              "RD-20260605T115651Z-main-DEF0"
                           ],
     "nodes":  [
                   {
@@ -637,6 +639,32 @@
                       "module_type":  "防御",
                       "current_decision_id":  "DEC-20260705T130322Z-main-2ARE",
                       "current_best_ex_id":  "EX-20260705T122822Z-main-SJHC"
+                  },
+                  {
+                      "id":  "RD-20260707T043350Z-main-HMQD",
+                      "type":  "RD",
+                      "title":  "震荡市短期策略族验证与改进",
+                      "status":  "active",
+                      "updated_at":  "2026-07-07T04:33:50Z",
+                      "file":  "RD-20260707T043350Z-main-HMQD_震荡市短期策略族验证与改进.md",
+                      "parent_rd_id":  "",
+                      "scope":  "策略",
+                      "module_type":  "",
+                      "current_decision_id":  "",
+                      "current_best_ex_id":  ""
+                  },
+                  {
+                      "id":  "RD-20260707T135354Z-main-WUFU",
+                      "type":  "RD",
+                      "title":  "五福闹新春 ETF 动量轮动复现与审计",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T13:53:54Z",
+                      "file":  "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
+                      "parent_rd_id":  "",
+                      "scope":  "策略",
+                      "module_type":  "",
+                      "current_decision_id":  "",
+                      "current_best_ex_id":  ""
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3679,6 +3707,66 @@
                       "stage":  "promote_candidate"
                   },
                   {
+                      "id":  "EX-20260707T043403Z-main-46W2",
+                      "type":  "EX",
+                      "title":  "S4BOLL通道择时6年回测",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T04:34:03Z",
+                      "file":  "EX-20260707T043403Z-main-46W2_S4BOLL通道择时6年回测.md",
+                      "rd_id":  "RD-20260707T043350Z-main-HMQD",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260707T043403Z-main-KTP5",
+                      "type":  "EX",
+                      "title":  "S3基本面RSI择时6年回测",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T04:34:03Z",
+                      "file":  "EX-20260707T043403Z-main-KTP5_S3基本面RSI择时6年回测.md",
+                      "rd_id":  "RD-20260707T043350Z-main-HMQD",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260707T043403Z-main-NHTV",
+                      "type":  "EX",
+                      "title":  "S2小市值剥头皮6年回测",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T04:34:03Z",
+                      "file":  "EX-20260707T043403Z-main-NHTV_S2小市值剥头皮6年回测.md",
+                      "rd_id":  "RD-20260707T043350Z-main-HMQD",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260707T043403Z-main-NTHE",
+                      "type":  "EX",
+                      "title":  "S1zscore均值回归6年回测",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T04:34:03Z",
+                      "file":  "EX-20260707T043403Z-main-NTHE_S1zscore均值回归6年回测.md",
+                      "rd_id":  "RD-20260707T043350Z-main-HMQD",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260707T043404Z-main-CQ5K",
+                      "type":  "EX",
+                      "title":  "S5网格交易6年回测",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T04:34:04Z",
+                      "file":  "EX-20260707T043404Z-main-CQ5K_S5网格交易6年回测.md",
+                      "rd_id":  "RD-20260707T043350Z-main-HMQD",
+                      "stage":  "preregistered"
+                  },
+                  {
+                      "id":  "EX-20260707T135354Z-main-WUFU",
+                      "type":  "EX",
+                      "title":  "五福闹新春全机械移植与 5 项门禁预注册",
+                      "status":  "draft",
+                      "updated_at":  "2026-07-07T13:53:54Z",
+                      "file":  "EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册.md",
+                      "rd_id":  "RD-20260707T135354Z-main-WUFU",
+                      "stage":  "preregistered"
+                  },
+                  {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "type":  "DEC",
                       "title":  "D20260529-R014 阴跌分桶过滤修订",
@@ -6024,12 +6112,28 @@
                       "file":  "LIT-20260620T052601Z-main-PYTZ_GSADF爆炸性泡沫PhillipsShiYu2015.md"
                   },
                   {
+                      "id":  "LIT-20260702T081500Z-main-FRIEND",
+                      "type":  "LIT",
+                      "title":  "朋友包 ETF 环境策略外部资料卡",
+                      "status":  "active",
+                      "updated_at":  "2026-07-02T08:15:00Z",
+                      "file":  "LIT-20260702T081500Z-main-FRIEND_朋友包ETF环境策略外部资料卡.md"
+                  },
+                  {
                       "id":  "LIT-20260705T130819Z-main-WXQC",
                       "type":  "LIT",
                       "title":  "AI量化小科普量化金融漫画解读合集",
                       "status":  "待处理",
                       "updated_at":  "2026-07-05T13:08:19Z",
                       "file":  "LIT-20260705T130819Z-main-WXQC_AI量化小科普量化金融漫画解读合集.md"
+                  },
+                  {
+                      "id":  "LIT-20260707T135354Z-main-JQWF",
+                      "type":  "LIT",
+                      "title":  "聚宽五福闹新春 v5.2 ETF 动量轮动策略",
+                      "status":  "待处理",
+                      "updated_at":  "2026-07-07T13:53:54Z",
+                      "file":  "LIT-20260707T135354Z-main-JQWF_聚宽五福闹新春v52外部资料卡.md"
                   },
                   {
                       "id":  "LIT-20260603T000000Z-mig-1999MOSKOWITZ83801",
@@ -6694,6 +6798,15 @@
                       "updated_at":  "2026-07-01T05:12:01Z",
                       "file":  "STRAT-20260701T034401Z-main-YDL6_V科技队科技股动量轮动策略档案.md",
                       "rd_id":  "RD-20260701T033937Z-main-HTGA"
+                  },
+                  {
+                      "id":  "STRAT-20260702T081500Z-main-J1ENV",
+                      "type":  "STRAT",
+                      "title":  "ETF环境温度策略（J1实盘候选）",
+                      "status":  "promote_candidate",
+                      "updated_at":  "2026-07-02T08:15:00Z",
+                      "file":  "STRAT-20260702T081500Z-main-J1ENV_ETF环境温度策略J1实盘候选.md",
+                      "rd_id":  ""
                   }
               ],
     "edges":  [
@@ -9973,6 +10086,41 @@
                       "rel":  "idea_source"
                   },
                   {
+                      "from":  "EX-20260707T043403Z-main-46W2",
+                      "to":  "RD-20260707T043350Z-main-HMQD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260707T043403Z-main-KTP5",
+                      "to":  "RD-20260707T043350Z-main-HMQD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260707T043403Z-main-NHTV",
+                      "to":  "RD-20260707T043350Z-main-HMQD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260707T043403Z-main-NTHE",
+                      "to":  "RD-20260707T043350Z-main-HMQD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260707T043404Z-main-CQ5K",
+                      "to":  "RD-20260707T043350Z-main-HMQD",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260707T135354Z-main-WUFU",
+                      "to":  "RD-20260707T135354Z-main-WUFU",
+                      "rel":  "experiment_of"
+                  },
+                  {
+                      "from":  "EX-20260707T135354Z-main-WUFU",
+                      "to":  "LIT-20260707T135354Z-main-JQWF",
+                      "rel":  "lit_source"
+                  },
+                  {
                       "from":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "to":  "RD-20260605T115651Z-main-DEF0",
                       "rel":  "decision_affects"
@@ -11307,54 +11455,6 @@
 
                        ],
     "recent_changes_7d":  [
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
                               {
                                   "id":  null,
                                   "type":  null,
