@@ -1,5 +1,5 @@
 {
-    "generated_at_utc":  "2026-07-07T15:26:40Z",
+    "generated_at_utc":  "2026-07-07T17:46:46Z",
     "summary":  {
                     "node_count":  657,
                     "edge_count":  928,
@@ -13,24 +13,24 @@
                                     "LIT":  55
                                 },
                     "rd_by_status":  {
-                                         "draft":  1,
+                                         "active":  19,
+                                         "promote_candidate":  1,
                                          "park":  25,
-                                         "observe":  3,
-                                         "active":  18,
-                                         "promote_candidate":  1
+                                         "observe":  3
                                      },
                     "recent_change_count_7d":  45
                 },
     "active_directions":  [
-                              "RD-20260605T133318Z-main-H6V3",
                               "RD-20260614T115209Z-main-MCYG",
-                              "RD-20260605T115651Z-main-OFF0",
-                              "RD-20260605T131301Z-main-KC7N",
                               "RD-20260620T022601Z-main-GHZL",
-                              "RD-20260703T081815Z-main-LMIG",
-                              "RD-20260707T043350Z-main-HMQD",
+                              "RD-20260605T131301Z-main-KC7N",
+                              "RD-20260605T133318Z-main-H6V3",
                               "RD-20260620T052601Z-main-3B2X",
+                              "RD-20260707T043350Z-main-HMQD",
+                              "RD-20260707T135354Z-main-WUFU",
                               "RD-20260701T033937Z-main-HTGA",
+                              "RD-20260703T081815Z-main-LMIG",
+                              "RD-20260605T115651Z-main-OFF0",
                               "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
                               "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -657,14 +657,14 @@
                       "id":  "RD-20260707T135354Z-main-WUFU",
                       "type":  "RD",
                       "title":  "五福闹新春 ETF 动量轮动复现与审计",
-                      "status":  "draft",
-                      "updated_at":  "2026-07-07T13:53:54Z",
+                      "status":  "active",
+                      "updated_at":  "2026-07-08T01:30:00Z",
                       "file":  "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
                       "parent_rd_id":  "",
                       "scope":  "策略",
                       "module_type":  "",
                       "current_decision_id":  "",
-                      "current_best_ex_id":  ""
+                      "current_best_ex_id":  "EX-20260707T135354Z-main-WUFU"
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3760,11 +3760,11 @@
                       "id":  "EX-20260707T135354Z-main-WUFU",
                       "type":  "EX",
                       "title":  "五福闹新春全机械移植与 5 项门禁预注册",
-                      "status":  "in_progress",
-                      "updated_at":  "2026-07-07T15:05:00Z",
+                      "status":  "promote_candidate",
+                      "updated_at":  "2026-07-07T18:00:00Z",
                       "file":  "EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册.md",
                       "rd_id":  "RD-20260707T135354Z-main-WUFU",
-                      "stage":  "stage0_passed"
+                      "stage":  "gates_completed"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",

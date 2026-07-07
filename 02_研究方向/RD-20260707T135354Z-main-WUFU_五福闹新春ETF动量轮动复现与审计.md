@@ -4,14 +4,14 @@ rd_id: RD-20260707T135354Z-main-WUFU
 parent_rd_id:
 scope: 策略
 module_type:
-status: draft
+status: active
 priority: P2
 owner: main
 created_at: 2026-07-07T13:53:54Z
-updated_at: 2026-07-07T13:53:54Z
+updated_at: 2026-07-08T01:30:00Z
 strategy_id:
 current_decision_id:
-current_best_ex_id:
+current_best_ex_id: EX-20260707T135354Z-main-WUFU
 tags:
   - 社区策略复现
   - ETF动量轮动
@@ -94,7 +94,7 @@ tags:
 
 | ex_id | 结论 | 记录 |
 | --- | --- | --- |
-| EX-20260707T135354Z-main-WUFU | 进行中（预注册） | [[04_实验记录/EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册]] |
+| EX-20260707T135354Z-main-WUFU | promote_candidate（5项门禁3通过+2有条件通过，四段连乘28.33x） | [[04_实验记录/EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册]] |
 
 ## 关键决策
 
