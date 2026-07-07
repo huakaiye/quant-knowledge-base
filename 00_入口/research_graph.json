@@ -1,5 +1,5 @@
 {
-    "generated_at_utc":  "2026-07-07T14:01:15Z",
+    "generated_at_utc":  "2026-07-07T15:26:40Z",
     "summary":  {
                     "node_count":  657,
                     "edge_count":  928,
@@ -3760,11 +3760,11 @@
                       "id":  "EX-20260707T135354Z-main-WUFU",
                       "type":  "EX",
                       "title":  "五福闹新春全机械移植与 5 项门禁预注册",
-                      "status":  "draft",
-                      "updated_at":  "2026-07-07T13:53:54Z",
+                      "status":  "in_progress",
+                      "updated_at":  "2026-07-07T15:05:00Z",
                       "file":  "EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册.md",
                       "rd_id":  "RD-20260707T135354Z-main-WUFU",
-                      "stage":  "preregistered"
+                      "stage":  "stage0_passed"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
