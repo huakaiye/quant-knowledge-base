@@ -1,43 +1,44 @@
 {
-    "generated_at_utc":  "2026-07-07T18:13:57Z",
+    "generated_at_utc":  "2026-07-08T07:58:55Z",
     "summary":  {
-                    "node_count":  657,
-                    "edge_count":  928,
+                    "node_count":  659,
+                    "edge_count":  929,
                     "dangling_edge_count":  0,
                     "by_type":  {
                                     "STRAT":  9,
-                                    "EX":  310,
-                                    "RD":  48,
+                                    "EX":  311,
+                                    "RD":  49,
                                     "IDEA":  32,
                                     "DEC":  203,
                                     "LIT":  55
                                 },
                     "rd_by_status":  {
-                                         "active":  19,
+                                         "active":  20,
                                          "promote_candidate":  1,
                                          "park":  25,
                                          "observe":  3
                                      },
-                    "recent_change_count_7d":  45
+                    "recent_change_count_7d":  42
                 },
     "active_directions":  [
-                              "RD-20260614T115209Z-main-MCYG",
                               "RD-20260620T022601Z-main-GHZL",
+                              "RD-20260620T052601Z-main-3B2X",
+                              "RD-20260614T115209Z-main-MCYG",
                               "RD-20260605T131301Z-main-KC7N",
                               "RD-20260605T133318Z-main-H6V3",
-                              "RD-20260620T052601Z-main-3B2X",
-                              "RD-20260707T043350Z-main-HMQD",
                               "RD-20260707T135354Z-main-WUFU",
+                              "RD-20260708T075106Z-main-3MHU",
+                              "RD-20260707T043350Z-main-HMQD",
                               "RD-20260701T033937Z-main-HTGA",
                               "RD-20260703T081815Z-main-LMIG",
-                              "RD-20260605T115651Z-main-OFF0",
-                              "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
+                              "RD-20260605T000000Z-mig-R010AF00BB",
+                              "RD-20260528T000000Z-mig-BLF20260528004996F7",
                               "RD-20260523T000000Z-mig-BLF20260523001134E1",
                               "RD-20260523T000000Z-mig-BLF20260523002F8A70",
-                              "RD-20260605T000000Z-mig-R010AF00BB",
-                              "RD-20260605T115651Z-main-DP00",
                               "RD-20260605T115651Z-main-EXE0",
+                              "RD-20260605T115651Z-main-OFF0",
+                              "RD-20260605T115651Z-main-DP00",
                               "RD-20260605T115651Z-main-CORE",
                               "RD-20260605T115651Z-main-DEF0"
                           ],
@@ -665,6 +666,19 @@
                       "module_type":  "",
                       "current_decision_id":  "",
                       "current_best_ex_id":  "EX-20260707T135354Z-main-WUFU"
+                  },
+                  {
+                      "id":  "RD-20260708T075106Z-main-3MHU",
+                      "type":  "RD",
+                      "title":  "聚宽数据库全面重构",
+                      "status":  "active",
+                      "updated_at":  "2026-07-08T07:51:06Z",
+                      "file":  "RD-20260708T075106Z-main-3MHU_聚宽数据库全面重构.md",
+                      "parent_rd_id":  "",
+                      "scope":  "策略",
+                      "module_type":  "",
+                      "current_decision_id":  "",
+                      "current_best_ex_id":  "EX-20260708T075117Z-main-6WED"
                   },
                   {
                       "id":  "EX-20260521T000000Z-mig-R2026052100171186",
@@ -3765,6 +3779,16 @@
                       "file":  "EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册.md",
                       "rd_id":  "RD-20260707T135354Z-main-WUFU",
                       "stage":  "gates_completed"
+                  },
+                  {
+                      "id":  "EX-20260708T075117Z-main-6WED",
+                      "type":  "EX",
+                      "title":  "阶段0基础设施验证",
+                      "status":  "completed",
+                      "updated_at":  "2026-07-08T07:51:17Z",
+                      "file":  "EX-20260708T075117Z-main-6WED_阶段0基础设施验证.md",
+                      "rd_id":  "RD-20260708T075106Z-main-3MHU",
+                      "stage":  "formal_completed"
                   },
                   {
                       "id":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -10121,6 +10145,11 @@
                       "rel":  "lit_source"
                   },
                   {
+                      "from":  "EX-20260708T075117Z-main-6WED",
+                      "to":  "RD-20260708T075106Z-main-3MHU",
+                      "rel":  "experiment_of"
+                  },
+                  {
                       "from":  "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
                       "to":  "RD-20260605T115651Z-main-DEF0",
                       "rel":  "decision_affects"
@@ -11455,30 +11484,6 @@
 
                        ],
     "recent_changes_7d":  [
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
-                              {
-                                  "id":  null,
-                                  "type":  null,
-                                  "title":  null,
-                                  "status":  null,
-                                  "updated_at":  null,
-                                  "file":  null
-                              },
                               {
                                   "id":  null,
                                   "type":  null,

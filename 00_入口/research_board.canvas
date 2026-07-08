@@ -1,16 +1,6 @@
 {
     "nodes":  [
                   {
-                      "id":  "board-today",
-                      "type":  "text",
-                      "text":  "# last 3 days\r\n\r\n### 2026-07-05 波动率regime三段全达标首次promote_candidate待全周期确认\r\nvol_regime_or(波动率\u003e0.30=高波动OR/否则AND)三段全达标:2015回撤-13.90%改善7.92pp+2025收益+71.75%(≥90%阈值)+2022+6.55%(慢熊治好转正);shift1负控2015回撤-13.90%=真实(信号持续有效);CH诊断2015波动率0....\r\n\r\n### 2026-07-05 regime门控2015与2025成功但2022慢熊失效revise到精细化regime\r\nregime_gated_or在2015回撤-21.82%→-14.14%改善7.68pp且收益+55.61%超baseline(三轮最佳);2025收益+56.30%大幅回升(vs JM25+27%);但2022与smart_or完全相同-14.80%(全年熊市regime一直走OR);shift...\r\n\r\n### 2026-07-05 状态机OR逻辑2015有效但2022/2025退化revise到分市况条件化OR\r\nsmart_or在2015回撤-21.82%→-13.90%改善7.92pp且shift1负控复制回撤改善证明非偶然;但2022收益-14.80%、2025约+27.27%严重退化;保守L3=-4%/k=3仍退化=OR逻辑结构问题非参数\r\n\r\n### 2026-07-05 状态机A2三关重构主假设证伪与方向revise到OR逻辑\r\nEX-JM24 replace_slope 在 2015 因第一关分数短路而完全不生效;replace_full 生效但默认参数净负向;根因=三关AND逻辑被最严格的分数关卡死,非第三关slope滞后",
-                      "x":  -880,
-                      "y":  -460,
-                      "width":  840,
-                      "height":  500,
-                      "color":  "4"
-                  },
-                  {
                       "id":  "board-RD-20260703T081815Z-main-LMIG",
                       "type":  "text",
                       "text":  "# miniQMT 清退后实盘平台迁移\r\n\r\n\u003e 双池轮动执行与换仓模块\r\n\r\n**focus**: EX-20260704T153310Z-main-ZVJH",
