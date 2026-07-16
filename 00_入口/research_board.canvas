@@ -121,10 +121,20 @@
                       "color":  "1"
                   },
                   {
+                      "id":  "board-RD-20260707T135354Z-main-WUFU",
+                      "type":  "text",
+                      "text":  "# 五福闹新春 ETF 动量轮动复现与审计\r\n\r\n**focus**: EX-20260716T134301Z-codex-W5E2\r\n\r\n**decision**: 冻结 immediate 逐日对账基线，日内择时独立研究",
+                      "x":  0,
+                      "y":  5280,
+                      "width":  740,
+                      "height":  400,
+                      "color":  "1"
+                  },
+                  {
                       "id":  "board-RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
                       "type":  "text",
                       "text":  "# 小市值 T0 —— 研究总结\r\n\r\n## decisions\r\n### [observe] 避雷指南小市值验证后转向分散篮子研究\r\n- V2迁移主回测年化约71.27%，收益复现接近聚宽80%；JQBL低收益是保守代理审计口径，不代表迁移失败。\r\n- next: 保持不shadow不实盘；先审计V2实际交易容量和聚宽交易明细差异，再开全样本参数化、成本、负控和容量实验。\r\n\r\n### [park] 无低价排序分日建仓失败后暂停决策\r\n- SPDR简单修复买入完成率仍约94%，2AM7分日建仓进一步降到86%-87%；no_low收益线索仍在但当前低成本执行修复全部失败\r\n- next: 暂停no_low执行修复线；S5D6 strict_base是当前微盘路线唯一默认关闭observe候选，下一步做纸面成交、盘口/tick接入或实盘dry-run",
-                      "x":  0,
+                      "x":  780,
                       "y":  5280,
                       "width":  740,
                       "height":  400,
