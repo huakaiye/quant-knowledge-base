@@ -1,10 +1,12 @@
 # 五福闹新春 ETF 动量轮动 阶段 0 实现计划（移植 + 静态审计 + smoke）
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 把聚宽"五福闹新春 v5.2"策略全机械移植到 V2 平台，完成未来函数静态审计 6 项，跑 smoke 确认移植正确性（display_name 覆盖度 + 动态池构建 + 分钟止损 every_bar 机制），为阶段 1 四段 formal 扫清前置障碍。
 
-**Architecture:** 聚宽式策略（`from jqdata import *` + `initialize` + `run_daily` 调度），复用 V2 平台 `jq_bridge.py` 兼容层。策略文件放在 `${QUANT_PLATFORM_ROOT}/src/strategies/research/wufu_etf_momentum_jq.py`，配置放在 `configs/research/RD-20260707T135354Z-main-WUFU/EX-20260707T135354Z-main-WUFU/`。原版 1265 行全机械复制，仅做 4 处平台适配改动（文件头 docstring / 成本参数化 / every_bar 验证 / record 中文变量名）。
+**Architecture:** 聚宽式策略（`from jqdata import *` + `initialize` + `run_daily` 调度），复用 V2 平台 `jq_bridge.py` 兼容层。策略文件放在 `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/wufu_etf_momentum_jq.py`，配置放在 `configs/research/RD-20260707T135354Z-main-WUFU/EX-20260707T135354Z-main-WUFU/`。原版 1265 行全机械复制，仅做 4 处平台适配改动（文件头 docstring / 成本参数化 / every_bar 验证 / record 中文变量名）。
 
 **Tech Stack:** Python 3（聚宽式语法）+ V2 平台 jq_bridge 兼容层 + ClickHouse 行情数据 + SimBroker 撮合
 
@@ -28,8 +30,8 @@
 
 | 路径 | 职责 |
 |------|------|
-| `${QUANT_PLATFORM_ROOT}/src/strategies/research/wufu_etf_momentum_jq.py` | 五福闹新春策略（聚宽式，全机械移植 + 4 处适配） |
-| `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260707T135354Z-main-WUFU/EX-20260707T135354Z-main-WUFU/smoke_2024q1.json` | smoke 配置（2024-01~2024-03，分钟回测） |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/wufu_etf_momentum_jq.py` | 五福闹新春策略（聚宽式，全机械移植 + 4 处适配） |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260707T135354Z-main-WUFU/EX-20260707T135354Z-main-WUFU/smoke_2024q1.json` | smoke 配置（2024-01~2024-03，分钟回测） |
 
 ### 修改文件（仅研究库文档，非平台代码）
 
@@ -42,18 +44,18 @@
 | 路径 | 用途 |
 |------|------|
 | `C:\Users\Administrator\.zcode\tmp\paste-attachments\2026-07-07\pasted-text-20260707-211719-e4843d8b.txt` | 原版源码（复制源） |
-| `${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_env_temp_strategy.py` | 聚宽式 ETF 策略范例（文件头 docstring 范式） |
-| `${QUANT_PLATFORM_ROOT}/src/strategies/research/v_tech_momentum_jq.py` | 聚宽式策略范例（参数化范式） |
-| `${QUANT_PLATFORM_ROOT}/src/quant_v2/strategy_api/jq_bridge.py` | 聚宽兼容层（API 覆盖度核查） |
-| `${QUANT_PLATFORM_ROOT}/configs/research/R010-A11/env_temperature/smoke/smoke_2024_01.json` | smoke 配置范例 |
-| `${QUANT_PLATFORM_ROOT}/docs/聚宽API底层语义兼容审计_2026-05-27.md` | get_current_data 分钟口径审计 |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_env_temp_strategy.py` | 聚宽式 ETF 策略范例（文件头 docstring 范式） |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/v_tech_momentum_jq.py` | 聚宽式策略范例（参数化范式） |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/strategy_api/jq_bridge.py` | 聚宽兼容层（API 覆盖度核查） |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A11/env_temperature/smoke/smoke_2024_01.json` | smoke 配置范例 |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/docs/聚宽API底层语义兼容审计_2026-05-27.md` | get_current_data 分钟口径审计 |
 
 ---
 
 ## Task 1: 创建策略文件 + 全机械移植 + 平台适配
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/src/strategies/research/wufu_etf_momentum_jq.py`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/wufu_etf_momentum_jq.py`
 
 **Interfaces:**
 - Consumes: V2 平台 `jq_bridge.py` 导出的聚宽 API（`get_price`/`get_all_securities`/`get_current_data`/`get_security_info`/`attribute_history`/`order`/`set_option`/`set_slippage`/`set_order_cost`/`run_daily`/`record`/`PriceRelatedSlippage`/`OrderCost`）
@@ -69,6 +71,8 @@
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """五福闹新春 ETF 动量轮动策略（聚宽式 V2 策略模块）。
 
 研究背景
@@ -103,6 +107,8 @@
 
 ```python
 # 原版
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 set_slippage(PriceRelatedSlippage(0.0001), type="fund")
 set_order_cost(OrderCost(open_tax=0, close_tax=0, open_commission=0.0001, close_commission=0.0001, close_today_commission=0.0001, min_commission=5), type="fund")
 ```
@@ -111,6 +117,8 @@ set_order_cost(OrderCost(open_tax=0, close_tax=0, open_commission=0.0001, close_
 
 ```python
 # 改后
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 params = getattr(context, "params", {}) or {}
 g.cost_multiplier = float(params.get("cost_multiplier", 1.0))
 g.slippage_rate = float(params.get("slippage_rate", 0.0001 * g.cost_multiplier))
@@ -163,6 +171,8 @@ else:
 
 ```bash
 # 在 WSL 内执行（平台路径用 WSL 格式）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 platformWsl=$(powershell -ExecutionPolicy Bypass -File "E:/【笔记库】/量化研究库_V2.0.0/tools/Get-QuantPlatformRoot.ps1" -Format WSL | tr -d '\r')
 cp "C:\Users\Administrator\.zcode\tmp\paste-attachments\2026-07-07\pasted-text-20260707-211719-e4843d8b.txt" "$platformWsl/src/strategies/research/wufu_etf_momentum_jq.py"
 ```
@@ -177,8 +187,14 @@ cp "C:\Users\Administrator\.zcode\tmp\paste-attachments\2026-07-07\pasted-text-2
 
 ```
 # 克隆自聚宽文章：https://www.joinquant.com/post/74243
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 标题：【五福闹新春】v5.2-已解密。别再被13:10狙击了，快跑
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 作者：烟花三月ETF
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 
 import numpy as np
 ```
@@ -311,7 +327,7 @@ git commit -m "audit(WUFU): 未来函数静态审计6项完成
 ## Task 3: smoke 配置 + 跑 smoke + 验证移植正确性
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260707T135354Z-main-WUFU/EX-20260707T135354Z-main-WUFU/smoke_2024q1.json`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260707T135354Z-main-WUFU/EX-20260707T135354Z-main-WUFU/smoke_2024q1.json`
 - Modify: `04_实验记录/EX-20260707T135354Z-main-WUFU_五福闹新春全机械移植与5项门禁预注册.md`（回填执行记录）
 
 **Interfaces:**
