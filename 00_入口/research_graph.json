@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-03T11:21:31Z",
+  "generated_at_utc": "2026-08-03T12:24:53Z",
   "summary": {
-    "node_count": 860,
-    "edge_count": 1189,
+    "node_count": 861,
+    "edge_count": 1190,
     "dangling_edge_count": 0,
     "by_type": {
-      "TERM": 88,
-      "IDEA": 32,
-      "DEC": 244,
       "LIT": 55,
+      "IDEA": 32,
       "RD": 50,
-      "EX": 380,
-      "STRAT": 11
+      "TERM": 88,
+      "DEC": 244,
+      "STRAT": 11,
+      "EX": 381
     },
     "rd_by_status": {
+      "park": 25,
       "active": 21,
       "observe": 3,
-      "promote_candidate": 1,
-      "park": 25
+      "promote_candidate": 1
     },
-    "recent_change_count_7d": 104
+    "recent_change_count_7d": 105
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,13 +661,13 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-03T09:04:07Z",
+      "updated_at": "2026-08-03T12:16:39Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
       "module_type": "",
       "current_decision_id": "DEC-20260803T085954Z-main-MH8V",
-      "current_best_ex_id": "EX-20260803T040325Z-main-W4BY"
+      "current_best_ex_id": "EX-20260803T113822Z-main-J8TU"
     },
     {
       "id": "RD-20260708T075106Z-main-3MHU",
@@ -4494,6 +4494,16 @@
       "file": "EX-20260803T080452Z-main-4EWH_五福公司行为逐日增量账户闭环修复.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
       "stage": "formal_completed"
+    },
+    {
+      "id": "EX-20260803T113822Z-main-J8TU",
+      "type": "EX",
+      "title": "五福冻结策略2026年7月重复回测与公司行为回归确认",
+      "status": "completed",
+      "updated_at": "2026-08-03T12:16:39Z",
+      "file": "EX-20260803T113822Z-main-J8TU_五福冻结策略2026年7月重复回测与公司行为回归确认.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "formal_completed_reproduction_passed"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -8794,7 +8804,7 @@
       "type": "STRAT",
       "title": "五福V6实盘冻结基线策略",
       "status": "active",
-      "updated_at": "2026-08-03T06:10:25Z",
+      "updated_at": "2026-08-03T12:16:39Z",
       "file": "STRAT-20260730T122752Z-main-CR2U_五福V6实盘冻结基线策略档案.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU"
     }
@@ -12861,6 +12871,11 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260803T113822Z-main-J8TU",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14748,6 +14763,14 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
