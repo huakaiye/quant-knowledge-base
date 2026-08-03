@@ -22,7 +22,7 @@ result_paths:
 summary_paths: []
 quality_gate: L2_preregistered_待formal
 subagent_call_ids: []
-subagent_exemption: 代码改动插入点已由主控只读核实（etf_dual_pool_r010b_action_ablation.py:6620-6748 状态机逻辑）；假设/证伪/机制设计/最终判断主控承担；主控：main；时间：2026-06-29T23:48:37Z
+subagent_exemption: 子代理豁免：代码改动插入点已由主控只读核实（etf_dual_pool_r010b_action_ablation.py:6620-6748 状态机逻辑）；假设/证伪/机制设计/最终判断主控承担；主控：main；时间：2026-06-29T23:48:37Z
 tags: [双池轮动, 防御模块, A2趋势破位, 出口确认, exit_confirm, 邻域验证, formal, 阶段1.1, A2改进计划]
 ---
 

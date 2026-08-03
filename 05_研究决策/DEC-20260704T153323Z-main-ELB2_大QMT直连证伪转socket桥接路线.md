@@ -10,7 +10,7 @@ updated_at: 2026-07-04T23:30:00Z
 impact: direction
 subagent_call_ids:
   - SUB-20260704T-CASELOOKUP
-subagent_exemption:
+subagent_exemption: 子代理豁免：已有调用记录未在当前子代理台账中找到，路线判断由主控完成；主控：main；时间：2026-07-04T15:33:23Z
 tags: [实盘平台, miniQMT清退, 路线修订, socket桥接, tornado, promote_candidate]
 ---
 

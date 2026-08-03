@@ -1,209 +1,239 @@
 {
-    "nodes":  [
-                  {
-                      "id":  "board-RD-20260703T081815Z-main-LMIG",
-                      "type":  "text",
-                      "text":  "# miniQMT 清退后实盘平台迁移\r\n\r\n\u003e 双池轮动执行与换仓模块\r\n\r\n**focus**: EX-20260704T153310Z-main-ZVJH",
-                      "x":  0,
-                      "y":  0,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260701T033937Z-main-HTGA",
-                      "type":  "text",
-                      "text":  "# V科技队科技股动量轮动复现\r\n\r\n**focus**: EX-20260701T050820Z-main-QL89",
-                      "x":  780,
-                      "y":  0,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260620T052601Z-main-3B2X",
-                      "type":  "text",
-                      "text":  "# 双池轮动 GSADF 爆炸性泡沫检测\r\n\r\n\u003e 双池轮动 score 过热拥挤机制模块\r\n\r\n**focus**: EX-20260620T052616Z-main-UEAC",
-                      "x":  0,
-                      "y":  880,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260620T022601Z-main-GHZL",
-                      "type":  "text",
-                      "text":  "# 双池轮动 MAX 彩票式过热信号\r\n\r\n\u003e 双池轮动A股撤离追高状态机\r\n\r\n**focus**: EX-20260620T022611Z-main-FZM4",
-                      "x":  780,
-                      "y":  880,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T133318Z-main-H6V3",
-                      "type":  "text",
-                      "text":  "# 双池轮动 score 过热拥挤机制模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n**focus**: EX-20260619T071136Z-main-7X8F\r\n## decisions\r\n### [promote_candidate] hard5覆盖空白确认与常态旧仓保留立项formal完成\r\n- v2修正:四真因(非拥挤零判断/算法窗口滞后/超分旧仓无撤离/今日信号未调用)+加权治不了滞后(实测);方案扩展撤离端7闸+进攻端今日否决;hard5覆盖空白定性不变(拥挤72%与全弱40%之间真空)；6/30-7/1普涨结构性行情落空白致卖强买弱。立项常态旧仓保留5闸预注册待回测。\r\n- next: EX-HLDR formal:H1撤离端7闸部分成立(连乘13.49x微超baseline\r\n\r\n### [observe] GSADF爆炸性observe方向反不纳入\r\n- GSADF方向与预测相反爆炸性反而后续更好，ETF爆炸性是趋势加速良性阶段非泡沫尾声，不纳入p_overheat\r\n- next: GSADF不纳入字段池作方法资产保留，三方向综合判断组合MAX加CS dispersion做双概率软预算复核，错位负控反转需方法论实验",
-                      "x":  0,
-                      "y":  1760,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T115651Z-main-DP00",
-                      "type":  "text",
-                      "text":  "# 双池轮动策略\r\n\r\n**focus**: EX-20260606T134047Z-main-HPHZ\r\n## decisions\r\n### [promote_candidate] hard5覆盖空白确认与常态旧仓保留立项formal完成\r\n- v2修正:四真因(非拥挤零判断/算法窗口滞后/超分旧仓无撤离/今日信号未调用)+加权治不了滞后(实测);方案扩展撤离端7闸+进攻端今日否决;hard5覆盖空白定性不变(拥挤72%与全弱40%之间真空)；6/30-7/1普涨结构性行情落空白致卖强买弱。立项常态旧仓保留5闸预注册待回测。\r\n- next: EX-HLDR formal:H1撤离端7闸部分成立(连乘13.49x微超baseline\r\n\r\n### [park] QKYP强极端恢复门控不进入实盘\r\n- QKYP主变体复合收益保留率99.46%，但MDD改善\u003e=1pp分段数为0，应用3次且无明确保护样本，因此不进入实盘\r\n- next: park strong/extreme恢复门控；若继续权益回撤二级预算，需新开all-level+recovery gate预注册并补错位/延迟/反弹误伤审计",
-                      "x":  780,
-                      "y":  1760,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260614T115209Z-main-MCYG",
-                      "type":  "text",
-                      "text":  "# 双池轮动动量崩溃事前暴露管理\r\n\r\n\u003e 双池轮动防御模块\r\n\r\n**focus**: EX-20260618T145033Z-main-KFSQ\r\n## decisions\r\n### [promote_candidate] KFSQ forward外部验证数据不足后继续等待新样本\r\n- KZF8不是通过也不是失败：连续forward窗口21行，A1只有7行且在后段，H10可标注行0、episode0，H5也仅2行1个episode。\r\n- next: 保留KFSQ外部验证候选；不动作化、不shadow、不observe；等待新样本或dry-run满足H10 \u003e=20行且\u003e=5 episode后用同一脚本复验。\r\n\r\n### [promote_candidate] confirmed_state单组件通过后进入外部验证候选\r\n- KFSQ通过只读门槛：confirmed_state_run_len单组件在pooled episode下尾损失lift +4.65pct，高于随机p95 +2.55pct和shift_next +2.58pct，但候选来自2XKW后验诊断。\r\n- next: promote_candidate仅限外部验证；不动作化、不shadow、不observe；下一步只记录新样本或dry-run验证。",
-                      "x":  0,
-                      "y":  2640,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T115651Z-main-DEF0",
-                      "type":  "text",
-                      "text":  "# 双池轮动防御模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n**focus**: EX-20260608T041610Z-main-B3QC\r\n## decisions\r\n### [promote_candidate] A2趋势破位升级RA5第三维L2robustness更新shadow配置(经4次定性反转最终恢复综合最优)\r\n- A2趋势破位三维门控经4次定性反转最终定位实盘成本下综合最优: 初版promote→HUWV(11节bug版)降可选组件→D3修复版(12节)恢复最优→A2COST四段cost2x(13节)降回撤组件→A2C2X11Y十一年cost2x(14节)恢复综合最优;十一年cost2x A2 29.190x优baseline+12.86%且空仓少换手162笔-6.2...\r\n- next: P0解锁QMT→样本外验证→达标准入production promote评估\r\n\r\n### [superseded_by_long_cycle] A2趋势破位升级决策被十一年回测推翻(基于bug版已被D3反转)\r\n- 本条基于bug版decade2已被EX-D3修复版反转(DEC第12节恢复A2最优)且经EX-A2C2X11Y十一年cost2x二次确认A2综合最优(第14节);原推翻理由(十一年RA5\u003eA2)因raw_closes污染失效\r\n- next: 作废保留作历史记录;A2定性以DTH2主行为准",
-                      "x":  780,
-                      "y":  2640,
-                      "width":  740,
-                      "height":  403,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T115651Z-main-CORE",
-                      "type":  "text",
-                      "text":  "# 双池轮动核心轮动模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n## decisions\r\n### [kill] 5KZW多周期动量确认不替代hard5或A23\r\n- 5KZW 16/16 formal完成；三个多周期确认候选均只有1/4分段final不低于baseline，四段合计final分别少23066.55、25284.31、19484.67\r\n- next: 关闭5KZW直接替代路线；默认hard5保留，A23继续做事件归因和成本/换手约束版本\r\n\r\n### [kill] LM3D年化尺度与Top4权重不进入默认逻辑\r\n- ann25、Top4 40/30/20/10和取消hard5上限均未通过32/32 formal，不进入默认逻辑\r\n- next: LM3D只补成本扰动、错位评分负控和未来函数审计；回测资源转向A23稳健性补证",
-                      "x":  0,
-                      "y":  3520,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T115651Z-main-OFF0",
-                      "type":  "text",
-                      "text":  "# 双池轮动进攻模块\r\n\r\n\u003e 双池轮动策略",
-                      "x":  780,
-                      "y":  3520,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T115651Z-main-EXE0",
-                      "type":  "text",
-                      "text":  "# 双池轮动执行与换仓模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n**focus**: EX-20260607T102858Z-main-AURT\r\n## decisions\r\n### [revise] AURT恢复门控二级预算进入负控不进实盘\r\n- AURT主候选normal_nonrec3预注册L1通过：复合最终权益保留103.78%，MDD改善\u003e=1pp分段数2，应用21次、保护样本10、强反弹误伤1；但未做负控/成本/forward，不进实盘\r\n- next: 不改默认hard5；AURT只进入负控/邻域补证，优先做成本扰动、状态滞后、回撤错位和nonrec窄邻域。\r\n\r\n### [park] QKYP强极端恢复门控不进入实盘\r\n- QKYP主变体复合收益保留率99.46%，但MDD改善\u003e=1pp分段数为0，应用3次且无明确保护样本，因此不进入实盘\r\n- next: park strong/extreme恢复门控；若继续权益回撤二级预算，需新开all-level+recovery gate预注册并补错位/延迟/反弹误伤审计",
-                      "x":  0,
-                      "y":  4400,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260605T131301Z-main-KC7N",
-                      "type":  "text",
-                      "text":  "# 双池轮动主题簇主线确认模块\r\n\r\n\u003e 双池轮动策略\r\n\r\n**focus**: EX-20260606T000758Z-main-VVVN\r\n## decisions\r\n### [park] 主题簇金融风险预算formal失败后暂停决策\r\n- VVVN四段三组formal完成；financial_top1_cap70只有1/4收益优于baseline，financial_or_share_ge050_cap70虽4/4回撤改善但0/4收益优于baseline且机会成本过大\r\n- next: 暂停主题风险预算交易化；主题簇只保留只读诊断，不promote、不默认打开、不后验扩阈值\r\n\r\n### [revise] 主题簇强主线不作为正向放行条件\r\n- 6p_same不支持正向放行；金融top1更像风险标签但仍需formal V2 A/B验证\r\n- next: 停止6p正向放行路线；主题簇后续只做金融坏桶/高集中度风险预算A/B预注册",
-                      "x":  780,
-                      "y":  4400,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260707T135354Z-main-WUFU",
-                      "type":  "text",
-                      "text":  "# 五福闹新春 ETF 动量轮动复现与审计\r\n\r\n**focus**: EX-20260716T134301Z-codex-W5E2\r\n\r\n**decision**: 冻结 immediate 逐日对账基线，日内择时独立研究",
-                      "x":  0,
-                      "y":  5280,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  },
-                  {
-                      "id":  "board-RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
-                      "type":  "text",
-                      "text":  "# 小市值 T0 —— 研究总结\r\n\r\n## decisions\r\n### [observe] 避雷指南小市值验证后转向分散篮子研究\r\n- V2迁移主回测年化约71.27%，收益复现接近聚宽80%；JQBL低收益是保守代理审计口径，不代表迁移失败。\r\n- next: 保持不shadow不实盘；先审计V2实际交易容量和聚宽交易明细差异，再开全样本参数化、成本、负控和容量实验。\r\n\r\n### [park] 无低价排序分日建仓失败后暂停决策\r\n- SPDR简单修复买入完成率仍约94%，2AM7分日建仓进一步降到86%-87%；no_low收益线索仍在但当前低成本执行修复全部失败\r\n- next: 暂停no_low执行修复线；S5D6 strict_base是当前微盘路线唯一默认关闭observe候选，下一步做纸面成交、盘口/tick接入或实盘dry-run",
-                      "x":  780,
-                      "y":  5280,
-                      "width":  740,
-                      "height":  400,
-                      "color":  "1"
-                  }
-              ],
-    "edges":  [
-                  {
-                      "id":  "e-RD-20260703T081815Z-main-LMIG",
-                      "fromNode":  "board-RD-20260605T115651Z-main-EXE0",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260703T081815Z-main-LMIG",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260620T052601Z-main-3B2X",
-                      "fromNode":  "board-RD-20260605T133318Z-main-H6V3",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260620T052601Z-main-3B2X",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260605T133318Z-main-H6V3",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DP00",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260605T133318Z-main-H6V3",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260614T115209Z-main-MCYG",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DEF0",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260614T115209Z-main-MCYG",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260605T115651Z-main-DEF0",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DP00",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260605T115651Z-main-DEF0",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260605T115651Z-main-CORE",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DP00",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260605T115651Z-main-CORE",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260605T115651Z-main-OFF0",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DP00",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260605T115651Z-main-OFF0",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260605T115651Z-main-EXE0",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DP00",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260605T115651Z-main-EXE0",
-                      "toSide":  "top"
-                  },
-                  {
-                      "id":  "e-RD-20260605T131301Z-main-KC7N",
-                      "fromNode":  "board-RD-20260605T115651Z-main-DP00",
-                      "fromSide":  "bottom",
-                      "toNode":  "board-RD-20260605T131301Z-main-KC7N",
-                      "toSide":  "top"
-                  }
-              ]
+  "nodes": [
+    {
+      "id": "board-today",
+      "type": "text",
+      "text": "# last 3 days\r\n\r\n### 2026-08-03 五福公司行为逐日增量账户闭环修复\r\ndir: 五福闹新春 ETF 动量轮动复现与审计\r\n正式入口不预扫未来，22日仅21次单持仓检查且0数据缺口；性能复核定位重复日线质量门，月度核心耗时约43.0秒降至27.1秒，主178与冻结181项回归通过且结果不变\r\n\r\n### 2026-08-03 五福公司行为全链路防复发审计\r\ndir: 五福闹新春 ETF 动量轮动复现与审计\r\n552个标的生成296个事件，W4BY真实持仓曝险0，跨结束日零差异；已支持路径回归通过，但现金、未知与零碎份额仍保持失败关闭\r\n\r\n### 2026-08-03 五福冻结策略2026年7月月度体检\r\ndir: 五福闹新春 ETF 动量轮动复现与审计\r\n点时修复后7月收益3.3393%、最大回撤8.3692%；旧52Z7因未来拆分改写历史成交量而降级，当前双结束日公共前缀完全一致\r\n\r\n### 2026-08-03 五福事前波动率仓位替代固定止损预注册\r\ndir: 五福闹新春 ETF 动量轮动复现与审计\r\n原A/B/C数值受未来ETF拆分改写历史成交量；参数身份保留，终值、CAGR、回撤和波动率仓位结论降为历史线索\r\n\r\n### 2026-08-03 中文官方事件链关系感知候选重排V2非Gold开发门禁预注册\r\ndir: 个人智库消息面结构化与长期记忆系统\r\n关系重排V2的机器预注册已建立，但执行固定关闭；AHS7只作已见诊断，空关系集、Gold自报隔离和角色混用都不能通过\r\n\r\n### 2026-08-01 OMP隔离环境单回合计数与唯一JSON合同修订\r\ndir: 个人智库消息面结构化与长期记忆系统\r\nC14实现和零模型严格环境探针已完成：SDK四份工具清单全空，MCP、扩展、LSP均为0；专项9/9通过，正式模型调用尚未执行\r\n\r\n### 2026-08-01 低成本候选抽取受控执行与失败留痕合同\r\ndir: 个人智库消息面结构化与长期记忆系统\r\nC13固定合成输入、一次调用零重试和失败留证合同通过；唯一DeepSeek运行正常退出但因5个assistant终态及解释性JSON围栏被权威判定失败，无解析候选或下游写入\r\n\r\n### 2026-08-01 候选正文对象化与模型前置隔离合同\r\ndir: 个人智库消息面结构化与长期记忆系统\r\nC12把C11的6份已见正文按原顺序封装成一个写一次候选文档包；正文仅以内容寻址引用，17项专项与493项全项目门禁通过，模型、记忆、数据库、事实、行动和交易权限全部关闭\r\n\r\n### 2026-08-01 真实上游Schema与精确允许主机集成修订\r\ndir: 个人智库消息面结构化与长期记忆系统\r\nC11以正式C8验证器、来源目录哈希和C8精确主机修复C10跨Schema误建模；31项专项加6组域负控、475项全库加186组子用例及独立代码审计通过。冻结6条唯一live烟测正好6请求0重试，6/6形成候选正文并通过固定回执、attempt、内容对象、正文与发布时间离线重放；模型、记忆和数据库写...\r\n\r\n### 2026-08-01 绑定调度器的列表复验与候选正文内容寻址\r\ndir: 个人智库消息面结构化与长期记忆系统\r\nC10合成29/29与全库474/474通过；新C9自绑定运行3/5成功、40条候选且完整性通过，但batch编译因C10错误要求C8正式Schema不存在的gold_loaded字段而在正文联网前失败关闭，正文请求0；冻结候选另见gov.cn与www.gov.cn精确主机不一致\r\n\r\n### 2026-08-01 对象驱动持续采集调度器实验\r\ndir: 个人智库消息面结构化与长期记忆系统\r\n三层合同和20项专项测试通过；真实运行5/5终态、3/5成功、40条唯一官方链接，候选社交0请求。中国移动403、国资委严格TLS失败；首轮调度器自哈希缺口永久标记legacy_unbound，整批不可下游导入\r\n\r\n### 2026-08-01 重点情报对象与官方渠道注册表预注册\r\ndir: 个人智库消息面结构化与长期记忆系统\r\n14项专项与425项全库测试通过；首批7对象、1任职、7渠道、4关系、11证据封存，11/11快照验真；可信计划只启用5机构渠道和3关系，社交账号及TLS异常关系保持候选",
+      "x": -880,
+      "y": -460,
+      "width": 840,
+      "height": 807,
+      "color": "4"
+    },
+    {
+      "id": "board-RD-20260731T090245Z-main-KLCN",
+      "type": "text",
+      "text": "# 个人智库消息面结构化与长期记忆系统\r\n\r\n**focus**: EX-20260731T172539Z-main-MXET\r\n\r\n## experiments (4)\r\n### 2026-08-03 中文官方事件链关系感知候选重排V2非Gold开发门禁预注册\r\n- 关系重排V2的机器预注册已建立，但执行固定关闭；AHS7只作已见诊断，空关系集、Gold自报隔离和角色混用都不能通过\r\n- next: 继续JE6T采集和归档介质门禁；达到实体、关系双盲和实现封存条件后另发激活Profile，随后另建全新事件族确认性EX\r\n\r\n### 2026-08-01 OMP隔离环境单回合计数与唯一JSON合同修订\r\n- C14实现和零模型严格环境探针已完成：SDK四份工具清单全空，MCP、扩展、LSP均为0；专项9/9通过，正式模型调用尚未执行\r\n- next: 先做C14B独立放行审计和全库门禁；全部通过后编译唯一写一次计划并只执行一次固定合成运行，失败不重试\r\n\r\n### 2026-08-01 低成本候选抽取受控执行与失败留痕合同\r\n- C13固定合成输入、一次调用零重试和失败留证合同通过；唯一DeepSeek运行正常退出但因5个assistant终态及解释性JSON围栏被权威判定失败，无解析候选或下游写入\r\n- next: 不重试或改写C13；另开合成协议实验解释OMP事件语义和唯一JSON约束，真实新闻仍等待未来未见URL独立确认\r\n\r\n### 2026-08-01 候选正文对象化与模型前置隔离合同\r\n- C12把C11的6份已见正文按原顺序封装成一个写一次候选文档包；正文仅以内容寻址引用，17项专项与493项全项目门禁通过，模型、记忆、数据库、事实、行动和交易权限全部关闭\r\n- next: 状态保持observe；等待未来新C9产生未见URL并完成独立正文确认后，再另开DeepSeek V4 Flash单次零重试候选抽取实验\r\n\r\n## decisions\r\n### [accept] 个人智库采用SSD热层与HDD冷归档混合存储\r\n- 三盘hybrid/provisional与421对象双侧恢复保持；C6非破坏迁移执行器通过L1合同，但真实HDD仍为exFAT且未迁移，热层空间仍低于20%\r\n- next: 用户选定空的独立NTFS/ReFS机械盘后先冻结双证明和计划，再限时授权只复制；verified_copy后恢复演练，映射切换另批批准并保留exFAT源；生产门禁不变\r\n\r\n### [promote_candidate] 独立时间见证采用见证型与限期前瞻型Profile分层\r\n- C5协议通过L1门禁；DigiCert因无数值accuracy只作独立见证，Sectigo固定政策链和CRL在2026-11-01前作为前瞻见证候选，exFAT介质仍阻断真实资格\r\n- next: 经用户批准迁移HDD到NTFS/ReFS并验收durable锚；随后冻结结果未知的真实A-B-C单次执行，依次写入C3 v2、C4 v2和C5",
+      "x": 0,
+      "y": 0,
+      "width": 740,
+      "height": 627,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260708T075106Z-main-3MHU",
+      "type": "text",
+      "text": "# 聚宽数据库全面重构\r\n\r\n**focus**: EX-20260708T075117Z-main-6WED\r\n\r\n## experiments (1)\r\n### 2026-07-18 阶段0基础设施验证\r\n- 阶段0证明了聚宽纯API历史拉取的工期和配额可行性；旧jq_fetcher及其测试与报告现仅作为V1.4只读证据，当前V2已由quant_n3 jq_v3链路接管\r\n- next: 阶段1已在V2完成；后续按jq-v3导入契约与每日更新器手册继续做完整性、导入恢复和回归审计，不恢复旧脚本",
+      "x": 780,
+      "y": 0,
+      "width": 740,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260620T052601Z-main-3B2X",
+      "type": "text",
+      "text": "# 双池轮动 GSADF 爆炸性泡沫检测\r\n\r\n> 双池轮动 score 过热拥挤机制模块\r\n\r\n**focus**: EX-20260620T052616Z-main-UEAC\r\n\r\n## experiments (1)\r\n### 2026-06-20 GSADF爆炸性泡沫只读面板预注册\r\n- 已执行：方向与预测相反高爆炸性H10+0.022低于低爆炸性+0.059胜率50%，ETF爆炸性是趋势加速良性阶段非泡沫尾声，纯numpy简化ADF有不确定性\r\n- next: GSADF不纳入p_overheat作方法资产保留，三方向综合判断组合MAX加CS dispersion做双概率软预算复核\r\n\r\n## decisions\r\n### [observe] GSADF爆炸性observe方向反不纳入\r\n- GSADF方向与预测相反爆炸性反而后续更好，ETF爆炸性是趋势加速良性阶段非泡沫尾声，不纳入p_overheat\r\n- next: GSADF不纳入字段池作方法资产保留，三方向综合判断组合MAX加CS dispersion做双概率软预算复核，错位负控反转需方法论实验",
+      "x": 0,
+      "y": 880,
+      "width": 740,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260620T022601Z-main-GHZL",
+      "type": "text",
+      "text": "# 双池轮动 MAX 彩票式过热信号\r\n\r\n> 双池轮动A股撤离追高状态机\r\n\r\n**focus**: EX-20260620T022611Z-main-FZM4\r\n\r\n## experiments (1)\r\n### 2026-06-20 MAX彩票式过热只读面板预注册\r\n- 已执行：高MAX桶H10 effect+0.041胜率72%方向支持Bali但十分位不单调且错位负控反转，A28二元版123事件+0.057更稳健，MAX用A28二元m04 veto\r\n- next: MAX纳入p_overheat用A28二元版不单独formal，转BL8Y和UEAC，错位负控反转需方法论实验\r\n\r\n## decisions\r\n### [observe] FZM4 MAX彩票式过热observe A28二元版优先\r\n- MAX方向支持但Bali十分位样本不足不单调且错位反转，用A28二元m04 veto更稳健，MAX纳入p_overheat用二元阈值\r\n- next: MAX作为p_overheat字段用A28二元版，转BL8Y和UEAC验证其他正交维度，错位负控反转需新开方法论实验",
+      "x": 780,
+      "y": 880,
+      "width": 740,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T133318Z-main-H6V3",
+      "type": "text",
+      "text": "# 双池轮动 score 过热拥挤机制模块\r\n\r\n> 双池轮动策略\r\n\r\n**focus**: EX-20260619T071136Z-main-7X8F\r\n\r\n## experiments (4)\r\n### 2026-07-04 HLDR仅闸5十一年持仓继承复核\r\n- EX-HLDR 4段口径粗略需十一年复核;gap网格0.3/0.5/0.8/1.0验证非过拟合;baseline应≈29.190x(A2综合最优)\r\n- next: formal+邻域完成:gap0.3连乘34.23x超baseline26.75x(+27%\r\n\r\n### 2026-07-04 V21基准确认V20加gap0.3协同有效\r\n- V20+gap0.3组合(V21)连乘35.52x≥max(V20 30.19x,gap0.3 34.23x)协同有效;逐年级全面最优(收益均值+38.12%/回撤均值-16.00%/12/12正);2024/2025双赢;2026+18.61pp;唯一弱2022-7.19pp;用户决策确立V21新基准\r\n- next: V21 shadow灰度上线(在V20加gap0.3旁路),样本外验证达标后替换V20非拥挤分支实盘化。\r\n\r\n### 2026-07-03 A2非拥挤常态旧仓保留换仓门槛预注册\r\n- v2归因修正:四真因(非拥挤零判断/算法窗口滞后/超分旧仓无撤离/今日信号未调用);7/1复核确证普涨市动量领跌45.3%;加权治不了滞后(实测);方案扩展为撤离端7闸+进攻端今日否决(代码1879-1881行)；588220当日91%分位却被换走。预注册5道闸常态保留机制待回测。\r\n- next: formal完成:H1撤离端7闸部分成立(连乘13.49x微超baseline13.34x,负控2.36x证非随机,牛市V型+18~27pp,震荡-22pp);H2进攻端证伪(4.04x);闸5 score差距是核心,其余6闸贡献小;需十一...\r\n\r\n### 2026-07-01 2026全年分数结构状态与调仓策略面板\r\n- 抱团期追鸡头5日后亏-5到-10%，追中段(2-5分)赚+1.5到3%；温和抱团该空仓；需跨期+负控验证\r\n- next: 跨期验证2022/2024；错位负控确认alpha；若通过新开抱团期放行中段formal\r\n\r\n## decisions\r\n### [promote_candidate] hard5覆盖空白确认与常态旧仓保留立项formal完成\r\n- v2修正:四真因(非拥挤零判断/算法窗口滞后/超分旧仓无撤离/今日信号未调用)+加权治不了滞后(实测);方案扩展撤离端7闸+进攻端今日否决;hard5覆盖空白定性不变(拥挤72%与全弱40%之间真空)；6/30-7/1普涨结构性行情落空白致卖强买弱。立项常态旧仓保留5闸预注册待回测。\r\n- next: EX-HLDR formal:H1撤离端7闸部分成立(连乘13.49x微超baseline\r\n\r\n### [observe] GSADF爆炸性observe方向反不纳入\r\n- GSADF方向与预测相反爆炸性反而后续更好，ETF爆炸性是趋势加速良性阶段非泡沫尾声，不纳入p_overheat\r\n- next: GSADF不纳入字段池作方法资产保留，三方向综合判断组合MAX加CS dispersion做双概率软预算复核，错位负控反转需方法论实验",
+      "x": 0,
+      "y": 1760,
+      "width": 740,
+      "height": 678,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T115651Z-main-DP00",
+      "type": "text",
+      "text": "# 双池轮动策略\r\n\r\n**focus**: EX-20260606T134047Z-main-HPHZ\r\n\r\n## experiments (4)\r\n### 2026-06-08 R20260531-022 R010C动作启动信号诊断与重构\r\n- R010-C能解释A0/A2部分失败样本，但A2样本外lift为负，不能直接当交易启动信号\r\n- next: 引用EX-20260608T003333Z-main-ARBE；若继续需新开A1/A2/B3/tiered动作实验\r\n\r\n### 2026-06-08 R20260531-023 R010C1 A0失速预警日志层首轮\r\n- C1 watch/strong分别80/11天，但-15%回撤窗口提前覆盖仅19.05%，2024覆盖为0\r\n- next: 保留r010c1_*为日志字段；不得直接交易化\r\n\r\n### 2026-06-07 ETF放量斜率突破策略五年回测\r\n- L2 kill：最终权益247277.54，累计收益+147.28%，年化+15.24%，MDD -51.21%，交易2158笔；同时输给原始双池和JU3J，追涨杀跌明显\r\n- next: 不推进本组参数；若继续研究放量，先做只读归因区分放量延续、冲高回落和放量下跌\r\n\r\n### 2026-06-07 五方向接手证据映射与首轮路线预注册\r\n- 首轮已推进多项：TopN降交易且成本扰动子集完成但不promote；资产标签不能直接交易化；商品尾部回撤只读种子已被QK38 8/8 formal证伪；目标ETF和近端宽基crash rebound标签均不能seed formal；宽基波动率缩放被反证；B5暂不formal；多周期确认5KZW 16/16 formal完成但三个候选均未通过门槛\r\n- next: 5KZW关闭直接替代路线；TC8U转随机延迟/冷却期负控与2024事件归因；QK38关闭不扩代码或阈值；动量崩盘暂停除非另开全历史/组合层面板；波动率仓位暂停除非另开静态cap或滞后负控；A23转事件归因和成本换手约束版本\r\n\r\n## decisions\r\n### [promote_candidate] hard5覆盖空白确认与常态旧仓保留立项formal完成\r\n- v2修正:四真因(非拥挤零判断/算法窗口滞后/超分旧仓无撤离/今日信号未调用)+加权治不了滞后(实测);方案扩展撤离端7闸+进攻端今日否决;hard5覆盖空白定性不变(拥挤72%与全弱40%之间真空)；6/30-7/1普涨结构性行情落空白致卖强买弱。立项常态旧仓保留5闸预注册待回测。\r\n- next: EX-HLDR formal:H1撤离端7闸部分成立(连乘13.49x微超baseline\r\n\r\n### [park] QKYP强极端恢复门控不进入实盘\r\n- QKYP主变体复合收益保留率99.46%，但MDD改善>=1pp分段数为0，应用3次且无明确保护样本，因此不进入实盘\r\n- next: park strong/extreme恢复门控；若继续权益回撤二级预算，需新开all-level+recovery gate预注册并补错位/延迟/反弹误伤审计",
+      "x": 780,
+      "y": 1760,
+      "width": 740,
+      "height": 645,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260614T115209Z-main-MCYG",
+      "type": "text",
+      "text": "# 双池轮动动量崩溃事前暴露管理\r\n\r\n> 双池轮动防御模块\r\n\r\n**focus**: EX-20260618T145033Z-main-KFSQ\r\n\r\n## experiments (4)\r\n### 2026-06-18 KFSQ forward 20260619新数据触发复查\r\n- 6NDB确认日线和分钟线最大日期仍为2026-06-18，latest forward end也是2026-06-18；共同新增交易日0，H10当前0行0episode，即使当前候选成熟也只有3行1episode，recommended_action=wait_for_new_market_data。\r\n- next: 不补跑KFSQ外部验证；等待日线和分钟线共同新增交易日，或接入真实观察流/dry-run后再复查。\r\n\r\n### 2026-06-18 KFSQ forward新样本触发检查\r\n- YQBP确认日线和分钟线最大日期仍为2026-06-18，latest_forward_end也是2026-06-18；可用新增交易日0，H10当前0行0episode，recommended_action=wait_for_new_market_data。\r\n- next: 不补跑KFSQ外部验证；等待平台日线和分钟线共同新增交易日，或接入真实观察流/dry-run数据后再复查。\r\n\r\n### 2026-06-18 KFSQ forward补跑触发检查器只读资产\r\n- MESV显示当前日线和分钟线最大日期均为2026-06-18，latest_forward_end也是2026-06-18；可用新增交易日0，最早H10还需1日，recommended_action=wait_for_new_market_data。\r\n- next: 不启动新forward补跑；后续先跑MESV，只有有共同新增交易日才补跑，正式外部验证仍需H10>=20行且>=5 episode。\r\n\r\n### 2026-06-18 KFSQ forward补跑20260618标签门禁复核\r\n- TRXX补跑成功：forward 22行，final 107639.51，交易35；A1候选仍3行1个episode，H10可标注0/0，h10_gate_pass=false，最早候选还差1个交易日。\r\n- next: 不升级KFSQ、不判死；等待H10>=20行且>=5 episode或真实观察流/dry-run，再做正式外部验证。\r\n\r\n## decisions\r\n### [promote_candidate] KFSQ forward外部验证数据不足后继续等待新样本\r\n- KZF8不是通过也不是失败：连续forward窗口21行，A1只有7行且在后段，H10可标注行0、episode0，H5也仅2行1个episode。\r\n- next: 保留KFSQ外部验证候选；不动作化、不shadow、不observe；等待新样本或dry-run满足H10 >=20行且>=5 episode后用同一脚本复验。\r\n\r\n### [promote_candidate] confirmed_state单组件通过后进入外部验证候选\r\n- KFSQ通过只读门槛：confirmed_state_run_len单组件在pooled episode下尾损失lift +4.65pct，高于随机p95 +2.55pct和shift_next +2.58pct，但候选来自2XKW后验诊断。\r\n- next: promote_candidate仅限外部验证；不动作化、不shadow、不observe；下一步只记录新样本或dry-run验证。",
+      "x": 0,
+      "y": 2640,
+      "width": 740,
+      "height": 717,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T115651Z-main-DEF0",
+      "type": "text",
+      "text": "# 双池轮动防御模块\r\n\r\n> 双池轮动策略\r\n\r\n**focus**: EX-20260608T041610Z-main-B3QC\r\n\r\n## experiments (4)\r\n###  raw_closes缓存累加污染根因定论\r\n- 完成A2四项验证P1-P5;P2成本扰动需在十一年口径复核(见EX-A2C2X11Y)\r\n\r\n###  A2消融拆掉r010b3_all_weak全系列(保持三关+A0-A4动作cap不变);证伪主控自身猜测渐进式减仓可能冗余\r\n- 教训:直觉判断机制冗余可信度极低必须消融验证(第3次被打脸)\r\n\r\n###  A2成本扰动cost2x/cost3x;四段口径下cost2x A2被baseline反超-5.2%;该结论已被EX-A2C2X11Y十一年口径推翻\r\n- 结论已被EX-A2C2X11Y推翻;原文保留作历史记录\r\n\r\n###  A2四项验证综合报告P1-P4;第3节降回撤组件定位已被EX-A2C2X11Y推翻恢复综合最优\r\n\r\n## decisions\r\n### [promote_candidate] A2趋势破位升级RA5第三维L2robustness更新shadow配置(经4次定性反转最终恢复综合最优)\r\n- A2趋势破位三维门控经4次定性反转最终定位实盘成本下综合最优: 初版promote→HUWV(11节bug版)降可选组件→D3修复版(12节)恢复最优→A2COST四段cost2x(13节)降回撤组件→A2C2X11Y十一年cost2x(14节)恢复综合最优;十一年cost2x A2 29.190x优baseline+12.86%且空仓少换手162笔-6.2...\r\n- next: P0解锁QMT→样本外验证→达标准入production promote评估\r\n\r\n### [superseded_by_long_cycle] A2趋势破位升级决策被十一年回测推翻(基于bug版已被D3反转)\r\n- 本条基于bug版decade2已被EX-D3修复版反转(DEC第12节恢复A2最优)且经EX-A2C2X11Y十一年cost2x二次确认A2综合最优(第14节);原推翻理由(十一年RA5>A2)因raw_closes污染失效\r\n- next: 作废保留作历史记录;A2定性以DTH2主行为准",
+      "x": 780,
+      "y": 2640,
+      "width": 740,
+      "height": 527,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T115651Z-main-CORE",
+      "type": "text",
+      "text": "# 双池轮动核心轮动模块\r\n\r\n> 双池轮动策略\r\n\r\n\r\n## experiments (4)\r\n### 2026-06-25 IR替代R2口径差异只读探针预注册\r\n- 探针落场景E：Spearman0.60/Top1重合0.00/IR极值99.62%。根因是货币债ETF(511880占55%、511360占30%)残差近乎零导致IR分母下溢、系统性霸榜，朴素IR在A股ETF池结构性失灵\r\n- next: 主控kill朴素IR路径：鲁棒变体(winsorize/cap/池过滤)会破坏风险调整语义且T+5超额仅0.19%不显著，不建议自动开鲁棒变体探针；R2不再视为瓶颈\r\n\r\n### 2026-06-08 动量评分尺度与Top4排名权重预注册\r\n- 评分诊断显示ann25没有任何score>=5触发；formal已完成32/32；YJRN质量闭环显示成本压力后无候选翻转、静态审计failed_checks为空；ann25 Top1/Top4、Top4 40/30/20/10和ann250取消hard5上限均不作为默认逻辑候选\r\n- next: LM3D本轮质量缺口关闭；不修改默认annualization=250、Top1/A23和hard5/A23风险预算；后续不扩Top4、年化尺度或取消hard5上限网格\r\n\r\n### 2026-06-08 LM3D成本错位与未来函数审计闭环\r\n- YJRN 32/32覆盖，strict_failed为空；成本压力后非基准LM3D候选无相对A23翻转且无两段以上优胜，静态未来函数审计failed_checks为空；lag/rand负控只支持排名稳定边界，不支持收益优势。\r\n- next: 关闭LM3D质量缺口；不重启Top4、annualization=25或取消hard5上限网格；若未来重启，必须新开完整cost2x/slip2bps重跑或收益层负控预注册。\r\n\r\n### 2026-06-07 多周期动量确认formal AB预注册与资源阻塞记录\r\n- 16/16 formal完成；三个多周期确认候选均只有1/4分段final不低于baseline，四段合计final分别少23066.55、25284.31、19484.67；不能替代hard5或A23\r\n- next: 关闭5KZW直接替代路线；若继续多周期，只能新开消融/负控或高分预算下的持仓管理实验\r\n\r\n## decisions\r\n### [kill] 5KZW多周期动量确认不替代hard5或A23\r\n- 5KZW 16/16 formal完成；三个多周期确认候选均只有1/4分段final不低于baseline，四段合计final分别少23066.55、25284.31、19484.67\r\n- next: 关闭5KZW直接替代路线；默认hard5保留，A23继续做事件归因和成本/换手约束版本\r\n\r\n### [kill] LM3D年化尺度与Top4权重不进入默认逻辑\r\n- ann25、Top4 40/30/20/10和取消hard5上限均未通过32/32 formal，不进入默认逻辑\r\n- next: LM3D只补成本扰动、错位评分负控和未来函数审计；回测资源转向A23稳健性补证",
+      "x": 0,
+      "y": 3520,
+      "width": 740,
+      "height": 654,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T115651Z-main-OFF0",
+      "type": "text",
+      "text": "# 双池轮动进攻模块\r\n\r\n> 双池轮动策略\r\n\r\n## decisions\r\n### [accept] 双池轮动拆分为策略方向与模块子方向\r\n- 双池轮动作为父方向，进攻、核心、防御、执行作为可独立研究的子方向\r\n- next: 先盘点已有资产再进入模块实验",
+      "x": 780,
+      "y": 3520,
+      "width": 740,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T115651Z-main-EXE0",
+      "type": "text",
+      "text": "# 双池轮动执行与换仓模块\r\n\r\n> 双池轮动策略\r\n\r\n**focus**: EX-20260607T102858Z-main-AURT\r\n\r\n## experiments (4)\r\n### 2026-06-30 A2策略容量上限与低流动性ETF冲击诊断\r\n- 重大发现修正子代理错误结论:A2真实参与率中位数10.27%(非0.04-0.08%),79.3%交易超1%门槛;复利后期恶化(2024中位29%/2026中位78%);触碰低流动性ETF(516190日均仅5.4万股参与率2533%,510070日均1.5万股);固定滑点在后期/低流动性ETF上严重失真;EX-A2C2X11Y综合最优结论可能被高估(待formal);口径局限:全历史平均ADV未...\r\n- next: 三个formal方向:低流动性ETF过滤(最高价值纯加法)/成交当日ADV口径修正/SlippageModel接入V2回测;当前可立即修复低流动性ETF过滤\r\n\r\n### 2026-06-08 当前实盘权益回撤全级别恢复门控二级预算预注册\r\n- 主候选normal_nonrec3四段复合最终权益保留率103.78%，MDD改善>=1pp分段数2，应用21次、保护样本10、强反弹误伤1，预注册L1通过；保守nonrec4保护样本7且MDD改善>=1pp仅1段，不作为主候选\r\n- next: 不改实盘；新开AURT负控/邻域补证，优先做成本扰动、状态滞后、回撤错位和nonrec2/nonrec4窄邻域\r\n\r\n### 2026-06-07 TopN抗抖换仓formal AB预注册\r\n- base-cost formal 20/20完成；两类成本子集各12/12完成。formal_delay_negative_control 20/20 strict完成，random50合计final多88976.39；top3_gap_confirm1_veto只有1/4 final不低且合计final少69701.83。\r\n- next: 不promote、不改hard5/A23；不扩大TopN网格、seed、概率或冷却期；若继续方向4，必须新开换仓确认机制预注册，A23组合交互另开实验\r\n\r\n### 2026-06-07 当前实盘权益回撤状态门控二级预算预注册\r\n- formal四段完成；主变体复合收益保留率99.46%，但MDD改善>=1pp分段数为0，应用3次且无明确保护样本，预注册不通过，不改实盘\r\n- next: park本strong/extreme恢复门控变体；若继续研究，需新开all-level+recovery gate预注册并补错位回撤、延迟状态和反弹误伤审计\r\n\r\n## decisions\r\n### [revise] AURT恢复门控二级预算进入负控不进实盘\r\n- AURT主候选normal_nonrec3预注册L1通过：复合最终权益保留103.78%，MDD改善>=1pp分段数2，应用21次、保护样本10、强反弹误伤1；但未做负控/成本/forward，不进实盘\r\n- next: 不改默认hard5；AURT只进入负控/邻域补证，优先做成本扰动、状态滞后、回撤错位和nonrec窄邻域。\r\n\r\n### [park] QKYP强极端恢复门控不进入实盘\r\n- QKYP主变体复合收益保留率99.46%，但MDD改善>=1pp分段数为0，应用3次且无明确保护样本，因此不进入实盘\r\n- next: park strong/extreme恢复门控；若继续权益回撤二级预算，需新开all-level+recovery gate预注册并补错位/延迟/反弹误伤审计",
+      "x": 0,
+      "y": 4400,
+      "width": 740,
+      "height": 713,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260605T131301Z-main-KC7N",
+      "type": "text",
+      "text": "# 双池轮动主题簇主线确认模块\r\n\r\n> 双池轮动策略\r\n\r\n**focus**: EX-20260606T000758Z-main-VVVN\r\n\r\n## experiments (4)\r\n### 2026-06-07 主题簇金融坏桶风险预算formal V2 AB预注册\r\n- 四段三组formal完成且strict无missing/error；financial_top1_cap70只有1/4分段收益高于baseline、2/4回撤改善，四段收益差合计约-8.50个百分点；financial_or_share_ge050_cap70虽4/4回撤改善但0/4收益高于baseline，收益差合计约-69.82个百分点\r\n- next: 不promote、不默认打开、不扩后验阈值；主题簇保留为只读诊断，交易化风险预算路线暂停\r\n\r\n### 2026-06-05 主题簇主线确认收益归因与负控预注册\r\n- L2_attribution_observe：6p_same正向假设失败；金融top1 H10弱于非金融且强于随机/错位负控\r\n- next: 停止6p正向放行路线；若继续主题簇，转向金融坏桶/高集中度风险预算A/B预注册\r\n\r\n### 2026-06-05 主题簇主线确认四段Shadow观察与订单隔离审计\r\n- L1_engineering：四段1542条shadow日志、changes_targets=true为0、normalized交易产物哈希16/16一致；不证明收益\r\n- next: 已由EX-20260605T234635Z-main-CTRD完成收益归因，参考DEC-20260605T235338Z-main-WVZZ\r\n\r\n### 2026-06-05 主题簇主线确认Formal V2 Shadow预注册\r\n- L1_engineering：57条action主题字段、57条shadow日志、changes_targets=true为0；不证明收益\r\n- next: 新开四段formal V2 shadow观察，加入基准哈希、错位主题、随机主题和去主题消融\r\n\r\n## decisions\r\n### [park] 主题簇金融风险预算formal失败后暂停决策\r\n- VVVN四段三组formal完成；financial_top1_cap70只有1/4收益优于baseline，financial_or_share_ge050_cap70虽4/4回撤改善但0/4收益优于baseline且机会成本过大\r\n- next: 暂停主题风险预算交易化；主题簇只保留只读诊断，不promote、不默认打开、不后验扩阈值\r\n\r\n### [revise] 主题簇强主线不作为正向放行条件\r\n- 6p_same不支持正向放行；金融top1更像风险标签但仍需formal V2 A/B验证\r\n- next: 停止6p正向放行路线；主题簇后续只做金融坏桶/高集中度风险预算A/B预注册",
+      "x": 780,
+      "y": 4400,
+      "width": 740,
+      "height": 617,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260707T135354Z-main-WUFU",
+      "type": "text",
+      "text": "# 五福闹新春 ETF 动量轮动复现与审计\r\n\r\n**focus**: EX-20260803T040325Z-main-W4BY\r\n\r\n## experiments (4)\r\n### 2026-08-03 五福公司行为逐日增量账户闭环修复\r\n- 正式入口不预扫未来，22日仅21次单持仓检查且0数据缺口；性能复核定位重复日线质量门，月度核心耗时约43.0秒降至27.1秒，主178与冻结181项回归通过且结果不变\r\n- next: 回到策略改进回测；真实持仓自然命中事件时复核，不恢复全区间预扫\r\n\r\n### 2026-08-03 五福公司行为全链路防复发审计\r\n- 552个标的生成296个事件，W4BY真实持仓曝险0，跨结束日零差异；已支持路径回归通过，但现金、未知与零碎份额仍保持失败关闭\r\n- next: 继续冻结点时全区间A；每次保存日历哈希并按真实持仓曝险复核，0曝险不扩建平台，命中风险再做单事件最小补充\r\n\r\n### 2026-08-03 五福冻结策略2026年7月月度体检\r\n- 点时修复后7月收益3.3393%、最大回撤8.3692%；旧52Z7因未来拆分改写历史成交量而降级，当前双结束日公共前缀完全一致\r\n- next: 实盘不改；先冻结点时一致的全区间A，旧候选只按用户优先级逐个复核，单月早卖观察不动作化\r\n\r\n### 2026-08-03 五福事前波动率仓位替代固定止损预注册\r\n- 原A/B/C数值受未来ETF拆分改写历史成交量；参数身份保留，终值、CAGR、回撤和波动率仓位结论降为历史线索\r\n- next: 先冻结点时修复后的全区间A；只有用户仍优先该机制时才另开预注册复核，不扩参数\r\n\r\n## decisions\r\n### [promote_engineering] 五福公司行为改为逐日持仓增量账户闭环\r\n- 正式入口删除未来区间预扫；22日只检查21次单一持仓，账户闭环且月度结果不变；重复日线质量门缓存后核心耗时约43.0秒降至27.1秒\r\n- next: 回到策略改进回测；真实持仓自然命中事件时复核，配股税费等范围外事件按单一数据契约补充\r\n\r\n### [revise] 五福公司行为按实际持仓曝险门禁继续研究\r\n- 候选池有223个理论风险但W4BY真实持仓曝险为0；启动前全区间预检方案已由DEC-MH8V修订\r\n- next: 历史决策只读保留；正式运行改用逐日实际持仓增量账户闭环",
+      "x": 0,
+      "y": 5280,
+      "width": 740,
+      "height": 540,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260603T000000Z-mig-HD5EEBAA8D5EEB",
+      "type": "text",
+      "text": "# 小市值 T0 —— 研究总结\r\n\r\n\r\n## experiments (4)\r\n### 2026-06-11 80小市值破板补仓换强与延迟卖出formal\r\n- 6个预注册变体均完成；关闭破板补仓相对基准-27.97%，说明补仓不能关；正向动量、反向动量、14:55延迟和延迟+动量均未超过基准，QFU5无收益候选。\r\n- next: 停止扩破板补仓、当日动量和14:55网格；下一步转向空仓月低风险替代或候选池前一日动量二阶段选股。\r\n\r\n### 2026-06-10 80小市值收益增强首批V2矩阵\r\n- 7个预注册变体没有任何一个超过base_stock8；base年化70.66%，最终2630.26万，最接近的up30仍低9.80%；简单集中/分散、取消空仓、关闭止损和放宽价格上限均不构成收益增强。\r\n- next: 停止扩简单参数网格；下一轮转向破板时点/破板后换强、空仓月低风险替代或候选池内动量二阶段选股。\r\n\r\n### 2026-06-10 避雷指南小市值源码复现与消融验证\r\n- V2迁移主回测年化约71.27%，收益复现接近聚宽；JQBL strict_base低收益是代理口径差异，不能否定迁移复现。\r\n- next: 先审计V2迁移版实际trades容量和聚宽交易明细差异；再基于LU8B新开全样本参数化负控实验。\r\n\r\n### 2026-06-10 80小市值持仓分散V2参数化smoke预注册\r\n- stock8完全复现原迁移smoke；stock16/30/50均跑通但短区间30/50未优于8/16，交易笔数随持仓数上升。\r\n- next: 新开正式全样本参数化实验，补成本扰动、错位/随机负控和分钟容量重算。\r\n\r\n## decisions\r\n### [observe] 避雷指南小市值验证后转向分散篮子研究\r\n- V2迁移主回测年化约71.27%，收益复现接近聚宽80%；JQBL低收益是保守代理审计口径，不代表迁移失败。\r\n- next: 保持不shadow不实盘；先审计V2实际交易容量和聚宽交易明细差异，再开全样本参数化、成本、负控和容量实验。\r\n\r\n### [park] 无低价排序分日建仓失败后暂停决策\r\n- SPDR简单修复买入完成率仍约94%，2AM7分日建仓进一步降到86%-87%；no_low收益线索仍在但当前低成本执行修复全部失败\r\n- next: 暂停no_low执行修复线；S5D6 strict_base是当前微盘路线唯一默认关闭observe候选，下一步做纸面成交、盘口/tick接入或实盘dry-run",
+      "x": 780,
+      "y": 5280,
+      "width": 740,
+      "height": 563,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260703T081815Z-main-LMIG",
+      "type": "text",
+      "text": "# miniQMT 清退后实盘平台迁移\r\n\r\n> 双池轮动执行与换仓模块\r\n\r\n**focus**: EX-20260704T153310Z-main-ZVJH\r\n\r\n## experiments (2)\r\n### 2026-07-04 QMTsocket桥接连通性与并发验证\r\n- socket桥接6/6验证通过(ping/asset/positions/tick/连接/字段映射);daemon线程socket方案死(QMT单线程不支持accept卡死10038);改tornado IOLoop单线程事件循环(参考流光tid=63);passorder跨线程156次零崩溃;行情通道ContextInfo.get_full_tick绕开58610;实盘DELTA待周一开盘验证(...\r\n- next: 周一开盘跑T4下单smoke(511880.SH买100股@废单价);DELTA>0则升级promote;bridge投产;shadow模式跑1天;小资金实盘1周;全量切换\r\n\r\n### 2026-07-03 大QMT内置xtquant连通性smoke\r\n- 【结论作废2026-07-03】原归因大QMT内置xtquant直连错误;12:23成功是miniQMT临时运行提供的后端;16:39核查mini进程全关/58610端口无监听/connect=-1;XtItClient本身不提供xtquant服务;迁移路线回原点;待重评EasyXT桥接/客户端内置框架/ptrade\r\n- next: 受控重测区分mini vs XtItClient谁提供后端;重评EasyXT桥接/ptrade等替代方案\r\n\r\n## decisions\r\n### [promote_candidate] 大QMT直连证伪转socket桥接路线\r\n- 原直连路线kill(EX-XTCN证伪connect=-1);新socket桥接路线promote_candidate(tornado HTTP+IOLoop单线程事件循环,EX-ZVJH验证6/6通过);passorder跨线程156次零崩溃;行情通道绕开58610;ptrade保留为长期备选\r\n- next: 周一开盘DELTA验证通过则升级promote;bridge投产;shadow→小资金→全量切换",
+      "x": 0,
+      "y": 6160,
+      "width": 740,
+      "height": 526,
+      "color": "1"
+    },
+    {
+      "id": "board-RD-20260701T033937Z-main-HTGA",
+      "type": "text",
+      "text": "# V科技队科技股动量轮动复现\r\n\r\n**focus**: EX-20260701T050820Z-main-QL89\r\n\r\n## experiments (4)\r\n### 2026-07-01 V科技队9db早盘再平衡口径候选复现\r\n- 执行形状部分通过：事件时间对齐13:21/09:30/09:31，末日持仓11只，交易从289降到115；但收益仅+7.52%，MDD-29.90%，仍不能解释9db 70.74%。\r\n- next: 不后验扫参数；优先取得完整明细或用公开接口反推持仓保持规则。\r\n\r\n### 2026-07-01 V科技队9db模拟实盘口径核验与2026复现\r\n- 9db 记录真实但当前桌面源码原版未复现：本地到 2026-06-30 仅 +1.07%，事件时间 10:10/14:30、最后持仓 5 只，与 9db 70.74%、11 只持仓和 13:21/09:30/09:31 节奏不符。\r\n- next: 新开 9db 实际执行口径还原，先对齐持仓数、调仓时间和交易频率，再做负控和成本审计。\r\n\r\n### 2026-07-01 V科技队正式复现与首轮负控门禁\r\n- 首轮门禁失败：原版-10.14%，随机正分Top5 -5.08%反超；cost2x降至-19.07%，直接实盘还原暂停。\r\n- next: 多随机种子负控、排序贡献拆解、修正R2消融和成本来源归因。\r\n\r\n### 2026-07-01 V科技队本地还原smoke预注册\r\n- smoke通过：识别106只股票，事件表包含10:10清仓和14:30买入，短窗累计65笔成交；收益不作有效性结论。\r\n- next: 新开正式复现、负控、成本扰动、容量和静态池偏差审计。\r\n\r\n## decisions\r\n### [revise] V科技队首轮负控失败后暂停实盘还原\r\n- 原版2025首轮门禁未跑赢随机正分Top5；9db外部70.74%记录真实；QL89早盘再平衡Top11只对齐部分执行形状但收益+7.52%/MDD-29.90%失败。\r\n- next: 暂停当前原版和QL89直接实盘化；优先取得完整9db明细或用公开接口反推持仓保持规则，再做负控、排序贡献和成本归因。",
+      "x": 780,
+      "y": 6160,
+      "width": 740,
+      "height": 513,
+      "color": "1"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-RD-20260620T052601Z-main-3B2X",
+      "fromNode": "board-RD-20260605T133318Z-main-H6V3",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260620T052601Z-main-3B2X",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260605T133318Z-main-H6V3",
+      "fromNode": "board-RD-20260605T115651Z-main-DP00",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260605T133318Z-main-H6V3",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260614T115209Z-main-MCYG",
+      "fromNode": "board-RD-20260605T115651Z-main-DEF0",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260614T115209Z-main-MCYG",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260605T115651Z-main-DEF0",
+      "fromNode": "board-RD-20260605T115651Z-main-DP00",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260605T115651Z-main-DEF0",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260605T115651Z-main-CORE",
+      "fromNode": "board-RD-20260605T115651Z-main-DP00",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260605T115651Z-main-CORE",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260605T115651Z-main-OFF0",
+      "fromNode": "board-RD-20260605T115651Z-main-DP00",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260605T115651Z-main-OFF0",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260605T115651Z-main-EXE0",
+      "fromNode": "board-RD-20260605T115651Z-main-DP00",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260605T115651Z-main-EXE0",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260605T131301Z-main-KC7N",
+      "fromNode": "board-RD-20260605T115651Z-main-DP00",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260605T131301Z-main-KC7N",
+      "toSide": "top"
+    },
+    {
+      "id": "e-RD-20260703T081815Z-main-LMIG",
+      "fromNode": "board-RD-20260605T115651Z-main-EXE0",
+      "fromSide": "bottom",
+      "toNode": "board-RD-20260703T081815Z-main-LMIG",
+      "toSide": "top"
+    }
+  ]
 }

@@ -35,13 +35,16 @@ function Read-CsvUtf8($path) {
 function Find-Csv($dir, $keyCol) {
     foreach ($cf in (Get-ChildItem -LiteralPath $dir -Filter '*.csv')) {
         $fl = ([System.IO.File]::ReadAllText($cf.FullName, $utf8) -split "`r?`n")[0]
-        if ($fl -and $fl.Contains($keyCol)) { return $cf.FullName }
+        if (-not $fl) { continue }
+        $columns = @(Parse-CsvLine $fl | ForEach-Object { $_.Trim('"') })
+        if ($columns -contains $keyCol) { return $cf.FullName }
     }
     return $null
 }
 $exRows = Read-CsvUtf8 (Find-Csv $dirLedger 'ex_id')
 $decRows = Read-CsvUtf8 (Find-Csv $dirLedger 'dec_id')
-$graphFile = Get-ChildItem -LiteralPath $dirEntrance -Filter '*.json' | Select-Object -First 1
+$graphFile = Get-Item -LiteralPath (Join-Path $dirEntrance 'research_graph.json') -ErrorAction SilentlyContinue
+if (-not $graphFile) { $graphFile = Get-ChildItem -LiteralPath $dirEntrance -Filter '*.json' | Select-Object -First 1 }
 $graph = [System.IO.File]::ReadAllText($graphFile.FullName, $utf8) | ConvertFrom-Json
 $rdById = @{}; foreach ($n in $graph.nodes) { if ($n.type -eq 'RD') { $rdById[$n.id] = $n } }
 $exByRd = @{}; foreach ($r in $exRows) { if ($r.rd_id) { if (-not $exByRd.ContainsKey($r.rd_id)) { $exByRd[$r.rd_id] = @() }; $exByRd[$r.rd_id] += $r } }
@@ -112,9 +115,12 @@ if ($todayExs.Count -gt 0) {
 }
 $canvas = [ordered]@{ nodes = $nodes; edges = $edges }
 $json = $canvas | ConvertTo-Json -Depth 8
-$outPath = Join-Path $dirEntrance 'research_board.canvas'
+$outPath = Join-Path $dirEntrance '研究进展板.canvas'
+$outCompatPath = Join-Path $dirEntrance 'research_board.canvas'
 [System.IO.File]::WriteAllText($outPath, $json, $utf8)
+[System.IO.File]::WriteAllText($outCompatPath, $json, $utf8)
 Write-Output "===== Research Board Built ====="
 Write-Output ("direction nodes: " + @($nodes | Where-Object { $_.id -like 'board-RD-*' }).Count)
 Write-Output ("today items: " + $todayExs.Count)
 Write-Output ("output: " + $outPath)
+Write-Output ("compatibility alias: " + $outCompatPath)

@@ -1,6 +1,6 @@
 ---
 type: 实验记录
-ex_id: EX-20260630T0900Z-main-CFCK
+ex_id: EX-20260630T090000Z-main-CFCK
 rd_id: RD-20260605T133318Z-main-H6V3
 status: completed
 stage: completed
@@ -22,7 +22,7 @@ summary_paths:
   - results/v2/research/RD-20260605T133318Z-main-H6V3/score_distribution_explore/overview.json
 quality_gate: completed_readonly_distribution_panel_preregistered
 subagent_call_ids: [SUB-20260630T1000Z-main-SCOREDIST]
-subagent_exemption: 本轮主控亲自执行写脚本与跑数据（子代理执行超时后接管）；侦察阶段调用 3 个 Explore 子代理（SUBTASK-A2-SKELETON/SCORING/RISK-EXEC）和 1 个 general-purpose 执行子代理（SUBTASK-SCORE-DISTRIBUTION-PANEL，超时未交付）。本面板的 score 计算口径、未来函数判断、研究结论由主控亲自复核。
+subagent_exemption: 子代理豁免：本轮主控亲自执行写脚本与跑数据（子代理执行超时后接管）；侦察阶段调用 3 个 Explore 子代理（SUBTASK-A2-SKELETON/SCORING/RISK-EXEC）和 1 个 general-purpose 执行子代理（SUBTASK-SCORE-DISTRIBUTION-PANEL，超时未交付）。本面板的 score 计算口径、未来函数判断、研究结论由主控亲自复核；主控：main；时间：2026-06-30T09:00:00Z
 tags: [双池轮动, score分布, 鸡头凤尾, 双峰, hard5, 聚类阈值, H6V3, 只读面板]
 ---
 

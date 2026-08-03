@@ -1,4 +1,4 @@
-﻿# Build-ResearchGraph.ps1
+# Build-ResearchGraph.ps1
 # Scan all research assets' frontmatter and build a machine-readable knowledge graph.
 # Inspired by codegraph: nodes = assets, edges = frontmatter reference relations.
 #
@@ -7,7 +7,7 @@
 #   00_入口/研究图谱.md    - human-readable handoff summary
 #
 # Usage:
-#   powershell -ExecutionPolicy Bypass -File tools/Build-ResearchGraph.ps1
+#   pwsh -NoProfile -File tools/Build-ResearchGraph.ps1
 
 param(
     [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
@@ -184,6 +184,21 @@ foreach ($f in (Get-ChildItem -LiteralPath $dirIdea -Recurse -File -Filter '*.md
     Add-Node $id 'IDEA' (Get-Title $c $fm $id) $status ([ordered]@{ subtype=$t }) $f.Name $updated
 }
 
+# --- TERM ---
+foreach ($f in (Get-ChildItem -LiteralPath $dirTerm -Filter 'TERM-*.md' -File)) {
+    $c = [System.IO.File]::ReadAllText($f.FullName, $utf8)
+    $fm = Get-Fm $c
+    if (-not $fm) { continue }
+    $id = Get-Val $fm 'term_id'
+    if (-not $id) { continue }
+    $status = Get-Val $fm 'status'
+    $updated = Get-Val $fm 'updated_at'
+    $aliases = Get-List $fm 'aliases'
+    $relatedIds = Get-List $fm 'related_ids'
+    Add-Node $id 'TERM' (Get-Title $c $fm $id) $status ([ordered]@{ aliases=($aliases -join ';') }) $f.Name $updated
+    foreach ($relatedId in $relatedIds) { Add-Edge $id $relatedId 'term_related_to' }
+}
+
 # --- STRAT ---
 foreach ($f in (Get-ChildItem -LiteralPath $dirStrat -Filter 'STRAT-*.md' -File)) {
     $c = [System.IO.File]::ReadAllText($f.FullName, $utf8)
@@ -251,9 +266,11 @@ $graph = [ordered]@{
     dangling_edges = $dangling
     recent_changes_7d = ($recent | Select-Object id, type, title, status, updated_at, file)
 }
-$jsonPath = Join-Path $dirEntrance 'research_graph.json'
+$jsonPath = Join-Path $dirEntrance '研究图谱.json'
+$jsonCompatPath = Join-Path $dirEntrance 'research_graph.json'
 $json = $graph | ConvertTo-Json -Depth 10
 [System.IO.File]::WriteAllText($jsonPath, $json, $utf8)
+[System.IO.File]::WriteAllText($jsonCompatPath, $json, $utf8)
 
 # ---------- Write MD handoff ----------
 $sb = New-Object System.Text.StringBuilder
@@ -327,10 +344,12 @@ W ""
 W "1. 先读本文件获取 1 分钟全局概览。"
 W "2. 查询同名 JSON 文件做结构化检索：某节点的邻居、某 RD 下所有 EX、影响某 RD 的所有 DEC、悬空引用。"
 W "3. 读 [[00_入口/研究驾驶舱|研究驾驶舱]] 获取叙述性上下文。"
-W "4. 资产变更后重新生成：powershell -ExecutionPolicy Bypass -File tools/Build-ResearchGraph.ps1"
+W "4. 资产变更后重新生成：pwsh -NoProfile -File tools/Build-ResearchGraph.ps1"
 
-$mdPath = Join-Path $dirEntrance 'research_graph.md'
+$mdPath = Join-Path $dirEntrance '研究图谱.md'
+$mdCompatPath = Join-Path $dirEntrance 'research_graph.md'
 [System.IO.File]::WriteAllText($mdPath, $sb.ToString(), $utf8)
+[System.IO.File]::WriteAllText($mdCompatPath, $sb.ToString(), $utf8)
 
 Write-Output "===== Research Graph Built ====="
 Write-Output ("Nodes: " + $nodes.Count)
@@ -339,4 +358,6 @@ Write-Output ("Dangling edges: " + $dangling.Count)
 Write-Output ("Active directions: " + $activeRds.Count)
 Write-Output ("Recent changes (7d): " + $recent.Count)
 Write-Output ("JSON: " + $jsonPath)
+Write-Output ("JSON compatibility alias: " + $jsonCompatPath)
 Write-Output ("MD:   " + $mdPath)
+Write-Output ("MD compatibility alias:   " + $mdCompatPath)

@@ -66,3 +66,25 @@ benchmark: 日线0.147s/分钟线0.196s/加速比1.27x(服务端限制)/全量�
 阶段0验收: 6/6门槛通过 + 速率3/4(加速比低但工期1.7天远低于7天门槛)
 推迟到阶段1: M4配额计数器交互/M5 pbar首项(无害); 阶段1设计参考: O1流式写防OOM/O2配额按item/O3重试分类
 jq_fetcher框架就绪,可供阶段1使用
+
+
+# 阶段1 进度台账
+计划: docs/superpowers/plans/2026-07-08-jq-database-stage1.md
+平台分支: feat/jq-database-overhaul
+阶段1 BASE: 0593596
+
+Task 1: complete (commit 2592589, review clean, 12表DDL+stream_import注册, SHOW CREATE核对修正3处列名)
+Task 2: complete (commits 2592589..126e5eb, review clean after fix, 7/7 tests, Critical import方案已修删除空__init__.py)
+
+[用户要求] B部分数据拉取时定时汇报进度: 启动5分钟内报首段速度, 之后每10-15分钟报(表/已完成/总数/%/剩余/失败/配额), 每表完成报耗时, 卡住立即报. 机制: tail jq_fetcher输出+读checkpoint.
+Task 3: complete (commit eff0983, review clean, Important: fetch_panel续传丢已完成项数据, 缓解=中断清checkpoint重跑不续传, 同样影响Task4, 记入B部分须知)
+Task 4: complete (commit edda0a9, review clean, 5表header对齐DDL+字段映射陷阱全正确+每批即时flush规避续传问题)
+Task 5: complete (commits edda0a9..ba27215, review clean after fix, C1分钟线单标的入参阻断bug已修+[security]列表, I1 checkpoint重置已修)
+Task 6: complete (commits ba27215..e9ea545, review clean after fix, Important NaN误判已修eq(True)+ann_date兜底; 跨任务DRY债: Task4/5重复_load_security_codes待最终审查分诊)
+Task 7: complete (commits e9ea545..9113a9f, review clean after 2轮修复, 23/23 tests + dry-run 12 pass; Important diff SQL类型兼容已修nullSafe+聚合跑全5检查+测试强化)
+Task 8: complete (commit 13720d4, review clean, 15/15 tests + 全套45 passed, 生产配置未触碰; Important I1写回重排格式=B4审阅须知不阻塞)
+
+=== 阶段1 A部分(代码开发)全部完成 ===
+平台分支 feat/jq-database-overhaul: 0593596(阶段0完)..13720d4 (8代码Task+多轮修复)
+45个单元测试全通过
+待最终整分支审查分诊: I1 switch格式重排(审阅性) + 跨任务DRY债(Task4/5重复_load_security_codes)

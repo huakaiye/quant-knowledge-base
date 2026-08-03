@@ -11,7 +11,7 @@ created_at: 2026-07-05T13:03:22Z
 updated_at: 2026-07-05T21:30:00Z
 impact: direction
 subagent_call_ids: []
-subagent_exemption: 子代理豁免:本决策证据明确(三段回测+负控全通过),主控可直接归纳;主控:main;时间:2026-07-05T21:30:00Z
+subagent_exemption: 子代理豁免：本决策证据明确（三段回测+负控全通过），主控可直接归纳；主控：main；时间：2026-07-05T21:30:00Z
 tags:
   - A2重构
   - 状态机
