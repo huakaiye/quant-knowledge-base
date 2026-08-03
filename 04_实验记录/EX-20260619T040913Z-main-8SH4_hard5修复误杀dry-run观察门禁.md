@@ -13,7 +13,7 @@ decision_ids: []
 lit_ids: []
 idea_ids:
   - MECH-20260619T025934Z-main-DQUM
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - 不适用；只读解析 dry-run JSON 与状态 CSV
 result_paths:

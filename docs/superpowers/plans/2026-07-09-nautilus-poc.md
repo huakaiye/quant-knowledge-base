@@ -1,5 +1,7 @@
 # NautilusTrader 迁移 PoC 实现计划（阶段 0）
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 在 2-3 周内验证 NautilusTrader 在 A 股场景（WSL2 + ClickHouse + 聚宽数据 + T+1/涨跌停）下的可行性，用最简 ETF 策略验证机制，决定是否进入正式迁移（阶段 1）。
@@ -595,7 +597,11 @@ Create `src/quant_v2/nautilus_poc/t1_fill_model.py`:
 """
 
 # === 以下为方案 B（降级）的初始实现骨架 ===
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 如果 Step 1 调研发现 FillModel 能访问 Position，则替换为方案 A。
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 
 from datetime import date
 from typing import Optional
@@ -638,10 +644,18 @@ class T1PositionTracker:
 
 
 # 方案 A（如果 FillModel 可访问 Position）的 FillModel 实现待 Step 1 确定后补
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # from nautilus_trader.execution.reports import FillModel
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 #
 # class T1LimitFillModel(FillModel):
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 #     ...
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 ```
 
 - [ ] **Step 5: 运行测试确认通过**
@@ -1270,6 +1284,8 @@ Create `docs/superpowers/reports/2026-07-09-nautilus-poc-report.md`:
 ```markdown
 # NautilusTrader 迁移 PoC 结论报告
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > 日期：2026-07-XX（完成后填实际日期）
 > 关联规格：docs/superpowers/specs/2026-07-09-nautilus-migration-design.md
 > 关联计划：docs/superpowers/plans/2026-07-09-nautilus-poc.md
@@ -1324,7 +1340,11 @@ git commit -m "docs(nautilus-poc): Task7 PoC结论报告(5假设验证结果+决
 
 ```bash
 # 在研究库更新 00_入口/当前状态.md，新增 Nautilus PoC 条目
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 更新研究驾驶舱
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 ```
 
 ---

@@ -18,7 +18,7 @@ lit_ids:
   - LIT-20260617T220410Z-main-RDHA
 idea_ids:
   - MECH-20260619T025934Z-main-DQUM
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_ghgz_hard5_early_repair_panel.py
 result_paths:
@@ -88,7 +88,7 @@ B3HP 的核心发现是：`conservative_repair` 和 `balanced_repair` 均 0 事�
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| hard5_next_best | 当前 hard5 拦截后的实际替代标的，是主基准 | `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A16/hot_state_panel/hot_state_event_panel.csv` |
+| hard5_next_best | 当前 hard5 拦截后的实际替代标的，是主基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A16/hot_state_panel/hot_state_event_panel.csv` |
 | keep_cash | 剩余预算转现金，检验小预算是否过度依赖 hard5 替代弱 | 本实验脚本派生 |
 | same_day_random_top10 | 同日 Top10 随机候选，检验市场普反 beta | 本实验脚本派生 |
 | drawdown_no_breadth_control | 有回撤和 ret5<0，但无普反广度 | 本实验脚本派生 |
@@ -181,7 +181,7 @@ B3HP 的核心发现是：`conservative_repair` 和 `balanced_repair` 均 0 事�
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_ghgz_hard5_early_repair_panel.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_ghgz_hard5_early_repair_panel.py
 ```
 
 ### 运行命令
@@ -194,14 +194,14 @@ cd '${QUANT_PLATFORM_ROOT}' && mkdir -p 'results/v2/research/RD-20260605T133318Z
 
 - 是否过程可见：是，计划使用 WSL 前台命令和 tee 保存日志。
 - 日志路径：`results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T034400Z-main-GHGZ/hard5_early_repair_panel/run_ghgz_early_repair_panel.log`
-- 查看进度命令：`Get-Content -Tail 50 ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T034400Z-main-GHGZ/hard5_early_repair_panel/run_ghgz_early_repair_panel.log`
+- 查看进度命令：`Get-Content -Tail 50 ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T034400Z-main-GHGZ/hard5_early_repair_panel/run_ghgz_early_repair_panel.log`
 - 异常判断：脚本退出码非 0、输出缺 summary.json、主规则和对照均为 0 事件视为执行失败。
 - 后台回测豁免：不适用，非后台，非正式回测。
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T034400Z-main-GHGZ/hard5_early_repair_panel/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T034400Z-main-GHGZ/hard5_early_repair_panel/
 ```
 
 ## 13. 实际观察

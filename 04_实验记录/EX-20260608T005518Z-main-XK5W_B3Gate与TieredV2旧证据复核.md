@@ -12,7 +12,7 @@ module_type: 防御模块
 decision_ids: [DEC-20260608T005556Z-main-U7FN]
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-B3/r010b3_all_weak_persist_limited2_gate_median_or_breadth_cap80_2025_20260519.json
   - configs/research/R010-B4/r010b4_b3_gate_tiered_v2_2025_20260519.json
@@ -168,15 +168,15 @@ configs/research/R010-B4/r010b4_b3_gate_tiered_v2_2025_20260519.json
 ### 运行命令
 
 ```powershell
-Get-Content ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\summary.json
-Import-Csv ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\compound_summary.csv
-Import-Csv ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\segment_overall_metrics.csv
-Import-Csv ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\segment_action_day_metrics.csv
-Get-Content ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_live_mapping_audit\summary.json
-Get-Content ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_live_enabled_audit\summary.json
-Get-Content ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B3\gate_live_mapping_audit\summary.json
-Get-Content ${QUANT_PLATFORM_ROOT}\results\v2\research\R010-B3\live_strategy_audit\summary.json
-rg -n "r010b3_all_weak|r010b3_gate_tiered|shift\(-|bfill|backfill" ${QUANT_PLATFORM_ROOT}\src\strategies\research\etf_dual_pool_r010b_action_ablation.py
+Get-Content ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\summary.json
+Import-Csv ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\compound_summary.csv
+Import-Csv ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\segment_overall_metrics.csv
+Import-Csv ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_split_summary\segment_action_day_metrics.csv
+Get-Content ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_live_mapping_audit\summary.json
+Get-Content ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B4\tiered_v2_live_enabled_audit\summary.json
+Get-Content ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B3\gate_live_mapping_audit\summary.json
+Get-Content ${LEGACY_QUANT_PLATFORM_ROOT}\results\v2\research\R010-B3\live_strategy_audit\summary.json
+rg -n "r010b3_all_weak|r010b3_gate_tiered|shift\(-|bfill|backfill" ${LEGACY_QUANT_PLATFORM_ROOT}\src\strategies\research\etf_dual_pool_r010b_action_ablation.py
 ```
 
 ### 可见进度与日志

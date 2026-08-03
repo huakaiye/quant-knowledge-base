@@ -1,5 +1,7 @@
 # 聚宽数据库重构 · 阶段 0：jq_fetcher 直连框架 实现计划
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 构建一个可复用的聚宽数据拉取底座（jq_fetcher 模块），供阶段 1 的 13 表全量拉取和阶段 2-4 的全新数据接入共用，包含认证、配额、速率、断点续传、错误重试、checkpoint、日志八项能力，并以速率实测报告作为阶段 0 验收交付物。
@@ -91,6 +93,8 @@ jqdatasdk>=1.9.0
 ```gitignore
 
 # 凭证与本地配置（绝不入库）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 tushare_token.txt
 .tushare_token
 *token*.txt
@@ -106,6 +110,8 @@ jq_credentials.json
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """聚宽数据拉取框架（jq_fetcher）。
 
 提供认证管理、配额监控、速率控制、断点续传、错误重试，供阶段 1-4 的
@@ -124,6 +130,8 @@ jq_credentials.json
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """JqCredentials 凭证管理测试。"""
 from __future__ import annotations
 
@@ -225,6 +233,8 @@ Expected: FAIL，报 `ModuleNotFoundError: No module named 'quant_v2.jq_fetcher.
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """聚宽凭证管理。
 
 三级优先级读取（对齐 Tushare token 现有三段式）：
@@ -398,6 +408,8 @@ git commit -m "feat(jq_fetcher): 添加jqdatasdk依赖与凭证管理(Task 1)
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """Checkpoint 断点续传测试。"""
 from __future__ import annotations
 
@@ -499,6 +511,8 @@ Expected: FAIL，报 `ModuleNotFoundError: No module named 'quant_v2.jq_fetcher.
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """断点续传 JSON 存储。
 
 每个拉取任务对应一个 checkpoint JSON 文件，记录已完成/失败的拉取项，
@@ -632,6 +646,8 @@ git commit -m "feat(jq_fetcher): 添加Checkpoint断点续传(Task 2)
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """QuotaMonitor 配额监控测试。"""
 from __future__ import annotations
 
@@ -729,6 +745,8 @@ Expected: FAIL，报 `ModuleNotFoundError: No module named 'quant_v2.jq_fetcher.
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """聚宽配额监控。
 
 定期调用 jqdatasdk.get_query_count() 检查剩余配额，低于阈值告警。
@@ -843,6 +861,8 @@ git commit -m "feat(jq_fetcher): 添加QuotaMonitor配额监控(Task 3)
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """JqFetcher 拉取核心测试。"""
 from __future__ import annotations
 
@@ -1000,6 +1020,8 @@ Expected: FAIL，报 `ModuleNotFoundError: No module named 'quant_v2.jq_fetcher.
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """JqFetcher 聚宽数据拉取核心。
 
 整合认证、重试、速率控制、断点续传、配额监控，提供通用拉取循环
@@ -1251,6 +1273,8 @@ Expected: PASS（6 个测试全通过）
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """聚宽数据拉取框架（jq_fetcher）。
 
 提供认证管理、配额监控、速率控制、断点续传、错误重试，供阶段 1-4 的
@@ -1320,6 +1344,8 @@ git commit -m "feat(jq_fetcher): 添加JqFetcher拉取核心(Task 4)
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """jqdatasdk 速率实测脚本（阶段 0 验收）。
 
 测量指标：
@@ -1343,6 +1369,8 @@ import time
 from pathlib import Path
 
 # 让脚本能 import src 下的包
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 _PLATFORM_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(_PLATFORM_ROOT / "src"))
 
@@ -1356,6 +1384,8 @@ SAMPLE_SECURITIES_FILE = _PLATFORM_ROOT / "scripts" / "jq_fetcher" / "benchmark_
 REPORT_FILE = _PLATFORM_ROOT / "tmp" / "jq_speed_benchmark_report.txt"
 
 # 若无样本文件，用这 50 只默认标的（沪深各 25 只 ETF + 股票）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 DEFAULT_SAMPLES = [
     "510300.XSHG", "510050.XSHG", "510500.XSHG", "588000.XSHG", "512000.XSHG",
     "512010.XSHG", "512100.XSHG", "512660.XSHG", "512800.XSHG", "512880.XSHG",
@@ -1521,6 +1551,8 @@ Expected: 无输出（编译成功）
 ```bash
 cd "E:/量化平台_V1.4.0"
 # Windows CMD:
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 set JQ_USERNAME=<手机号>
 set JQ_PASSWORD=<密码>
 .venv/Scripts/python scripts/jq_fetcher/jq_speed_benchmark.py

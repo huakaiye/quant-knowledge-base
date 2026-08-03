@@ -12,7 +12,7 @@ module_type: 进攻与核心轮动扩展模块
 decision_ids: [DEC-20260623T131037Z-main-M4XJ]
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_mtpu_etf_proxy_state_panel.py
 result_paths:
@@ -148,7 +148,7 @@ UTMF 数据门禁显示，当前平台个股可交易字段可用，但缺少个
 
 ```text
 计划脚本：
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_mtpu_etf_proxy_state_panel.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_mtpu_etf_proxy_state_panel.py
 ```
 
 ### 运行命令
@@ -171,7 +171,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_mtpu_etf_prox
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260623T125116Z-main-DVXD/EX-20260623T132332Z-main-MTPU/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260623T125116Z-main-DVXD/EX-20260623T132332Z-main-MTPU/
 
 关键文件：
 - `summary.json`

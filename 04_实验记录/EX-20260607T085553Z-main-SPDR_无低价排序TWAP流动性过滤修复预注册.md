@@ -15,7 +15,7 @@ decision_ids:
 lit_ids:
   - LIT-20260607T081500Z-main-JQML
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T085553Z-main-SPDR/public_micro_no_low_liquidity_twap.json
 result_paths:

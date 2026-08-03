@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260618T144237Z-main-GNSM
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_2xkw_lifecycle_pair_episode_readonly.py
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
@@ -81,8 +81,8 @@ M3VC 的组件拆解显示，`unfavorable_run_len` 与 `confirmed_state_run_len`
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| LJQ7 action panel | 重建状态持续时间、A1 episode、未来路径标签 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv` |
-| M3VC summary | 继承上一轮失败边界和门槛 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/summary.json` |
+| LJQ7 action panel | 重建状态持续时间、A1 episode、未来路径标签 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv` |
+| M3VC summary | 继承上一轮失败边界和门槛 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/summary.json` |
 | `state_lifecycle_pair` | 主候选，两个状态持续时间组件等权 | 脚本内固定生成 |
 | `unfavorable_only` / `confirmed_state_only` | 组件归因，不作为后验择优候选 | 脚本内固定生成 |
 | `episode_age_proxy` | 五组件压缩对照 | 脚本内固定生成 |
@@ -161,8 +161,8 @@ M3VC 的组件拆解显示，`unfavorable_run_len` 与 `confirmed_state_run_len`
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_2xkw_lifecycle_pair_episode_readonly.py
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_2xkw_lifecycle_pair_episode_readonly.py
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
 ```
 
 ### 运行命令
@@ -175,15 +175,15 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_2xkw_lifecycl
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/run.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/run.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/run.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/run.log"`
 - 异常判断：无异常退出；输出 213 行 OOS 日期样本、32 个 OOS episode。
 - 后台回测豁免：不适用，前台可见运行。
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/
 ```
 
 ## 12. 实际观察

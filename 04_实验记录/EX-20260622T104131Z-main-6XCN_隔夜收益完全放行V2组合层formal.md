@@ -12,7 +12,7 @@ module_type: 个股层隔夜收益完全放行组合层 formal
 decision_ids: [DEC-20260622T123321Z-main-78RB, DEC-20260622T163008Z-main-GHZE]
 lit_ids: []
 idea_ids: [MECH-20260620T154044Z-main-MATN]
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: [configs/research/R010-A22/overnight_v2_paired/EX-20260622T104131Z-main-6XCN/formal/manifest.json]
 result_paths: [results/v2/research/R010-A22/overnight_v2_paired/EX-20260622T104131Z-main-6XCN/formal]
 summary_paths: [results/v2/research/R010-A22/overnight_v2_paired/EX-20260622T104131Z-main-6XCN/summary/formal/summary.json]

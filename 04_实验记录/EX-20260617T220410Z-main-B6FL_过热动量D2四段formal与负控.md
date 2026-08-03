@@ -12,7 +12,7 @@ module_type: 防御模块事前暴露管理层
 decision_ids: [DEC-20260617T215629Z-main-UARF, DEC-20260618T024516Z-main-UR6S]
 lit_ids: [LIT-20260617T220410Z-main-RDHA, LIT-20260614T112631Z-main-VY4K]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/generate_b6fl_r010d_overheat_formal_configs.py
   - configs/research/RD-20260614T115209Z-main-MCYG/EX-20260617T220410Z-main-B6FL/formal/

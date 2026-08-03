@@ -12,7 +12,7 @@ module_type: 核心轮动诊断模块
 decision_ids: [DEC-20260617T151659Z-main-UAYF]
 lit_ids: [LIT-20260613T002924Z-main-RY67]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_5bnb_listwise_ranker_v2.py
 result_paths:

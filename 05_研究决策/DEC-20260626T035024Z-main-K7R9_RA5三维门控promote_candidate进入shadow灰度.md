@@ -16,7 +16,7 @@ owner: main
 created_at: 2026-06-26T03:50:24Z
 updated_at: 2026-06-28T15:30:00Z
 impact: direction
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 result_paths:
   - results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260626T030352Z-main-RA5/
 subagent_call_ids: []

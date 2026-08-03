@@ -13,7 +13,7 @@ decision_ids: []
 lit_ids: []
 idea_ids:
   - MECH-20260619T025934Z-main-DQUM
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/v2_portfolio_smallcap_etf_dual_pool_50_50.json
   - scripts/research/analyze_8sh4_hard5_repair_dry_run_observation_gate.py

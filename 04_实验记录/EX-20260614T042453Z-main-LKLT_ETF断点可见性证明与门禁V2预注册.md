@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260613T122346Z-main-X7PJ
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/audit_lklt_etf_adjustment_visibility_v2.py
 result_paths:

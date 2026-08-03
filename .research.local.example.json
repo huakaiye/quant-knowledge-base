@@ -1,6 +1,10 @@
 {
-  "platform_root_windows": "E:\\量化平台_V1.4.0",
-  "platform_root_wsl": "/mnt/e/量化平台_V1.4.0",
+  "platform_root_windows": "E:\\量化平台_V2.0",
+  "platform_root_wsl": "/mnt/e/量化平台_V2.0",
+  "legacy_platform_root_windows": "E:\\量化平台_V1.4.0",
+  "legacy_platform_root_wsl": "/mnt/e/量化平台_V1.4.0",
   "live_root_windows": "",
-  "live_root_wsl": ""
+  "live_root_wsl": "",
+  "thinktank_project_root_windows": "",
+  "thinktank_project_root_wsl": ""
 }

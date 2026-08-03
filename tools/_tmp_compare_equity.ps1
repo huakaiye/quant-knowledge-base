@@ -1,4 +1,6 @@
-$base = 'E:\量化平台_V1.4.0\results\v2\research\R010-DEFENSE\rule_a_idle\EX-20260627T053730Z-main-JTX7'
+Write-Warning '历史只读工具：只比较 V1.4 结果证据，不能用于当前 V2 结果。'
+$legacyRoot = & pwsh -NoProfile -File "$PSScriptRoot\Get-QuantPlatformRoot.ps1" -Target LegacyPlatform -Format Windows
+$base = Join-Path $legacyRoot 'results\v2\research\R010-DEFENSE\rule_a_idle\EX-20260627T053730Z-main-JTX7'
 $pairs = @{
   'cost1x' = @(
     'decade5_fixed\a2_trend\3829c8cd790148f7be2b0a5461849d1a\equity_curve.csv',

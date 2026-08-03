@@ -51,13 +51,15 @@
 
 ```text
 ${QUANT_PLATFORM_ROOT}
+${LEGACY_QUANT_PLATFORM_ROOT}
 ${LIVE_TRADING_ROOT}
 ```
 
 每台电脑通过以下方式之一配置真实路径：
 
-- 设置环境变量 `QUANT_PLATFORM_ROOT`，例如 `D:\quant\量化平台_V1.4.0`。
-- 设置环境变量 `QUANT_PLATFORM_WSL_ROOT`，例如 `/mnt/d/quant/量化平台_V1.4.0`。
+- 设置环境变量 `QUANT_PLATFORM_ROOT`，例如 `D:\quant\量化平台_V2.0`。
+- 设置环境变量 `QUANT_PLATFORM_WSL_ROOT`，例如 `/mnt/d/quant/量化平台_V2.0`。
+- 仅在读取历史证据时设置 `LEGACY_QUANT_PLATFORM_ROOT` 和 `LEGACY_QUANT_PLATFORM_WSL_ROOT`；禁止用旧平台执行新实验。
 - 设置环境变量 `LIVE_TRADING_ROOT`，例如 `D:\live\MiniQMT`。
 - 设置环境变量 `LIVE_TRADING_WSL_ROOT`，例如 `/mnt/d/live/MiniQMT`。
 - 复制 `.research.local.example.json` 为 `.research.local.json` 后修改本机路径。
@@ -74,7 +76,7 @@ Agent 需要核对实盘路径前，必须先运行：
 powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target Live -Format All
 ```
 
-新增实验和策略档案中的回测平台字段默认写 `${QUANT_PLATFORM_ROOT}` 或平台相对路径，例如 `configs/research/...`、`results/v2/research/...`。涉及实盘系统的位置默认写 `${LIVE_TRADING_ROOT}` 或实盘系统内的相对路径。不要把个人绝对路径写进新共享文档；历史迁移记录中已经存在的绝对路径可以作为证据原样保留。
+新增实验和策略档案中的当前回测平台字段默认写 `${QUANT_PLATFORM_ROOT}` 或 V2 平台内已核实存在的相对路径。旧平台代码、配置和结果只能写 `${LEGACY_QUANT_PLATFORM_ROOT}`，并标明“历史只读证据”。不得把 V1.4 路径替换成 V2 根后假装资产已经迁移。涉及实盘系统的位置默认写 `${LIVE_TRADING_ROOT}` 或实盘系统内的相对路径。不要把个人绝对路径写进新共享文档；历史迁移记录中已经存在的绝对路径可以作为证据原样保留。
 
 ## 每轮实验硬规则
 
@@ -136,12 +138,20 @@ ID 格式见 `08_方法论/命名与编号规范.md`。
 
 ## 平台命令边界
 
-Agent/CLI 回测必须在 WSL 内运行。常用形式：
+Agent/CLI 回测必须在 WSL2 的 V2 平台内运行，并先阅读平台根目录 `AGENTS.md`。Python、pytest、回测 CLI 和性能分析统一使用 `.venv/bin/python`。策略必须通过平台公开的受控入口启动，不得调用旧通用 runner，也不得绕过资源租约、RSS 上限和进程组清理。
 
 ```powershell
 $platformWsl = powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Format WSL
-wsl -- bash -lc "cd '$platformWsl' && PYTHONPATH=src python3 src/run_v2_backtest.py --config configs/research/<rd_id>/<ex_id>/<config>.json"
+wsl.exe bash -lc "cd '$platformWsl' && .venv/bin/python scripts/<策略受控入口>.py <参数>"
 ```
+
+五福必须使用：
+
+```powershell
+wsl.exe bash -lc "cd '$platformWsl' && .venv/bin/python scripts/run_wufu_v52.py <参数>"
+```
+
+如果研究资产只登记了 V1.4 的 `src/run_v2_backtest.py`、`configs/research` 或 `results/v2/research`，说明它尚未迁移到 V2；应先迁移策略并建立 V2 受控入口，不能回退执行旧平台。
 
 回测命令默认必须过程可见。主控或子代理运行回测时，应使用 `PYTHONUNBUFFERED=1`、`tee`、平台进度日志或等效方式，让用户能看到运行进度、当前阶段、错误输出和日志路径。
 
@@ -159,32 +169,29 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONPATH=src python3 src/run_v2_backtest
 
 此规则适用于主控 Agent 和所有子代理。违反此规则的回测执行视为流程不完整。
 
-### 并行回测默认规则（2026-06-22 新增，硬约束）
+### 并行回测默认规则（2026-07-18 修订，硬约束）
 
-从 2026-06-22 起，多段回测默认必须并行启动，禁止串行逐段跑：
+多段回测可以并行，但必须服从 V2 平台内存租约和受控入口：
 
-- **默认入口**：`${QUANT_PLATFORM_ROOT}/scripts/research/run_parallel_backtest.sh`，默认 `max-parallel=6`（实测最优，24核/62GB/CH 8线程，6并发几乎无降速）。
-- **用法**：`bash scripts/research/run_parallel_backtest.sh <config1.json> <config2.json> ...`，脚本自动按 max-parallel 分批并行，每段独立进程/独立日志/终端汇总。
-- **适用场景**：formal 四段、参数扫描、变体矩阵——只要超过 1 段就用并行。单段回测仍用 `run_v2_backtest.py` 直接跑。
-- **性能基准**：6段并行约 10.5 分钟（vs 串行 51 分钟，-79%）。超过 6 段时分批，每批 ≤6 段。
-- **串行降级**：仅当并行脚本不可用、ClickHouse 并发受限、或用户明确要求串行时，才用串行 run.sh，且必须说明降级原因。
-- **并行启动后仍遵守实时进度规则**：高频 tail 各段 run.log，报告进度/权益/交易数；卡住立即报告。
-
-违反此规则（该并行却串行）视为流程不完整。
+- 当前并发硬上限为 4 个受控回测任务；平台可根据可用内存拒绝新租约。
+- 每段必须是独立受控进程、独立日志和独立结果目录，禁止在同一 Python 进程内并行运行多个回测。
+- 不再使用 V1.4 的 `scripts/research/run_parallel_backtest.sh` 或 `max-parallel=6` 经验值。
+- 大矩阵按每批不超过 4 个任务调度；发生内存压力、交换或平台拒租时立即降低并发，不能绕过门禁。
+- 并行只是调度方式，不得改变策略配置、数据口径或结果。
 
 ### 可视化分段回测规则（2026-07-02 新增，硬约束）
 
 从 2026-07-02 起，凡需人工观看进度的回测（formal 年度段、对照实验、变体矩阵展示）默认按"可视化分段回测规范"执行（详见 `08_方法论/可视化分段回测规范.md`）：
 
-- **按自然年分段**：跨年区间先拆成年度 config，每年一段。
-- **一年一个独立窗口**：用 `tools/Run-VisibleBacktest.ps1` 为每个 config 弹一个 cmd 窗口，标题=段名，窗口内进度实时滚动，不得用 `tail -N` 截断。
+- **按自然年分段**：跨年区间可按策略入口支持的日期参数拆段，每年一段。
+- **一年一个独立窗口**：用 `tools/Run-VisibleBacktest.ps1` 为每条 V2 受控命令弹一个 cmd 窗口，标题=段名，窗口内进度实时滚动。
 - **实时进度滚动**：`PYTHONUNBUFFERED=1 + tee`，进度行既显示又写盘到 `tmp/live_<段名>.log`。
 - **主控自主巡检**：启动后主控每 2 分钟读各段日志报告进度，直到全部段出现 `summary.json` 且进程归零，**不得要求用户通知**。
 
 适用边界：
 
-- **少量段、需观看进度（≤ 8 段）**：用本规则（一年一窗）。
-- **大批量参数网格（> 8 段、无需逐段观看）**：仍用 `run_parallel_backtest.sh` 后台批量跑。
+- **少量段、需观看进度（≤ 4 段）**：用本规则（一年一窗）。
+- **大批量参数网格（> 4 段）**：按每批不超过 4 个 V2 受控任务调度，仍需独立日志和资源租约。
 - **单段 smoke（< 5 分钟）**：直接前台跑。
 
 违反此规则（该用可视化分段却塞进单窗口、或启动后等用户通知）视为流程不完整。

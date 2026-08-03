@@ -12,7 +12,7 @@ module_type: 外部验证数据门禁
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: []
 result_paths:
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/
@@ -73,7 +73,7 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| TRXX readiness summary | 判断最新 forward 截止日和 H10 等待天数 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/summary.json` |
+| TRXX readiness summary | 判断最新 forward 截止日和 H10 等待天数 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/summary.json` |
 | ClickHouse 日线表 | 判断是否有新日线交易日 | `quant.jq_bar_daily` |
 | ClickHouse 分钟线表 | 判断是否有新分钟线交易日 | `quant.jq_bar_minute_v2` |
 
@@ -142,7 +142,7 @@ tags:
 
 ```text
 无新增回测配置；新增只读脚本：
-${QUANT_PLATFORM_ROOT}/scripts/research/check_kfsq_forward_rerun_readiness.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/check_kfsq_forward_rerun_readiness.py
 ```
 
 ### 运行命令
@@ -155,16 +155,16 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/check_kfsq_forward_re
 ### 可见进度与日志
 
 - 是否过程可见：是，使用 `PYTHONUNBUFFERED=1` 和 `tee`。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/run_check.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/run_check.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/run_check.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/run_check.log"`
 - 异常判断：脚本非 0 退出、ClickHouse 查询失败、TRXX summary 缺字段、输出 summary/CSV 缺失。
 - 后台回测豁免：不适用；本实验不是回测，前台可见运行。
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/rerun_readiness.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T160438Z-main-MESV/rerun_readiness.csv
 ```
 
 ## 12. 实际观察

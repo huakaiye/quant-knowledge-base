@@ -12,7 +12,8 @@ module_type: 个股层隔夜收益时段条件化组合层 formal
 decision_ids: [DEC-20260622T163008Z-main-GHZE]
 lit_ids: []
 idea_ids: [MECH-20260620T154044Z-main-MATN]
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
+execution_platform_status: legacy_completed_evidence
 config_paths: [configs/research/R010-A22/overnight_timed_paired/EX-20260622T133000Z-main-7KMP/formal/manifest.json]
 result_paths: [results/v2/research/R010-A22/overnight_timed_paired/EX-20260622T133000Z-main-7KMP/formal]
 summary_paths: [results/v2/research/R010-A22/overnight_timed_paired/EX-20260622T133000Z-main-7KMP/summary/formal/summary.json, results/v2/research/R010-A22/overnight_timed_paired/EX-20260622T133000Z-main-7KMP/summary/formal/segment_metrics.csv]
@@ -23,6 +24,8 @@ tags: [双池轮动, hard5, 隔夜收益, overnight_share, 时段条件化, 市�
 ---
 
 # 隔夜收益时段条件化市场状态gate组合层formal
+
+> 历史执行证据：本页的 formal 结果、并行脚本和目录结构属于 V1.4。结论可继续引用，但任何补跑或扩展都必须迁入 V2 后新开实验。
 
 ## 关联链接
 

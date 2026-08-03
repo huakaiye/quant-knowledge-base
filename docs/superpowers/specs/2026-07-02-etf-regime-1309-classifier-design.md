@@ -191,9 +191,9 @@
 
 ## 10. 实现位置（仅登记路径，不复制大文件）
 
-- **只读脚本**（拟）：`${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
-- **配置**（拟）：`${QUANT_PLATFORM_ROOT}/configs/research/RD-<新id>/EX-<新id>/`
-- **结果**（拟）：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-<新id>/EX-<新id>/`
+- **只读脚本**（拟）：`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
+- **配置**（拟）：`${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-<新id>/EX-<新id>/`
+- **结果**（拟）：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-<新id>/EX-<新id>/`
 
 实际路径以 `New-ResearchItem.ps1` 生成的 ID 为准。
 

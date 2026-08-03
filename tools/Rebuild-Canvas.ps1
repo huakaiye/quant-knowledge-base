@@ -1,10 +1,10 @@
-﻿# Rebuild-Canvas.ps1
+# Rebuild-Canvas.ps1
 # Restructure the main roadmap Canvas into a slim skeleton + 5 sub-canvases.
 # Reads 00_入口/研究路线图.canvas, partitions nodes by branch, lays out each canvas
 # on a layered grid (RD top, LIT source, EX middle, DEC bottom), adds group nodes,
 # removes cross-level reverse edges.
 #
-# Usage: powershell -ExecutionPolicy Bypass -File tools/Rebuild-Canvas.ps1 -Apply
+# Usage: pwsh -NoProfile -File tools/Rebuild-Canvas.ps1 -Apply
 
 param(
     [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,

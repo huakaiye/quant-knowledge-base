@@ -75,10 +75,10 @@ QTFV 处理的是工程边界问题：A22 已经从旧 A13 字段复用迁移到
 证据路径：
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/live_vs_a22n.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/shadow_on_off_hash.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/guard_audit.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/live_vs_a22n.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/shadow_on_off_hash.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/guard_audit.csv
 ```
 
 ## 反对证据

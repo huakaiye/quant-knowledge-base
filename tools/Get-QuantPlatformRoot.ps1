@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('Platform', 'Live')]
+    [ValidateSet('Platform', 'LegacyPlatform', 'Live')]
     [string]$Target = 'Platform',
 
     [ValidateSet('Windows', 'WSL', 'All')]
@@ -13,15 +13,11 @@ $ErrorActionPreference = 'Stop'
 
 function Convert-WindowsPathToWsl {
     param([string]$Path)
-    if ([string]::IsNullOrWhiteSpace($Path)) {
-        return ''
-    }
+    if ([string]::IsNullOrWhiteSpace($Path)) { return '' }
     if ($Path -match '^([A-Za-z]):\\?(.*)$') {
         $drive = $Matches[1].ToLowerInvariant()
         $rest = $Matches[2] -replace '\\', '/'
-        if ([string]::IsNullOrWhiteSpace($rest)) {
-            return "/mnt/$drive"
-        }
+        if ([string]::IsNullOrWhiteSpace($rest)) { return "/mnt/$drive" }
         return "/mnt/$drive/$rest"
     }
     return $Path -replace '\\', '/'
@@ -29,9 +25,7 @@ function Convert-WindowsPathToWsl {
 
 function Convert-WslPathToWindows {
     param([string]$Path)
-    if ([string]::IsNullOrWhiteSpace($Path)) {
-        return ''
-    }
+    if ([string]::IsNullOrWhiteSpace($Path)) { return '' }
     if ($Path -match '^/mnt/([a-zA-Z])/(.*)$') {
         $drive = $Matches[1].ToUpperInvariant()
         $rest = $Matches[2] -replace '/', '\'
@@ -40,17 +34,52 @@ function Convert-WslPathToWindows {
     return $Path
 }
 
+function Complete-And-TestPair {
+    param(
+        [string]$WindowsRoot,
+        [string]$WslRoot,
+        [string]$SourceName
+    )
+
+    if ([string]::IsNullOrWhiteSpace($WindowsRoot) -and [string]::IsNullOrWhiteSpace($WslRoot)) {
+        return $null
+    }
+    if ([string]::IsNullOrWhiteSpace($WindowsRoot)) {
+        $WindowsRoot = Convert-WslPathToWindows -Path $WslRoot
+    }
+    if ([string]::IsNullOrWhiteSpace($WslRoot)) {
+        $WslRoot = Convert-WindowsPathToWsl -Path $WindowsRoot
+    }
+
+    $expectedWsl = (Convert-WindowsPathToWsl -Path $WindowsRoot).TrimEnd('/')
+    $actualWsl = $WslRoot.TrimEnd('/')
+    if (-not $expectedWsl.Equals($actualWsl, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "$targetName Windows/WSL roots disagree in $SourceName`: '$WindowsRoot' vs '$WslRoot'."
+    }
+
+    [pscustomobject]@{
+        windows = $WindowsRoot.TrimEnd('\')
+        wsl = $actualWsl
+        source = $SourceName
+    }
+}
+
 $configPath = Join-Path $Root '.research.local.json'
 $examplePath = Join-Path $Root '.research.local.example.json'
-$windowsRoot = ''
-$wslRoot = ''
 $targetName = 'platform'
 $windowsEnvName = 'QUANT_PLATFORM_ROOT'
 $wslEnvName = 'QUANT_PLATFORM_WSL_ROOT'
 $windowsProperty = 'platform_root_windows'
 $wslProperty = 'platform_root_wsl'
 
-if ($Target -eq 'Live') {
+if ($Target -eq 'LegacyPlatform') {
+    $targetName = 'legacy platform'
+    $windowsEnvName = 'LEGACY_QUANT_PLATFORM_ROOT'
+    $wslEnvName = 'LEGACY_QUANT_PLATFORM_WSL_ROOT'
+    $windowsProperty = 'legacy_platform_root_windows'
+    $wslProperty = 'legacy_platform_root_wsl'
+}
+elseif ($Target -eq 'Live') {
     $targetName = 'live'
     $windowsEnvName = 'LIVE_TRADING_ROOT'
     $wslEnvName = 'LIVE_TRADING_WSL_ROOT'
@@ -58,55 +87,50 @@ if ($Target -eq 'Live') {
     $wslProperty = 'live_root_wsl'
 }
 
-$windowsRoot = [Environment]::GetEnvironmentVariable($windowsEnvName)
-$wslRoot = [Environment]::GetEnvironmentVariable($wslEnvName)
+$pair = Complete-And-TestPair `
+    -WindowsRoot ([Environment]::GetEnvironmentVariable($windowsEnvName)) `
+    -WslRoot ([Environment]::GetEnvironmentVariable($wslEnvName)) `
+    -SourceName 'environment variables'
 
-if (Test-Path -LiteralPath $configPath) {
+if ($null -eq $pair -and (Test-Path -LiteralPath $configPath)) {
     $config = Get-Content -LiteralPath $configPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ([string]::IsNullOrWhiteSpace($windowsRoot) -and $config.PSObject.Properties.Name -contains $windowsProperty) {
-        $windowsRoot = [string]$config.$windowsProperty
-    }
-    if ([string]::IsNullOrWhiteSpace($wslRoot) -and $config.PSObject.Properties.Name -contains $wslProperty) {
-        $wslRoot = [string]$config.$wslProperty
-    }
+    $configWindows = if ($config.PSObject.Properties.Name -contains $windowsProperty) { [string]$config.$windowsProperty } else { '' }
+    $configWsl = if ($config.PSObject.Properties.Name -contains $wslProperty) { [string]$config.$wslProperty } else { '' }
+    $pair = Complete-And-TestPair -WindowsRoot $configWindows -WslRoot $configWsl -SourceName '.research.local.json'
 }
 
-if ([string]::IsNullOrWhiteSpace($windowsRoot) -and (Test-Path -LiteralPath $examplePath)) {
+if ($null -eq $pair -and (Test-Path -LiteralPath $examplePath)) {
     $example = Get-Content -LiteralPath $examplePath -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ($example.PSObject.Properties.Name -contains $windowsProperty) {
-        $windowsRoot = [string]$example.$windowsProperty
+    $exampleWindows = if ($example.PSObject.Properties.Name -contains $windowsProperty) { [string]$example.$windowsProperty } else { '' }
+    $exampleWsl = if ($example.PSObject.Properties.Name -contains $wslProperty) { [string]$example.$wslProperty } else { '' }
+    $pair = Complete-And-TestPair -WindowsRoot $exampleWindows -WslRoot $exampleWsl -SourceName '.research.local.example.json'
+}
+
+if ($null -eq $pair) {
+    throw "$targetName root not found. Set $windowsEnvName/$wslEnvName, or configure .research.local.json."
+}
+
+if ($Target -ne 'Live') {
+    if (-not (Test-Path -LiteralPath $pair.windows -PathType Container)) {
+        throw "$targetName Windows root does not exist: $($pair.windows)"
     }
-    if ($example.PSObject.Properties.Name -contains $wslProperty) {
-        $wslRoot = [string]$example.$wslProperty
+}
+
+if ($Target -eq 'Platform') {
+    if (-not (Test-Path -LiteralPath (Join-Path $pair.windows 'AGENTS.md') -PathType Leaf)) {
+        throw "$targetName root is missing AGENTS.md: $($pair.windows)"
     }
-}
-
-if ([string]::IsNullOrWhiteSpace($windowsRoot) -and -not [string]::IsNullOrWhiteSpace($wslRoot)) {
-    $windowsRoot = Convert-WslPathToWindows -Path $wslRoot
-}
-
-if ([string]::IsNullOrWhiteSpace($wslRoot) -and -not [string]::IsNullOrWhiteSpace($windowsRoot)) {
-    $wslRoot = Convert-WindowsPathToWsl -Path $windowsRoot
-}
-
-if ([string]::IsNullOrWhiteSpace($windowsRoot)) {
-    throw "$targetName root not found. Set $windowsEnvName, or copy .research.local.example.json to .research.local.json and edit it."
-}
-
-$source = 'env or .research.local.example.json default'
-if (Test-Path -LiteralPath $configPath) {
-    $source = 'env or .research.local.json'
 }
 
 switch ($Format) {
-    'Windows' { Write-Output $windowsRoot }
-    'WSL' { Write-Output $wslRoot }
+    'Windows' { Write-Output $pair.windows }
+    'WSL' { Write-Output $pair.wsl }
     'All' {
         [pscustomobject]@{
             target = $Target
-            root_windows = $windowsRoot
-            root_wsl = $wslRoot
-            source = $source
+            root_windows = $pair.windows
+            root_wsl = $pair.wsl
+            source = $pair.source
         } | ConvertTo-Json -Depth 2
     }
 }

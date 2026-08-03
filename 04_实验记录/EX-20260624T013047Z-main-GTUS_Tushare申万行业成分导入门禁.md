@@ -12,7 +12,7 @@ module_type: 进攻与核心轮动扩展模块
 decision_ids: [DEC-20260624T013403Z-main-9AF6]
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/prepare_gtus_tushare_sw_industry_import_gate.py
   - scripts/research/test_gtus_tushare_sw_industry_import_gate.py
@@ -144,8 +144,8 @@ QKD7 已确认本地没有可回测历史行业成分。用户说明 Tushare 账
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/prepare_gtus_tushare_sw_industry_import_gate.py
-${QUANT_PLATFORM_ROOT}/scripts/research/test_gtus_tushare_sw_industry_import_gate.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/prepare_gtus_tushare_sw_industry_import_gate.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/test_gtus_tushare_sw_industry_import_gate.py
 ```
 
 ### 运行命令
@@ -168,7 +168,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/prepare_gtus_tushare_
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260623T125116Z-main-DVXD/EX-20260624T013047Z-main-GTUS/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260623T125116Z-main-DVXD/EX-20260624T013047Z-main-GTUS/
 ```
 
 ## 12. 实际观察

@@ -13,13 +13,13 @@ decision_ids:
   - DEC-20260627T073551Z-main-DTH2
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_no_score/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_no_breadth/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_no_trend/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_no_score/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_no_breadth/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_no_trend/
 result_paths:
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_*/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/ablation_*/
 quality_gate: 通过_消融定论_breadth关最关键_分数关相对可省
 subagent_call_ids: []
 subagent_exemption: 子代理豁免：本实验数据汇总简单(3变体连乘对比)由主控直接完成，消融定论与P3猜测纠正由主控承担；主控：main；时间：2026-06-29T11:00:00Z

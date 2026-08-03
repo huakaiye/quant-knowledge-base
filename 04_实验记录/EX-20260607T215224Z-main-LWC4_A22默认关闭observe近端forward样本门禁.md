@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260607T185223Z-main-HH4B
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/
   - configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/guard/
@@ -91,9 +91,9 @@ powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| `forward_shadow_off` | hard5 默认路径，不启用 A22 shadow | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/forward_shadow_off/lwc4_forward_shadow_off_forward_20260520_20260605.json` |
-| `forward_shadow_on` | hard5 默认路径，只启用 A22 shadow 观察 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/forward_shadow_on/lwc4_forward_shadow_on_forward_20260520_20260605.json` |
-| `double_on_guard` | 静态互斥样本，只检查 A13/A22 双开可被识别，不执行回测 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/guard/lwc4_double_on_guard_forward_20260520_20260605.json` |
+| `forward_shadow_off` | hard5 默认路径，不启用 A22 shadow | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/forward_shadow_off/lwc4_forward_shadow_off_forward_20260520_20260605.json` |
+| `forward_shadow_on` | hard5 默认路径，只启用 A22 shadow 观察 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/forward_shadow_on/lwc4_forward_shadow_on_forward_20260520_20260605.json` |
+| `double_on_guard` | 静态互斥样本，只检查 A13/A22 双开可被识别，不执行回测 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/guard/lwc4_double_on_guard_forward_20260520_20260605.json` |
 
 ## 6. 竞争性解释
 
@@ -158,10 +158,10 @@ powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/generate_lwc4_a22_forward_observe_configs.py
-${QUANT_PLATFORM_ROOT}/scripts/research/run_lwc4_a22_forward_observe.sh
-${QUANT_PLATFORM_ROOT}/scripts/research/summarize_lwc4_a22_forward_observe.py
-${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/generate_lwc4_a22_forward_observe_configs.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_lwc4_a22_forward_observe.sh
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/summarize_lwc4_a22_forward_observe.py
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/
 ```
 
 ### 运行命令
@@ -177,7 +177,7 @@ PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_lwc4_a22_forward_obser
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/logs/formal/<STAMP>/`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/logs/formal/<STAMP>/`
 - 查看进度命令：`Get-Content -Wait <run.log>`
 - 异常判断：runner 退出非 0 且没有 fresh summary；或 summary strict gate 任一失败。
 - 后台回测豁免：不使用后台回测。
@@ -185,9 +185,9 @@ PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_lwc4_a22_forward_obser
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/logs/formal/20260607T220100Z/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/summary/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/logs/formal/20260607T220100Z/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/forward_observe/EX-20260607T215224Z-main-LWC4/summary/formal/
 ```
 
 ## 12. 实际观察

@@ -12,7 +12,7 @@ module_type: 核心轮动风险预算模块
 decision_ids: [DEC-20260605T235338Z-main-WVZZ, DEC-20260607T235302Z-main-8GQQ]
 lit_ids: [LIT-20260603T000000Z-mig-1999MOSKOWITZ83801, LIT-20260605T133500Z-main-E46H, LIT-20260603T000000Z-mig-2015BARROSO7DA3F, LIT-20260603T000000Z-mig-2016DANIEL20500, LIT-20260605T133336Z-main-67C4]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/
 result_paths:
@@ -73,10 +73,10 @@ tags: [双池轮动, 主题簇, 金融坏桶, 风险预算, formal-v2, AB, 非ha
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| A11 cap5 tiered v2 baseline | 主基准，重跑同一份 A11 配置，只打开主题 shadow，不打开主题预算 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/` |
-| `financial_top1_cap70` | 主变体，仅金融 top1 时把风险仓 cap 到 70% | `${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/` |
-| `financial_or_share_ge050_cap70` | 扩展变体，金融 top1 或主题集中度不低于 50% 时 cap 到 70% | `${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/` |
-| B7VH/CTRD shadow 归因 | 解释触发依据，但不作为本轮交易结果 | `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260605T234635Z-main-CTRD/forward_attribution/` |
+| A11 cap5 tiered v2 baseline | 主基准，重跑同一份 A11 配置，只打开主题 shadow，不打开主题预算 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/` |
+| `financial_top1_cap70` | 主变体，仅金融 top1 时把风险仓 cap 到 70% | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/` |
+| `financial_or_share_ge050_cap70` | 扩展变体，金融 top1 或主题集中度不低于 50% 时 cap 到 70% | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/` |
+| B7VH/CTRD shadow 归因 | 解释触发依据，但不作为本轮交易结果 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260605T234635Z-main-CTRD/forward_attribution/` |
 
 固定分段：
 
@@ -172,12 +172,12 @@ tags: [双池轮动, 主题簇, 金融坏桶, 风险预算, formal-v2, AB, 非ha
 
 ```text
 计划生成：
-${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/theme_baseline_tiered_v2_*.json
-${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/theme_financial_top1_cap70_tiered_v2_*.json
-${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/theme_financial_or_share_ge050_cap70_tiered_v2_*.json
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/theme_baseline_tiered_v2_*.json
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/theme_financial_top1_cap70_tiered_v2_*.json
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/theme_financial_or_share_ge050_cap70_tiered_v2_*.json
 
 已生成 12 个配置：
-${QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/
 ```
 
 ### 运行命令
@@ -204,18 +204,18 @@ wsl -- bash -lc "cd /mnt/e/quant_platform_v1_4_0_link && STAMP=20260607T222500Z 
 
 - 是否过程可见：部分可见。baseline smoke 起初用前台命令运行，但 shell 超时后平台进程继续运行，主控通过 `pgrep`、`ps` 和平台 `logs.jsonl` 轮询进度；`financial_top1_cap70` smoke 曾用 `Start-Process -WindowStyle Hidden` 后台运行，并写入 stdout/stderr 日志。`financial_or_share_ge050_cap70` smoke 在事前写明后台豁免后运行，使用 `PYTHONUNBUFFERED=1 + tee` 写逐日进度日志。
 - 日志路径：
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2025_20260519/9c503d35bed2426d8bef809dcacac59a/logs.jsonl`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2025_20260519/f4a48fa9e9014c84a9d1d2515c544656/logs.jsonl`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stderr.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stdout.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.run.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_baseline_2024.run.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_cap70_2024.run.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_cap70_2024.run.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.wrapper.out.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.wrapper.err.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_2024_formal.wrapper.out.log`
-  - `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_2024_formal.wrapper.err.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2025_20260519/9c503d35bed2426d8bef809dcacac59a/logs.jsonl`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2025_20260519/f4a48fa9e9014c84a9d1d2515c544656/logs.jsonl`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stderr.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stdout.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.run.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_baseline_2024.run.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_cap70_2024.run.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_cap70_2024.run.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.wrapper.out.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_or_share_ge050_2025.wrapper.err.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_2024_formal.wrapper.out.log`
+  - `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_2024_formal.wrapper.err.log`
 - 查看进度命令：
 
 ```bash
@@ -229,44 +229,44 @@ wsl -- bash -c "tail -n 50 /mnt/e/量化平台_V1.4.0/results/v2/research/R010-T
 ```text
 历史执行整改说明：financial_top1_cap70 的 2025 smoke 在新规范重读前使用了后台运行，未事前写后台回测豁免。该进程已完成，无残留。后续正式四段必须改用 PYTHONUNBUFFERED=1 + tee 的过程可见命令；若确需后台运行，必须事前写明进程标识、日志路径、查看进度命令、停止方式和预计耗时。
 进程标识：历史 WSL PID 26591，已结束。
-日志路径：${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stderr.log
+日志路径：${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/run_financial_top1_2025.stderr.log
 查看进度：wsl -- bash -c "pgrep -af 'EX-20260606T000758Z-main-VVVN|run_v2_backtest.py' || true"
 停止方式：无残留进程；若未来后台运行，使用 wsl -- bash -c "kill <pid>"。
 预计耗时：2025 单段约 10-15 分钟；四段全量预计显著更长。
 
-本轮追加后台豁免：`financial_or_share_ge050_cap70` 2025 smoke 因 PowerShell/WSL inline 引号两次失败，改为平台脚本 `${QUANT_PLATFORM_ROOT}/scripts/research/run_r010theme_vvvn_financial_or_share_2025.sh` 后后台运行；后台仅用于持续轮询进度。Windows wrapper 进程见当轮终端记录，WSL Python PID 为 28536，已完成；日志为 `run_financial_or_share_ge050_2025.run.log`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
+本轮追加后台豁免：`financial_or_share_ge050_cap70` 2025 smoke 因 PowerShell/WSL inline 引号两次失败，改为平台脚本 `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_r010theme_vvvn_financial_or_share_2025.sh` 后后台运行；后台仅用于持续轮询进度。Windows wrapper 进程见当轮终端记录，WSL Python PID 为 28536，已完成；日志为 `run_financial_or_share_ge050_2025.run.log`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
 
-2024 formal 预执行后台豁免：计划运行 `${QUANT_PLATFORM_ROOT}/scripts/research/run_r010theme_vvvn_2024_formal.sh`，顺序执行 baseline、`financial_top1_cap70`、`financial_or_share_ge050_cap70` 三份 2024 已预注册配置；后台原因是预计耗时 30 分钟以上，后台仅用于主控轮询。日志路径为 `run_baseline_2024.run.log`、`run_financial_top1_cap70_2024.run.log`、`run_financial_or_share_ge050_cap70_2024.run.log`，查看进度命令为 `wsl -- bash -lc "pgrep -af 'run_r010theme_vvvn_2024_formal|theme_.*_2024|run_v2_backtest.py' || true"`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
+2024 formal 预执行后台豁免：计划运行 `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_r010theme_vvvn_2024_formal.sh`，顺序执行 baseline、`financial_top1_cap70`、`financial_or_share_ge050_cap70` 三份 2024 已预注册配置；后台原因是预计耗时 30 分钟以上，后台仅用于主控轮询。日志路径为 `run_baseline_2024.run.log`、`run_financial_top1_cap70_2024.run.log`、`run_financial_or_share_ge050_cap70_2024.run.log`，查看进度命令为 `wsl -- bash -lc "pgrep -af 'run_r010theme_vvvn_2024_formal|theme_.*_2024|run_v2_backtest.py' || true"`，停止方式为 `wsl -- bash -lc "kill <pid>"`。
 
 2024 formal 执行结果：WSL 脚本 PID 30003，三组均已完成。baseline job_id 为 `1750ed82f73d425ba053de68378afd17`，`financial_top1_cap70` job_id 为 `899e5759499a4f5bbaaa1bf8fad3042d`，`financial_or_share_ge050_cap70` job_id 为 `45d9c5ec4a854a60a4f708b16efad76e`。脚本末尾第一次汇总误用 `--segments 2024,2025_20260519`，已修正为 `--segments 2024 2025_20260519` 并重跑覆盖 summary。
 
-2026-06-08 剩余两段 formal 执行说明：最初两次 `nohup` 尝试未产生有效进程或日志，不计入回测；随后两次 `Start-Process` 包装运行因脚本路径未解析成功而失败，Windows PID `12028` 与 `37884` 均不计入有效回测。最终改为前台可见 WSL 命令，通过 ASCII junction `E:\quant_platform_v1_4_0_link` 进入同一平台目录，stamp 为 `20260607T222500Z`。该次顺序执行 `baseline`、`financial_top1_cap70`、`financial_or_share_ge050_cap70` 在 `2020_2021` 与 `2022_2023` 两段的 6 条预注册配置，并在脚本末尾运行 `summarize_r010theme_risk_budget.py --strict` 汇总四段。日志路径为 `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/logs/formal_remaining/20260607T222500Z/`。
+2026-06-08 剩余两段 formal 执行说明：最初两次 `nohup` 尝试未产生有效进程或日志，不计入回测；随后两次 `Start-Process` 包装运行因脚本路径未解析成功而失败，Windows PID `12028` 与 `37884` 均不计入有效回测。最终改为前台可见 WSL 命令，通过 ASCII junction `E:\quant_platform_v1_4_0_link` 进入同一平台目录，stamp 为 `20260607T222500Z`。该次顺序执行 `baseline`、`financial_top1_cap70`、`financial_or_share_ge050_cap70` 在 `2020_2021` 与 `2022_2023` 两段的 6 条预注册配置，并在脚本末尾运行 `summarize_r010theme_risk_budget.py --strict` 汇总四段。日志路径为 `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/logs/formal_remaining/20260607T222500Z/`。
 ```
 
 ### 结果路径
 
 ```text
 计划：
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/
 
 已产出：
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2020_2021/9301b9a2ac7d4368a93f586c37b3bb13/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2022_2023/9576b1af82c14c1ca8e360a0682ee569/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2024/1750ed82f73d425ba053de68378afd17/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2025_20260519/9c503d35bed2426d8bef809dcacac59a/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2020_2021/4114ed06cdba417db02629b119259e5f/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2022_2023/b33daece35a04f3f8f221dadadc3f650/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2024/899e5759499a4f5bbaaa1bf8fad3042d/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2025_20260519/f4a48fa9e9014c84a9d1d2515c544656/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2020_2021/1720677983524fdab12b5277027fcb41/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2022_2023/445061171c31403c9ffc87011d3077cf/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2024/45d9c5ec4a854a60a4f708b16efad76e/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2025_20260519/8d1bc1cebd6f41efbbfb59b613941d6d/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/metrics.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/metrics_vs_baseline.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/theme_budget_records.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2020_2021/9301b9a2ac7d4368a93f586c37b3bb13/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2022_2023/9576b1af82c14c1ca8e360a0682ee569/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2024/1750ed82f73d425ba053de68378afd17/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/baseline/2025_20260519/9c503d35bed2426d8bef809dcacac59a/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2020_2021/4114ed06cdba417db02629b119259e5f/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2022_2023/b33daece35a04f3f8f221dadadc3f650/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2024/899e5759499a4f5bbaaa1bf8fad3042d/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_top1_cap70/2025_20260519/f4a48fa9e9014c84a9d1d2515c544656/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2020_2021/1720677983524fdab12b5277027fcb41/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2022_2023/445061171c31403c9ffc87011d3077cf/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2024/45d9c5ec4a854a60a4f708b16efad76e/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/financial_or_share_ge050_cap70/2025_20260519/8d1bc1cebd6f41efbbfb59b613941d6d/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/metrics.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/metrics_vs_baseline.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-THEME/EX-20260606T000758Z-main-VVVN/risk_budget/summary/theme_budget_records.csv
 ```
 
 ## 12. 实际观察

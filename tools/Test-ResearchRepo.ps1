@@ -14,6 +14,7 @@ $requiredFiles = @(
     '.research.local.example.json',
     '00_入口/研究驾驶舱.md',
     '00_入口/当前状态.md',
+    '00_入口/平台迁移状态.md',
     '01_台账/研究方向台账.csv',
     '01_台账/实验台账.csv',
     '01_台账/决策台账.csv',
@@ -34,7 +35,7 @@ $localExamplePath = Join-Path $Root '.research.local.example.json'
 if (Test-Path -LiteralPath $localExamplePath) {
     try {
         $localExample = Get-Content -LiteralPath $localExamplePath -Raw -Encoding UTF8 | ConvertFrom-Json
-        foreach ($propertyName in @('platform_root_windows', 'platform_root_wsl', 'live_root_windows', 'live_root_wsl')) {
+        foreach ($propertyName in @('platform_root_windows', 'platform_root_wsl', 'legacy_platform_root_windows', 'legacy_platform_root_wsl', 'live_root_windows', 'live_root_wsl')) {
             if ($localExample.PSObject.Properties.Name -notcontains $propertyName) {
                 $errors.Add(".research.local.example.json 缺少字段：$propertyName")
             }
@@ -42,6 +43,19 @@ if (Test-Path -LiteralPath $localExamplePath) {
     } catch {
         $errors.Add(".research.local.example.json 无法解析：$($_.Exception.Message)")
     }
+}
+
+$platformRoutingScript = Join-Path $Root 'tools\Test-PlatformRouting.ps1'
+if (Test-Path -LiteralPath $platformRoutingScript) {
+    try {
+        [void]@(& $platformRoutingScript -Root $Root)
+    }
+    catch {
+        $errors.Add("平台路由门禁：$($_.Exception.Message)")
+    }
+}
+else {
+    $errors.Add('缺少平台路由门禁：tools/Test-PlatformRouting.ps1')
 }
 
 $portableTemplateChecks = @{

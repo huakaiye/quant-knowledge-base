@@ -12,7 +12,7 @@ module_type: 个股静态池动量轮动
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.json
 result_paths:
@@ -67,8 +67,8 @@ tags: [V科技队, 科技股, 聚宽复现, smoke, 分时调仓, 个股动量]
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
 | 原始源码 | 确认还原版只删除外部依赖和 token，不改核心逻辑 | `C:/Users/Administrator/Desktop/V科技队.txt` |
-| 本地还原策略 | smoke 执行对象 | `${QUANT_PLATFORM_ROOT}/src/strategies/research/v_tech_momentum_jq.py` |
-| smoke 配置 | 最小加载与交易链路验证 | `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.json` |
+| 本地还原策略 | smoke 执行对象 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/v_tech_momentum_jq.py` |
+| smoke 配置 | 最小加载与交易链路验证 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.json` |
 
 ## 6. 竞争性解释
 
@@ -136,7 +136,7 @@ tags: [V科技队, 科技股, 聚宽复现, smoke, 分时调仓, 个股动量]
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.json
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.json
 ```
 
 ### 运行命令
@@ -148,7 +148,7 @@ wsl -- bash -lc "cd '/mnt/e/量化平台_V1.4.0' && PYTHONUNBUFFERED=1 PYTHONPAT
 ### 可见进度与日志
 
 - 是否过程可见：是
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.run.log`
 - 查看进度命令：`wsl -- bash -lc "tail -f '/mnt/e/量化平台_V1.4.0/results/v2/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.run.log'"`
 - 异常判断：加载失败、数据缺失、调度错误、交易链路异常均视为 smoke 未通过。
 - 后台回测豁免：不适用，前台执行。
@@ -174,7 +174,7 @@ results/v2/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/
 
 - 还原策略已删除外部下单封装和明文 token。
 - 配置显式登记 106 只股票和分钟数据要求。
-- 前台命令按 `PYTHONUNBUFFERED=1 + tee` 执行，日志路径为 `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.run.log`。
+- 前台命令按 `PYTHONUNBUFFERED=1 + tee` 执行，日志路径为 `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260701T033937Z-main-HTGA/EX-20260701T033946Z-main-MUG3/vtech_smoke.run.log`。
 - `trades.csv` 显示交易时间集中在 10:10 和 14:30，符合原策略分时调仓语义。
 
 ## 14. 反对证据

@@ -13,7 +13,7 @@ decision_ids: []
 lit_ids:
   - LIT-20260614T112631Z-main-A9BK
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/
 result_paths:
@@ -72,7 +72,7 @@ tags: [双池轮动, 核心轮动, 52周高点, 锚定信号, 第二信号维度
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
 | `baseline_ann250_top1_hard5` | 现有单动量 Top1 hard5，主基准 | 参照 LM3D 基准路径 |
-| `combo_momentum_nearness_equal` | 动量 + nearness 等权组合评分 Top1 hard5 | 计划：`${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/combo_equal/` |
+| `combo_momentum_nearness_equal` | 动量 + nearness 等权组合评分 Top1 hard5 | 计划：`${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/combo_equal/` |
 | `combo_momentum_nearness_weighted` | 动量 0.6 + nearness 0.4 加权组合 Top1 hard5 | 同上 weighted 子目录 |
 | `cross_top3_intersect_top1` | 动量 Top3 ∩ nearness Top3 后选 Top1 | 同上 cross 子目录 |
 | `combo_shuffled_nearness` | 随机 nearness（打乱时间）负控 | 同上 shuffled 子目录 |
@@ -145,7 +145,7 @@ tags: [双池轮动, 核心轮动, 52周高点, 锚定信号, 第二信号维度
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/
   - baseline_ann250_top1_hard5_*.json (4 段)
   - combo_momentum_nearness_equal_*.json (4 段)
   - combo_momentum_nearness_weighted_*.json (4 段)
@@ -165,12 +165,12 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 可见进度与日志
 
 - 是否过程可见：`是`，PYTHONUNBUFFERED=1 + tee。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/<run_id>.run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/<run_id>.run.log`
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/<run_id>/summary/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-R25X/EX-20260614T115454Z-main-MCWS/<run_id>/summary/
 ```
 
 ## 12. 实际观察

@@ -189,7 +189,7 @@ function Resolve-LedgerCsvConflicts {
         $normalized = $path -replace '\\', '/'
         if ($normalized -match '^01_[^/]+/.+\.csv$') {
             Write-Step "Auto-merging ledger CSV: $normalized"
-            & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'Merge-LedgerCsv.ps1') -Root $Root -RepoPath $normalized -StageResult
+            & pwsh -NoProfile -File (Join-Path $PSScriptRoot 'Merge-LedgerCsv.ps1') -Root $Root -RepoPath $normalized -StageResult
             if ($LASTEXITCODE -ne 0) {
                 throw "Ledger auto-merge failed: $normalized"
             }
@@ -247,7 +247,7 @@ function Run-QualityGates {
     Assert-NoConflictMarkers
 
     Invoke-Git -Arguments @('diff', '--check')
-    & powershell -ExecutionPolicy Bypass -File (Join-Path $Root 'tools\Test-ResearchRepo.ps1')
+    & pwsh -NoProfile -File (Join-Path $Root 'tools\Test-ResearchRepo.ps1')
     if ($LASTEXITCODE -ne 0) {
         throw 'Research repo health check failed; sync stopped without push.'
     }

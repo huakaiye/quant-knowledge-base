@@ -6,16 +6,25 @@
 
 ```text
 ${QUANT_PLATFORM_ROOT}
+${LEGACY_QUANT_PLATFORM_ROOT}
 ${LIVE_TRADING_ROOT}
 ```
 
-本机回测平台默认示例是 `E:\量化平台_V1.4.0`。如果同事平台路径或实盘路径不同，复制 `.research.local.example.json` 为 `.research.local.json` 后修改，或设置环境变量。`.research.local.json` 不入库。
+当前唯一可执行回测平台是 `E:\量化平台_V2.0`，WSL 路径是 `/mnt/e/量化平台_V2.0`。`E:\量化平台_V1.4.0` 只保留为历史结果和旧代码证据，不得作为当前回测入口。如果同事平台路径或实盘路径不同，复制 `.research.local.example.json` 为 `.research.local.json` 后修改，或设置环境变量。`.research.local.json` 不入库。
 
 查看本机回测平台路径：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target Platform -Format All
 ```
+
+查看只读旧平台证据路径：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target LegacyPlatform -Format All
+```
+
+平台迁移状态、当前可执行策略和历史路径解释见 `00_入口/平台迁移状态.md`。
 
 查看本机实盘系统路径：
 
@@ -32,13 +41,14 @@ powershell -ExecutionPolicy Bypass -File tools/Get-QuantPlatformRoot.ps1 -Target
 1. `AGENTS.md`
 2. `00_入口/研究驾驶舱.md`
 3. `00_入口/当前状态.md`
-4. `08_方法论/命名与编号规范.md`
-5. `08_方法论/研究方法论.md`
-6. `08_方法论/研究质量审计规范.md`
-7. `08_方法论/平台协作规范.md`
-8. `08_方法论/子代理调度规范.md`
-9. `08_方法论/Obsidian使用规范.md`
-10. `08_方法论/Obsidian双向链接规范.md`
+4. `00_入口/平台迁移状态.md`
+5. `08_方法论/命名与编号规范.md`
+6. `08_方法论/研究方法论.md`
+7. `08_方法论/研究质量审计规范.md`
+8. `08_方法论/平台协作规范.md`
+9. `08_方法论/子代理调度规范.md`
+10. `08_方法论/Obsidian使用规范.md`
+11. `08_方法论/Obsidian双向链接规范.md`
 
 读完后应能回答：
 

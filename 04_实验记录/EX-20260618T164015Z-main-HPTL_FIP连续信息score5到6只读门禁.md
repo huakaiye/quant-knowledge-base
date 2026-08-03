@@ -13,7 +13,7 @@ decision_ids: [DEC-20260618T165410Z-main-P8JQ]
 lit_ids:
   - LIT-20260603T000000Z-mig-2014DAFROGINTHEPANB412A
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: []
 result_paths:
   - results/v2/research/RD-20260618T164000Z-main-FIPQ/EX-20260618T164015Z-main-HPTL/

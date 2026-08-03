@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260608T040036Z-main-WAHD
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-B1/EX-20260608T013754Z-main-CR32/formal/
 result_paths:
@@ -166,7 +166,7 @@ PYTHONPATH=src python3 scripts/research/summarize_cr32_a1_static_cap_control.py
 ### 可见进度与日志
 
 - 是否过程可见：是，formal 脚本使用 `tee` 输出每个分段日志。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B1/EX-20260608T013754Z-main-CR32/logs/formal/`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B1/EX-20260608T013754Z-main-CR32/logs/formal/`
 - 查看进度命令：`tail -f results/v2/research/R010-B1/EX-20260608T013754Z-main-CR32/logs/formal/<log>.log`
 - 异常判断：第一次 formal 启动被平台保护阻断；已有进程 `python3 src/run_v2_backtest.py --config configs/v2_migrate_80_small_cap.json`，PID `191968`，非 CR32 任务。未终止该进程，等待空闲后重试。
 - 长跑说明：第一次正式运行在 `static_segment_avg_cap_2020_2021` 完成后被工具层 1 小时超时切断，导致该 tee 日志尾部没有 `exit_status=0`；结果目录、manifest 和 summary 完整。随后重跑同一脚本，已存在结果被跳过，其余 3 段完成。因此结果完整性为 `8/8`，日志 exit status 记录为 `7/8`。

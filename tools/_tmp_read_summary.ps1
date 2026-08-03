@@ -1,4 +1,6 @@
-$base = 'E:\量化平台_V1.4.0\results\v2\research\R010-DEFENSE\rule_a_idle\EX-20260627T053730Z-main-JTX7'
+Write-Warning '历史只读工具：只读取 V1.4 summary，不代表当前 V2 结果。'
+$legacyRoot = & pwsh -NoProfile -File "$PSScriptRoot\Get-QuantPlatformRoot.ps1" -Target LegacyPlatform -Format Windows
+$base = Join-Path $legacyRoot 'results\v2\research\R010-DEFENSE\rule_a_idle\EX-20260627T053730Z-main-JTX7'
 $dirs = @(
   'decade5_fixed\a2_trend',
   'decade5_fixed\baseline_hard5',

@@ -12,7 +12,7 @@ module_type: 个股overnight_share选股价值只读模拟（纯离线，不改�
 decision_ids: [DEC-20260624T072541Z-main-G6M9]
 lit_ids: []
 idea_ids: [MECH-20260620T154044Z-main-MATN]
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: [configs/research/R010-A22/overnight_v2_paired/EX-20260622T104131Z-main-6XCN/]
 result_paths: []
 summary_paths: []
@@ -168,7 +168,7 @@ H_main：**个股 overnight_share 低（日内主导）的 ETF 标的，作为�
 
 本实验不需要平台策略配置，不需要回测重跑。
 
-将新增 1 个研究脚本：`${QUANT_PLATFORM_ROOT}/scripts/research/simulate_overnight_stockpicking_cxcp.py`
+将新增 1 个研究脚本：`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/simulate_overnight_stockpicking_cxcp.py`
 - 输入：cand config（ETF 池定义）+ ClickHouse jq_bar_daily（OHLC 算 overnight_share_5 + 收盘价算持有收益）+ EX-6XCN baseline_hard5 equity_curve.csv（对照）
 - 输出：
   - `coverage_analysis.json`（A：每天 low 桶标的数量分布 per_segment）

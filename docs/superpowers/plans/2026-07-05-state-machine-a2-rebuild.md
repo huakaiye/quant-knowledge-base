@@ -1,5 +1,7 @@
 # 状态机式 A2 三关重构 实现计划
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 在回测平台 `${QUANT_PLATFORM_ROOT}` 内,为 EX-JM24 实现 k-of-n 投票状态机式领先空仓信号,完成 135 组合参数扫描 + 错位一日负控 + 随机打乱负控 + 逐信号消融 + 邻域 CV,得到是否 promote_candidate 的研究结论。
@@ -16,9 +18,9 @@
 ## Global Constraints
 
 - 实盘 v21 文件 `E:\xtquant\策略\ETF双池动量轮动_MiniQMT_v21.py` **完全不动**。
-- 所有平台改动限于 `${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py` 与新增文件。
-- config 路径:`${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/`(扁平化 135 个 config)。
-- 结果路径:`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM24/`。
+- 所有平台改动限于 `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py` 与新增文件。
+- config 路径:`${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/`(扁平化 135 个 config)。
+- 结果路径:`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM24/`。
 - 回测口径:十一年持仓继承(禁段初强制建仓)、cost2x(slippage_bps=2.0)、capital=100000、STOCK_SUM=1、MOMENTUM_DAYS=25。
 - 样本划分:样本内 `2015-01-01 ~ 2021-12-31`、样本外 `2022-01-01 ~ 2026-05-19`。
 - 参数空间(冻结):`thr_L3 ∈ {-2%,-2.5%,-3%,-3.5%,-4%}` × `thr_slope ∈ {0.05%,0.0728%,0.10%}` × `thr_slope_near0 ∈ {0.03%,0.05%,0.07%}` × `k ∈ {1,2,3}` = 135 组合。
@@ -32,15 +34,15 @@
 
 | 文件 | 类型 | 职责 |
 |---|---|---|
-| `${QUANT_PLATFORM_ROOT}/src/strategies/research/state_machine_leading_signal.py` | 新建 | 状态机核心模块:S1/S2/S3 计算 + k-of-n 投票 + 负控 shift/shuffle |
-| `${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py:6610-6761` | 修改 | 在 `is_low` 计算后插入状态机扩展点(10-15 行) |
-| `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/baseline_V21.json` | 新建 | V21 基线复刻 config(无状态机,用于对照) |
-| `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/L3{-3}_slope{0.0728}_near0{0.05}_k{2}.json` | 新建×135 | 状态机 135 组合参数网格 |
-| `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/negctrl/shift1/<最优>.json` | 新建 | 错位一日负控 config(基于最优组合) |
-| `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/negctrl/shuffle<N>/<最优>.json` | 新建×5 | 随机打乱负控(5 个 seed) |
-| `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/ablation/<去掉Sx>.json` | 新建×3 | 逐信号消融 config |
-| `${QUANT_PLATFORM_ROOT}/scripts/research/generate_jm24_configs.py` | 新建 | 生成 135 + 负控 + 消融 config |
-| `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_jm24_results.py` | 新建 | 汇总结果 → 排序表 + 邻域 CV + 负控复制率 |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/state_machine_leading_signal.py` | 新建 | 状态机核心模块:S1/S2/S3 计算 + k-of-n 投票 + 负控 shift/shuffle |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py:6610-6761` | 修改 | 在 `is_low` 计算后插入状态机扩展点(10-15 行) |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/baseline_V21.json` | 新建 | V21 基线复刻 config(无状态机,用于对照) |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/L3{-3}_slope{0.0728}_near0{0.05}_k{2}.json` | 新建×135 | 状态机 135 组合参数网格 |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/negctrl/shift1/<最优>.json` | 新建 | 错位一日负控 config(基于最优组合) |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/negctrl/shuffle<N>/<最优>.json` | 新建×5 | 随机打乱负控(5 个 seed) |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/ablation/<去掉Sx>.json` | 新建×3 | 逐信号消融 config |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/generate_jm24_configs.py` | 新建 | 生成 135 + 负控 + 消融 config |
+| `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_jm24_results.py` | 新建 | 汇总结果 → 排序表 + 邻域 CV + 负控复制率 |
 | `E:\【笔记库】\量化研究库_V2.0.0\04_实验记录\EX-20260705T083000Z-main-JM24_*.md` | 修改 | 回填实际观察 + 研究判断 |
 | `E:\【笔记库】\量化研究库_V2.0.0\05_研究决策\DEC-<新>_<决策>.md` | 新建 | promote_candidate / park 决策卡 |
 
@@ -49,8 +51,8 @@
 ## Task 1: 状态机核心模块(state_machine_leading_signal.py)
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/src/strategies/research/state_machine_leading_signal.py`
-- Test: `${QUANT_PLATFORM_ROOT}/tests/research/test_state_machine_leading_signal.py`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/state_machine_leading_signal.py`
+- Test: `${LEGACY_QUANT_PLATFORM_ROOT}/tests/research/test_state_machine_leading_signal.py`
 
 **Interfaces:**
 - Consumes: `pandas.Series`(hs300 close 序列)、`dict`(config)
@@ -60,6 +62,8 @@
 
 ```python
 # tests/research/test_state_machine_leading_signal.py
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 import pandas as pd
 import numpy as np
 from src.strategies.research.state_machine_leading_signal import (
@@ -145,6 +149,8 @@ Expected: FAIL with `ModuleNotFoundError: No module named 'src.strategies.resear
 
 ```python
 # src/strategies/research/state_machine_leading_signal.py
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """
 EX-JM24 状态机式领先空仓信号(攻克 2015 牛顶反应式滞后通病)。
 
@@ -331,7 +337,7 @@ git commit -m "feat(EX-JM24): 状态机核心模块+测试(S1/S2/S3 k-of-n 投�
 ## Task 2: 集成到 A2 三关(策略代码修改)
 
 **Files:**
-- Modify: `${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py:6710-6711`(在 `is_low = is_low and hs300_below_ma` 之后,`should_go_flat = False` 之前)
+- Modify: `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py:6710-6711`(在 `is_low = is_low and hs300_below_ma` 之后,`should_go_flat = False` 之前)
 
 **Interfaces:**
 - Consumes: `R010B_ACTION_CONFIG`(全局 config dict)、`context`、`hs300_series`(已在 6682-6685 计算)
@@ -341,6 +347,8 @@ git commit -m "feat(EX-JM24): 状态机核心模块+测试(S1/S2/S3 k-of-n 投�
 
 ```python
 # 文件顶部(其他 import 之后,约行 30-50 之间)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 from src.strategies.research.state_machine_leading_signal import evaluate_state_machine
 ```
 
@@ -413,9 +421,9 @@ git commit -m "feat(EX-JM24): 在 A2 三关插入状态机扩展点(replace_slop
 ## Task 3: 生成 baseline + 135 组合 config 网格
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/scripts/research/generate_jm24_configs.py`
-- Create: `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/baseline_V21.json`(V21 基线复刻)
-- Create: `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/*.json` × 135
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/generate_jm24_configs.py`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/baseline_V21.json`(V21 基线复刻)
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/*.json` × 135
 
 **Interfaces:**
 - Consumes: Task 1 的状态机 config 字段名
@@ -425,6 +433,8 @@ git commit -m "feat(EX-JM24): 在 A2 三关插入状态机扩展点(replace_slop
 
 ```python
 # scripts/research/generate_jm24_configs.py
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """生成 EX-JM24 的 136 个 config:1 个 baseline + 135 个状态机网格。"""
 import json
 from pathlib import Path
@@ -434,6 +444,8 @@ OUT_DIR = Path(r"E:\量化平台_V1.4.0\configs\research\RD-DP00\EX-JM24")
 GRID_DIR = OUT_DIR / "grid"
 
 # V21 基线 config(A2 三关 LIVE,无状态机,与 EX-V21BS 同口径)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 BASELINE = {
     "name": "EX-JM24-baseline-V21",
     "strategy_type": "research",
@@ -526,12 +538,12 @@ Expected: 输出 `[baseline] ...` 和 `[grid] 生成 135 个 config 到 ...`
 
 - [ ] **Step 3: 验证 config 文件数**
 
-Run: `ls ${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/*.json | wc -l`
+Run: `ls ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/*.json | wc -l`
 Expected: `135`
 
 - [ ] **Step 4: 抽查一个 config 字段正确**
 
-Run: `cat ${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/L3-0.03_slope0.0728_near0.05_k2.json | python -c "import json,sys; d=json.load(sys.stdin); p=d['strategy_params']['r010b_action_ablation']; print('mode=',p['r010b_rule_a_idle_state_machine_mode'],'thr_l3=',p['r010b_rule_a_idle_sm_thr_l3'],'k=',p['r010b_rule_a_idle_sm_k'])"`
+Run: `cat ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/grid/L3-0.03_slope0.0728_near0.05_k2.json | python -c "import json,sys; d=json.load(sys.stdin); p=d['strategy_params']['r010b_action_ablation']; print('mode=',p['r010b_rule_a_idle_state_machine_mode'],'thr_l3=',p['r010b_rule_a_idle_sm_thr_l3'],'k=',p['r010b_rule_a_idle_sm_k'])"`
 Expected: `mode= replace_slope thr_l3= -0.03 k= 2`
 
 - [ ] **Step 5: Commit**
@@ -555,8 +567,12 @@ git commit -m "feat(EX-JM24): 生成 baseline + 135 状态机网格 config"
 ```bash
 cd ${QUANT_PLATFORM_ROOT}
 # 解析 WSL 路径
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 platformWsl="/mnt/e/量化平台_V1.4.0"
 # 临时改 config 的 end 为 2015-12-31 做 smoke
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 python -c "
 import json
 p='configs/research/RD-DP00/EX-JM24/baseline_V21.json'
@@ -579,6 +595,8 @@ Expected:
 ```bash
 cd ${QUANT_PLATFORM_ROOT}
 # 同样把一个 grid config 的 end 改 2015-12-31
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 python -c "
 import json
 p='configs/research/RD-DP00/EX-JM24/grid/L3-0.03_slope0.0728_near0.05_k2.json'
@@ -606,17 +624,21 @@ Expected:
 ## Task 5: 并行执行 135 组合全周期回测
 
 **Files:**
-- Run: `${QUANT_PLATFORM_ROOT}/scripts/research/run_parallel_backtest.sh`
+- Run: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_parallel_backtest.sh`
 
 - [ ] **Step 1: 用 run_parallel_backtest.sh 启动 135 个 config**
 
 ```bash
 cd ${QUANT_PLATFORM_ROOT}
 # 生成 config 列表文件
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 ls configs/research/RD-DP00/EX-JM24/grid/*.json > tmp/jm24_grid_list.txt
 wc -l tmp/jm24_grid_list.txt  # 应为 135
 
 # 启动并行回测(6 并发,默认)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 wsl -- bash -lc "cd '$platformWsl' && bash scripts/research/run_parallel_backtest.sh --max-parallel 6 \$(cat tmp/jm24_grid_list.txt | tr '\n' ' ') 2>&1 | tee tmp/jm24_grid_run.log"
 ```
 
@@ -627,7 +649,7 @@ wsl -- bash -lc "cd '$platformWsl' && bash scripts/research/run_parallel_backtes
 
 - [ ] **Step 3: 全部完成后汇总 summary.json**
 
-Run: `ls ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM24/grid/*/summary.json | wc -l`
+Run: `ls ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-DP00/EX-JM24/grid/*/summary.json | wc -l`
 Expected: `135`
 
 ---
@@ -635,12 +657,14 @@ Expected: `135`
 ## Task 6: 结果汇总与排序
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_jm24_results.py`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_jm24_results.py`
 
 - [ ] **Step 1: 写汇总脚本**
 
 ```python
 # scripts/research/analyze_jm24_results.py
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """汇总 135 组合结果,按 2015 回撤 + 全周期连乘排序,输出前 20 + CSV。"""
 import json
 from pathlib import Path
@@ -728,13 +752,15 @@ git commit -m "feat(EX-JM24): 135 组合结果汇总 + 排序"
 ## Task 7: 错位一日负控(硬门禁)
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/negctrl/shift1/<最优>.json`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-DP00/EX-JM24/negctrl/shift1/<最优>.json`
 - Run: 该 config 全周期
 
 - [ ] **Step 1: 基于最优组合生成 shift1 负控 config**
 
 ```python
 # 在 generate_jm24_configs.py 加函数或单独脚本
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 import json
 from pathlib import Path
 best_name = "<Task6 选出的最优>"  # 替换
@@ -799,8 +825,14 @@ wsl -- bash -lc "cd '$platformWsl' && bash scripts/research/run_parallel_backtes
 
 ```python
 # 去掉 S1:thr_l3 = -1.0(永远不触发,因为距离不会 < -100%)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 去掉 S2:thr_slope = 0.0(永远不触发,因为要求 slope > 0 且 < 0)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 去掉 S3:thr_slope_near0 = -1.0(永远不触发)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 ```
 
 - [ ] **Step 2: 邻域 CV - 最优点 ±1 档扫描**
@@ -841,7 +873,11 @@ decision 字段:
 
 ```powershell
 # 追加 DEC 到决策台账(用 Python,避免 PS5.1 中文问题)
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 追加 DEC 到实验台账的 decision_ids
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 powershell -ExecutionPolicy Bypass -File tools/Build-ResearchBoard.ps1
 powershell -ExecutionPolicy Bypass -File tools/Build-ResearchGraph.ps1
 powershell -ExecutionPolicy Bypass -File tools/Test-ResearchRepo.ps1

@@ -37,7 +37,7 @@ tags: [双池轮动, 核心轮动, 非R方, 低滞后, Frog-in-the-Pan, 连续�
 - 所属策略：双池轮动策略。
 - 所属模块：核心轮动模块。
 - 研究边界：只研究 `5<=score<6` 被 hard5 拦截的候选，不研究全排序替代。
-- 平台策略代码：`${QUANT_PLATFORM_ROOT}/scripts/research/analyze_r010a12_literature_hot_gate.py`；`${QUANT_PLATFORM_ROOT}/scripts/research/summarize_hptl_fip_continuity_gate.py`
+- 平台策略代码：`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_r010a12_literature_hot_gate.py`；`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/summarize_hptl_fip_continuity_gate.py`
 - 平台配置路径：无，本方向先做只读代理，不生成交易配置。
 - 平台结果路径：`results/v2/research/RD-20260618T164000Z-main-FIPQ/EX-20260618T164015Z-main-HPTL/`
 

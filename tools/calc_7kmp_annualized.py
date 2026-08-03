@@ -1,10 +1,24 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""选项2: V2 vs hard5 全年年化对比（四段几何拼接）。"""
-import glob, json, os
-from datetime import date
+"""读取 V1.4 历史结果，计算 7KMP 与 hard5 的四段几何年化。"""
 
-ROOT = "/mnt/e/量化平台_V1.4.0/results/v2/research/R010-A22/overnight_timed_paired/EX-20260622T133000Z-main-7KMP/formal"
+import argparse
+import glob
+import json
+import os
+from datetime import date
+from pathlib import Path
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument(
+    "--legacy-platform-root",
+    required=True,
+    help="V1.4 历史平台 WSL 根；应由 Get-QuantPlatformRoot.ps1 -Target LegacyPlatform 解析",
+)
+args = parser.parse_args()
+ROOT = str(
+    Path(args.legacy_platform_root)
+    / "results/v2/research/R010-A22/overnight_timed_paired"
+    / "EX-20260622T133000Z-main-7KMP/formal"
+)
 
 SEGS = {
     "2020_2021": (date(2020, 1, 1), date(2021, 12, 31)),

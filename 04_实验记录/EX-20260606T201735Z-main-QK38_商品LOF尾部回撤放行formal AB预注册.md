@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260606T222754Z-main-VGF5
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-A24/commodity_tail_drawdown_allow/EX-20260606T201735Z-main-QK38/formal/hard5_ctail_allow/
   - configs/research/R010-A24/commodity_tail_drawdown_allow/EX-20260606T201735Z-main-QK38/formal/a23_ctail_allow/

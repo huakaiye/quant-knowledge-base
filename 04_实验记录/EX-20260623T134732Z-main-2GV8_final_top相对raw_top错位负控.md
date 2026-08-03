@@ -12,7 +12,7 @@ module_type: 进攻与核心轮动扩展模块
 decision_ids: [DEC-20260623T133954Z-main-67YJ, DEC-20260623T135036Z-main-PFMU]
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_2gv8_final_top_negative_controls.py
 result_paths:
@@ -142,7 +142,7 @@ tags: [双池轮动, 行业轮动, ETF代理池, 过热降权, 错位负控]
 
 ```text
 计划脚本：
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_2gv8_final_top_negative_controls.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_2gv8_final_top_negative_controls.py
 ```
 
 ### 运行命令
@@ -165,7 +165,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_2gv8_final_to
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260623T125116Z-main-DVXD/EX-20260623T134732Z-main-2GV8/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260623T125116Z-main-DVXD/EX-20260623T134732Z-main-2GV8/
 
 关键文件：
 - `summary.json`

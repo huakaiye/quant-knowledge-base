@@ -13,18 +13,18 @@ decision_ids:
   - DEC-20260627T073551Z-main-DTH2
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th15_br04/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th15_br05/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th15_br06/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th20_br04/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th20_br06/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th25_br04/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th25_br05/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th25_br06/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th15_br04/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th15_br05/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th15_br06/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th20_br04/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th20_br06/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th25_br04/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th25_br05/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_th25_br06/
 result_paths:
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_*/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/sens_*/
 quality_gate: 通过_参数稳健性确认_但breadth冗余线索待P4消融验证
 subagent_call_ids: []
 subagent_exemption: 子代理豁免：本实验数据汇总简单(9点连乘对比)由主控直接完成，定论(参数稳健性/breadth冗余线索)由主控承担；主控：main；时间：2026-06-29T10:00:00Z

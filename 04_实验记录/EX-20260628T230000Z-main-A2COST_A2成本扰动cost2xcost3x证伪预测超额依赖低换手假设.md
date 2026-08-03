@@ -13,13 +13,13 @@ decision_ids:
   - DEC-20260627T073551Z-main-DTH2
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost2x_slip2bps/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost3x_slip3bps/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost2x_slip2bps/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost3x_slip3bps/
 result_paths:
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost2x_slip2bps/
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost3x_slip3bps/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost2x_slip2bps/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260627T053730Z-main-JTX7/formal/trend_break/cost3x_slip3bps/
 quality_gate: 通过_成本扰动验证完成_但证伪成本稳健性假设
 subagent_call_ids: []
 subagent_exemption: 子代理豁免：本实验数据汇总简单(8段final/MDD对比)由主控直接完成，定论(成本敏感性证伪A2全面最优)由主控承担；主控：main；时间：2026-06-28T23:00:00Z

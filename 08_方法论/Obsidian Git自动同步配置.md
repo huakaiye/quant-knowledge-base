@@ -34,7 +34,7 @@
 日常需要同步到 GitHub 时，在仓库根目录运行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1
+pwsh -NoProfile -File tools/Sync-ResearchRepo.ps1
 ```
 
 脚本会执行：
@@ -52,7 +52,7 @@ powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1
 只想测试合并和检查、不推送时：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1 -NoPush
+pwsh -NoProfile -File tools/Sync-ResearchRepo.ps1 -NoPush
 ```
 
 如果需要交给 Windows 计划任务，建议 10 到 15 分钟一次，不要 1 到 5 分钟高频运行。计划任务里的脚本路径使用本机研究库真实路径，不写入共享文档。
@@ -84,7 +84,7 @@ powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1 -NoPush
 
 ```powershell
 git status --short --branch
-powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1 -NoPush
+pwsh -NoProfile -File tools/Sync-ResearchRepo.ps1 -NoPush
 ```
 
 如果 `git status` 显示未提交修改，先确认这些修改是不是自己上一轮留下的。不要在未解决冲突或未整理本地修改时继续用 Obsidian Git 自动同步。
@@ -99,7 +99,7 @@ powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1 -NoPush
 
 ```powershell
 rg -n "^(<<<<<<<|=======|>>>>>>>)" .
-powershell -ExecutionPolicy Bypass -File tools/Test-ResearchRepo.ps1
+pwsh -NoProfile -File tools/Test-ResearchRepo.ps1
 git status --short
 ```
 
@@ -113,7 +113,7 @@ git status --short
 2. 先运行安全同步脚本，让它自动处理可结构化合并的台账冲突：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1 -NoPush
+pwsh -NoProfile -File tools/Sync-ResearchRepo.ps1 -NoPush
 ```
 
 3. 若脚本仍停止，打开 Git 差异，确认冲突来自哪一份实验、决策或台账。
@@ -123,7 +123,7 @@ powershell -ExecutionPolicy Bypass -File tools/Sync-ResearchRepo.ps1 -NoPush
 
 ```powershell
 rg -n "^(<<<<<<<|=======|>>>>>>>)" .
-powershell -ExecutionPolicy Bypass -File tools/Test-ResearchRepo.ps1
+pwsh -NoProfile -File tools/Test-ResearchRepo.ps1
 ```
 
 确认通过后再执行：

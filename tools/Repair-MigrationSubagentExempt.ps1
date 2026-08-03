@@ -1,9 +1,9 @@
-﻿# Repair-MigrationSubagentExempt.ps1
+# Repair-MigrationSubagentExempt.ps1
 # Migration decisions predate the subagent mandatory gate; add standard exemption text so
 # Test-ResearchRepo.ps1 passes. Inserts a subagent exemption block into the body of every
 # DEC-*-mig-*.md that has a non-empty `decision` field but no exemption string yet.
 #
-# Usage: powershell -ExecutionPolicy Bypass -File tools/Repair-MigrationSubagentExempt.ps1 -Apply
+# Usage: pwsh -NoProfile -File tools/Repair-MigrationSubagentExempt.ps1 -Apply
 
 param(
     [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,

@@ -1,56 +1,92 @@
 <#
 .SYNOPSIS
-  可视化分段回测启动器：为每个回测 config 弹出一个独立 cmd 窗口，进度实时滚动。
-  注意：本文件必须保存为 UTF-8 with BOM，否则 Windows PowerShell 5.1 会用 GBK 读取导致中文注释乱码。
+  为最多四个结构化 V2 受控回测任务打开独立窗口，并保留实时日志。
 #>
 
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [string[]]$Configs,
+    [object[]]$Runs,
 
-    [string]$LogPrefix = "live"
+    [string]$LogPrefix = 'live',
+
+    [switch]$DryRun
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = 'Stop'
 $OutputEncoding = [System.Text.Encoding]::UTF8
+$allowedEntryPoints = @('scripts/run_wufu_v52.py')
 
-$repoRoot = Split-Path -Parent $PSScriptRoot
-$platformWsl = & powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\Get-QuantPlatformRoot.ps1" -Target Platform -Format WSL
+function Convert-ToBashLiteral {
+    param([string]$Value)
+    if ($Value -match '[\r\n]') {
+        throw '参数不得包含换行符。'
+    }
+    $escaped = $Value.Replace("'", '''"''"''')
+    return "'" + $escaped + "'"
+}
+
+if ($Runs.Count -lt 1 -or $Runs.Count -gt 4) {
+    throw "V2 受控并发要求一次启动 1 至 4 个任务，当前为 $($Runs.Count) 个。"
+}
+
+$platformWsl = & pwsh -NoProfile -File "$PSScriptRoot\Get-QuantPlatformRoot.ps1" -Target Platform -Format WSL
 if ([string]::IsNullOrWhiteSpace($platformWsl)) {
-    Write-Error "无法解析平台 WSL 根路径。请检查 .research.local.json 或环境变量。"
-    exit 1
+    throw '无法解析 V2 平台 WSL 根路径。请检查 .research.local.json 或环境变量。'
 }
 $platformWsl = $platformWsl.Trim()
 
 Write-Host "platform_wsl = $platformWsl"
-Write-Host "config_count = $($Configs.Count)"
-Write-Host "----------------------------------------"
+Write-Host "run_count = $($Runs.Count)"
+Write-Host "dry_run = $($DryRun.IsPresent)"
+Write-Host '----------------------------------------'
 
-foreach ($cfg in $Configs) {
-    $cfg = $cfg.Trim()
-    if ([string]::IsNullOrWhiteSpace($cfg)) { continue }
+for ($i = 0; $i -lt $Runs.Count; $i++) {
+    $run = $Runs[$i]
+    $entryPoint = [string]$run.EntryPoint
+    if ($entryPoint -notin $allowedEntryPoints) {
+        throw "任务 $($i + 1) 的入口 '$entryPoint' 不在 V2 受控白名单：$($allowedEntryPoints -join ', ')"
+    }
 
-    $segName = [System.IO.Path]::GetFileNameWithoutExtension($cfg)
+    $arguments = @($run.Arguments | ForEach-Object { [string]$_ })
+    if ($arguments -contains '--in-process') {
+        throw "任务 $($i + 1) 禁止使用 --in-process。"
+    }
 
-    $cfgRel = $cfg -replace '\\', '/'
-    $idx = $cfgRel.IndexOf("configs/")
-    if ($idx -ge 0) { $cfgRel = $cfgRel.Substring($idx) }
+    $segmentName = [string]$run.Name
+    if ([string]::IsNullOrWhiteSpace($segmentName)) {
+        $segmentName = "run_$($i + 1)"
+    }
+    $safeName = $segmentName -replace '[^A-Za-z0-9_.-]', '_'
+    $safePrefix = $LogPrefix -replace '[^A-Za-z0-9_.-]', '_'
+    $logRel = "tmp/${safePrefix}_${safeName}.log"
+    $doneMsg = "====== $safeName done, window can be closed ======"
 
-    $logRel = "tmp/${LogPrefix}_${segName}.log"
-    $doneMsg = "====== $segName done, window can be closed ======"
+    $commandParts = @(
+        '.venv/bin/python',
+        (Convert-ToBashLiteral -Value $entryPoint)
+    )
+    $commandParts += $arguments | ForEach-Object { Convert-ToBashLiteral -Value $_ }
+    $command = $commandParts -join ' '
 
-    # bash 命令：进平台目录、设环境、跑回测、tee 写盘、完成后等待回车
-    $bashCmd = "cd '$platformWsl'; export PYTHONPATH=src PYTHONUNBUFFERED=1; python3 src/run_v2_backtest.py --config '$cfgRel' 2>&1 | tee '$logRel'; echo '$doneMsg'; read"
+    $bashCmd = "set -o pipefail; cd '$platformWsl' && export PYTHONUNBUFFERED=1 && $command 2>&1 | tee '$logRel'; status=`$?; echo '$doneMsg exit_status='`$status; read -r; exit `$status"
+    $cmdArgs = "/k title $safeName & wsl.exe bash -lc `"$bashCmd`""
 
-    # cmd 窗口命令：先设标题，再启动 wsl bash（用 & 而非 &&，兼容 PS 调用 Start-Process 时的转义）
-    $cmdArgs = "/k title $segName & wsl -- bash -c `"$bashCmd`""
+    Write-Host "run: $safeName"
+    Write-Host "entry: $entryPoint"
+    Write-Host "log: $logRel"
+    Write-Host "bash: $bashCmd"
 
-    Start-Process -FilePath "cmd.exe" -ArgumentList $cmdArgs | Out-Null
-
-    Write-Host "window launched: $segName  (config: $cfgRel, log: $logRel)"
+    if (-not $DryRun) {
+        Start-Process -FilePath 'cmd.exe' -ArgumentList $cmdArgs | Out-Null
+        Write-Host "window launched: $safeName"
+    }
 }
 
-Write-Host "----------------------------------------"
-Write-Host "All $($Configs.Count) window(s) launched."
-Write-Host "Patrol protocol: read tmp/${LogPrefix}_*.log every 2 min until all summary.json present."
+Write-Host '----------------------------------------'
+if ($DryRun) {
+    Write-Host 'DryRun 完成，未启动任何回测进程。'
+}
+else {
+    Write-Host '全部窗口已启动；请按规范主动巡检日志、结果产物和进程组状态。'
+}

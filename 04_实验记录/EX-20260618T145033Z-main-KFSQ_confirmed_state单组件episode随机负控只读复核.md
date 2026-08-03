@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260618T145429Z-main-VRMQ
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_kfsq_confirmed_state_episode_readonly.py
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv
@@ -78,7 +78,7 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| 2XKW scored OOS panel | 读取已按滚动训练段生成的 `confirmed_state_only_score` | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv` |
+| 2XKW scored OOS panel | 读取已按滚动训练段生成的 `confirmed_state_only_score` | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv` |
 | `state_lifecycle_pair` | 双组件对照 | 2XKW 输出 |
 | shift prev/next | `confirmed_state_only_score` 日期错位负控 | 脚本内固定生成 |
 | random same support | episode 级同规模随机负控 | 脚本内固定 seed `20260618` |
@@ -151,8 +151,8 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_kfsq_confirmed_state_episode_readonly.py
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_kfsq_confirmed_state_episode_readonly.py
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv
 ```
 
 ### 运行命令
@@ -165,15 +165,15 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_kfsq_confirme
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T145033Z-main-KFSQ/run.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T145033Z-main-KFSQ/run.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T145033Z-main-KFSQ/run.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T145033Z-main-KFSQ/run.log"`
 - 异常判断：无异常退出；输出 213 行 OOS 日期样本、32 个 OOS episode。
 - 后台回测豁免：不适用，前台可见运行。
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T145033Z-main-KFSQ/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T145033Z-main-KFSQ/
 ```
 
 ## 12. 实际观察

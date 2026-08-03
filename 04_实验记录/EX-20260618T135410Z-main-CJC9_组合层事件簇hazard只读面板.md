@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260618T140056Z-main-FDSQ
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_cjc9_episode_hazard_readonly.py
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
@@ -79,8 +79,8 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| LJQ7 action panel | 输入组合状态与未来路径标签 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv` |
-| K3YL predictions | 前序概率/分位数基准 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T030506Z-main-K3YL/k3yl_test_predictions.csv` |
+| LJQ7 action panel | 输入组合状态与未来路径标签 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv` |
+| K3YL predictions | 前序概率/分位数基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T030506Z-main-K3YL/k3yl_test_predictions.csv` |
 | constant base rate | 检查是否只是坏路径基准率 | 脚本内生成 |
 | `r2_only` | 明确检验非R方是否有增量 | 脚本内从 `top1_r2` 生成 |
 | `front_any_binary` | 前序状态标签基准 | 脚本内生成 |
@@ -160,9 +160,9 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_cjc9_episode_hazard_readonly.py
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T030506Z-main-K3YL/k3yl_test_predictions.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_cjc9_episode_hazard_readonly.py
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T030506Z-main-K3YL/k3yl_test_predictions.csv
 ```
 
 ### 运行命令
@@ -175,8 +175,8 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_cjc9_episode_
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/run.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/run.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/run.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/run.log"`
 - 异常判断：脚本退出非 0、主宇宙少于 200 行、未来字段进入候选分数、错位/随机复制主候选，均视为异常。
 - 后台回测豁免：不适用，前台可见运行。
 
@@ -193,7 +193,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_cjc9_episode_
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/
 ```
 
 ## 12. 实际观察

@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260618T142119Z-main-NWY3
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_m3vc_episode_age_stability_readonly.py
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
@@ -87,9 +87,9 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| LJQ7 action panel | 重建 A1 episode 与事件簇边界 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv` |
-| CJC9 predictions | 固定主分数、错位分数和未来标签 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_test_predictions.csv` |
-| CJC9 OOS metrics | 复核原始分段指标 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_oos_metrics.csv` |
+| LJQ7 action panel | 重建 A1 episode 与事件簇边界 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv` |
+| CJC9 predictions | 固定主分数、错位分数和未来标签 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_test_predictions.csv` |
+| CJC9 OOS metrics | 复核原始分段指标 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_oos_metrics.csv` |
 | no-adjacent-day sample | 去掉连续日期簇后看信号是否仍成立 | 脚本内固定 `gap_days=5` |
 | episode-level aggregate | 按 A1 连续 episode 聚合，避免一天一票放大 | 脚本内从 LJQ7 重建 |
 | shift_prev1 / shift_next1 | 日期错位负控 | CJC9 已输出固定分数 |
@@ -170,10 +170,10 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_m3vc_episode_age_stability_readonly.py
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_test_predictions.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_oos_metrics.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_m3vc_episode_age_stability_readonly.py
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T212938Z-main-LJQ7/ljq7_action_panel.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_test_predictions.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T135410Z-main-CJC9/cjc9_oos_metrics.csv
 ```
 
 ### 运行命令
@@ -186,15 +186,15 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_m3vc_episode_
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/run.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/run.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/run.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/run.log"`
 - 异常判断：无异常退出；初版 gate 发现过松后已收紧随机负控并重跑。
 - 后台回测豁免：不适用，前台可见运行。
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T141233Z-main-M3VC/
 ```
 
 ## 12. 实际观察

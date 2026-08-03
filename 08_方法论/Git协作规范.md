@@ -60,7 +60,7 @@ migration/old-r010-b5
 建议执行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/Test-ResearchRepo.ps1
+pwsh -NoProfile -File tools/Test-ResearchRepo.ps1
 ```
 
 如果涉及回测平台，还应按平台文档执行对应质量门禁。

@@ -14,7 +14,7 @@ decision_ids:
   - DEC-20260627T073551Z-main-DTH2
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-DEFENSE/rule_a_idle/EX-20260626T030352Z-main-RA5/formal/rule_a_3d_gate/cost1x/2024/
 result_paths:

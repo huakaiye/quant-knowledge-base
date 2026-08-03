@@ -17,7 +17,7 @@ decision_ids:
 lit_ids: []
 idea_ids:
   - IDEA-20260529T000000Z-mig-I2026052900174B28
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/twap_execution_repair.json
 result_paths:
@@ -86,8 +86,8 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| UKVS `count_p10_n6_guard_env_hold4` | 日频信号候选基准 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T033527Z-main-UKVS/summary/repair_variant_all_metrics.csv` |
-| 8QKX 单点分钟审计 | 执行失败基准 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T035232Z-main-8QKX/summary/minute_execution_summary.csv` |
+| UKVS `count_p10_n6_guard_env_hold4` | 日频信号候选基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T033527Z-main-UKVS/summary/repair_variant_all_metrics.csv` |
+| 8QKX 单点分钟审计 | 执行失败基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T035232Z-main-8QKX/summary/minute_execution_summary.csv` |
 | `twap_p05` | 10:00-10:30 买入、14:30-14:55 卖出，每分钟最多参与 5% 成交额 | 本实验输出 |
 | `twap_p03` | 同上，每分钟最多参与 3% 成交额 | 本实验输出 |
 | `twap_p05_histliq_p03` | 5% TWAP，加信号日前 20 日同窗口 3% 历史容量过滤 | 本实验输出 |
@@ -159,7 +159,7 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/twap_execution_repair.json
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/twap_execution_repair.json
 ```
 
 ### 运行命令
@@ -172,7 +172,7 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 可见进度与日志
 
 - 是否过程可见：是，使用 `PYTHONUNBUFFERED=1` 和 `tee`。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/twap_execution_repair.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/twap_execution_repair.log`
 - 查看进度命令：`Get-Content <log> -Tail 80`
 - 异常判断：若任一 TWAP 变体无权益曲线、分钟数据缺失严重或成交统计无法输出，则实验不得完成。
 - 后台回测豁免：不适用。
@@ -190,7 +190,7 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260603T000000Z-mig-HD5EEBAA8D5EEB/EX-20260607T062555Z-main-VJDG/
 ```
 
 ## 12. 实际观察

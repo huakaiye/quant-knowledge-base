@@ -12,7 +12,7 @@ module_type: 核心轮动状态条件化锚定信号门禁
 decision_ids: [DEC-20260618T162627Z-main-3SKD]
 lit_ids: [LIT-20260614T112631Z-main-A9BK]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_ttsk_state_conditioned_nearness_readonly.py
 result_paths:
@@ -141,7 +141,7 @@ tags: [双池轮动, 52周高点, nearness, 状态条件化, 只读门禁, 负�
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_ttsk_state_conditioned_nearness_readonly.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_ttsk_state_conditioned_nearness_readonly.py
 ```
 
 ### 运行命令
@@ -154,19 +154,19 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_ttsk_state_co
 ### 可见进度与日志
 
 - 是否过程可见：是
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/run_ttsk.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/run_ttsk.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/run_ttsk.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/run_ttsk.log"`
 - 异常判断：第一次运行因状态汇总列名错误失败，已修复脚本并重新编译/运行通过。
 - 后台回测豁免：不适用。
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_event_panel.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_state_summary.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_segment_summary.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_random_control_summary.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_event_panel.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_state_summary.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_segment_summary.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T161832Z-main-KDGD/EX-20260618T161843Z-main-TTSK/ttsk_random_control_summary.csv
 ```
 
 ## 12. 实际观察

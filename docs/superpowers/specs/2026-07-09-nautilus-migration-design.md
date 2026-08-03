@@ -1,5 +1,7 @@
 # 量化平台 NautilusTrader 迁移设计规格
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > 创建时间：2026-07-09
 > 状态：设计已确认，待 PoC 验证后进入实现计划
 > 作者：主控 Agent + 用户协作 brainstorming

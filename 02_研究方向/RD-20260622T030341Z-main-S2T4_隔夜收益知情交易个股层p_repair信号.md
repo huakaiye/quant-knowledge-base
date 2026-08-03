@@ -37,7 +37,7 @@ tags: [双池轮动, hard5, 隔夜收益, 知情交易, 个股层, p_repair, 顶
 
 - 所属策略：双池轮动 DP00（默认 hard5）
 - 所属模块：核心轮动风控诊断模块（个股层 p_repair）
-- 平台策略代码：`${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py`
+- 平台策略代码：`${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py`
 - 平台配置路径：待门禁后定
 - 平台结果路径：待门禁后定
 

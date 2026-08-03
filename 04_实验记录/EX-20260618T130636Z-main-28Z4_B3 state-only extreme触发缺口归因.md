@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260618T131519Z-main-UR2G
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_b3_state_only_extreme_gap.py
   - results/v2/research/R010-B4/EX-20260611T060247Z-main-592F/summary/formal/segment_compare.csv
@@ -93,7 +93,7 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| 原 B3QC tiered-v2 四段 formal | 当前防御基准，只读取日志和 equity，不新增交易 | `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260611T060247Z-main-592F/summary/formal/segment_compare.csv` |
+| 原 B3QC tiered-v2 四段 formal | 当前防御基准，只读取日志和 equity，不新增交易 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260611T060247Z-main-592F/summary/formal/segment_compare.csv` |
 | quiet control | 非极端、非 active、非 raw 弱势日期，用于衡量普通环境风险 | `state_only_extreme_daily_panel.csv` |
 | gate active/pass 日期 | 检查 state-only 是否只是已知防御动作的重复 | `event_summary.csv` |
 | shift_prev1 / shift_next1 | 错位负控，检查事件日期是否只是滞后标签或趋势簇 | `event_summary.csv` |
@@ -172,8 +172,8 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_b3_state_only_extreme_gap.py
-输入：${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260611T060247Z-main-592F/summary/formal/segment_compare.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_b3_state_only_extreme_gap.py
+输入：${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260611T060247Z-main-592F/summary/formal/segment_compare.csv
 ```
 
 ### 运行命令
@@ -190,7 +190,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_b3_state_only
 ### 可见进度与日志
 
 - 是否过程可见：是，脚本打印 4 个分段 run_dir、action_rows、main_metrics、quality_gates 和 summary 路径。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/run.log`
 - 查看进度命令：`tail -f results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/run.log`
 - 异常判断：无异常；重跑后无 pandas warning。
 - 后台回测豁免：不适用；本轮为只读分析脚本，不是回测，不后台运行。
@@ -198,11 +198,11 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_b3_state_only
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/event_summary.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/segment_summary.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/random_control_summary.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/top_state_only_extreme_events.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/event_summary.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/segment_summary.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/random_control_summary.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260618T130636Z-main-28Z4/state_only_extreme_gap/top_state_only_extreme_events.csv
 ```
 
 ## 12. 实际观察

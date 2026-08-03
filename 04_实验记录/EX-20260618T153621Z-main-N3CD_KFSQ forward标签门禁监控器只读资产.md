@@ -12,7 +12,7 @@ module_type: 防御模块事前暴露管理层
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/monitor_kfsq_forward_readiness.py
 result_paths:
@@ -75,8 +75,8 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| KZF8 连续 forward run | 验证监控器能复现已知数据不足事实 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/continuous_forward_hard5/forward_20260520_20260617/` |
-| KZF8 summary | 对照 H10 行数/episode 为 0 的结论 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/summary.json` |
+| KZF8 连续 forward run | 验证监控器能复现已知数据不足事实 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/continuous_forward_hard5/forward_20260520_20260617/` |
+| KZF8 summary | 对照 H10 行数/episode 为 0 的结论 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/summary.json` |
 
 ## 6. 竞争性解释
 
@@ -143,7 +143,7 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/monitor_kfsq_forward_readiness.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/monitor_kfsq_forward_readiness.py
 ```
 
 ### 运行命令
@@ -156,15 +156,15 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/monitor_kfsq_forward_
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T153621Z-main-N3CD/run_monitor.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T153621Z-main-N3CD/run_monitor.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T153621Z-main-N3CD/run_monitor.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T153621Z-main-N3CD/run_monitor.log"`
 - 异常判断：无异常退出；输出 `any_h10_gate_pass=false`
 - 后台回测豁免：不适用，前台可见运行
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T153621Z-main-N3CD/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T153621Z-main-N3CD/
 ```
 
 ## 12. 实际观察

@@ -12,7 +12,7 @@ module_type: 核心轮动 score 过热拥挤机制
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - 未执行回测配置（只读分布面板）
 result_paths:
@@ -132,7 +132,7 @@ ETF score 横截面分布在分化/抱团期存在"聚集带 + 离散双尾"或�
 
 ### 平台配置
 
-- 脚本：`${QUANT_PLATFORM_ROOT}/scripts/research/analyze_score_distribution_panel.py`
+- 脚本：`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_score_distribution_panel.py`
 - 数据：ClickHouse `quant.jq_bar_daily`，端口 9001
 - 候选池：STATIC_ETF_POOL 133 只（未叠 MA 过滤和动态池）
 - score 公式：1:1 复用 `src/quant_v2/utils/momentum.py:144` `_score_log_matrix`（weights=linspace(1,2,n)，fit_weights=weights²，annualized=exp(slope*250)-1，r2=1-ss_res/ss_tot，score=annualized*r2）

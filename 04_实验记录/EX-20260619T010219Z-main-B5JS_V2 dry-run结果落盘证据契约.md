@@ -12,7 +12,7 @@ module_type: 执行与换仓模块
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - src/run_v2_live.py
   - src/quant_v2/cli/run_live.py
@@ -81,9 +81,9 @@ V2 实盘 dry-run 是否能把单轮订单意图、事件、组合快照保存�
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| 原始 CLI 行为 | 只打印单轮数量，不保存完整证据 | `${QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py` |
-| 新增 JSON helper 单测 | 验证结果结构和时间序列化 | `${QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py` |
-| `--loop` 排除 | 防止单轮证据参数被误用于持续循环 | `${QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py` |
+| 原始 CLI 行为 | 只打印单轮数量，不保存完整证据 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py` |
+| 新增 JSON helper 单测 | 验证结果结构和时间序列化 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py` |
+| `--loop` 排除 | 防止单轮证据参数被误用于持续循环 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py` |
 
 ## 6. 竞争性解释
 
@@ -143,7 +143,7 @@ V2 实盘 dry-run 是否能把单轮订单意图、事件、组合快照保存�
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SUB-EXEMPT-20260619T014600Z-main-NEXTPUSH | 无 | SUBTASK-NONR-NEXT-PUSH-EXEMPT | 无 | 2026-06-19T01:05:18Z | `README.md`; `00_入口/研究驾驶舱.md`; `00_入口/当前状态.md`; `08_方法论/*`; `${QUANT_PLATFORM_ROOT}/AGENTS.md`; `${QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py`; `${QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py` | `${QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py`; `${QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py`; `${QUANT_PLATFORM_ROOT}/docs/V2_MiniQMT实盘适配说明.md`; 本实验记录 | `PYTHONPATH=src python3 -m pytest src/tests/quant_v2/test_live_job_and_cli.py -q`; `PYTHONPATH=src python3 -m py_compile src/quant_v2/cli/run_live.py` | 只判断工程证据契约，不判断策略有效性、未来函数最终结论或路线 promote | 没有真实 QMT 账号与成交日志，无法验证实盘外部证据 | 主控完成代码审阅、单测和文档回填 | B5JS 通过工程契约；7FY3 仍保持 park，下一步变为采集真实 dry-run JSON |
+| SUB-EXEMPT-20260619T014600Z-main-NEXTPUSH | 无 | SUBTASK-NONR-NEXT-PUSH-EXEMPT | 无 | 2026-06-19T01:05:18Z | `README.md`; `00_入口/研究驾驶舱.md`; `00_入口/当前状态.md`; `08_方法论/*`; `${LEGACY_QUANT_PLATFORM_ROOT}/AGENTS.md`; `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py`; `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py` | `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py`; `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py`; `${LEGACY_QUANT_PLATFORM_ROOT}/docs/V2_MiniQMT实盘适配说明.md`; 本实验记录 | `PYTHONPATH=src python3 -m pytest src/tests/quant_v2/test_live_job_and_cli.py -q`; `PYTHONPATH=src python3 -m py_compile src/quant_v2/cli/run_live.py` | 只判断工程证据契约，不判断策略有效性、未来函数最终结论或路线 promote | 没有真实 QMT 账号与成交日志，无法验证实盘外部证据 | 主控完成代码审阅、单测和文档回填 | B5JS 通过工程契约；7FY3 仍保持 park，下一步变为采集真实 dry-run JSON |
 
 台账行：已同步 `01_台账/子代理调用台账.csv`。
 
@@ -152,9 +152,9 @@ V2 实盘 dry-run 是否能把单轮订单意图、事件、组合快照保存�
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py
-${QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py
-${QUANT_PLATFORM_ROOT}/docs/V2_MiniQMT实盘适配说明.md
+${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py
+${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py
+${LEGACY_QUANT_PLATFORM_ROOT}/docs/V2_MiniQMT实盘适配说明.md
 ```
 
 ### 运行命令
@@ -167,7 +167,7 @@ cd '/mnt/e/量化平台_V1.4.0' && PYTHONPATH=src python3 -m py_compile src/quan
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/pytest_live_cli_output_json.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/pytest_live_cli_output_json.log`
 - 查看进度命令：前台运行，无后台进度命令。
 - 异常判断：第一次运行 `2 failed, 6 passed`，失败原因是 WSL Python 3.10 触发旧 CLI 单测的 Python 3.11 保护；修正测试环境 monkeypatch 后复跑 `8 passed`。
 - 后台回测豁免：不适用，前台运行单测。
@@ -179,8 +179,8 @@ cd '/mnt/e/量化平台_V1.4.0' && PYTHONPATH=src python3 -m py_compile src/quan
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/pytest_live_cli_output_json.log
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/pytest_live_cli_output_json.log
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/summary.json
 ```
 
 ## 12. 实际观察
@@ -195,10 +195,10 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-2026
 
 ## 13. 支持证据
 
-- `${QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py` 新增 `--output-json`，写出字段包括 `current_dt/dry_run/executed_events/orders/trades/records/portfolio`。
-- `${QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py` 覆盖 dry-run 参数传递、JSON 写出、`datetime` 序列化、`--loop` 拒绝。
-- `${QUANT_PLATFORM_ROOT}/docs/V2_MiniQMT实盘适配说明.md` 已补充 `--output-json` 参数说明和 dry-run 示例。
-- 验证日志：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/pytest_live_cli_output_json.log`，最终 `8 passed in 1.60s`。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/cli/run_live.py` 新增 `--output-json`，写出字段包括 `current_dt/dry_run/executed_events/orders/trades/records/portfolio`。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/quant_v2/test_live_job_and_cli.py` 覆盖 dry-run 参数传递、JSON 写出、`datetime` 序列化、`--loop` 拒绝。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/docs/V2_MiniQMT实盘适配说明.md` 已补充 `--output-json` 参数说明和 dry-run 示例。
+- 验证日志：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T010219Z-main-B5JS/pytest_live_cli_output_json.log`，最终 `8 passed in 1.60s`。
 - 编译检查：`PYTHONPATH=src python3 -m py_compile src/quant_v2/cli/run_live.py` 通过。
 
 ## 14. 反对证据

@@ -1,5 +1,7 @@
 # ETF 全池 13:09 市场状态分类器只读面板 — 实现计划
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 新建一个 RD 方向和一个 EX 只读面板实验，写一个只读分析脚本，用 13:09 盘中数据把 ETF 全池每日市场状态分类（GMM 软聚类），并刻画各状态下的次日收益与大跌风险，验证分类有结构且有预测力。
@@ -41,7 +43,7 @@
 | RD 台账 | `01_台账/研究方向台账.csv` 14 列**带引号** | file 用 `/`，时间 `...Z`，ISO8601-Z |
 | EX 台账（注意文件名） | `01_台账/实验台账.csv`（**不是"实验记录台账"**） 14 列**无引号** | config_paths/result_paths 多值用 `;` |
 | 子代理台账 | `01_台账/子代理调用台账.csv` 15 列无引号 | call_id `SUB-...`，task_code `SUBTASK-...` |
-| 双向链接语法 | `[[路径/文件名|显示名]]`；表格内不带别名 | 规范 `08_方法论/Obsidian双向链接规范.md` |
+| 双向链接语法 | 正文可使用别名；表格内只使用无别名链接 | 规范 `08_方法论/Obsidian双向链接规范.md` |
 | 子模块 RD frontmatter 范本 | `02_研究方向/RD-...-OFF0_双池轮动进攻模块.md` | scope:模块，module_type 中文名，strategy_id 沿用父策略 |
 | 重建工具 | `tools/Build-ResearchBoard.ps1` / `Build-ResearchGraph.ps1` / `Test-ResearchRepo.ps1` | 资产变更后必跑 |
 
@@ -50,7 +52,7 @@
 ## 文件结构
 
 **平台侧（创建）**：
-- `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py` — 主分析脚本（单文件，~600 行，分 6 个职责段：连接/数据/特征/聚类/评估/落盘）
+- `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py` — 主分析脚本（单文件，~600 行，分 6 个职责段：连接/数据/特征/聚类/评估/落盘）
 
 **研究库侧（创建）**：
 - `02_研究方向/RD-<新id>_双池轮动全池1309市场状态分类模块.md` — 新 RD（New-ResearchItem 生成 + 手工补）
@@ -209,8 +211,8 @@ decision_ids: []
 lit_ids: []
 idea_ids: []
 platform_project: ${QUANT_PLATFORM_ROOT}
-config_paths: ['${QUANT_PLATFORM_ROOT}/configs/research/<RD_ID>/<EX_ID>/']
-result_paths: ['${QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/']
+config_paths: ['${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/<RD_ID>/<EX_ID>/']
+result_paths: ['${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/']
 summary_paths: []
 quality_gate: L1_readonly_preregistered
 subagent_call_ids: []
@@ -322,7 +324,7 @@ tags: [市场状态, regime, 1309盘中, GMM, 只读面板, 预注册]
 ```markdown
 ## 11. 执行记录
 ### 平台配置
-- 脚本：${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py
+- 脚本：${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py
 - 数据：jq_bar_daily（前复权日频）、jq_bar_minute_v2（13:09及开盘→13:09分钟）
 - ETF池：STATIC_ETF_POOL（约130只）
 - 样本期：2022-01-01 ~ 2026-06-30
@@ -331,8 +333,8 @@ tags: [市场状态, regime, 1309盘中, GMM, 只读面板, 预注册]
 （待 Task 7 执行后填）
 
 ### 结果路径
-${QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/diagnostic/
-${QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/summary/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/diagnostic/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/summary/
 ```
 
 第 2/12-17 节（研究背景/实际观察/支持证据/反对证据/偏差诊断/研究判断/下一步）实验后回填。
@@ -354,7 +356,7 @@ git commit -m "feat(EX): 预注册 ETF全池1309市场状态GMM分类只读面�
 ## Task 3: 写分析脚本 — 数据加载段（连接 + 取数）
 
 **Files:**
-- Create: `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
+- Create: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
 
 **Interfaces:**
 - Consumes: 平台 `momentum.py:12`、`clickhouse_portal.py:482/1306`、`ch_config.py:68/87`、`etf_dual_pool_all_weather_bear_defense.py:44`
@@ -365,6 +367,8 @@ git commit -m "feat(EX): 预注册 ETF全池1309市场状态GMM分类只读面�
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """
 ETF 全池 13:09 市场状态分类只读面板
 RD: <RD_ID>  EX: <EX_ID>
@@ -383,6 +387,8 @@ from sklearn.mixture import GaussianMixture
 from sklearn.metrics import silhouette_score
 
 # 平台路径注入（与 audit_mju9_etf_factor_consistency.py:30-32 同款）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
@@ -392,6 +398,8 @@ from quant_v2.data.clickhouse_portal import ClickHouseDataPortal
 from quant_v2.utils.momentum import weighted_regression_momentum_scores
 
 # 从策略源码导入 ETF 池（避免硬编码重复）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 sys.path.insert(0, str(PROJECT_ROOT / "src" / "strategies" / "research"))
 from etf_dual_pool_all_weather_bear_defense import STATIC_ETF_POOL
 
@@ -528,7 +536,11 @@ def _query_rows(client: Client, sql: str, params: dict) -> list[tuple]:
 ```bash
 cd "E:/【笔记库】/量化研究库_V2.0.0"
 # 脚本在平台目录，研究库不直接提交平台代码；但记录本次新增到执行记录
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 # 平台侧 git 由平台仓库管理，这里只确认文件存在
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 ls -la "E:/量化平台_V1.4.0/scripts/research/analyze_etf_regime_1309_panel.py"
 echo "脚本骨架已就位（数据加载段）"
 ```
@@ -540,7 +552,7 @@ echo "脚本骨架已就位（数据加载段）"
 ## Task 4: 写分析脚本 — 特征工程段（两层特征）
 
 **Files:**
-- Modify: `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
+- Modify: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
 
 **Interfaces:**
 - Consumes: Task 3 的 `_load_daily_close`、`_load_minute_1309_and_factor`、`_load_daily_factor`
@@ -712,7 +724,7 @@ wc -l "E:/量化平台_V1.4.0/scripts/research/analyze_etf_regime_1309_panel.py"
 ## Task 5: 写分析脚本 — 聚类段（分层 GMM + K 选择）
 
 **Files:**
-- Modify: `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
+- Modify: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
 
 ⚠️ **关键约束**：K 选择必须**只看轮廓系数**，不看收益。这一步完成后才能进入 Task 6（评估收益）。
 
@@ -786,7 +798,7 @@ echo "Task 5 完成：聚类段（K选择+bootstrap+组合状态）已写入脚�
 ## Task 6: 写分析脚本 — 评估段（次日收益 + 错位负控 + 痛点交叉表）
 
 **Files:**
-- Modify: `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
+- Modify: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
 
 - [ ] **Step 1: 写次日全池等权收益计算（13:09→次日13:09 前复权）**
 
@@ -896,7 +908,7 @@ echo "Task 6 完成：评估段（次日收益+错位负控+参考交叉表）�
 ## Task 7: 写分析脚本 — 落盘段 + main 串联 + 调试运行
 
 **Files:**
-- Modify: `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
+- Modify: `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py`
 
 - [ ] **Step 1: 写落盘函数（csv + json + md）**
 
@@ -1074,7 +1086,7 @@ Read `01_台账/研究方向台账.csv`，追加（注意双引号包裹、`/` �
 Read `01_台账/实验台账.csv`，追加（注意**无引号**、`config_paths`/`result_paths` 用 `;` 分隔）：
 
 ```csv
-<EX_ID>,<RD_ID>,<completed或parked>,completed_readonly_regime_strategy_panel,ETF全池1309市场状态GMM分类只读面板,<假设一句话>,${QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py,${QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/,04_实验记录/<EX_ID>_ETF全池1309市场状态GMM分类只读面板.md,,<created>Z,<updated>Z>,<新手摘要一句话>,<下一步>
+<EX_ID>,<RD_ID>,<completed或parked>,completed_readonly_regime_strategy_panel,ETF全池1309市场状态GMM分类只读面板,<假设一句话>,${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_etf_regime_1309_panel.py,${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/<RD_ID>/<EX_ID>/,04_实验记录/<EX_ID>_ETF全池1309市场状态GMM分类只读面板.md,,<created>Z,<updated>Z>,<新手摘要一句话>,<下一步>
 ```
 
 - [ ] **Step 5: 同步子代理调用台账（追加 6 行本次头脑风暴+落地的子代理）**
@@ -1141,6 +1153,8 @@ Read `00_入口/研究驾驶舱.md`，若新方向影响"当前主推方向"或"
 cd "E:/【笔记库】/量化研究库_V2.0.0"
 git add "00_入口/研究进展板.canvas" "00_入口/研究图谱.json" "00_入口/研究图谱.md"
 # 研究驾驶舱若改也 add
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 git commit -m "chore: 重建研究进展板与图谱（新增 <RD_ID>/<EX_ID>）
 
 Build-ResearchBoard + Build-ResearchGraph（0 悬空边）+ Test-ResearchRepo 通过。"

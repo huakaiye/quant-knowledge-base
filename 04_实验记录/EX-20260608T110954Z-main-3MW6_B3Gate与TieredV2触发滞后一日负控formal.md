@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260608T072559Z-main-B3QC
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-B4/EX-20260608T110954Z-main-3MW6/formal/manifest.json
   - configs/research/R010-B4/EX-20260608T110954Z-main-3MW6/formal/cap80_lag1_cost2x_slip2bps/
@@ -169,7 +169,7 @@ PYTHONPATH=src python3 scripts/research/summarize_b3nc_trigger_lag_formal.py
 ### 可见进度与日志
 
 - 是否过程可见：是，formal 脚本逐个分段输出并用 `tee` 写日志。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T110954Z-main-3MW6/logs/formal/`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T110954Z-main-3MW6/logs/formal/`
 - 查看进度命令：`Get-Content -Tail 40 <log>` 或 WSL 内 `tail -f results/v2/research/R010-B4/EX-20260608T110954Z-main-3MW6/logs/formal/<log>`
 - 异常判断：脚本会记录 `exit_status`；非 0 直接停止。
 - 后台回测豁免：无，本轮过程可见前台运行。

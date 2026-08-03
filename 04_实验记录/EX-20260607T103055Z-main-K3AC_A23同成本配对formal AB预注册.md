@@ -14,7 +14,7 @@ decision_ids:
   - DEC-20260607T125847Z-main-WQ8R
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-A23/paired_cost/EX-20260607T103055Z-main-K3AC/formal/
   - configs/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60_cost2x_slip2bps/

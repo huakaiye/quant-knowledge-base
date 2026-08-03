@@ -12,7 +12,7 @@ module_type: 防御模块事前暴露管理层
 decision_ids: [DEC-20260617T215629Z-main-UARF]
 lit_ids: [LIT-20260614T112631Z-main-VY4K]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/generate_xa5u_r010d_overheat_smoke_configs.py
   - configs/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/
@@ -77,8 +77,8 @@ LJQ7 主标签 `front_existing_any` 失败，原因是 broad-any 覆盖太宽且
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| baseline_b3_tiered_v2_current | 当前代码口径 baseline，避免用旧代码结果比较新候选 | `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/baseline_b3_tiered_v2_current/xa5u_baseline_b3_tiered_v2_current_2024.json` |
-| r010d_d2_overheat_cap90_keep_current | 只启用已有 R010D D2-overheat 动作 | `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/r010d_d2_overheat_cap90_keep_current/xa5u_r010d_d2_overheat_cap90_keep_current_2024.json` |
+| baseline_b3_tiered_v2_current | 当前代码口径 baseline，避免用旧代码结果比较新候选 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/baseline_b3_tiered_v2_current/xa5u_baseline_b3_tiered_v2_current_2024.json` |
+| r010d_d2_overheat_cap90_keep_current | 只启用已有 R010D D2-overheat 动作 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/r010d_d2_overheat_cap90_keep_current/xa5u_r010d_d2_overheat_cap90_keep_current_2024.json` |
 
 ## 6. 竞争性解释
 
@@ -169,7 +169,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/summarize_xa5u_r010d_
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T213634Z-main-XA5U/smoke/`
 - 查看进度命令：前台 WSL 命令直接输出；结果汇总见 `summary/summary.json`。
 - 异常判断：任一回测非 0 退出、summary 缺失、R010D 触发少于 5、经济门槛失败。
 - 后台回测豁免：不适用。

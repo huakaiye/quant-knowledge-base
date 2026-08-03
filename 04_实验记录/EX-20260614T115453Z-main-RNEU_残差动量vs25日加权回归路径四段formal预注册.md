@@ -13,7 +13,7 @@ decision_ids: [DEC-20260615T001218Z-main-SD2Y]
 lit_ids:
   - LIT-20260614T112624Z-main-WEVV
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/
 result_paths:
@@ -47,13 +47,13 @@ tags: [双池轮动, 核心轮动, 残差动量, 新信号构造, 四段formal, 
 实际看到：待执行（预注册阶段，尚未跑回测）。
 这说明：待执行。
 但还不能说明：待执行。
-下一步要做：先在平台 `${QUANT_PLATFORM_ROOT}/src/quant_v2/utils/momentum.py` 新增并列的 `residual_momentum_scores` 评分函数（默认关闭，不破坏现有 `weighted_regression_momentum_scores`），然后生成 4 段 config + cost2x/slip2bps 子集，在 WSL 跑四段 formal。
+下一步要做：先在平台 `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/utils/momentum.py` 新增并列的 `residual_momentum_scores` 评分函数（默认关闭，不破坏现有 `weighted_regression_momentum_scores`），然后生成 4 段 config + cost2x/slip2bps 子集，在 WSL 跑四段 formal。
 
 ## 2. 研究背景
 
 本实验属于[[02_研究方向/RD-20260614T115209Z-main-T6R6_双池轮动残差动量信号构造|双池轮动残差动量信号构造]]，是核心轮动模块的信号构造子方向。
 
-当前平台主线评分（`${QUANT_PLATFORM_ROOT}/src/quant_v2/utils/momentum.py` 的 `weighted_regression_momentum_scores`）本质是"对 log(price) 做时间加权线性回归"：
+当前平台主线评分（`${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/utils/momentum.py` 的 `weighted_regression_momentum_scores`）本质是"对 log(price) 做时间加权线性回归"：
 
 ```text
 y_t = log(P_t), x = 0..n
@@ -145,8 +145,8 @@ score = annualized_residual * R²
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| `baseline_ann250_top1_hard5` | 现有 25 日加权回归路径 + hard5，本实验主基准 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60/`（参照 LM3D 的 hard5 基准） |
-| `residual_mkt_only_top1_hard5` | 单因子市场模型残差 25 日动量 + hard5，主候选 | 计划：`${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/residual_mkt_only/` |
+| `baseline_ann250_top1_hard5` | 现有 25 日加权回归路径 + hard5，本实验主基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A23/state_tier_hot_budget/base70_blowoff92_m04_d09_cap60/`（参照 LM3D 的 hard5 基准） |
+| `residual_mkt_only_top1_hard5` | 单因子市场模型残差 25 日动量 + hard5，主候选 | 计划：`${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/residual_mkt_only/` |
 | `residual_mkt_only_top1_hard5_cost2x_slip2bps` | 成本扰动子集 | 同上目录 cost2x_slip2bps 子目录 |
 | `residual_shuffled_top1_hard5` | 随机残差负控（打乱残差时间） | 同上目录 shuffled 子目录 |
 | `residual_lag1_top1_hard5` | 错位残差负控（+1 日） | 同上目录 lag1 子目录 |
@@ -224,7 +224,7 @@ score = annualized_residual * R²
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/
   - baseline_ann250_top1_hard5_2020_2021.json
   - baseline_ann250_top1_hard5_2022_2023.json
   - baseline_ann250_top1_hard5_2024.json
@@ -238,7 +238,7 @@ ${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-T6R6/EX-2026061
   - residual_lag1_top1_hard5_*.json (4 段)
 ```
 
-**工程前置（已实现）**：残差动量评分器已整合进策略 `${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py`，作为 `_residual_momentum_scores_research` 函数（数学定义见研究背景章节）。`_score_etfs_batch` 已支持 config `scorer_type` 字段切换：`scorer_type=="residual"` 时调用残差评分器并自动获取市场基准 `residual_market_benchmark`（默认 510300.XSHG）收益；其他值或缺省时保持现有 `weighted_regression_momentum_scores` 行为不变。新增函数默认不启用，不破坏现有逻辑。config 由 `${QUANT_PLATFORM_ROOT}/scripts/research/build_rneu_residual_momentum_configs.py` 批量生成。回测执行脚本 `${QUANT_PLATFORM_ROOT}/scripts/research/run_rneu_segment.sh` 使用 `PYTHONUNBUFFERED=1 + tee` 保持过程可见。
+**工程前置（已实现）**：残差动量评分器已整合进策略 `${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py`，作为 `_residual_momentum_scores_research` 函数（数学定义见研究背景章节）。`_score_etfs_batch` 已支持 config `scorer_type` 字段切换：`scorer_type=="residual"` 时调用残差评分器并自动获取市场基准 `residual_market_benchmark`（默认 510300.XSHG）收益；其他值或缺省时保持现有 `weighted_regression_momentum_scores` 行为不变。新增函数默认不启用，不破坏现有逻辑。config 由 `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/build_rneu_residual_momentum_configs.py` 批量生成。回测执行脚本 `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_rneu_segment.sh` 使用 `PYTHONUNBUFFERED=1 + tee` 保持过程可见。
 
 ### 运行命令
 
@@ -251,7 +251,7 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 可见进度与日志
 
 - 是否过程可见：`是`，使用 `PYTHONUNBUFFERED=1` 和 `tee`。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/<run_id>.run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/<run_id>.run.log`
 - 查看进度命令：`wsl -- tail -f /mnt/e/量化平台_V1.4.0/results/v2/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/<run_id>.run.log`
 - 异常判断：退出码非 0、log 出现 Traceback、单段超 30 分钟无输出。
 - 后台回测豁免：不适用，前台 tee 可见。
@@ -259,7 +259,7 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-T6R6/EX-20260614T115453Z-main-RNEU/
   - <run_id>/summary/  (summary.json, trades.csv, equity.csv)
   - <run_id>/logs/
 ```

@@ -12,7 +12,7 @@ module_type: 个股层隔夜收益组合层 formal
 decision_ids: []
 lit_ids: []
 idea_ids: [MECH-20260620T154044Z-main-MATN]
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: [configs/research/R010-A22/overnight_share_paired/EX-20260622T033017Z-main-PNV8/formal/manifest.json]
 result_paths: [results/v2/research/R010-A22/overnight_share_paired/EX-20260622T033017Z-main-PNV8/formal]
 summary_paths: [results/v2/research/R010-A22/overnight_share_paired/EX-20260622T033017Z-main-PNV8/summary/formal/summary.json]

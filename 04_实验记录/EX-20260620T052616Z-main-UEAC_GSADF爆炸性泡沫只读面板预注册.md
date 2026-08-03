@@ -12,10 +12,11 @@ module_type: 过程层爆炸性泡沫检测
 decision_ids: []
 lit_ids: [LIT-20260620T052601Z-main-PYTZ]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
+execution_platform_status: legacy_completed_evidence
 config_paths: []
-result_paths: [${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/]
-summary_paths: [${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/summary.json]
+result_paths: [${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/]
+summary_paths: [${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/summary.json]
 quality_gate: completed_observe_not_passed
 subagent_call_ids: []
 subagent_exemption: 预注册设计阶段由主控承担，未调用执行子代理；主控：main；时间：2026-06-20T05:26:16Z
@@ -23,6 +24,8 @@ tags: [双池轮动, hard5, GSADF, PSY, 爆炸性, 泡沫检测, 只读面板, �
 ---
 
 # GSADF 爆炸性泡沫只读面板预注册
+
+> 历史执行证据：结果和命令来自 V1.4，只保留为当时实验事实。需要继续时必须在 V2 新开实验和受控入口，不得复制旧命令。
 
 ## 关联链接
 
@@ -69,7 +72,7 @@ tags: [双池轮动, hard5, GSADF, PSY, 爆炸性, 泡沫检测, 只读面板, �
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| hard5 全体高分事件 baseline | 主对比基准 | `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A16/hot_state_panel/`（沿用 A16/A11 事件源） |
+| hard5 全体高分事件 baseline | 主对比基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A16/hot_state_panel/`（沿用 A16/A11 事件源） |
 | 随机同 GSADF 桶 | 负控：检验差异是否只是 GSADF 桶随机分位效应 | 待生成 |
 | `shift_prev1` / `shift_next1` 错位 | 负控：检验是否日期基准错配 | 待生成 |
 | MAX 分层 | 正交性确认：GSADF 显著 + MAX 低的事件是否存在且后续差（确认不是 MAX 重复） | 待生成 |
@@ -162,14 +165,14 @@ wsl -- bash -lc "cd /mnt/e/量化平台_V1.4.0 && PYTHONPATH=src PYTHONUNBUFFERE
 ### 可见进度与日志
 
 - 是否过程可见：`是`（PYTHONUNBUFFERED=1 + tee）
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_run.log`
 - 异常判断：无异常。211/212 事件有效 GSADF（覆盖率 99.5%），14051 日频行，11314 GSADF 特征行。merge 列冲突问题修复后正常。
 - 后台回测豁免：不适用（只读面板，前台执行，约 60 秒，GSADF 递归 ADF 计算较重）
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/
 含：ueac_event_panel.csv / ueac_high_vs_low_summary.csv / ueac_shifted_control_summary.csv /
 ueac_near_high_strat_summary.csv / ueac_feature_coverage.csv / summary.json
 ```
@@ -177,7 +180,7 @@ ueac_near_high_strat_summary.csv / ueac_feature_coverage.csv / summary.json
 ### 结果路径
 
 ```text
-未执行（预期路径：${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/）
+未执行（预期路径：${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T052601Z-main-3B2X/EX-20260620T052616Z-main-UEAC/ueac_gsadf_panel/）
 ```
 
 工程依赖：GSADF 用纯 numpy 简化 ADF 右尾检验实现（statsmodels 不可用，pip install 超时）。GSADF = sup over recursive windows of ADF t-stat，临界值用 GSADF_THRESHOLD=0 简化，非严格 PSY 仿真临界值。

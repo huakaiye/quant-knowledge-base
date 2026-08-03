@@ -13,7 +13,7 @@ decision_ids: []
 lit_ids:
   - LIT-20260617T220410Z-main-RDHA
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: []
 result_paths:
   - results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T170619Z-main-YQBP/

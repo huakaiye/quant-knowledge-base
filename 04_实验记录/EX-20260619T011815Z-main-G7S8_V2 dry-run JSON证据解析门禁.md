@@ -12,7 +12,7 @@ module_type: 执行与换仓模块
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/analyze_g7s8_live_dry_run_json_gate.py
   - src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py
@@ -83,9 +83,9 @@ tags: [双池轮动, 低滞后, dry-run, JSON解析, 实盘证据, 执行与换�
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
 | B5JS JSON 契约 | 定义输入字段 | `EX-20260619T010219Z-main-B5JS` |
-| 完整订单意图样例 | 正控：应通过 schema/observation/order_intent 三层门禁 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/sample_dry_run.json` |
-| 空订单样例单测 | 负控：只能通过观察门禁，不能通过订单意图门禁 | `${QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` |
-| 缺字段样例单测 | 负控：不能通过 schema 门禁 | `${QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` |
+| 完整订单意图样例 | 正控：应通过 schema/observation/order_intent 三层门禁 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/sample_dry_run.json` |
+| 空订单样例单测 | 负控：只能通过观察门禁，不能通过订单意图门禁 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` |
+| 缺字段样例单测 | 负控：不能通过 schema 门禁 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` |
 
 ## 6. 竞争性解释
 
@@ -145,7 +145,7 @@ tags: [双池轮动, 低滞后, dry-run, JSON解析, 实盘证据, 执行与换�
 
 | 调用 ID | 平台昵称 | 任务代号 | 模型 | 发起时间 | 读取文件 | 修改文件 | 执行命令 | 结论边界 | 风险点 | 主控复核 | 结果对决策影响 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SUB-EXEMPT-20260619T011300Z-main-DRYJSON | 无 | SUBTASK-DRYRUN-JSON-GATE-EXEMPT | 无 | 2026-06-19T01:21:08Z | B5JS 实验记录；`${QUANT_PLATFORM_ROOT}/scripts/research` 样例脚本；`${QUANT_PLATFORM_ROOT}/src/tests/scripts` 测试样例 | 本实验记录；`${QUANT_PLATFORM_ROOT}/scripts/research/analyze_g7s8_live_dry_run_json_gate.py`; `${QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` | `PYTHONPATH=src python3 -m pytest src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py -q`; `py_compile`; 样例 JSON 门禁 | 只判断 JSON 解析门禁，不判断策略收益或真实实盘有效性 | 合成样例不能替代真实 QMT dry-run | 主控复核输出，修正了 `pindex=0` 被空值化的问题并复测通过 | G7S8 通过工程门禁；只补齐外部观察入口，不改变 7FY3 park 状态 |
+| SUB-EXEMPT-20260619T011300Z-main-DRYJSON | 无 | SUBTASK-DRYRUN-JSON-GATE-EXEMPT | 无 | 2026-06-19T01:21:08Z | B5JS 实验记录；`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research` 样例脚本；`${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/scripts` 测试样例 | 本实验记录；`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_g7s8_live_dry_run_json_gate.py`; `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` | `PYTHONPATH=src python3 -m pytest src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py -q`; `py_compile`; 样例 JSON 门禁 | 只判断 JSON 解析门禁，不判断策略收益或真实实盘有效性 | 合成样例不能替代真实 QMT dry-run | 主控复核输出，修正了 `pindex=0` 被空值化的问题并复测通过 | G7S8 通过工程门禁；只补齐外部观察入口，不改变 7FY3 park 状态 |
 
 台账行：已同步 `01_台账/子代理调用台账.csv`。
 
@@ -154,8 +154,8 @@ tags: [双池轮动, 低滞后, dry-run, JSON解析, 实盘证据, 执行与换�
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_g7s8_live_dry_run_json_gate.py
-${QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_g7s8_live_dry_run_json_gate.py
+${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py
 ```
 
 ### 运行命令
@@ -169,7 +169,7 @@ cd '/mnt/e/量化平台_V1.4.0' && PYTHONPATH=src python3 scripts/research/analy
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/run_g7s8_json_gate.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/run_g7s8_json_gate.log`
 - 查看进度命令：前台运行，无后台进度。
 - 异常判断：任一单测失败、样例门禁未通过或脚本依赖 QMT/数据库，则实验不通过；发现 `pindex=0` 被空值化后已修复并复测。
 - 后台回测豁免：不适用，前台运行脚本且不回测。
@@ -181,11 +181,11 @@ cd '/mnt/e/量化平台_V1.4.0' && PYTHONPATH=src python3 scripts/research/analy
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/dry_run_json_gate.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/orders.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/records.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/run_g7s8_json_gate.log
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/dry_run_json_gate.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/orders.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/records.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-20260619T011815Z-main-G7S8/run_g7s8_json_gate.log
 ```
 
 ## 12. 实际观察
@@ -200,8 +200,8 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260618T105950Z-main-7FY3/EX-2026
 
 ## 13. 支持证据
 
-- `${QUANT_PLATFORM_ROOT}/scripts/research/analyze_g7s8_live_dry_run_json_gate.py` 只读解析 JSON，不连接 QMT/数据库。
-- `${QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` 覆盖完整订单、空订单、缺字段和输出文件。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_g7s8_live_dry_run_json_gate.py` 只读解析 JSON，不连接 QMT/数据库。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/src/tests/scripts/test_analyze_g7s8_live_dry_run_json_gate.py` 覆盖完整订单、空订单、缺字段和输出文件。
 - 样例输出 `summary.json`：`input_file_count=1`、`schema_pass_count=1`、`observation_pass_count=1`、`order_intent_pass_count=1`、`total_order_count=1`。
 - 样例 `orders.csv` 保留 `order_id=sample-dry-run-1`、`symbol=510300.XSHG`、`pindex=0`、`created_at=2026-06-19T09:31:00`。
 

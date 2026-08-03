@@ -12,15 +12,15 @@ module_type: 核心轮动风控诊断模块
 decision_ids: [DEC-20260607T185223Z-main-HH4B]
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/
-  - ${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/guard/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/guard/
 result_paths:
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/logs/formal/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/logs/formal/
 summary_paths:
-  - ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/summary/formal/summary.json
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/summary/formal/summary.json
 quality_gate: formal_strict_12of12_all_pass_hard5_shadow_isolation
 subagent_call_ids:
   - SUB-20260608T032000Z-main-A22OBS-MIN
@@ -77,11 +77,11 @@ tags: [双池轮动, A22, hard5, observe, shadow, 默认关闭, 未来函数审�
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| A11 hard5 既有四段配置 | 生成 YA5R hard5 shadow_on/off 的来源 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A11/score_hot_backtest/r010a11_score_hot_hard5_tiered_v2_<segment>.json` |
-| A11 hard5 既有四段结果 | 检查派生 shadow_off 是否复现默认 hard5 行为 | `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A11/score_hot_backtest/hard5/<segment>/` |
-| YA5R hard5_shadow_off | A22 shadow 关闭动态对照 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/hard5_shadow_off/` |
-| YA5R hard5_shadow_on | A22 shadow-only 观察组 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/hard5_shadow_on/` |
-| YA5R double_on_guard | 静态互斥负控，只生成不运行 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/guard/` |
+| A11 hard5 既有四段配置 | 生成 YA5R hard5 shadow_on/off 的来源 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A11/score_hot_backtest/r010a11_score_hot_hard5_tiered_v2_<segment>.json` |
+| A11 hard5 既有四段结果 | 检查派生 shadow_off 是否复现默认 hard5 行为 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A11/score_hot_backtest/hard5/<segment>/` |
+| YA5R hard5_shadow_off | A22 shadow 关闭动态对照 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/hard5_shadow_off/` |
+| YA5R hard5_shadow_on | A22 shadow-only 观察组 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/hard5_shadow_on/` |
+| YA5R double_on_guard | 静态互斥负控，只生成不运行 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/guard/` |
 
 ## 6. 竞争性解释
 
@@ -155,10 +155,10 @@ tags: [双池轮动, A22, hard5, observe, shadow, 默认关闭, 未来函数审�
 ### 平台配置
 
 ```text
-生成脚本：${QUANT_PLATFORM_ROOT}/scripts/research/generate_ya5r_a22_hard5_observe_configs.py
-运行脚本：${QUANT_PLATFORM_ROOT}/scripts/research/run_ya5r_a22_hard5_observe.sh
-汇总脚本：${QUANT_PLATFORM_ROOT}/scripts/research/summarize_ya5r_a22_hard5_observe.py
-配置根：${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/
+生成脚本：${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/generate_ya5r_a22_hard5_observe_configs.py
+运行脚本：${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_ya5r_a22_hard5_observe.sh
+汇总脚本：${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/summarize_ya5r_a22_hard5_observe.py
+配置根：${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/
 ```
 
 ### 运行命令
@@ -178,8 +178,8 @@ PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_ya5
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/logs/formal/20260607T193000Z/`
-- 查看进度命令：`Get-Content ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/logs/formal/20260607T193000Z/<variant>_<segment>.run.log -Tail 80`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/logs/formal/20260607T193000Z/`
+- 查看进度命令：`Get-Content ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/logs/formal/20260607T193000Z/<variant>_<segment>.run.log -Tail 80`
 - 异常判断：`run_logs_ok_8of8=true`，`manifest_config_sha_match_8of8=true`。
 - 后台回测豁免：
 
@@ -190,8 +190,8 @@ PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_ya5
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/summary/formal/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/hard5_default_observe/EX-20260607T192201Z-main-YA5R/summary/formal/summary.json
 ```
 
 ## 12. 实际观察

@@ -12,7 +12,7 @@ module_type: 组合层横截面离散度保守开关 formal
 decision_ids: [DEC-20260620T150805Z-main-XSNQ]
 lit_ids: [LIT-20260620T052147Z-main-86GQ]
 idea_ids: [MECH-20260619T025934Z-main-DQUM, MECH-20260620T154044Z-main-MATN, MECH-20260620T154049Z-main-2JVB]
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: [configs/research/R010-A22/cs_dispersion_paired/EX-20260620T094932Z-main-S8BP/formal/manifest.json]
 result_paths: [results/v2/research/R010-A22/cs_dispersion_paired/EX-20260620T094932Z-main-S8BP/formal]
 summary_paths: [results/v2/research/R010-A22/cs_dispersion_paired/EX-20260620T094932Z-main-S8BP/summary/formal/summary.json]

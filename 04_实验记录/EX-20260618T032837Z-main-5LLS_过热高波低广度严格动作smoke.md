@@ -12,7 +12,7 @@ module_type: 防御模块事前暴露管理层
 decision_ids: []
 lit_ids: [LIT-20260617T220410Z-main-RDHA, LIT-20260614T112631Z-main-VY4K]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/generate_5lls_r010d_d3_strict_smoke_configs.py
   - scripts/research/summarize_5lls_r010d_d3_strict_smoke.py
@@ -99,8 +99,8 @@ D3 strict 比 D2 更窄，但仍没有解决“强趋势段误伤”这个核心
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| B6FL baseline | 同口径当前 B3/tiered-v2 baseline，R010D 关闭 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T220410Z-main-B6FL/formal/summary/segment_summary.csv` |
-| `r010d_d3_strict_cap80` | 主候选，既有 D3 严格动作 | `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T032837Z-main-5LLS/smoke/` |
+| B6FL baseline | 同口径当前 B3/tiered-v2 baseline，R010D 关闭 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260617T220410Z-main-B6FL/formal/summary/segment_summary.csv` |
+| `r010d_d3_strict_cap80` | 主候选，既有 D3 严格动作 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T032837Z-main-5LLS/smoke/` |
 | `r010d_d3_strict_lag1` | 延迟一日负控 | 同上 |
 | `r010d_d3_strict_random_p377_seed20260618` | 同支持度随机负控 | 同上 |
 | `r010d_d3_strict_cap80_cost2x_slip2bps` | 成本扰动 | 同上 |
@@ -201,7 +201,7 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/summarize_5lls_r010d_
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T032837Z-main-5LLS/smoke/<variant>/<segment>/<run>.run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T032837Z-main-5LLS/smoke/<variant>/<segment>/<run>.run.log`
 - 查看进度命令：前台命令直接输出；每个配置用 `tee` 保存 run log。
 - 异常判断：配置生成失败、run_v2_backtest 非 0、结果目录缺 summary.json、D3 触发数低于 5、汇总脚本找不到 B6FL baseline。
 - 后台回测豁免：不适用；本轮前台可见执行。

@@ -12,7 +12,7 @@ module_type: 核心轮动模块
 decision_ids: [DEC-20260617T205354Z-main-W29B, DEC-20260617T212155Z-main-9PRQ]
 lit_ids: [LIT-20260617T204327Z-main-6JY4]
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260617T204310Z-main-Q88K/EX-20260617T210334Z-main-9VWX/
   - scripts/research/generate_q88k_fixed_non_r2_blend_configs.py

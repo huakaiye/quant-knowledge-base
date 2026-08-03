@@ -26,7 +26,7 @@
 
 ## 平台资产
 
-是否涉及 `E:\量化平台_V1.4.0`：
+是否涉及 `${QUANT_PLATFORM_ROOT}`（V2 当前平台）或 `${LEGACY_QUANT_PLATFORM_ROOT}`（V1.4 历史只读证据）：
 
 - [ ] 否
 - [ ] 是，配置路径：

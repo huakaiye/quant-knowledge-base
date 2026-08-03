@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260608T072559Z-main-B3QC
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-B4/EX-20260608T041610Z-main-B3QC/formal/cap80_cost2x_slip2bps/
   - configs/research/R010-B4/EX-20260608T041610Z-main-B3QC/formal/tiered_v2_cost2x_slip2bps/
@@ -178,9 +178,9 @@ PYTHONPATH=src python3 scripts/research/audit_b3qc_signal_dates.py
 ### 可见进度与日志
 
 - 是否过程可见：是，formal 脚本使用 `tee` 输出每个分段日志。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T041610Z-main-B3QC/logs/formal/`
-- 结果路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T041610Z-main-B3QC/formal/`
-- 汇总路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T041610Z-main-B3QC/summary/formal/`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T041610Z-main-B3QC/logs/formal/`
+- 结果路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T041610Z-main-B3QC/formal/`
+- 汇总路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-B4/EX-20260608T041610Z-main-B3QC/summary/formal/`
 - 运行状态：8/8 formal 完成。
 
 ### 运行异常和处理

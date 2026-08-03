@@ -16,7 +16,7 @@ related_decisions:
   - DEC-20260626T035024Z-main-K7R9
   - DEC-20260627T073551Z-main-DTH2
 config_path: ""
-result_path: "${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py"
+result_path: "${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py"
 subagent_call_ids:
   - SUB-20260628T100000Z-main-D3CACHE
   - SUB-20260628T143000Z-main-D7CFG

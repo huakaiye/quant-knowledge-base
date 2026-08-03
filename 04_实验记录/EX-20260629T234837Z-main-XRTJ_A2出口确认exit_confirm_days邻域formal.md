@@ -14,7 +14,7 @@ decision_ids:
 lit_ids: []
 idea_ids:
   - MECH-20260629T234714Z-main-EFHW
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-DEFENSE/rule_a_idle/EX-20260629T234837Z-main-XRTJ/formal/exit_confirm/
 result_paths:
@@ -200,7 +200,7 @@ wsl -- bash -lc "cd '$platformWsl' && bash scripts/research/run_parallel_backtes
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260629T234837Z-main-XRTJ/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260629T234837Z-main-XRTJ/
 ```
 
 ## 11.1 四段口径回测结果与方法论发现（2026-06-30，转十一年口径）

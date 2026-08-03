@@ -12,7 +12,7 @@ module_type: 外部验证数据门禁
 decision_ids: []
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/trxx_continuous_forward_hard5_20260520_20260618.json
 result_paths:
@@ -75,8 +75,8 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| KZF8 连续 forward hard5 | 对照 2026-06-17 截止时的 ACTION、A1 候选和 H10 不足结论 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/` |
-| N3CD 监控器 | 统一计算 H10 标签门禁，避免手工翻日志误判 | `${QUANT_PLATFORM_ROOT}/scripts/research/monitor_kfsq_forward_readiness.py` |
+| KZF8 连续 forward hard5 | 对照 2026-06-17 截止时的 ACTION、A1 候选和 H10 不足结论 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/` |
+| N3CD 监控器 | 统一计算 H10 标签门禁，避免手工翻日志误判 | `${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/monitor_kfsq_forward_readiness.py` |
 | 平台日线表 | 确认 2026-06-18 数据已存在 | ClickHouse `quant.jq_bar_daily` |
 
 ## 6. 竞争性解释
@@ -147,7 +147,7 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/trxx_continuous_forward_hard5_20260520_20260618.json
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/trxx_continuous_forward_hard5_20260520_20260618.json
 ```
 
 ### 运行命令
@@ -161,8 +161,8 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/monitor_kfsq_forward_
 ### 可见进度与日志
 
 - 是否过程可见：是，使用 `PYTHONUNBUFFERED=1` 和 `tee`。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/run_continuous_forward_hard5.log`；`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/run_readiness_monitor.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/run_continuous_forward_hard5.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/run_continuous_forward_hard5.log`；`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/run_readiness_monitor.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/run_continuous_forward_hard5.log"`
 - 异常判断：回测非 0 退出、无 `logs.jsonl`、无 `equity_curve.csv`、监控器无法识别 ACTION、H10 门禁计算缺字段。
 - 后台回测豁免：不适用；本实验前台可见运行。
 - 运行异常：首次运行监控器时发现相对 `--run-parent` 会触发 `Path.relative_to` 失败；已把 `monitor_kfsq_forward_readiness.py` 的 `run_parent` 和 `output_dir` 解析改为 `.expanduser().resolve()`，`py_compile` 通过，并用同一相对命令重跑成功。
@@ -170,10 +170,10 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/monitor_kfsq_forward_
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/summary.json
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/readiness_by_run.csv
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/a1_candidate_readiness.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/readiness_by_run.csv
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/readiness_monitor/a1_candidate_readiness.csv
 ```
 
 ## 12. 实际观察
@@ -193,7 +193,7 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-2026
 
 ## 13. 支持证据
 
-- 回测报告目录：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/continuous_forward_hard5/forward_20260520_20260618/d2ac12ae618c4380b0b96f3ab0a444ec/`。
+- 回测报告目录：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T154810Z-main-TRXX/continuous_forward_hard5/forward_20260520_20260618/d2ac12ae618c4380b0b96f3ab0a444ec/`。
 - `readiness_by_run.csv` 显示：`rows=22`，`a1_candidate_rows_not_already_dd5=3`，`a1_episode_count=1`，`h10_labelable_rows=0`，`h10_labelable_episode_count=0`，`h10_gate_pass=False`。
 - `a1_candidate_readiness.csv` 显示三个候选日期仍分别需要 H10 额外交易日：2026-06-05 需 `1` 天，2026-06-09 需 `3` 天，2026-06-15 需 `7` 天。
 - 监控器修复后 `python3 -m py_compile scripts/research/monitor_kfsq_forward_readiness.py` 通过。

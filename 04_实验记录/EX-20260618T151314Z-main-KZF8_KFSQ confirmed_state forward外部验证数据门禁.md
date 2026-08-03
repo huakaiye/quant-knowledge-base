@@ -13,7 +13,7 @@ decision_ids:
   - DEC-20260618T152400Z-main-6JF6
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/kzf8_continuous_forward_hard5_20260520_20260617.json
   - scripts/research/analyze_kzf8_kfsq_forward_validation_readonly.py
@@ -79,8 +79,8 @@ tags:
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| 历史 KFSQ/2XKW OOS 面板 | 用 2026-05-19 以前的 `confirmed_state_run_len` 经验分布给 forward 打分 | `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv` |
-| 连续 hard5 forward 基线 | 生成 2026-05-20 到 2026-06-17 的连续 ACTION 日志和权益曲线 | `${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/kzf8_continuous_forward_hard5_20260520_20260617.json` |
+| 历史 KFSQ/2XKW OOS 面板 | 用 2026-05-19 以前的 `confirmed_state_run_len` 经验分布给 forward 打分 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T143708Z-main-2XKW/scored_oos_panel.csv` |
+| 连续 hard5 forward 基线 | 生成 2026-05-20 到 2026-06-17 的连续 ACTION 日志和权益曲线 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/kzf8_continuous_forward_hard5_20260520_20260617.json` |
 | shift_prev1/shift_next1 | 日期错位负控 | 分析脚本内固定生成 |
 | random same support | episode 同规模随机负控 | 分析脚本内固定 seed `20260618` |
 
@@ -152,8 +152,8 @@ tags:
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/kzf8_continuous_forward_hard5_20260520_20260617.json
-${QUANT_PLATFORM_ROOT}/scripts/research/analyze_kzf8_kfsq_forward_validation_readonly.py
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/kzf8_continuous_forward_hard5_20260520_20260617.json
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/analyze_kzf8_kfsq_forward_validation_readonly.py
 ```
 
 ### 运行命令
@@ -168,15 +168,15 @@ PYTHONUNBUFFERED=1 PYTHONPATH=src python3 scripts/research/analyze_kzf8_kfsq_for
 ### 可见进度与日志
 
 - 是否过程可见：`是`
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/run_continuous_forward_hard5.log`；`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/run_analysis.log`
-- 查看进度命令：`Get-Content -Tail 80 "${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/run_continuous_forward_hard5.log"`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/run_continuous_forward_hard5.log`；`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/run_analysis.log`
+- 查看进度命令：`Get-Content -Tail 80 "${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/run_continuous_forward_hard5.log"`
 - 异常判断：无异常退出；连续 hard5 final `104976.11`，交易 `35` 笔；只读分析输出 `status=insufficient_forward_h10_labels`
 - 后台回测豁免：不适用，前台可见运行
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/
 ```
 
 ## 12. 实际观察
@@ -194,7 +194,7 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-2026
 
 ## 13. 支持证据
 
-- 连续 hard5 forward 回测成功，报告目录为 `${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/continuous_forward_hard5/forward_20260520_20260617/53cc37e7beac433e8d84ad6fc19eca1e/`。
+- 连续 hard5 forward 回测成功，报告目录为 `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260618T151314Z-main-KZF8/continuous_forward_hard5/forward_20260520_20260617/53cc37e7beac433e8d84ad6fc19eca1e/`。
 - 只读脚本使用 2XKW 历史 OOS 面板经验 CDF 给 forward `confirmed_state_run_len` 打分，没有重训、调参或交易化。
 - H10 数据门禁明确失败：`h10_label_rows=0`，`h10_episode_count=0`，低于预注册门槛 `20/5`。
 - H5 只有 `2` 行且 `1` 个 episode，说明即使用短 horizon 也不能形成可靠验证。

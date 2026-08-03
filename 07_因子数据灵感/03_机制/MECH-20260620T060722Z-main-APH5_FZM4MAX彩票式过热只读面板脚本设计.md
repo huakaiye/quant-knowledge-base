@@ -33,9 +33,9 @@ tags: [双池轮动, hard5, MAX, 彩票式过热, 只读面板, 脚本设计, FZ
 ## 平台脚本定位
 
 - 脚本名：`analyze_fzm4_max_lottery_overheat_readonly.py`
-- 存放目录：`${QUANT_PLATFORM_ROOT}/scripts/research/`
+- 存放目录：`${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/`
 - 性质：只读初筛脚本，不跑回测、不改配置、不连 MiniQMT、不写库、不改 hard5。参照 A28 的只读面板风格。
-- 输出目录：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T022601Z-main-GHZL/EX-20260620T022611Z-main-FZM4/fzm4_max_lottery_panel/`
+- 输出目录：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T022601Z-main-GHZL/EX-20260620T022611Z-main-FZM4/fzm4_max_lottery_panel/`
 
 ## 复用映射（已核实精确行号）
 
@@ -129,7 +129,9 @@ fzm4_max_lottery_panel/
 └── summary.json                  # 质量门判定 + 关键指标
 ```
 
-## 运行命令（WSL 内，过程可见）
+## 历史运行命令（V1.4 只读证据，禁止在 V2 执行）
+
+下面的命令记录 2026-06-20 当时的设计，包含 V1.4 路径、裸 `python3` 和旧研究脚本布局。它不能作为当前执行入口。若继续该方向，必须新开实验，把脚本迁入 V2、建立受控入口并按当前平台规范重新登记结果路径。
 
 ```bash
 # 平台根 WSL 路径

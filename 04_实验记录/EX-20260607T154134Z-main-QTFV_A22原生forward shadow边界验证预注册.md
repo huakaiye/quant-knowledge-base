@@ -12,7 +12,7 @@ module_type: 核心轮动风控诊断模块
 decision_ids: [DEC-20260607T151252Z-main-A22N, DEC-20260607T185223Z-main-HH4B]
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/
   - configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/guard/
@@ -86,10 +86,10 @@ tags: [双池轮动, score过热, A22, 原生字段, forward边界, shadow边界
 
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
-| A22N `native_a22_cap70` | live 复现基准 | `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_hot_score_budget/EX-20260607T131209Z-main-A22N/formal/native_a22_cap70/` |
-| `native_a22_live` | 原生 A22 live 可见复现组 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/native_a22_live/` |
-| `a20_unbudgeted_shadow_off` | shadow 隔离对照，A20 放行但不启用 A22 live/shadow | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/a20_unbudgeted_shadow_off/` |
-| `a20_unbudgeted_shadow_on` | 默认关闭 A22 shadow 观察组，不改变交易 | `${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/a20_unbudgeted_shadow_on/` |
+| A22N `native_a22_cap70` | live 复现基准 | `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_hot_score_budget/EX-20260607T131209Z-main-A22N/formal/native_a22_cap70/` |
+| `native_a22_live` | 原生 A22 live 可见复现组 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/native_a22_live/` |
+| `a20_unbudgeted_shadow_off` | shadow 隔离对照，A20 放行但不启用 A22 live/shadow | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/a20_unbudgeted_shadow_off/` |
+| `a20_unbudgeted_shadow_on` | 默认关闭 A22 shadow 观察组，不改变交易 | `${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/a20_unbudgeted_shadow_on/` |
 | `double_on_guard` | 静态负控，仅检查 A13/A22 双开会被 strict 拒绝 | 不作为 formal 回测组 |
 
 ## 6. 竞争性解释
@@ -159,11 +159,11 @@ tags: [双池轮动, score过热, A22, 原生字段, forward边界, shadow边界
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/
-${QUANT_PLATFORM_ROOT}/scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py
-${QUANT_PLATFORM_ROOT}/scripts/research/run_qtfv_a22_native_forward_shadow.sh
-${QUANT_PLATFORM_ROOT}/scripts/research/summarize_qtfv_a22_native_forward_shadow.py
-${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/generate_qtfv_a22_native_forward_shadow_configs.py
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/run_qtfv_a22_native_forward_shadow.sh
+${LEGACY_QUANT_PLATFORM_ROOT}/scripts/research/summarize_qtfv_a22_native_forward_shadow.py
+${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py
 ```
 
 ### 运行命令
@@ -180,8 +180,8 @@ PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_qtfv_a22_native_forwar
 ### 可见进度与日志
 
 - 是否过程可见：是，run 脚本必须 `PYTHONUNBUFFERED=1` 并用 `tee` 写每个配置的 run log。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/`
-- 查看进度命令：`Get-ChildItem ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/ -Recurse`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/`
+- 查看进度命令：`Get-ChildItem ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/ -Recurse`
 - 异常判断：任一 run log 无 `exit_status=0`、任一 summary 缺失、strict gate 失败则本实验失败。
 - 后台回测豁免：不后台运行。
 
@@ -198,9 +198,9 @@ PYTHONIOENCODING=utf-8 python3 scripts/research/summarize_qtfv_a22_native_forwar
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/
-${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json
 ```
 
 ## 12. 实际观察
@@ -217,7 +217,7 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-202
 
 正式 formal 结果：
 
-- 12/12 formal 回测完成，run log 最新根路径为 `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/20260607T155359Z/`。
+- 12/12 formal 回测完成，run log 最新根路径为 `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/logs/formal/20260607T155359Z/`。
 - strict summary `all_gates_pass=true`，10 个 gates 全部为 true：12/12 运行齐全、12/12 配置字段正确、12/12 run log 正常、12/12 manifest config sha 匹配、native live 4/4 复现 A22N、shadow_on/off 4/4 交易产物一致、shadow 4/4 订单未改变、shadow 4/4 日期顺序通过、触发画像 3+1 通过、double-on guard 4/4 检出。
 - `native_a22_live` 四段与 A22N baseline 完全一致：
   - 2020_2021：final `225931.41`，MDD `-20.8378%`，trades `585`。
@@ -231,10 +231,10 @@ ${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-202
 
 ## 13. 支持证据
 
-- `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json`：`all_gates_pass=true`。
-- `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/live_vs_a22n.csv`：四段 final/MDD/trades/fee 与 A22N native 全一致，关键 hash 全一致。
-- `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/shadow_on_off_hash.csv`：shadow_on/off 四段交易产物 hash 全一致，`orders_changed=0`。
-- `${QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/guard_audit.csv`：四段双开 guard 均被识别。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/summary.json`：`all_gates_pass=true`。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/live_vs_a22n.csv`：四段 final/MDD/trades/fee 与 A22N native 全一致，关键 hash 全一致。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/shadow_on_off_hash.csv`：shadow_on/off 四段交易产物 hash 全一致，`orders_changed=0`。
+- `${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/R010-A22/native_forward_shadow/EX-20260607T154134Z-main-QTFV/summary/formal/guard_audit.csv`：四段双开 guard 均被识别。
 - Planck 子代理只读复核确认 summary、live reproduction、shadow hash 和 guard 证据一致，且明确不做最终研究决策。
 
 ## 14. 反对证据

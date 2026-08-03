@@ -13,7 +13,7 @@ decision_ids: []
 lit_ids:
   - LIT-20260614T112631Z-main-VY4K
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/
 result_paths:
@@ -81,7 +81,7 @@ Daniel-Moskowitz（2016, JFE）证明动量崩溃有强事前信号（策略自�
 | 对照 | 用途 | 路径 |
 | --- | --- | --- |
 | `baseline_b3_tiered_v2` | 当前防御骨架 B3/tiered-v2，主基准 | 参照 B3QC 配置路径 |
-| `dm_exposure_var_state` | DM 式事前暴露（动量方差倒数 × 市场状态门控），主候选 | 计划：`${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/dm_var_state/` |
+| `dm_exposure_var_state` | DM 式事前暴露（动量方差倒数 × 市场状态门控），主候选 | 计划：`${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/dm_var_state/` |
 | `dm_exposure_var_only` | 只用方差，去掉市场状态条件（用于验证是否退化为宽基 vol scale） | 同上 var_only 子目录 |
 | `dm_exposure_shuffled_var` | 随机方差（打乱时间）负控 | 同上 shuffled 子目录 |
 | `dm_exposure_cost2x_slip2bps` | 成本扰动子集 | 同上 cost2x_slip2bps 子目录 |
@@ -156,7 +156,7 @@ Daniel-Moskowitz（2016, JFE）证明动量崩溃有强事前信号（策略自�
 ### 平台配置
 
 ```text
-${QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/formal/
+${LEGACY_QUANT_PLATFORM_ROOT}/configs/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/formal/
   - baseline_b3_tiered_v2/j7ef_baseline_b3_tiered_v2_*.json (4 段)
   - dm_var_state/j7ef_dm_var_state_*.json (4 段)
   - dm_var_only/j7ef_dm_var_only_*.json (4 段)
@@ -175,12 +175,12 @@ wsl -- bash -lc "cd '$platformWsl' && PYTHONUNBUFFERED=1 PYTHONPATH=src python3 
 ### 可见进度与日志
 
 - 是否过程可见：`是`，PYTHONUNBUFFERED=1 + tee。
-- 日志路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/<run_id>.run.log`
+- 日志路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/<run_id>.run.log`
 
 ### 结果路径
 
 ```text
-${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/formal/<variant>/<segment>/<job_id>/summary.json
+${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260614T115209Z-main-MCYG/EX-20260614T115454Z-main-J7EF/formal/<variant>/<segment>/<job_id>/summary.json
 ```
 
 ## 12. 实际观察

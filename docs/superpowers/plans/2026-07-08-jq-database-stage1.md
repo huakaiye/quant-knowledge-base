@@ -1,5 +1,7 @@
 # 聚宽数据库重构 · 阶段 1：核心 12 表口径切换 实现计划（A 代码开发部分）
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 为阶段 1 的"核心 12 表口径切换"开发全部代码资产——12 张 `jq_v3_*` 新表 DDL、各表的聚宽数据拉取脚本、验证脚本、`data_routing.json` 路由切换脚本，全部 TDD 就绪并提交。代码完成后，数据拉取/验证/切换/回归（B 部分，运行手册见文末）由主控用凭证执行。
@@ -440,6 +442,8 @@ git commit -m "feat(jq_v3): 12张聚宽原生表DDL+stream_import注册(Task 1)
 
 ```python
 # -*- coding: utf-8 -*-
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 """jq_v3 拉取脚本公共工具测试。"""
 from __future__ import annotations
 
@@ -751,14 +755,24 @@ def fetch_minute_bars_streaming(fetcher, securities, start, end, task_name="minu
 cd "E:/量化平台_V1.4.0"
 export JQ_USERNAME="..." && export JQ_PASSWORD="..."
 # 1. 静态表（分钟级）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 .venv/Scripts/python scripts/jq_v3/fetch_static.py --table all
 # 2. 估值+财务（数小时）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 .venv/Scripts/python scripts/jq_v3/fetch_valuation_financials.py --all --start-year 2005
 # 3. 日线（数小时）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 .venv/Scripts/python scripts/jq_v3/fetch_bars.py --freq daily --start 2005-01-01
 # 4. 分钟线（1.7天大头，后台流式）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 .venv/Scripts/python scripts/jq_v3/fetch_bars.py --freq minute --start 2005-01-01
 # 5. ST+基金净值（小时级）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 .venv/Scripts/python scripts/jq_v3/fetch_st_fundnav.py --all
 ```
 
@@ -770,6 +784,8 @@ export JQ_USERNAME="..." && export JQ_PASSWORD="..."
 ```bash
 .venv/Scripts/python scripts/stream_import.py --table jq_v3_bar_daily --dir tmp/jq_v3_export/jq_v3_bar_daily --user default
 # ... 12 表逐一导入
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 ```
 
 ### B3. 验证（validate_v3.py）
@@ -785,6 +801,8 @@ export JQ_USERNAME="..." && export JQ_PASSWORD="..."
 ```bash
 .venv/Scripts/python scripts/jq_v3/switch_routing.py --switch
 # 验证
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 .venv/Scripts/python scripts/jq_v3/switch_routing.py --verify
 ```
 

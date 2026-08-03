@@ -38,9 +38,9 @@ tags: [双池轮动, hard5, MAX, 彩票式过热, 横截面异象, 顶刊, WEMY�
 
 - 所属策略：双池轮动策略（`RD-20260605T115651Z-main-DP00`）。
 - 所属模块：A 股撤离追高状态机（`RD-20260619T083919Z-main-WEMY`）下的 m04 单因子深化子方向；祖父方向是 score 过热拥挤机制模块（`RD-20260605T133318Z-main-H6V3`）。
-- 平台策略代码：`${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py`（沿用 H6V3 既有 R010 动作消融框架）。
+- 平台策略代码：`${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py`（沿用 H6V3 既有 R010 动作消融框架）。
 - 平台只读脚本：首轮需新建只读面板脚本，参照 `analyze_a28_volume_price_structure_gate.py` 和 `analyze_r010a16_hot_state_panel.py` 的风格。
-- 平台结果路径：`${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T022601Z-main-GHZL/EX-20260620T022611Z-main-FZM4/`（待执行）。
+- 平台结果路径：`${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260620T022601Z-main-GHZL/EX-20260620T022611Z-main-FZM4/`（待执行）。
 
 ## 当前研究信念
 

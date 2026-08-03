@@ -15,7 +15,7 @@ lit_ids:
   - LIT-20260605T133336Z-main-67C4
   - LIT-20260605T133500Z-main-E46H
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths:
   - scripts/research/generate_5kzw_multi_momentum_configs.py
   - configs/research/R010-MULTI/EX-20260606T185537Z-main-5KZW/formal/

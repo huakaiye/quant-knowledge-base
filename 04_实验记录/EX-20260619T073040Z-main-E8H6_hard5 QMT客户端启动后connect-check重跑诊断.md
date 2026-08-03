@@ -13,7 +13,8 @@ decision_ids: []
 lit_ids: []
 idea_ids:
   - MECH-20260619T025934Z-main-DQUM
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
+execution_platform_status: legacy_only_no_new_runs
 config_paths:
   - configs/v2_portfolio_smallcap_etf_dual_pool_50_50.json
   - src/run_v2_live.py
@@ -29,6 +30,8 @@ tags: [双池轮动, hard5, QMT, dry-run, connect-check, 真实订单层, 只读
 ---
 
 # hard5 QMT客户端启动后connect-check重跑诊断
+
+> 历史执行证据：本实验依赖 V1.4、Windows Python 和旧实盘入口。原命令仅用于解释当时诊断，不得在当前 V2 执行；继续该问题必须新开 V2 实验并使用受控入口。
 
 ## 关联链接
 
@@ -180,7 +183,7 @@ Get-Process | Where-Object { $_.ProcessName -match 'qmt|mini|xt|BrokerProxy|quot
 
 - 是否过程可见：是。
 - 日志路径：`results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T073040Z-main-E8H6/`
-- 查看进度命令：`Get-Content -Tail 100 -Wait ${QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T073040Z-main-E8H6/run_e8h6_connect_check.log`
+- 查看进度命令：`Get-Content -Tail 100 -Wait ${LEGACY_QUANT_PLATFORM_ROOT}/results/v2/research/RD-20260605T133318Z-main-H6V3/EX-20260619T073040Z-main-E8H6/run_e8h6_connect_check.log`
 - 异常判断：客户端启动后无进程为启动失败；进程存在但 connect-check 失败为会话或登录阻塞；connect-check 通过才进入 dry-run JSON。
 - 后台回测豁免：无。客户端为需要用户可见登录的交互程序；connect-check 前台运行并记录日志。
 

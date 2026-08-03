@@ -14,7 +14,7 @@ owner: main
 created_at: 2026-06-26T02:42:11Z
 updated_at: 2026-06-26T02:42:11Z
 impact: direction
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: []
 result_paths:
   - results/v2/research/R010-DEFENSE/rule_a_idle/EX-20260626T001500Z-main-RA3/

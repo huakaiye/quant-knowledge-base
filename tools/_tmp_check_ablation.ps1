@@ -1,4 +1,6 @@
-$base = 'E:\量化平台_V1.4.0\results\v2\research\R010-DEFENSE\rule_a_idle\EX-20260627T053730Z-main-JTX7\formal\trend_break'
+Write-Warning '历史只读工具：只检查 V1.4 结果证据，不启动或判断当前 V2 回测。'
+$legacyRoot = & pwsh -NoProfile -File "$PSScriptRoot\Get-QuantPlatformRoot.ps1" -Target LegacyPlatform -Format Windows
+$base = Join-Path $legacyRoot 'results\v2\research\R010-DEFENSE\rule_a_idle\EX-20260627T053730Z-main-JTX7\formal\trend_break'
 $dirs = @('ablation_no_gradual_cost1x_11yr','ablation_no_gradual_cost2x_11yr')
 foreach ($d in $dirs) {
   $p = Join-Path $base $d
@@ -10,8 +12,3 @@ foreach ($d in $dirs) {
     Write-Host "  NOT FOUND"
   }
 }
-# check wsl backtest processes still running
-Write-Host "### wsl processes"
-Get-Process -Name "wsl*" -ErrorAction SilentlyContinue | Select-Object Name, Id, StartTime, CPU
-Write-Host "### python in wsl"
-wsl -- bash -lc "ps aux | grep -E 'run_v2_backtest|run_parallel' | grep -v grep" 2>$null

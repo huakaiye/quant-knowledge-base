@@ -12,7 +12,7 @@ module_type: 个股层量价结构 veto 组合层 formal
 decision_ids: [DEC-20260621T024805Z-main-CHCD]
 lit_ids: [LIT-20260620T022539Z-main-36A6]
 idea_ids: [MECH-20260620T154044Z-main-MATN]
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: [configs/research/R010-A22/frozen_veto_paired/EX-20260621T015355Z-main-F44P/formal/manifest.json]
 result_paths: [results/v2/research/R010-A22/frozen_veto_paired/EX-20260621T015355Z-main-F44P/formal]
 summary_paths: [results/v2/research/R010-A22/frozen_veto_paired/EX-20260621T015355Z-main-F44P/summary/formal/summary.json]

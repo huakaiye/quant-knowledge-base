@@ -1,5 +1,7 @@
 # 聚宽数据库全面重构设计规格
 
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
+
 - **创建日期**：2026-07-08
 - **状态**：待审阅
 - **研究方向**：RD-JQDB（待创建）
@@ -89,7 +91,7 @@ V2 平台的核心数据表（`jq_bar_daily`、`jq_bar_minute_v2`、`jq_valuatio
 
 | 交付物 | 路径 | 说明 |
 | --- | --- | --- |
-| jq_fetcher 模块 | `${QUANT_PLATFORM_ROOT}/src/quant_v2/jq_fetcher/__init__.py` | 包入口，导出 `JqFetcher`、`JqCredentials` |
+| jq_fetcher 模块 | `${LEGACY_QUANT_PLATFORM_ROOT}/src/quant_v2/jq_fetcher/__init__.py` | 包入口，导出 `JqFetcher`、`JqCredentials` |
 | 认证管理 | `src/quant_v2/jq_fetcher/credentials.py` | `JqCredentials` 类，三级优先级读取（见 2.4） |
 | 拉取核心 | `src/quant_v2/jq_fetcher/core.py` | `JqFetcher` 类，封装通用拉取循环（见 2.5） |
 | checkpoint 存储 | `src/quant_v2/jq_fetcher/checkpoint.py` | `Checkpoint` 类，JSON 落盘断点（见 2.6） |
@@ -119,6 +121,8 @@ jqdatasdk 用 `auth(username, password)`（手机号 + 密码，密码可含逗�
 
 ```gitignore
 # 凭证与本地配置（绝不入库）
+
+> 历史实施记录：本文中的 V1.4 路径、旧 runner 和当时命令按原证据保留，禁止作为当前执行入口。当前平台为 `${QUANT_PLATFORM_ROOT}`（V2.0），运行必须遵守研究库与平台各自的 `AGENTS.md`。
 tushare_token.txt
 .tushare_token
 *token*.txt
@@ -156,7 +160,7 @@ class JqFetcher:
 - `retry_backoff=2.0`：指数退避基数（1s, 2s, 4s）
 - `quota_check_interval=500`：每 500 次查询检查一次配额
 - `quota_warn_threshold=1_000_000`：剩余配额低于 100 万次时告警
-- `checkpoint_dir`：checkpoint 文件目录，默认 `${QUANT_PLATFORM_ROOT}/tmp/jq_checkpoint/`
+- `checkpoint_dir`：checkpoint 文件目录，默认 `${LEGACY_QUANT_PLATFORM_ROOT}/tmp/jq_checkpoint/`
 
 ### 2.6 checkpoint 断点续传
 

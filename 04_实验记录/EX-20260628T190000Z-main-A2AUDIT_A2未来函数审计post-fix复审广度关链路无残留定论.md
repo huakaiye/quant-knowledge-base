@@ -13,10 +13,10 @@ decision_ids:
   - DEC-20260627T073551Z-main-DTH2
 lit_ids: []
 idea_ids: []
-platform_project: ${QUANT_PLATFORM_ROOT}
+platform_project: ${LEGACY_QUANT_PLATFORM_ROOT}
 config_paths: []
 result_paths:
-  - ${QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py
+  - ${LEGACY_QUANT_PLATFORM_ROOT}/src/strategies/research/etf_dual_pool_r010b_action_ablation.py
 quality_gate: 通过_post-fix全链路无残留未来函数风险
 subagent_call_ids:
   - SUB-20260628T190000Z-main-A2AUDIT

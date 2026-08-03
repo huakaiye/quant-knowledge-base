@@ -7,8 +7,8 @@
 # Dry-run by default; add -Apply to write.
 #
 # Usage:
-#   powershell -ExecutionPolicy Bypass -File tools/Repair-LedgerFormat.ps1
-#   powershell -ExecutionPolicy Bypass -File tools/Repair-LedgerFormat.ps1 -Apply
+#   pwsh -NoProfile -File tools/Repair-LedgerFormat.ps1
+#   pwsh -NoProfile -File tools/Repair-LedgerFormat.ps1 -Apply
 
 param(
     [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
