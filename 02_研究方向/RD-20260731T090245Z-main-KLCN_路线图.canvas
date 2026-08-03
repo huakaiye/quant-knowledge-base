@@ -1,0 +1,699 @@
+{
+  "nodes": [
+    {
+      "id": "group-thinktank",
+      "type": "group",
+      "label": "个人智库：来源 -> 来源健康 -> 候选 -> 召回 -> 关系重排 -> 条件分析 -> 前瞻账本 -> 独立见证 -> 非破坏迁移",
+      "color": "5",
+      "x": -80,
+      "y": -120,
+      "width": 9360,
+      "height": 2040
+    },
+    {
+      "id": "rd-kcln",
+      "type": "file",
+      "file": "02_研究方向/RD-20260731T090245Z-main-KLCN_个人智库消息面结构化与长期记忆系统.md",
+      "x": 0,
+      "y": 0,
+      "width": 480,
+      "height": 220
+    },
+    {
+      "id": "ex-jx32",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T090249Z-main-JX32_DeepSeekV4Flash低成本新闻抽取校准预注册.md",
+      "x": 600,
+      "y": -20,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "dec-4rg9",
+      "type": "file",
+      "file": "05_研究决策/DEC-20260731T163828Z-main-4RG9_DeepSeekV4Flash仅承担候选抽取并退出事实批准层.md",
+      "x": 1220,
+      "y": -20,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-4n9b",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T164504Z-main-4N9B_GPT56Luna中文新闻B2高智能对照预注册.md",
+      "x": 1840,
+      "y": -20,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-l6rp",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T165756Z-main-L6RP_候选记忆时间截断与混合召回纵向切片预注册.md",
+      "x": 600,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-mxet",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T172539Z-main-MXET_真实中文官方事件链混合召回开发基准预注册.md",
+      "x": 1220,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "dec-mxml",
+      "type": "file",
+      "file": "05_研究决策/DEC-20260731T182918Z-main-MXML_个人智库事件召回采用BM25主路并保留字符n-gram对照.md",
+      "x": 1840,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-ubey",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T183919Z-main-UBEY_候选记忆BM25主召回工程接入预注册.md",
+      "x": 2460,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-5w2x",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T185740Z-main-5W2X_候选记忆标题字段V2向前兼容迁移预注册.md",
+      "x": 3080,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-ahs7",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T191713Z-main-AHS7_未见事件族封存召回基准.md",
+      "x": 3700,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "dec-7835",
+      "type": "file",
+      "file": "05_研究决策/DEC-20260731T224543Z-main-7835_BM25保留候选召回但不得直接作为最终排序.md",
+      "x": 4320,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-4pt7",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T225634Z-main-4PT7_候选记忆信息单元去重与实体消歧重排开发预注册.md",
+      "x": 4940,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-fbld",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T231931Z-main-FBLD_候选后置重排非Gold元数据可物化性门禁.md",
+      "x": 5560,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "dec-art8",
+      "type": "file",
+      "file": "05_研究决策/DEC-20260731T233700Z-main-ART8_候选重排V1因真实元数据覆盖不足停止评分.md",
+      "x": 6180,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-g6kc",
+      "type": "file",
+      "file": "04_实验记录/EX-20260731T234150Z-main-G6KC_独立实体注册表与角色化提及数据合同预注册.md",
+      "x": 6800,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-je6t",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T002038Z-main-JE6T_真实非Gold实体覆盖与双盲精度门禁.md",
+      "x": 7420,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-2alh",
+      "type": "file",
+      "file": "04_实验记录/EX-20260803T015645Z-main-2ALH_中文官方事件链关系感知候选重排V2非Gold开发门禁预注册.md",
+      "x": 8040,
+      "y": 340,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "dec-7mpl",
+      "type": "file",
+      "file": "05_研究决策/DEC-20260731T092724Z-main-7MPL_个人智库采用SSD热层与HDD冷归档混合存储.md",
+      "x": 600,
+      "y": 700,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-uj9g",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T033654Z-main-UJ9G_高智能分析上下文与条件假设合同预注册.md",
+      "x": 600,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-n29k",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T045044Z-main-N29K_高智能条件分析无工具OMP运行与证据封存预注册.md",
+      "x": 1220,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-lah3",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T035954Z-main-LAH3_条件预测前瞻登记到期裁决与校准账本预注册.md",
+      "x": 1840,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-6dpx",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T051541Z-main-6DPX_条件预测V2强制执行收据绑定与V1只读兼容预注册.md",
+      "x": 2460,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-vkk5",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T042620Z-main-VKK5_预测账本双介质head锚定与可信时间边界预注册.md",
+      "x": 3080,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-rx8x",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T054126Z-main-RX8X_预测账本V2执行依赖双介质锚定与冻结副本独立重放预注册.md",
+      "x": 3700,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-j9d3",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T061733Z-main-J9D3_RFC3161独立时间见证与逐预测前瞻资格合同预注册.md",
+      "x": 4320,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-dvl5",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T065051Z-main-DVL5_Sectigo合格RFC3161时间见证供应商准入预注册.md",
+      "x": 4940,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "dec-675b",
+      "type": "file",
+      "file": "05_研究决策/DEC-20260801T072055Z-main-675B_独立时间见证采用见证型与限期前瞻型Profile分层.md",
+      "x": 5560,
+      "y": 1060,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-9sda",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T073959Z-main-9SDA_归档介质非破坏迁移执行器与双阶段授权预注册.md",
+      "x": 6180,
+      "y": 700,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-dx72",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T084302Z-main-DX72_官方来源发现可靠性门禁预注册.md",
+      "x": 8040,
+      "y": 0,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "next-prediction",
+      "type": "text",
+      "text": "下一门槛：耐久后才做真实预测\n1. 用户选空的独立NTFS/ReFS新HDD\n2. C6冻结计划 -> 用户限时授权copy\n3. 恢复演练；映射切换另批批准\n4. 生成durable锚\n5. DeepSeek单次 -> C3 v2 -> C4 v2 -> C5",
+      "color": "4",
+      "x": 6180,
+      "y": 1020,
+      "width": 500,
+      "height": 320
+    },
+    {
+      "id": "next-heldout",
+      "type": "text",
+      "text": "下一门槛：实体与关系双盲\n1. 2026-08-29开始查询窗\n2. 2026-09-12后才冻结\n3. 先完成durable archive/backup\n4. JE6T最终证据必须明确PASS\n5. R7-R11关系提议、双审、裁决、计分互异\n6. 新holdout前执行与qrels权限保持关闭",
+      "color": "4",
+      "x": 8660,
+      "y": 320,
+      "width": 500,
+      "height": 340
+    },
+    {
+      "id": "ex-alnj",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T092110Z-main-ALNJ_重点情报对象与官方渠道注册表预注册.md",
+      "x": 600,
+      "y": 1420,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-4zyq",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T100445Z-main-4ZYQ_对象驱动持续采集调度器预注册.md",
+      "x": 1220,
+      "y": 1420,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-u95b",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T104617Z-main-U95B_绑定调度器的列表复验与候选正文内容寻址.md",
+      "x": 1840,
+      "y": 1420,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-zvrg",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T120701Z-main-ZVRG_真实上游Schema与精确允许主机集成修订.md",
+      "x": 2460,
+      "y": 1420,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-3f7n",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T132307Z-main-3F7N_候选正文对象化与模型前置隔离合同.md",
+      "x": 3080,
+      "y": 1420,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "ex-2kte",
+      "type": "file",
+      "file": "04_实验记录/EX-20260801T142253Z-main-2KTE_低成本候选抽取受控执行与失败留痕合同.md",
+      "x": 3700,
+      "y": 1420,
+      "width": 500,
+      "height": 220
+    },
+    {
+      "id": "next-candidate-extraction",
+      "type": "text",
+      "text": "下一门槛：不重试C13\n1. 另开合成协议实验解释多assistant终态\n2. 不清理围栏后改判\n3. 等未来新C9未见URL\n4. 独立正文确认后才做真实新闻单次实验",
+      "color": "4",
+      "x": 4320,
+      "y": 1380,
+      "width": 600,
+      "height": 300
+    },
+    {
+      "id": "boundary",
+      "type": "text",
+      "text": "共同边界\n全部输出仍是candidate或hypothesis\n不批准事实或交易\n来源健康degraded不等于来源失效裁决\nHDD与独立备份已接\n但HDD为exFAT/provisional\nC6只完成L1工具，真实HDD未迁移\n无真实预测与校准",
+      "color": "1",
+      "x": 2460,
+      "y": 700,
+      "width": 500,
+      "height": 300
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-rd-jx32",
+      "fromNode": "rd-kcln",
+      "fromSide": "right",
+      "toNode": "ex-jx32",
+      "toSide": "left",
+      "label": "候选抽取"
+    },
+    {
+      "id": "edge-jx32-4rg9",
+      "fromNode": "ex-jx32",
+      "fromSide": "right",
+      "toNode": "dec-4rg9",
+      "toSide": "left",
+      "label": "退出事实批准"
+    },
+    {
+      "id": "edge-4rg9-4n9b",
+      "fromNode": "dec-4rg9",
+      "fromSide": "right",
+      "toNode": "ex-4n9b",
+      "toSide": "left",
+      "label": "高智能对照"
+    },
+    {
+      "id": "edge-rd-l6rp",
+      "fromNode": "rd-kcln",
+      "fromSide": "right",
+      "toNode": "ex-l6rp",
+      "toSide": "left",
+      "label": "候选长期记忆"
+    },
+    {
+      "id": "edge-l6rp-mxet",
+      "fromNode": "ex-l6rp",
+      "fromSide": "right",
+      "toNode": "ex-mxet",
+      "toSide": "left",
+      "label": "从固定夹具到真实开发集"
+    },
+    {
+      "id": "edge-mxet-mxml",
+      "fromNode": "ex-mxet",
+      "fromSide": "right",
+      "toNode": "dec-mxml",
+      "toSide": "left",
+      "label": "BM25通过，粗结构退化"
+    },
+    {
+      "id": "edge-mxml-ubey",
+      "fromNode": "dec-mxml",
+      "fromSide": "right",
+      "toNode": "ex-ubey",
+      "toSide": "left",
+      "label": "工程接入"
+    },
+    {
+      "id": "edge-ubey-5w2x",
+      "fromNode": "ex-ubey",
+      "fromSide": "right",
+      "toNode": "ex-5w2x",
+      "toSide": "left",
+      "label": "标题v2迁移"
+    },
+    {
+      "id": "edge-5w2x-ahs7",
+      "fromNode": "ex-5w2x",
+      "fromSide": "right",
+      "toNode": "ex-ahs7",
+      "toSide": "left",
+      "label": "未见事件族封存"
+    },
+    {
+      "id": "edge-ahs7-7835",
+      "fromNode": "ex-ahs7",
+      "fromSide": "right",
+      "toNode": "dec-7835",
+      "toSide": "left",
+      "label": "高召回但Top1窄失败"
+    },
+    {
+      "id": "edge-7835-4pt7",
+      "fromNode": "dec-7835",
+      "fromSide": "right",
+      "toNode": "ex-4pt7",
+      "toSide": "left",
+      "label": "可信后处理L1合同"
+    },
+    {
+      "id": "edge-4pt7-fbld",
+      "fromNode": "ex-4pt7",
+      "fromSide": "right",
+      "toNode": "ex-fbld",
+      "toSide": "left",
+      "label": "非Gold覆盖门禁"
+    },
+    {
+      "id": "edge-fbld-art8",
+      "fromNode": "ex-fbld",
+      "fromSide": "right",
+      "toNode": "dec-art8",
+      "toSide": "left",
+      "label": "类型0覆盖，评分前停止"
+    },
+    {
+      "id": "edge-art8-g6kc",
+      "fromNode": "dec-art8",
+      "fromSide": "right",
+      "toNode": "ex-g6kc",
+      "toSide": "left",
+      "label": "实体与角色L1合同"
+    },
+    {
+      "id": "edge-g6kc-je6t",
+      "fromNode": "ex-g6kc",
+      "fromSide": "right",
+      "toNode": "ex-je6t",
+      "toSide": "left",
+      "label": "fresh observed-ingest采集"
+    },
+    {
+      "id": "edge-je6t-dx72",
+      "fromNode": "ex-je6t",
+      "fromSide": "right",
+      "toNode": "ex-dx72",
+      "toSide": "left",
+      "label": "补齐来源发现健康"
+    },
+    {
+      "id": "edge-dx72-next",
+      "fromNode": "ex-dx72",
+      "fromSide": "bottom",
+      "toNode": "next-heldout",
+      "toSide": "top",
+      "label": "degraded但最低覆盖ready，继续采集"
+    },
+    {
+      "id": "edge-je6t-2alh",
+      "fromNode": "ex-je6t",
+      "fromSide": "right",
+      "toNode": "ex-2alh",
+      "toSide": "left",
+      "label": "最终证据通过后才可激活"
+    },
+    {
+      "id": "edge-2alh-next",
+      "fromNode": "ex-2alh",
+      "fromSide": "right",
+      "toNode": "next-heldout",
+      "toSide": "left",
+      "label": "关系双盲与新holdout"
+    },
+    {
+      "id": "edge-rd-uj9g",
+      "fromNode": "rd-kcln",
+      "fromSide": "bottom",
+      "toNode": "ex-uj9g",
+      "toSide": "left",
+      "label": "A-B-C条件分析"
+    },
+    {
+      "id": "edge-uj9g-n29k",
+      "fromNode": "ex-uj9g",
+      "fromSide": "right",
+      "toNode": "ex-n29k",
+      "toSide": "left",
+      "label": "单次受控执行"
+    },
+    {
+      "id": "edge-n29k-lah3",
+      "fromNode": "ex-n29k",
+      "fromSide": "right",
+      "toNode": "ex-lah3",
+      "toSide": "left",
+      "label": "前瞻登记与到期裁决"
+    },
+    {
+      "id": "edge-lah3-6dpx",
+      "fromNode": "ex-lah3",
+      "fromSide": "right",
+      "toNode": "ex-6dpx",
+      "toSide": "left",
+      "label": "强制绑定执行收据"
+    },
+    {
+      "id": "edge-6dpx-vkk5",
+      "fromNode": "ex-6dpx",
+      "fromSide": "right",
+      "toNode": "ex-vkk5",
+      "toSide": "left",
+      "label": "双介质锚v1"
+    },
+    {
+      "id": "edge-vkk5-rx8x",
+      "fromNode": "ex-vkk5",
+      "fromSide": "right",
+      "toNode": "ex-rx8x",
+      "toSide": "left",
+      "label": "完整执行依赖锚v2"
+    },
+    {
+      "id": "edge-rx8x-j9d3",
+      "fromNode": "ex-rx8x",
+      "fromSide": "right",
+      "toNode": "ex-j9d3",
+      "toSide": "left",
+      "label": "独立RFC3161见证"
+    },
+    {
+      "id": "edge-j9d3-dvl5",
+      "fromNode": "ex-j9d3",
+      "fromSide": "right",
+      "toNode": "ex-dvl5",
+      "toSide": "left",
+      "label": "补足数值accuracy"
+    },
+    {
+      "id": "edge-dvl5-675b",
+      "fromNode": "ex-dvl5",
+      "fromSide": "right",
+      "toNode": "dec-675b",
+      "toSide": "left",
+      "label": "限期Profile分层"
+    },
+    {
+      "id": "edge-675b-9sda",
+      "fromNode": "dec-675b",
+      "fromSide": "bottom",
+      "toNode": "ex-9sda",
+      "toSide": "top",
+      "label": "exFAT阻断 -> 候选迁移工具"
+    },
+    {
+      "id": "edge-9sda-next-prediction",
+      "fromNode": "ex-9sda",
+      "fromSide": "bottom",
+      "toNode": "next-prediction",
+      "toSide": "top",
+      "label": "等用户选盘与限时授权"
+    },
+    {
+      "id": "edge-rd-storage",
+      "fromNode": "rd-kcln",
+      "fromSide": "bottom",
+      "toNode": "dec-7mpl",
+      "toSide": "left",
+      "label": "冷热分层"
+    },
+    {
+      "id": "edge-dec-boundary",
+      "fromNode": "dec-7835",
+      "fromSide": "bottom",
+      "toNode": "boundary",
+      "toSide": "top",
+      "label": "候选边界"
+    },
+    {
+      "id": "edge-storage-boundary",
+      "fromNode": "dec-7mpl",
+      "fromSide": "right",
+      "toNode": "boundary",
+      "toSide": "left",
+      "label": "仍为provisional"
+    },
+    {
+      "id": "edge-storage-9sda",
+      "fromNode": "dec-7mpl",
+      "fromSide": "right",
+      "toNode": "ex-9sda",
+      "toSide": "left",
+      "label": "非破坏迁移边界"
+    },
+    {
+      "id": "edge-rd-alnj",
+      "fromNode": "rd-kcln",
+      "fromSide": "bottom",
+      "toNode": "ex-alnj",
+      "toSide": "left",
+      "label": "重点对象与官方渠道"
+    },
+    {
+      "id": "edge-alnj-4zyq",
+      "fromNode": "ex-alnj",
+      "fromSide": "right",
+      "toNode": "ex-4zyq",
+      "toSide": "left",
+      "label": "对象驱动列表"
+    },
+    {
+      "id": "edge-4zyq-u95b",
+      "fromNode": "ex-4zyq",
+      "fromSide": "right",
+      "toNode": "ex-u95b",
+      "toSide": "left",
+      "label": "首次正文合同失败关闭"
+    },
+    {
+      "id": "edge-u95b-zvrg",
+      "fromNode": "ex-u95b",
+      "fromSide": "right",
+      "toNode": "ex-zvrg",
+      "toSide": "left",
+      "label": "真实Schema与精确主机修订"
+    },
+    {
+      "id": "edge-zvrg-3f7n",
+      "fromNode": "ex-zvrg",
+      "fromSide": "right",
+      "toNode": "ex-3f7n",
+      "toSide": "left",
+      "label": "已见正文入队"
+    },
+    {
+      "id": "edge-3f7n-2kte",
+      "fromNode": "ex-3f7n",
+      "fromSide": "right",
+      "toNode": "ex-2kte",
+      "toSide": "left",
+      "label": "隔离真实包，合成执行"
+    },
+    {
+      "id": "edge-2kte-next-candidate-extraction",
+      "fromNode": "ex-2kte",
+      "fromSide": "right",
+      "toNode": "next-candidate-extraction",
+      "toSide": "left",
+      "label": "失败收据通过，不重试"
+    }
+  ]
+}
