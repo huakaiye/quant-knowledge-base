@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-03T13:59:15Z",
+  "generated_at_utc": "2026-08-03T14:20:35Z",
   "summary": {
-    "node_count": 863,
-    "edge_count": 1194,
+    "node_count": 865,
+    "edge_count": 1198,
     "dangling_edge_count": 0,
     "by_type": {
+      "IDEA": 32,
+      "DEC": 246,
       "TERM": 88,
+      "EX": 383,
       "STRAT": 11,
       "RD": 50,
-      "IDEA": 32,
-      "LIT": 55,
-      "DEC": 245,
-      "EX": 382
+      "LIT": 55
     },
     "rd_by_status": {
       "promote_candidate": 1,
+      "active": 21,
       "park": 25,
-      "observe": 3,
-      "active": 21
+      "observe": 3
     },
-    "recent_change_count_7d": 107
+    "recent_change_count_7d": 109
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,12 +661,12 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-03T13:52:23Z",
+      "updated_at": "2026-08-03T14:16:06Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
       "module_type": "",
-      "current_decision_id": "DEC-20260803T135218Z-main-8KSC",
+      "current_decision_id": "DEC-20260803T141606Z-main-ALTZ",
       "current_best_ex_id": "EX-20260803T113822Z-main-J8TU"
     },
     {
@@ -4516,6 +4516,16 @@
       "stage": "diagnostic_completed_no_rule_passed"
     },
     {
+      "id": "EX-20260803T140458Z-main-E8NR",
+      "type": "EX",
+      "title": "五福S3池广度走弱机制分解与结构扩展",
+      "status": "completed",
+      "updated_at": "2026-08-03T14:16:06Z",
+      "file": "EX-20260803T140458Z-main-E8NR_五福S3池广度走弱机制分解与结构扩展.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "diagnostic_completed_no_extension_passed"
+    },
+    {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "type": "DEC",
       "title": "D20260529-R014 阴跌分桶过滤修订",
@@ -7211,6 +7221,17 @@
       "ex_ids": "EX-20260803T133531Z-main-X6LP"
     },
     {
+      "id": "DEC-20260803T141606Z-main-ALTZ",
+      "type": "DEC",
+      "title": "五福S3确认为粗粒度风险标签但结构扩展不动作化",
+      "status": null,
+      "updated_at": "2026-08-03T14:16:06Z",
+      "file": "DEC-20260803T141606Z-main-ALTZ_五福S3确认为粗粒度风险标签但结构扩展不动作化.md",
+      "decision": "observe",
+      "rd_ids": "RD-20260707T135354Z-main-WUFU",
+      "ex_ids": "EX-20260803T140458Z-main-E8NR"
+    },
+    {
       "id": "LIT-20260605T133336Z-main-67C4",
       "type": "LIT",
       "title": "score 过热拥挤机制文献映射",
@@ -8825,7 +8846,7 @@
       "type": "STRAT",
       "title": "五福V6实盘冻结基线策略",
       "status": "active",
-      "updated_at": "2026-08-03T13:52:23Z",
+      "updated_at": "2026-08-03T14:16:06Z",
       "file": "STRAT-20260730T122752Z-main-CR2U_五福V6实盘冻结基线策略档案.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU"
     }
@@ -12907,6 +12928,16 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260803T140458Z-main-E8NR",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
+      "from": "EX-20260803T140458Z-main-E8NR",
+      "to": "DEC-20260803T141606Z-main-ALTZ",
+      "rel": "produced_decision"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14732,6 +14763,16 @@
       "rel": "decision_on_experiment"
     },
     {
+      "from": "DEC-20260803T141606Z-main-ALTZ",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "decision_affects"
+    },
+    {
+      "from": "DEC-20260803T141606Z-main-ALTZ",
+      "to": "EX-20260803T140458Z-main-E8NR",
+      "rel": "decision_on_experiment"
+    },
+    {
       "from": "TERM-20260623T131305Z-main-DDDF",
       "to": "RD-20260623T125116Z-main-DVXD",
       "rel": "term_related_to"
@@ -14804,6 +14845,22 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
