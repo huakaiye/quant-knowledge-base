@@ -50,7 +50,7 @@ tags: [实盘平台, miniQMT清退, QMTsocket桥接, tornado, passorder, 平台�
 
 - 研究方向：[[02_研究方向/RD-20260703T081815Z-main-LMIG_miniQMT清退后实盘平台迁移|RD-LMIG miniQMT清退后实盘平台迁移]]
 - 前序实验（已作废）：[[04_实验记录/EX-20260703T081815Z-main-XTCN_大QMT内置xtquant连通性smoke|EX-XTCN 大QMT内置xtquant连通性smoke]]
-- 策略档案：[[03_策略档案/STRAT-20260605T115651Z-main-DP00_双池动量轮动|双池动量轮动]]
+- 策略档案：[[03_策略档案/STRAT-20260605T115651Z-main-DP00_双池轮动策略档案|双池动量轮动]]
 - 产生的决策：[[05_研究决策/DEC-20260704T153323Z-main-ELB2_大QMT直连证伪转socket桥接路线|DEC-ELB2 大QMT直连证伪转socket桥接路线]]
 - 设计规格：[[docs/superpowers/specs/2026-07-04-qmt-socket-bridge-design|QMT Socket Bridge 设计规格]]
 - 实现计划：[[docs/superpowers/plans/2026-07-04-qmt-socket-bridge|QMT Socket Bridge Implementation Plan]]

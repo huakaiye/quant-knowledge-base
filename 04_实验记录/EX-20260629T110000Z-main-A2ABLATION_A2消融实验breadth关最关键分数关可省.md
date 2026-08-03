@@ -122,7 +122,7 @@ A2 的三道防御关卡（分数/广度/趋势）拆开测试发现：**广度�
 
 ## 11. 关联链接
 
-- [[04_实验记录/EX-20260629T100000Z-main-A2SENS|EX-A2SENS]]（P3 参数敏感性，第 7 节 breadth 冗余猜测需回填修正）
-- [[04_实验记录/EX-20260627T053730Z-main-JTX7|EX-JTX7]]（A2 主实验）
-- [[04_实验记录/EX-20260628T230000Z-main-A2COST|EX-A2COST]]（成本扰动）
+- [[04_实验记录/EX-20260629T100000Z-main-A2SENS_A2参数敏感性9点网格中心点最优breadth冗余|EX-A2SENS]]（P3 参数敏感性，第 7 节 breadth 冗余猜测需回填修正）
+- [[04_实验记录/EX-20260627T053730Z-main-JTX7_A2趋势破位ma200斜率治V型误伤|EX-JTX7]]（A2 主实验）
+- [[04_实验记录/EX-20260628T230000Z-main-A2COST_A2成本扰动cost2xcost3x证伪预测超额依赖低换手假设|EX-A2COST]]（成本扰动）
 - [[05_研究决策/DEC-20260627T073551Z-main-DTH2_A2趋势破位升级RA5第三维L2robustness更新shadow配置|DEC-DTH2]]（A2 决策卡）

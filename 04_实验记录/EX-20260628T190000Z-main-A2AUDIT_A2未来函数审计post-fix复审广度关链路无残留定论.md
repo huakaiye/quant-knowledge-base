@@ -121,6 +121,6 @@ raw_closes bug 修复后，A2 的广度关（ret20_breadth<0.5）数据链路完
 
 ## 12. 关联链接
 
-- [[04_实验记录/EX-20260627T053730Z-main-JTX7|EX-JTX7]]（前序 A2 实验，§8 原审计仅覆盖趋势关）
+- [[04_实验记录/EX-20260627T053730Z-main-JTX7_A2趋势破位ma200斜率治V型误伤|EX-JTX7]]（前序 A2 实验，§8 原审计仅覆盖趋势关）
 - [[04_实验记录/EX-20260628T120000Z-main-D3_raw_closes缓存累加污染根因定论|EX-D3]]（raw_closes bug 根因定论+修复）
 - [[05_研究决策/DEC-20260627T073551Z-main-DTH2_A2趋势破位升级RA5第三维L2robustness更新shadow配置|DEC-DTH2]]（A2 决策卡）

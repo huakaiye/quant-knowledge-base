@@ -228,22 +228,16 @@ foreach ($file in $markdownFiles) {
         }
         $wikiLinksChecked += 1
 
-        $targetWithMd = $target
-        if (-not [System.IO.Path]::HasExtension($targetWithMd)) {
-            $targetWithMd = "$targetWithMd.md"
-        }
-
         $found = $false
         if ($target.Contains('/') -or $target.Contains('\')) {
-            $candidate = Join-Path $Root $targetWithMd
-            $found = Test-Path -LiteralPath $candidate
-            if (-not $found -and $target.EndsWith('.canvas')) {
-                $found = Test-Path -LiteralPath (Join-Path $Root $target)
+            $candidate = Join-Path $Root $target
+            $found = Test-Path -LiteralPath $candidate -PathType Leaf
+            if (-not $found) {
+                $found = Test-Path -LiteralPath (Join-Path $Root "$target.md") -PathType Leaf
             }
         } else {
-            $name = [System.IO.Path]::GetFileNameWithoutExtension($target)
             $found = [bool](Get-ChildItem -LiteralPath $Root -Recurse -File | Where-Object {
-                [System.IO.Path]::GetFileNameWithoutExtension($_.Name) -eq $name
+                $_.Name -eq $target -or [System.IO.Path]::GetFileNameWithoutExtension($_.Name) -eq $target
             } | Select-Object -First 1)
         }
 

@@ -194,8 +194,8 @@ context._r010a_raw_closes = raw_closes_cache   # 每日整体替换，与 state_
 
 ## 9. 关联链接
 
-- [[EX-20260627T154439Z-main-8XXB]]（被推翻的诊断，已回填为 superseded）
-- [[EX-20260627T135725Z-main-HUWV]]（被 bug 污染的十一年回测，已回填为 superseded，其结论被第 10 节推翻）
+- [[04_实验记录/EX-20260627T154439Z-main-8XXB_ret20_breadth fallback估算污染广度bug修复]]（被推翻的诊断，已回填为 superseded）
+- [[04_实验记录/EX-20260627T135725Z-main-HUWV_十一年长周期回测揭示4段空仓重置假象]]（被 bug 污染的十一年回测，已回填为 superseded，其结论被第 10 节推翻）
 
 ---
 
