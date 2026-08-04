@@ -1,23 +1,23 @@
 {
-  "generated_at_utc": "2026-08-04T01:52:13Z",
+  "generated_at_utc": "2026-08-04T03:01:40Z",
   "summary": {
     "node_count": 872,
     "edge_count": 1216,
     "dangling_edge_count": 0,
     "by_type": {
       "STRAT": 11,
-      "IDEA": 32,
-      "RD": 50,
-      "DEC": 249,
       "TERM": 88,
+      "RD": 50,
+      "LIT": 55,
+      "DEC": 249,
       "EX": 387,
-      "LIT": 55
+      "IDEA": 32
     },
     "rd_by_status": {
-      "promote_candidate": 1,
+      "park": 25,
       "active": 21,
       "observe": 3,
-      "park": 25
+      "promote_candidate": 1
     },
     "recent_change_count_7d": 116
   },
@@ -4560,10 +4560,10 @@
       "type": "EX",
       "title": "五福E2与R3十点早卖回补连续AB",
       "status": "active",
-      "updated_at": "2026-08-04T01:45:50Z",
+      "updated_at": "2026-08-04T03:06:00Z",
       "file": "EX-20260804T014550Z-main-E52Y_五福E2与R3十点早卖回补连续AB.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
-      "stage": "preregistered"
+      "stage": "probe_diagnostic_completed_formal_blocked"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
