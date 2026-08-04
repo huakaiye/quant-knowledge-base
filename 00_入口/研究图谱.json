@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-04T03:23:03Z",
+  "generated_at_utc": "2026-08-04T05:07:30Z",
   "summary": {
-    "node_count": 873,
-    "edge_count": 1217,
+    "node_count": 875,
+    "edge_count": 1221,
     "dangling_edge_count": 0,
     "by_type": {
-      "STRAT": 11,
-      "DEC": 249,
-      "EX": 388,
-      "LIT": 55,
-      "TERM": 88,
       "RD": 50,
-      "IDEA": 32
+      "DEC": 250,
+      "STRAT": 11,
+      "EX": 389,
+      "IDEA": 32,
+      "LIT": 55,
+      "TERM": 88
     },
     "rd_by_status": {
       "observe": 3,
+      "active": 21,
       "promote_candidate": 1,
-      "park": 25,
-      "active": 21
+      "park": 25
     },
-    "recent_change_count_7d": 117
+    "recent_change_count_7d": 119
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,12 +661,12 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-04T01:45:50Z",
+      "updated_at": "2026-08-04T05:00:15Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
       "module_type": "",
-      "current_decision_id": "DEC-20260804T014550Z-main-85H7",
+      "current_decision_id": "DEC-20260804T045918Z-main-F2GJ",
       "current_best_ex_id": "EX-20260803T113822Z-main-J8TU"
     },
     {
@@ -4569,11 +4569,21 @@
       "id": "EX-20260804T031507Z-main-YE3N",
       "type": "EX",
       "title": "五福正常期E2走弱期R3状态分工连续AB",
-      "status": "active",
-      "updated_at": "2026-08-04T03:24:00Z",
+      "status": "completed",
+      "updated_at": "2026-08-04T05:00:15Z",
       "file": "EX-20260804T031507Z-main-YE3N_五福正常期E2走弱期R3状态分工连续AB.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
-      "stage": "implementation_tested_formal_blocked"
+      "stage": "formal_completed_gate_failed"
+    },
+    {
+      "id": "EX-20260804T042213Z-main-B7QX",
+      "type": "EX",
+      "title": "五福状态分工假设（E2用于正常期、R3用于走弱期）检验",
+      "status": "completed",
+      "updated_at": "2026-08-04T04:22:13Z",
+      "file": "EX-20260804T042213Z-main-B7QX_五福状态分工假设检验.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "diagnostic_completed_state_split_not_supported"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -7313,6 +7323,17 @@
       "decision": "revise",
       "rd_ids": "RD-20260707T135354Z-main-WUFU",
       "ex_ids": "EX-20260803T140458Z-main-E8NR;EX-20260804T011240Z-main-ADE6;EX-20260804T014550Z-main-E52Y"
+    },
+    {
+      "id": "DEC-20260804T045918Z-main-F2GJ",
+      "type": "DEC",
+      "title": "五福正常期E2走弱期R3行为有效但回撤门失败不晋级",
+      "status": null,
+      "updated_at": "2026-08-04T04:59:18Z",
+      "file": "DEC-20260804T045918Z-main-F2GJ_五福正常期E2走弱期R3行为有效但回撤门失败不晋级.md",
+      "decision": "observe",
+      "rd_ids": "RD-20260707T135354Z-main-WUFU",
+      "ex_ids": "EX-20260804T031507Z-main-YE3N"
     },
     {
       "id": "LIT-20260605T133336Z-main-67C4",
@@ -13076,6 +13097,16 @@
       "rel": "experiment_of"
     },
     {
+      "from": "EX-20260804T031507Z-main-YE3N",
+      "to": "DEC-20260804T045918Z-main-F2GJ",
+      "rel": "produced_decision"
+    },
+    {
+      "from": "EX-20260804T042213Z-main-B7QX",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14951,6 +14982,16 @@
       "rel": "decision_on_experiment"
     },
     {
+      "from": "DEC-20260804T045918Z-main-F2GJ",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "decision_affects"
+    },
+    {
+      "from": "DEC-20260804T045918Z-main-F2GJ",
+      "to": "EX-20260804T031507Z-main-YE3N",
+      "rel": "decision_on_experiment"
+    },
+    {
       "from": "TERM-20260623T131305Z-main-DDDF",
       "to": "RD-20260623T125116Z-main-DVXD",
       "rel": "term_related_to"
@@ -15023,6 +15064,22 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
