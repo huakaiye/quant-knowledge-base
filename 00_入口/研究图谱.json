@@ -1,17 +1,17 @@
 {
-  "generated_at_utc": "2026-08-04T08:19:09Z",
+  "generated_at_utc": "2026-08-04T08:28:14Z",
   "summary": {
-    "node_count": 879,
-    "edge_count": 1229,
+    "node_count": 880,
+    "edge_count": 1230,
     "dangling_edge_count": 0,
     "by_type": {
-      "DEC": 252,
-      "EX": 391,
-      "RD": 50,
-      "LIT": 55,
       "STRAT": 11,
       "TERM": 88,
-      "IDEA": 32
+      "RD": 50,
+      "LIT": 55,
+      "DEC": 252,
+      "IDEA": 32,
+      "EX": 392
     },
     "rd_by_status": {
       "active": 21,
@@ -19,7 +19,7 @@
       "park": 25,
       "observe": 3
     },
-    "recent_change_count_7d": 123
+    "recent_change_count_7d": 124
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -4604,6 +4604,16 @@
       "file": "EX-20260804T074149Z-main-HY53_五福13点09与13点10选股时点差异.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
       "stage": "formal_completed_gate_failed"
+    },
+    {
+      "id": "EX-20260804T082635Z-main-EZZW",
+      "type": "EX",
+      "title": "五福13点08暂定换仓13点09早卖连续AB",
+      "status": "active",
+      "updated_at": "2026-08-04T08:26:35Z",
+      "file": "EX-20260804T082635Z-main-EZZW_五福13点08暂定换仓13点09早卖连续AB.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "preregistered"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -13169,6 +13179,11 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260804T082635Z-main-EZZW",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -15146,6 +15161,14 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
