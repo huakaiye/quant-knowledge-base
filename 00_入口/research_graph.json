@@ -1,17 +1,17 @@
 {
-  "generated_at_utc": "2026-08-04T00:56:20Z",
+  "generated_at_utc": "2026-08-04T01:15:13Z",
   "summary": {
-    "node_count": 867,
-    "edge_count": 1203,
+    "node_count": 868,
+    "edge_count": 1205,
     "dangling_edge_count": 0,
     "by_type": {
-      "IDEA": 32,
-      "RD": 50,
-      "TERM": 88,
-      "LIT": 55,
       "STRAT": 11,
-      "EX": 384,
-      "DEC": 247
+      "IDEA": 32,
+      "TERM": 88,
+      "DEC": 247,
+      "RD": 50,
+      "EX": 385,
+      "LIT": 55
     },
     "rd_by_status": {
       "park": 25,
@@ -19,7 +19,7 @@
       "promote_candidate": 1,
       "observe": 3
     },
-    "recent_change_count_7d": 111
+    "recent_change_count_7d": 112
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -4534,6 +4534,16 @@
       "file": "EX-20260804T000804Z-main-VN7H_五福10点旧仓暴露保留价值诊断.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
       "stage": "diagnostic_completed_primary_rule_failed"
+    },
+    {
+      "id": "EX-20260804T011240Z-main-ADE6",
+      "type": "EX",
+      "title": "五福10点旧仓早卖组合过滤与R²诊断",
+      "status": "active",
+      "updated_at": "2026-08-04T01:12:40Z",
+      "file": "EX-20260804T011240Z-main-ADE6_五福10点旧仓早卖组合过滤与R²诊断.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "preregistered"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -12974,6 +12984,16 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260804T011240Z-main-ADE6",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
+      "from": "EX-20260804T011240Z-main-ADE6",
+      "to": "DEC-20260804T005035Z-main-KMNL",
+      "rel": "produced_decision"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14891,6 +14911,14 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
