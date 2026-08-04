@@ -1,23 +1,23 @@
 {
-  "generated_at_utc": "2026-08-04T01:15:13Z",
+  "generated_at_utc": "2026-08-04T01:17:17Z",
   "summary": {
     "node_count": 868,
     "edge_count": 1205,
     "dangling_edge_count": 0,
     "by_type": {
+      "EX": 385,
       "STRAT": 11,
+      "RD": 50,
       "IDEA": 32,
       "TERM": 88,
       "DEC": 247,
-      "RD": 50,
-      "EX": 385,
       "LIT": 55
     },
     "rd_by_status": {
-      "park": 25,
-      "active": 21,
+      "observe": 3,
       "promote_candidate": 1,
-      "observe": 3
+      "park": 25,
+      "active": 21
     },
     "recent_change_count_7d": 112
   },
