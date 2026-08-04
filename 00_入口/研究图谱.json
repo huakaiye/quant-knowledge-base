@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-04T01:17:17Z",
+  "generated_at_utc": "2026-08-04T01:32:21Z",
   "summary": {
-    "node_count": 868,
-    "edge_count": 1205,
+    "node_count": 869,
+    "edge_count": 1208,
     "dangling_edge_count": 0,
     "by_type": {
-      "EX": 385,
       "STRAT": 11,
-      "RD": 50,
-      "IDEA": 32,
+      "DEC": 248,
+      "LIT": 55,
+      "EX": 385,
       "TERM": 88,
-      "DEC": 247,
-      "LIT": 55
+      "RD": 50,
+      "IDEA": 32
     },
     "rd_by_status": {
-      "observe": 3,
       "promote_candidate": 1,
-      "park": 25,
-      "active": 21
+      "observe": 3,
+      "active": 21,
+      "park": 25
     },
-    "recent_change_count_7d": 112
+    "recent_change_count_7d": 113
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,12 +661,12 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-04T00:50:35Z",
+      "updated_at": "2026-08-04T01:27:40Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
       "module_type": "",
-      "current_decision_id": "DEC-20260804T005035Z-main-KMNL",
+      "current_decision_id": "DEC-20260804T012740Z-main-DZTM",
       "current_best_ex_id": "EX-20260803T113822Z-main-J8TU"
     },
     {
@@ -4539,11 +4539,11 @@
       "id": "EX-20260804T011240Z-main-ADE6",
       "type": "EX",
       "title": "五福10点旧仓早卖组合过滤与R²诊断",
-      "status": "active",
-      "updated_at": "2026-08-04T01:12:40Z",
+      "status": "completed",
+      "updated_at": "2026-08-04T01:27:40Z",
       "file": "EX-20260804T011240Z-main-ADE6_五福10点旧仓早卖组合过滤与R²诊断.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
-      "stage": "preregistered"
+      "stage": "diagnostic_completed_no_candidate_passed"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -7261,6 +7261,17 @@
       "decision": "kill",
       "rd_ids": "RD-20260707T135354Z-main-WUFU",
       "ex_ids": "EX-20260804T000804Z-main-VN7H"
+    },
+    {
+      "id": "DEC-20260804T012740Z-main-DZTM",
+      "type": "DEC",
+      "title": "五福10点组合早卖不动作化且相对保留线仅留观察",
+      "status": null,
+      "updated_at": "2026-08-04T01:27:40Z",
+      "file": "DEC-20260804T012740Z-main-DZTM_五福10点组合早卖不动作化且相对保留线仅留观察.md",
+      "decision": "observe",
+      "rd_ids": "RD-20260707T135354Z-main-WUFU",
+      "ex_ids": "EX-20260804T011240Z-main-ADE6"
     },
     {
       "id": "LIT-20260605T133336Z-main-67C4",
@@ -12994,6 +13005,11 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260804T011240Z-main-ADE6",
+      "to": "DEC-20260804T012740Z-main-DZTM",
+      "rel": "produced_decision"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14839,6 +14855,16 @@
       "rel": "decision_on_experiment"
     },
     {
+      "from": "DEC-20260804T012740Z-main-DZTM",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "decision_affects"
+    },
+    {
+      "from": "DEC-20260804T012740Z-main-DZTM",
+      "to": "EX-20260804T011240Z-main-ADE6",
+      "rel": "decision_on_experiment"
+    },
+    {
       "from": "TERM-20260623T131305Z-main-DDDF",
       "to": "RD-20260623T125116Z-main-DVXD",
       "rel": "term_related_to"
@@ -14911,6 +14937,14 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
