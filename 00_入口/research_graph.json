@@ -1,23 +1,23 @@
 {
-  "generated_at_utc": "2026-08-04T05:07:30Z",
+  "generated_at_utc": "2026-08-04T06:27:21Z",
   "summary": {
     "node_count": 875,
     "edge_count": 1221,
     "dangling_edge_count": 0,
     "by_type": {
-      "RD": 50,
-      "DEC": 250,
-      "STRAT": 11,
-      "EX": 389,
-      "IDEA": 32,
+      "TERM": 88,
       "LIT": 55,
-      "TERM": 88
+      "IDEA": 32,
+      "DEC": 250,
+      "EX": 389,
+      "RD": 50,
+      "STRAT": 11
     },
     "rd_by_status": {
-      "observe": 3,
-      "active": 21,
       "promote_candidate": 1,
-      "park": 25
+      "park": 25,
+      "observe": 3,
+      "active": 21
     },
     "recent_change_count_7d": 119
   },
@@ -4570,7 +4570,7 @@
       "type": "EX",
       "title": "五福正常期E2走弱期R3状态分工连续AB",
       "status": "completed",
-      "updated_at": "2026-08-04T05:00:15Z",
+      "updated_at": "2026-08-04T06:26:05Z",
       "file": "EX-20260804T031507Z-main-YE3N_五福正常期E2走弱期R3状态分工连续AB.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
       "stage": "formal_completed_gate_failed"
