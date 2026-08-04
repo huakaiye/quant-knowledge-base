@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-04T01:32:21Z",
+  "generated_at_utc": "2026-08-04T01:52:13Z",
   "summary": {
-    "node_count": 869,
-    "edge_count": 1208,
+    "node_count": 872,
+    "edge_count": 1216,
     "dangling_edge_count": 0,
     "by_type": {
       "STRAT": 11,
-      "DEC": 248,
-      "LIT": 55,
-      "EX": 385,
-      "TERM": 88,
+      "IDEA": 32,
       "RD": 50,
-      "IDEA": 32
+      "DEC": 249,
+      "TERM": 88,
+      "EX": 387,
+      "LIT": 55
     },
     "rd_by_status": {
       "promote_candidate": 1,
-      "observe": 3,
       "active": 21,
+      "observe": 3,
       "park": 25
     },
-    "recent_change_count_7d": 113
+    "recent_change_count_7d": 116
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,12 +661,12 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-04T01:27:40Z",
+      "updated_at": "2026-08-04T01:45:50Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
       "module_type": "",
-      "current_decision_id": "DEC-20260804T012740Z-main-DZTM",
+      "current_decision_id": "DEC-20260804T014550Z-main-85H7",
       "current_best_ex_id": "EX-20260803T113822Z-main-J8TU"
     },
     {
@@ -4540,10 +4540,30 @@
       "type": "EX",
       "title": "五福10点旧仓早卖组合过滤与R²诊断",
       "status": "completed",
-      "updated_at": "2026-08-04T01:27:40Z",
+      "updated_at": "2026-08-04T01:45:50Z",
       "file": "EX-20260804T011240Z-main-ADE6_五福10点旧仓早卖组合过滤与R²诊断.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
       "stage": "diagnostic_completed_no_candidate_passed"
+    },
+    {
+      "id": "EX-20260804T014045Z-main-TY9K",
+      "type": "EX",
+      "title": "五福旧仓盘中暴露持续监控方向系统性探索",
+      "status": "completed",
+      "updated_at": "2026-08-04T01:40:45Z",
+      "file": "EX-20260804T014045Z-main-TY9K_五福旧仓盘中暴露持续监控方向系统性探索.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "exploratory_diagnostic_negative_monitoring_candidates_rejected"
+    },
+    {
+      "id": "EX-20260804T014550Z-main-E52Y",
+      "type": "EX",
+      "title": "五福E2与R3十点早卖回补连续AB",
+      "status": "active",
+      "updated_at": "2026-08-04T01:45:50Z",
+      "file": "EX-20260804T014550Z-main-E52Y_五福E2与R3十点早卖回补连续AB.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "preregistered"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -7267,11 +7287,22 @@
       "type": "DEC",
       "title": "五福10点组合早卖不动作化且相对保留线仅留观察",
       "status": null,
-      "updated_at": "2026-08-04T01:27:40Z",
+      "updated_at": "2026-08-04T01:45:50Z",
       "file": "DEC-20260804T012740Z-main-DZTM_五福10点组合早卖不动作化且相对保留线仅留观察.md",
       "decision": "observe",
       "rd_ids": "RD-20260707T135354Z-main-WUFU",
       "ex_ids": "EX-20260804T011240Z-main-ADE6"
+    },
+    {
+      "id": "DEC-20260804T014550Z-main-85H7",
+      "type": "DEC",
+      "title": "五福早卖改以行为胜率为主并恢复E2与R3连续AB候选",
+      "status": null,
+      "updated_at": "2026-08-04T01:45:50Z",
+      "file": "DEC-20260804T014550Z-main-85H7_五福早卖改以行为胜率为主并恢复E2与R3连续AB候选.md",
+      "decision": "revise",
+      "rd_ids": "RD-20260707T135354Z-main-WUFU",
+      "ex_ids": "EX-20260803T140458Z-main-E8NR;EX-20260804T011240Z-main-ADE6;EX-20260804T014550Z-main-E52Y"
     },
     {
       "id": "LIT-20260605T133336Z-main-67C4",
@@ -13010,6 +13041,26 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260804T011240Z-main-ADE6",
+      "to": "DEC-20260804T014550Z-main-85H7",
+      "rel": "produced_decision"
+    },
+    {
+      "from": "EX-20260804T014045Z-main-TY9K",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
+      "from": "EX-20260804T014550Z-main-E52Y",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
+      "from": "EX-20260804T014550Z-main-E52Y",
+      "to": "DEC-20260804T014550Z-main-85H7",
+      "rel": "produced_decision"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14865,6 +14916,26 @@
       "rel": "decision_on_experiment"
     },
     {
+      "from": "DEC-20260804T014550Z-main-85H7",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "decision_affects"
+    },
+    {
+      "from": "DEC-20260804T014550Z-main-85H7",
+      "to": "EX-20260803T140458Z-main-E8NR",
+      "rel": "decision_on_experiment"
+    },
+    {
+      "from": "DEC-20260804T014550Z-main-85H7",
+      "to": "EX-20260804T011240Z-main-ADE6",
+      "rel": "decision_on_experiment"
+    },
+    {
+      "from": "DEC-20260804T014550Z-main-85H7",
+      "to": "EX-20260804T014550Z-main-E52Y",
+      "rel": "decision_on_experiment"
+    },
+    {
       "from": "TERM-20260623T131305Z-main-DDDF",
       "to": "RD-20260623T125116Z-main-DVXD",
       "rel": "term_related_to"
@@ -14937,6 +15008,30 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
