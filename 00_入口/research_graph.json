@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-03T14:20:35Z",
+  "generated_at_utc": "2026-08-04T00:56:20Z",
   "summary": {
-    "node_count": 865,
-    "edge_count": 1198,
+    "node_count": 867,
+    "edge_count": 1203,
     "dangling_edge_count": 0,
     "by_type": {
       "IDEA": 32,
-      "DEC": 246,
-      "TERM": 88,
-      "EX": 383,
-      "STRAT": 11,
       "RD": 50,
-      "LIT": 55
+      "TERM": 88,
+      "LIT": 55,
+      "STRAT": 11,
+      "EX": 384,
+      "DEC": 247
     },
     "rd_by_status": {
-      "promote_candidate": 1,
-      "active": 21,
       "park": 25,
+      "active": 21,
+      "promote_candidate": 1,
       "observe": 3
     },
-    "recent_change_count_7d": 109
+    "recent_change_count_7d": 111
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,12 +661,12 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-03T14:16:06Z",
+      "updated_at": "2026-08-04T00:50:35Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
       "module_type": "",
-      "current_decision_id": "DEC-20260803T141606Z-main-ALTZ",
+      "current_decision_id": "DEC-20260804T005035Z-main-KMNL",
       "current_best_ex_id": "EX-20260803T113822Z-main-J8TU"
     },
     {
@@ -4526,6 +4526,16 @@
       "stage": "diagnostic_completed_no_extension_passed"
     },
     {
+      "id": "EX-20260804T000804Z-main-VN7H",
+      "type": "EX",
+      "title": "五福10点旧仓暴露保留价值诊断",
+      "status": "completed",
+      "updated_at": "2026-08-04T00:50:35Z",
+      "file": "EX-20260804T000804Z-main-VN7H_五福10点旧仓暴露保留价值诊断.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "diagnostic_completed_primary_rule_failed"
+    },
+    {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "type": "DEC",
       "title": "D20260529-R014 阴跌分桶过滤修订",
@@ -7230,6 +7240,17 @@
       "decision": "observe",
       "rd_ids": "RD-20260707T135354Z-main-WUFU",
       "ex_ids": "EX-20260803T140458Z-main-E8NR"
+    },
+    {
+      "id": "DEC-20260804T005035Z-main-KMNL",
+      "type": "DEC",
+      "title": "五福10点同源暂定排名不作为旧仓早卖信号",
+      "status": null,
+      "updated_at": "2026-08-04T00:50:35Z",
+      "file": "DEC-20260804T005035Z-main-KMNL_五福10点同源暂定排名不作为旧仓早卖信号.md",
+      "decision": "kill",
+      "rd_ids": "RD-20260707T135354Z-main-WUFU",
+      "ex_ids": "EX-20260804T000804Z-main-VN7H"
     },
     {
       "id": "LIT-20260605T133336Z-main-67C4",
@@ -12938,6 +12959,21 @@
       "rel": "produced_decision"
     },
     {
+      "from": "EX-20260804T000804Z-main-VN7H",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
+      "from": "EX-20260804T000804Z-main-VN7H",
+      "to": "DEC-20260803T141606Z-main-ALTZ",
+      "rel": "produced_decision"
+    },
+    {
+      "from": "EX-20260804T000804Z-main-VN7H",
+      "to": "DEC-20260804T005035Z-main-KMNL",
+      "rel": "produced_decision"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -14773,6 +14809,16 @@
       "rel": "decision_on_experiment"
     },
     {
+      "from": "DEC-20260804T005035Z-main-KMNL",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "decision_affects"
+    },
+    {
+      "from": "DEC-20260804T005035Z-main-KMNL",
+      "to": "EX-20260804T000804Z-main-VN7H",
+      "rel": "decision_on_experiment"
+    },
+    {
       "from": "TERM-20260623T131305Z-main-DDDF",
       "to": "RD-20260623T125116Z-main-DVXD",
       "rel": "term_related_to"
@@ -14845,6 +14891,22 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
+    {
+      "id": null,
+      "type": null,
+      "title": null,
+      "status": null,
+      "updated_at": null,
+      "file": null
+    },
     {
       "id": null,
       "type": null,
