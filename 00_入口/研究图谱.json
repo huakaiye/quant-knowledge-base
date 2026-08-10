@@ -1,21 +1,21 @@
 {
-  "generated_at_utc": "2026-08-10T14:20:12Z",
+  "generated_at_utc": "2026-08-10T16:41:09Z",
   "summary": {
-    "node_count": 893,
-    "edge_count": 1266,
+    "node_count": 894,
+    "edge_count": 1267,
     "dangling_edge_count": 0,
     "by_type": {
-      "IDEA": 32,
-      "EX": 399,
       "RD": 50,
-      "TERM": 88,
-      "STRAT": 11,
+      "DEC": 258,
+      "EX": 400,
+      "IDEA": 32,
       "LIT": 55,
-      "DEC": 258
+      "STRAT": 11,
+      "TERM": 88
     },
     "rd_by_status": {
-      "promote_candidate": 1,
       "active": 21,
+      "promote_candidate": 1,
       "observe": 3,
       "park": 25
     },
@@ -687,7 +687,7 @@
       "type": "RD",
       "title": "个人智库消息面结构化与长期记忆系统",
       "status": "active",
-      "updated_at": "2026-08-10T08:49:23Z",
+      "updated_at": "2026-08-10T16:30:30Z",
       "file": "RD-20260731T090245Z-main-KLCN_个人智库消息面结构化与长期记忆系统.md",
       "parent_rd_id": "",
       "scope": "策略",
@@ -4684,6 +4684,16 @@
       "file": "EX-20260810T083157Z-main-STVH_真实未见官方正文单次候选抽取预注册.md",
       "rd_id": "RD-20260731T090245Z-main-KLCN",
       "stage": "completed_runtime_passed_candidate_failed_no_retry"
+    },
+    {
+      "id": "EX-20260810T162647Z-main-UGW6",
+      "type": "EX",
+      "title": "第二次真实未见官方正文候选抽取V2预注册",
+      "status": "draft",
+      "updated_at": "2026-08-10T16:40:09Z",
+      "file": "EX-20260810T162647Z-main-UGW6_第二次真实未见官方正文候选抽取V2预注册.md",
+      "rd_id": "RD-20260731T090245Z-main-KLCN",
+      "stage": "preregistered_waiting_new_unseen_sample"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -13381,6 +13391,11 @@
     },
     {
       "from": "EX-20260810T083157Z-main-STVH",
+      "to": "RD-20260731T090245Z-main-KLCN",
+      "rel": "experiment_of"
+    },
+    {
+      "from": "EX-20260810T162647Z-main-UGW6",
       "to": "RD-20260731T090245Z-main-KLCN",
       "rel": "experiment_of"
     },
