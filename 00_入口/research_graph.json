@@ -1,23 +1,23 @@
 {
-  "generated_at_utc": "2026-08-10T11:19:41Z",
+  "generated_at_utc": "2026-08-10T13:59:50Z",
   "summary": {
     "node_count": 893,
     "edge_count": 1266,
     "dangling_edge_count": 0,
     "by_type": {
-      "IDEA": 32,
-      "EX": 399,
-      "DEC": 258,
       "TERM": 88,
-      "RD": 50,
       "STRAT": 11,
+      "RD": 50,
+      "IDEA": 32,
+      "DEC": 258,
+      "EX": 399,
       "LIT": 55
     },
     "rd_by_status": {
-      "observe": 3,
-      "active": 21,
       "promote_candidate": 1,
-      "park": 25
+      "observe": 3,
+      "park": 25,
+      "active": 21
     },
     "recent_change_count_7d": 43
   },
@@ -4680,7 +4680,7 @@
       "type": "EX",
       "title": "真实未见官方正文单次候选抽取预注册",
       "status": "draft",
-      "updated_at": "2026-08-10T11:17:35Z",
+      "updated_at": "2026-08-10T13:54:16Z",
       "file": "EX-20260810T083157Z-main-STVH_真实未见官方正文单次候选抽取预注册.md",
       "rd_id": "RD-20260731T090245Z-main-KLCN",
       "stage": "preregistered"
