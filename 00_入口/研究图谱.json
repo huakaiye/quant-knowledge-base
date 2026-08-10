@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-10T13:59:50Z",
+  "generated_at_utc": "2026-08-10T14:20:12Z",
   "summary": {
     "node_count": 893,
     "edge_count": 1266,
     "dangling_edge_count": 0,
     "by_type": {
+      "IDEA": 32,
+      "EX": 399,
+      "RD": 50,
       "TERM": 88,
       "STRAT": 11,
-      "RD": 50,
-      "IDEA": 32,
-      "DEC": 258,
-      "EX": 399,
-      "LIT": 55
+      "LIT": 55,
+      "DEC": 258
     },
     "rd_by_status": {
       "promote_candidate": 1,
+      "active": 21,
       "observe": 3,
-      "park": 25,
-      "active": 21
+      "park": 25
     },
-    "recent_change_count_7d": 43
+    "recent_change_count_7d": 40
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -4679,11 +4679,11 @@
       "id": "EX-20260810T083157Z-main-STVH",
       "type": "EX",
       "title": "真实未见官方正文单次候选抽取预注册",
-      "status": "draft",
-      "updated_at": "2026-08-10T13:54:16Z",
+      "status": "completed",
+      "updated_at": "2026-08-10T14:15:28Z",
       "file": "EX-20260810T083157Z-main-STVH_真实未见官方正文单次候选抽取预注册.md",
       "rd_id": "RD-20260731T090245Z-main-KLCN",
-      "stage": "preregistered"
+      "stage": "completed_runtime_passed_candidate_failed_no_retry"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -15477,30 +15477,6 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
     {
       "id": null,
       "type": null,
