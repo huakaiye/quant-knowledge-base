@@ -1,23 +1,23 @@
 {
-  "generated_at_utc": "2026-08-14T12:45:53Z",
+  "generated_at_utc": "2026-08-14T13:39:55Z",
   "summary": {
     "node_count": 895,
     "edge_count": 1268,
     "dangling_edge_count": 0,
     "by_type": {
+      "LIT": 55,
+      "STRAT": 11,
       "IDEA": 32,
       "RD": 50,
-      "STRAT": 11,
-      "EX": 401,
-      "LIT": 55,
+      "DEC": 258,
       "TERM": 88,
-      "DEC": 258
+      "EX": 401
     },
     "rd_by_status": {
-      "park": 25,
-      "observe": 3,
       "promote_candidate": 1,
-      "active": 21
+      "observe": 3,
+      "active": 21,
+      "park": 25
     },
     "recent_change_count_7d": 6
   },
@@ -4700,7 +4700,7 @@
       "type": "EX",
       "title": "五福全ETF二十五日R方滚动面板预注册",
       "status": "completed",
-      "updated_at": "2026-08-14T12:45:16Z",
+      "updated_at": "2026-08-14T13:39:39Z",
       "file": "EX-20260814T114310Z-main-43XQ_五福全ETF二十五日R方滚动面板预注册.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU",
       "stage": "data_gate_completed"
