@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-08-10T16:41:09Z",
+  "generated_at_utc": "2026-08-14T12:05:30Z",
   "summary": {
-    "node_count": 894,
-    "edge_count": 1267,
+    "node_count": 895,
+    "edge_count": 1268,
     "dangling_edge_count": 0,
     "by_type": {
+      "LIT": 55,
+      "TERM": 88,
+      "IDEA": 32,
+      "STRAT": 11,
       "RD": 50,
       "DEC": 258,
-      "EX": 400,
-      "IDEA": 32,
-      "LIT": 55,
-      "STRAT": 11,
-      "TERM": 88
+      "EX": 401
     },
     "rd_by_status": {
-      "active": 21,
-      "promote_candidate": 1,
       "observe": 3,
+      "promote_candidate": 1,
+      "active": 21,
       "park": 25
     },
-    "recent_change_count_7d": 40
+    "recent_change_count_7d": 6
   },
   "active_directions": [
     "RD-20260523T000000Z-mig-BLF20260523001134E1",
@@ -661,7 +661,7 @@
       "type": "RD",
       "title": "五福闹新春 ETF 动量轮动复现与审计",
       "status": "active",
-      "updated_at": "2026-08-05T05:11:45Z",
+      "updated_at": "2026-08-14T11:58:37Z",
       "file": "RD-20260707T135354Z-main-WUFU_五福闹新春ETF动量轮动复现与审计.md",
       "parent_rd_id": "",
       "scope": "策略",
@@ -4694,6 +4694,16 @@
       "file": "EX-20260810T162647Z-main-UGW6_第二次真实未见官方正文候选抽取V2预注册.md",
       "rd_id": "RD-20260731T090245Z-main-KLCN",
       "stage": "preregistered_waiting_new_unseen_sample"
+    },
+    {
+      "id": "EX-20260814T114310Z-main-43XQ",
+      "type": "EX",
+      "title": "五福全ETF二十五日R方滚动面板预注册",
+      "status": "completed",
+      "updated_at": "2026-08-14T11:58:37Z",
+      "file": "EX-20260814T114310Z-main-43XQ_五福全ETF二十五日R方滚动面板预注册.md",
+      "rd_id": "RD-20260707T135354Z-main-WUFU",
+      "stage": "data_gate_completed"
     },
     {
       "id": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
@@ -9148,7 +9158,7 @@
       "type": "STRAT",
       "title": "五福V6实盘冻结基线策略",
       "status": "active",
-      "updated_at": "2026-08-05T05:11:45Z",
+      "updated_at": "2026-08-14T11:58:37Z",
       "file": "STRAT-20260730T122752Z-main-CR2U_五福V6实盘冻结基线策略档案.md",
       "rd_id": "RD-20260707T135354Z-main-WUFU"
     }
@@ -13400,6 +13410,11 @@
       "rel": "experiment_of"
     },
     {
+      "from": "EX-20260814T114310Z-main-43XQ",
+      "to": "RD-20260707T135354Z-main-WUFU",
+      "rel": "experiment_of"
+    },
+    {
       "from": "DEC-20260529T000000Z-mig-D20260529R014REVISEBUCKE4EB82",
       "to": "RD-20260605T115651Z-main-DEF0",
       "rel": "decision_affects"
@@ -15492,278 +15507,6 @@
   ],
   "dangling_edges": [],
   "recent_changes_7d": [
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
-    {
-      "id": null,
-      "type": null,
-      "title": null,
-      "status": null,
-      "updated_at": null,
-      "file": null
-    },
     {
       "id": null,
       "type": null,
